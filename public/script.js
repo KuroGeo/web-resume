@@ -4,7 +4,7 @@ const translations = {
   zh: {
     meta: {
       htmlLang: "zh-CN",
-      title: "George Ye | 前端工程师",
+      title: "George Y. | 前端工程师",
       description: "一名前端工程师的作品集式网页简历，经历覆盖字节跳动电商、跨端渲染、Lynx 稳定性、店铺装修、短视频电商与 AI 电商产品落地。",
       ogDescription: "以作品集方式呈现前端工程经历，覆盖 React、Lynx、跨端渲染、性能优化和 AI 电商落地。"
     },
@@ -92,7 +92,7 @@ const translations = {
   en: {
     meta: {
       htmlLang: "en",
-      title: "George Ye | Frontend Engineer",
+      title: "George Y. | Frontend Engineer",
       description: "A portfolio-style resume for a frontend engineer with experience across ByteDance e-commerce, cross-platform rendering, Lynx reliability, store tooling, short-video commerce, and AI commerce products.",
       ogDescription: "A portfolio-style frontend resume covering React, Lynx, cross-platform rendering, performance optimization, and AI commerce delivery."
     },
