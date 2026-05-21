@@ -3,20 +3,20 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>George Ye | Frontend Engineer</title>
+    <title>George Ye | 前端工程师</title>
     <meta
       name="description"
       content="一名前端工程师的作品集式网页简历，经历覆盖字节跳动电商、跨端渲染、Lynx 稳定性、店铺装修、短视频电商与 AI 电商产品落地。"
     >
     <meta name="theme-color" content="#0f172a">
-    <meta property="og:title" content="George Ye | Frontend Engineer">
+    <meta property="og:title" content="George Ye | 前端工程师">
     <meta property="og:description" content="以作品集方式呈现前端工程经历，覆盖 React、Lynx、跨端渲染、性能优化和 AI 电商落地。">
     <meta property="og:type" content="website">
     <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%230f172a'/%3E%3Cpath d='M32 11 50 21.5v21L32 53 14 42.5v-21L32 11Z' fill='none' stroke='%235eead4' stroke-width='4'/%3E%3Cpath d='m26 26-6 6 6 6M38 26l6 6-6 6M35 22l-6 20' fill='none' stroke='%23e2e8f0' stroke-width='4' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E">
     <link rel="stylesheet" href="styles.css">
   </head>
   <body>
-    <a class="skip-link" href="#content">跳到内容</a>
+    <a class="skip-link" href="#content" data-i18n="skipLink">跳到内容</a>
     <div class="scroll-progress" aria-hidden="true">
       <span data-progress></span>
     </div>
@@ -25,79 +25,86 @@
       <header class="intro-pane">
         <div>
           <h1>George Ye</h1>
-          <p class="role">Frontend Engineer</p>
-          <p class="intro-copy">
+          <p class="role" data-i18n="intro.role">前端工程师</p>
+          <p class="intro-copy" data-i18n="intro.copy">
             我把复杂业务、跨端体验和工程系统，整理成稳定、清晰、可增长的前端产品。
           </p>
         </div>
 
-        <nav class="side-nav" aria-label="主要导航">
-          <a href="#about" class="is-active"><span></span>About</a>
-          <a href="#experience"><span></span>Experience</a>
-          <a href="#projects"><span></span>Projects</a>
-          <a href="#skills"><span></span>Skills</a>
-          <a href="#contact"><span></span>Contact</a>
+        <nav class="side-nav" aria-label="主要导航" data-i18n-aria="nav.label">
+          <a href="#about" class="is-active"><span class="nav-line"></span><span data-i18n="nav.about">关于</span></a>
+          <a href="#experience"><span class="nav-line"></span><span data-i18n="nav.experience">经历</span></a>
+          <a href="#projects"><span class="nav-line"></span><span data-i18n="nav.projects">项目</span></a>
+          <a href="#skills"><span class="nav-line"></span><span data-i18n="nav.skills">技能</span></a>
+          <a href="#contact"><span class="nav-line"></span><span data-i18n="nav.contact">联系</span></a>
         </nav>
 
-        <ul class="social-list" aria-label="公开链接">
-          <li>
-            <a href="https://github.com/KuroGeo" target="_blank" rel="noopener noreferrer" aria-label="GitHub">
-              <svg viewBox="0 0 24 24" aria-hidden="true">
-                <path d="M12 .5C5.65.5.5 5.65.5 12c0 5.08 3.29 9.39 7.86 10.91.58.11.79-.25.79-.56v-2.03c-3.2.7-3.88-1.36-3.88-1.36-.52-1.33-1.28-1.68-1.28-1.68-1.05-.72.08-.7.08-.7 1.16.08 1.77 1.19 1.77 1.19 1.03 1.76 2.7 1.25 3.36.96.1-.75.4-1.25.73-1.54-2.55-.29-5.24-1.28-5.24-5.68 0-1.25.45-2.28 1.18-3.08-.12-.29-.51-1.46.11-3.04 0 0 .97-.31 3.16 1.18.92-.26 1.9-.38 2.88-.39.98 0 1.96.13 2.88.39 2.19-1.49 3.15-1.18 3.15-1.18.63 1.58.24 2.75.12 3.04.74.8 1.18 1.83 1.18 3.08 0 4.41-2.69 5.38-5.25 5.67.41.36.78 1.06.78 2.14v3.03c0 .31.21.67.79.56A11.51 11.51 0 0 0 23.5 12C23.5 5.65 18.35.5 12 .5Z"/>
-              </svg>
-              <span class="sr-only">GitHub</span>
-            </a>
-          </li>
-          <li>
-            <a href="https://www.linkedin.com/in/george-ye-2303572b2/" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">
-              <svg viewBox="0 0 24 24" aria-hidden="true">
-                <path d="M20.45 20.45h-3.56v-5.58c0-1.33-.02-3.04-1.85-3.04-1.85 0-2.14 1.45-2.14 2.95v5.67H9.35V8.99h3.41v1.57h.05a3.74 3.74 0 0 1 3.36-1.85c3.6 0 4.26 2.37 4.26 5.45v6.29ZM5.34 7.42a2.06 2.06 0 1 1 0-4.12 2.06 2.06 0 0 1 0 4.12Zm1.78 13.03H3.56V8.99h3.56v11.46ZM22.22 0H1.77C.8 0 0 .78 0 1.74v20.52C0 23.22.8 24 1.77 24h20.45c.98 0 1.78-.78 1.78-1.74V1.74C24 .78 23.2 0 22.22 0Z"/>
-              </svg>
-              <span class="sr-only">LinkedIn</span>
-            </a>
-          </li>
-        </ul>
+        <div class="intro-actions">
+          <div class="language-switch" role="group" aria-label="语言选择" data-i18n-aria="language.label">
+            <button type="button" data-language-option="zh" aria-pressed="true">中文</button>
+            <button type="button" data-language-option="en" aria-pressed="false">EN</button>
+          </div>
+
+          <ul class="social-list" aria-label="公开链接" data-i18n-aria="social.label">
+            <li>
+              <a href="https://github.com/KuroGeo" target="_blank" rel="noopener noreferrer" aria-label="GitHub">
+                <svg viewBox="0 0 24 24" aria-hidden="true">
+                  <path d="M12 .5C5.65.5.5 5.65.5 12c0 5.08 3.29 9.39 7.86 10.91.58.11.79-.25.79-.56v-2.03c-3.2.7-3.88-1.36-3.88-1.36-.52-1.33-1.28-1.68-1.28-1.68-1.05-.72.08-.7.08-.7 1.16.08 1.77 1.19 1.77 1.19 1.03 1.76 2.7 1.25 3.36.96.1-.75.4-1.25.73-1.54-2.55-.29-5.24-1.28-5.24-5.68 0-1.25.45-2.28 1.18-3.08-.12-.29-.51-1.46.11-3.04 0 0 .97-.31 3.16 1.18.92-.26 1.9-.38 2.88-.39.98 0 1.96.13 2.88.39 2.19-1.49 3.15-1.18 3.15-1.18.63 1.58.24 2.75.12 3.04.74.8 1.18 1.83 1.18 3.08 0 4.41-2.69 5.38-5.25 5.67.41.36.78 1.06.78 2.14v3.03c0 .31.21.67.79.56A11.51 11.51 0 0 0 23.5 12C23.5 5.65 18.35.5 12 .5Z"/>
+                </svg>
+                <span class="sr-only">GitHub</span>
+              </a>
+            </li>
+            <li>
+              <a href="https://www.linkedin.com/in/george-ye-2303572b2/" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">
+                <svg viewBox="0 0 24 24" aria-hidden="true">
+                  <path d="M20.45 20.45h-3.56v-5.58c0-1.33-.02-3.04-1.85-3.04-1.85 0-2.14 1.45-2.14 2.95v5.67H9.35V8.99h3.41v1.57h.05a3.74 3.74 0 0 1 3.36-1.85c3.6 0 4.26 2.37 4.26 5.45v6.29ZM5.34 7.42a2.06 2.06 0 1 1 0-4.12 2.06 2.06 0 0 1 0 4.12Zm1.78 13.03H3.56V8.99h3.56v11.46ZM22.22 0H1.77C.8 0 0 .78 0 1.74v20.52C0 23.22.8 24 1.77 24h20.45c.98 0 1.78-.78 1.78-1.74V1.74C24 .78 23.2 0 22.22 0Z"/>
+                </svg>
+                <span class="sr-only">LinkedIn</span>
+              </a>
+            </li>
+          </ul>
+        </div>
       </header>
 
       <main id="content" class="content-pane">
         <section id="about" class="content-section" data-section>
-          <h2 class="section-label">About</h2>
+          <h2 class="section-label" data-i18n="nav.about">关于</h2>
           <div class="prose">
-            <p>
+            <p data-i18n="about.p1">
               我是一名前端工程师，主要经历集中在电商消费者业务。相比单纯完成页面，我更关注如何把业务目标、产品体验、跨端渲染、性能稳定和工程效率放在同一个问题里解决。
             </p>
-            <p>
+            <p data-i18n="about.p2">
               过去几年，我参与过店铺与橱窗、短视频电商、异形卡交互、AI 电商 POC、低代码搭建、Lynx 渲染、监控治理和多宿主适配等方向，习惯在真实流量和复杂协作里推进结果。
             </p>
-            <p>
+            <p data-i18n="about.p3">
               现在我希望继续做有挑战的前端系统：既能接住业务复杂度，也能把体验和工程质量打磨到让团队长期受益。
             </p>
           </div>
         </section>
 
         <section id="experience" class="content-section" data-section>
-          <h2 class="section-label">Experience</h2>
+          <h2 class="section-label" data-i18n="nav.experience">经历</h2>
           <ol class="entry-list">
             <li>
               <article class="entry-card">
-                <time>2025.04 — 2025.12</time>
+                <time data-i18n="experience.ai.time">2025.04 — 2025.12</time>
                 <div class="entry-body">
                   <div class="entry-heading">
-                    <h3>AI 电商前端工程 POC</h3>
-                    <span>创新探索</span>
+                    <h3 data-i18n="experience.ai.title">AI 电商前端工程 POC</h3>
+                    <span data-i18n="experience.ai.subtitle">创新探索</span>
                   </div>
-                  <p>
+                  <p data-i18n="experience.ai.body">
                     负责新型 AI 内容 App 工程化建设，搭建类抖音多 Feed 智能素材流，维护送礼助手 AI Agent 对话产品及素材管理模块。
                   </p>
                   <ul>
-                    <li>推动手机品类智能对比页、商品标题和推荐语 AI 自动改写等场景落地。</li>
-                    <li>串联 Coze 工作流、火山引擎大模型、AI Agent 与 B 端内容管理平台。</li>
+                    <li data-i18n="experience.ai.b1">推动手机品类智能对比页、商品标题和推荐语 AI 自动改写等场景落地。</li>
+                    <li data-i18n="experience.ai.b2">串联 Coze 工作流、火山引擎大模型、AI Agent 与 B 端内容管理平台。</li>
                   </ul>
                   <div class="tag-row">
                     <span>Coze</span>
                     <span>AI Agent</span>
-                    <span>内容平台</span>
-                    <span>产品从 0 到 1</span>
+                    <span data-i18n="tag.contentPlatform">内容平台</span>
+                    <span data-i18n="tag.zeroToOne">产品从 0 到 1</span>
                   </div>
                 </div>
               </article>
@@ -105,24 +112,24 @@
 
             <li>
               <article class="entry-card">
-                <time>2024 — 2026</time>
+                <time data-i18n="experience.video.time">2024 — 2026</time>
                 <div class="entry-body">
                   <div class="entry-heading">
-                    <h3>内容电商 · 短视频与异形卡</h3>
-                    <span>核心链路</span>
+                    <h3 data-i18n="experience.video.title">内容电商 · 短视频与异形卡</h3>
+                    <span data-i18n="experience.video.subtitle">核心链路</span>
                   </div>
-                  <p>
+                  <p data-i18n="experience.video.body">
                     从千万级日均 GMV 的增长品接手，负责异形卡核心交互、承接链路、营销样式、视频小窗、沉浸式接券和价格动效等能力落地。
                   </p>
                   <ul>
-                    <li>推动异形卡日均 GMV 从千万级跃升至亿级。</li>
-                    <li>完善监控告警、埋点口径与订单归因，提升问题定位和数据分析效率。</li>
+                    <li data-i18n="experience.video.b1">推动异形卡日均 GMV 从千万级跃升至亿级。</li>
+                    <li data-i18n="experience.video.b2">完善监控告警、埋点口径与订单归因，提升问题定位和数据分析效率。</li>
                   </ul>
                   <div class="tag-row">
                     <span>Lynx</span>
-                    <span>短视频电商</span>
-                    <span>交互性能</span>
-                    <span>转化链路</span>
+                    <span data-i18n="tag.videoCommerce">短视频电商</span>
+                    <span data-i18n="tag.interactionPerformance">交互性能</span>
+                    <span data-i18n="tag.conversion">转化链路</span>
                   </div>
                 </div>
               </article>
@@ -133,23 +140,23 @@
                 <time>2023 Q1</time>
                 <div class="entry-body">
                   <div class="entry-heading">
-                    <h3>抖音店铺首页装修混排项目</h3>
-                    <span>技术 owner</span>
+                    <h3 data-i18n="experience.shop.title">抖音店铺首页装修混排项目</h3>
+                    <span data-i18n="experience.shop.subtitle">技术 owner</span>
                   </div>
-                  <p>
+                  <p data-i18n="experience.shop.body">
                     主导跨平台店铺组件生态建设，覆盖 C 端容器优化、第三方组件缓存、DSL 转 Lynx 渲染、B 端 ISV 调试 App，获得 2023Q1 电商项目奖。
                   </p>
                   <dl class="metric-strip">
-                    <div><dt>+18.6%</dt><dd>店铺访购率</dd></div>
-                    <div><dt>+43%</dt><dd>ISV 页访购率</dd></div>
-                    <div><dt>2s → 1.2s</dt><dd>iOS 加载耗时</dd></div>
-                    <div><dt>3s → 1.7s</dt><dd>可交互耗时</dd></div>
+                    <div><dt>+18.6%</dt><dd data-i18n="metric.shopConversion">店铺访购率</dd></div>
+                    <div><dt>+43%</dt><dd data-i18n="metric.isvConversion">ISV 页访购率</dd></div>
+                    <div><dt>2s → 1.2s</dt><dd data-i18n="metric.iosLoad">iOS 加载耗时</dd></div>
+                    <div><dt>3s → 1.7s</dt><dd data-i18n="metric.interactive">可交互耗时</dd></div>
                   </dl>
                   <div class="tag-row">
                     <span>DSL</span>
                     <span>Lynx</span>
-                    <span>低代码</span>
-                    <span>性能优化</span>
+                    <span data-i18n="tag.lowCode">低代码</span>
+                    <span data-i18n="tag.performance">性能优化</span>
                   </div>
                 </div>
               </article>
@@ -157,27 +164,27 @@
 
             <li>
               <article class="entry-card">
-                <time>2021 — 2024</time>
+                <time data-i18n="experience.shelf.time">2021 — 2024</time>
                 <div class="entry-body">
                   <div class="entry-heading with-logo">
                     <img src="assets/bytedance.jpg" alt="" aria-hidden="true">
                     <div>
-                      <h3>货架电商 · 店铺与橱窗</h3>
-                      <span>字节跳动电商消费者业务</span>
+                      <h3 data-i18n="experience.shelf.title">货架电商 · 店铺与橱窗</h3>
+                      <span data-i18n="experience.shelf.subtitle">字节跳动电商消费者业务</span>
                     </div>
                   </div>
-                  <p>
+                  <p data-i18n="experience.shelf.body">
                     负责店铺混排能力、性能优化与商家端低代码搭建，建设店铺内容混排框架，优化 ISV 组件加载体验，并完善全场景店铺入口透出。
                   </p>
                   <ul>
-                    <li>重构店铺分类页容器，落地商家自定义预览渲染能力。</li>
-                    <li>建设店铺&橱窗 SaaS 多端统一渲染能力，支撑头条、西瓜、番茄、懂车帝等宿主。</li>
+                    <li data-i18n="experience.shelf.b1">重构店铺分类页容器，落地商家自定义预览渲染能力。</li>
+                    <li data-i18n="experience.shelf.b2">建设店铺&橱窗 SaaS 多端统一渲染能力，支撑头条、西瓜、番茄、懂车帝等宿主。</li>
                   </ul>
                   <div class="tag-row">
                     <span>React</span>
                     <span>TypeScript</span>
-                    <span>多宿主</span>
-                    <span>灰度发布</span>
+                    <span data-i18n="tag.multiHost">多宿主</span>
+                    <span data-i18n="tag.grayRelease">灰度发布</span>
                   </div>
                 </div>
               </article>
@@ -185,22 +192,22 @@
 
             <li>
               <article class="entry-card">
-                <time>2017 — 2021</time>
+                <time data-i18n="experience.edu.time">2017 — 2021</time>
                 <div class="entry-body">
                   <div class="entry-heading with-logo">
                     <img src="assets/scut.jpg" alt="" aria-hidden="true">
                     <div>
-                      <h3>信息工程本科</h3>
-                      <span>华南理工大学</span>
+                      <h3 data-i18n="experience.edu.title">信息工程本科</h3>
+                      <span data-i18n="experience.edu.subtitle">华南理工大学</span>
                     </div>
                   </div>
-                  <p>
+                  <p data-i18n="experience.edu.body">
                     从计算机网络、操作系统和通信工程基础出发，逐步形成用工程视角拆解复杂系统的习惯。
                   </p>
                   <div class="tag-row">
-                    <span>计算机网络</span>
-                    <span>操作系统</span>
-                    <span>工程基础</span>
+                    <span data-i18n="tag.networks">计算机网络</span>
+                    <span data-i18n="tag.os">操作系统</span>
+                    <span data-i18n="tag.engineeringBasics">工程基础</span>
                   </div>
                 </div>
               </article>
@@ -209,79 +216,79 @@
         </section>
 
         <section id="projects" class="content-section" data-section>
-          <h2 class="section-label">Projects</h2>
+          <h2 class="section-label" data-i18n="nav.projects">项目</h2>
           <div class="project-list">
             <article class="project-card">
-              <p class="project-kicker">2023 · 店铺生态</p>
-              <h3>店铺首页装修混排</h3>
-              <p>
+              <p class="project-kicker" data-i18n="project.shop.kicker">2023 · 店铺生态</p>
+              <h3 data-i18n="project.shop.title">店铺首页装修混排</h3>
+              <p data-i18n="project.shop.body">
                 把商家组件生态迁移到抖音店铺，完成 C 端渲染容器、B 端调试工具、缓存和性能链路建设。
               </p>
               <div class="tag-row">
-                <span>跨平台组件</span>
-                <span>ISV 调试</span>
-                <span>加载优化</span>
+                <span data-i18n="tag.crossPlatformComponents">跨平台组件</span>
+                <span data-i18n="tag.isvDebugging">ISV 调试</span>
+                <span data-i18n="tag.loadOptimization">加载优化</span>
               </div>
             </article>
 
             <article class="project-card">
-              <p class="project-kicker">2024 — 2026 · 内容电商</p>
-              <h3>短视频电商异形卡</h3>
-              <p>
+              <p class="project-kicker" data-i18n="project.video.kicker">2024 — 2026 · 内容电商</p>
+              <h3 data-i18n="project.video.title">短视频电商异形卡</h3>
+              <p data-i18n="project.video.body">
                 在高流量短视频场景中持续迭代卡片交互、营销样式、接券体验和价格动效，推动增长指标改善。
               </p>
               <div class="tag-row">
-                <span>高流量交互</span>
+                <span data-i18n="tag.highTrafficInteraction">高流量交互</span>
                 <span>CTR</span>
-                <span>GMV 增长</span>
+                <span data-i18n="tag.gmvGrowth">GMV 增长</span>
               </div>
             </article>
 
             <article class="project-card">
-              <p class="project-kicker">2025 · AI 电商</p>
-              <h3>智能素材流与 AI Agent</h3>
-              <p>
+              <p class="project-kicker" data-i18n="project.ai.kicker">2025 · AI 电商</p>
+              <h3 data-i18n="project.ai.title">智能素材流与 AI Agent</h3>
+              <p data-i18n="project.ai.body">
                 探索 AI 内容产品的前端工程形态，连接模型工作流、对话产品、素材生成与 B 端内容管理。
               </p>
               <div class="tag-row">
-                <span>AI 内容</span>
+                <span data-i18n="tag.aiContent">AI 内容</span>
                 <span>Feed App</span>
-                <span>素材管理</span>
+                <span data-i18n="tag.assetManagement">素材管理</span>
               </div>
             </article>
           </div>
         </section>
 
         <section id="skills" class="content-section" data-section>
-          <h2 class="section-label">Skills</h2>
+          <h2 class="section-label" data-i18n="nav.skills">技能</h2>
           <div class="skill-columns">
             <div>
               <h3>Frontend</h3>
-              <p>TypeScript, JavaScript, React.js, Node.js, 小程序, 组件体系</p>
+              <p data-i18n="skills.frontend">TypeScript, JavaScript, React.js, Node.js, 小程序, 组件体系</p>
             </div>
             <div>
               <h3>Mobile & Cross-platform</h3>
-              <p>Android, React Native, Lynx, 多端渲染, 宿主适配</p>
+              <p data-i18n="skills.mobile">Android, React Native, Lynx, 多端渲染, 宿主适配</p>
             </div>
             <div>
               <h3>Engineering</h3>
-              <p>前端架构, 性能优化, Monorepo, CI/CD, 微前端, 监控治理</p>
+              <p data-i18n="skills.engineering">前端架构, 性能优化, Monorepo, CI/CD, 微前端, 监控治理</p>
             </div>
             <div>
               <h3>AI Coding</h3>
-              <p>Codex, Claude Code, OpenClaw, 项目级 vibe coding 实践</p>
+              <p data-i18n="skills.ai">Codex, Claude Code, OpenClaw, 项目级 vibe coding 实践</p>
             </div>
           </div>
         </section>
 
         <section id="contact" class="content-section contact-section" data-section>
-          <h2 class="section-label">Contact</h2>
+          <h2 class="section-label" data-i18n="nav.contact">联系</h2>
           <p>
-            如果你想找一个能把业务、体验和工程一起推进的人，可以通过我的
+            <span data-i18n="contact.prefix">如果你想找一个能把业务、体验和工程一起推进的人，可以通过我的</span>
             <a class="inline-link" href="https://github.com/KuroGeo" target="_blank" rel="noopener noreferrer">GitHub</a>
-            或
+            <span data-i18n="contact.or">或</span>
             <a class="inline-link" href="https://www.linkedin.com/in/george-ye-2303572b2/" target="_blank" rel="noopener noreferrer">LinkedIn</a>
-            联系我。
+            <span data-i18n="contact.suffix">联系我。</span>
           </p>
         </section>
       </main>
