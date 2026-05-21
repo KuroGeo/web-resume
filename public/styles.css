@@ -261,9 +261,15 @@ button {
   transform: translateY(-2px);
 }
 
-.social-list svg {
-  width: 22px;
-  height: 22px;
+.social-list .social-icon-github {
+  width: 18px;
+  height: 18px;
+  fill: currentColor;
+}
+
+.social-list .social-icon-linkedin {
+  width: 20px;
+  height: 20px;
   fill: currentColor;
 }
 
