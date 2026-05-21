@@ -1,73 +1,61 @@
 const header = document.querySelector("[data-header]");
-const toast = document.querySelector("[data-toast]");
-const sectionLinks = Array.from(document.querySelectorAll(".nav-links a, .sticky-rail a"));
-const sections = sectionLinks
+const progress = document.querySelector("[data-progress]");
+const navLinks = Array.from(document.querySelectorAll(".nav-links a"));
+const panels = Array.from(document.querySelectorAll("[data-panel]"));
+const linkedSections = navLinks
   .map((link) => document.querySelector(link.getAttribute("href")))
   .filter(Boolean);
 
-const showToast = (message) => {
-  toast.textContent = message;
-  toast.classList.add("is-visible");
-  window.clearTimeout(showToast.timer);
-  showToast.timer = window.setTimeout(() => {
-    toast.classList.remove("is-visible");
-  }, 1800);
-};
+const updateChrome = () => {
+  const maxScroll = document.documentElement.scrollHeight - window.innerHeight;
+  const ratio = maxScroll > 0 ? window.scrollY / maxScroll : 0;
 
-const copyText = async (text) => {
-  if (navigator.clipboard?.writeText) {
-    try {
-      await navigator.clipboard.writeText(text);
-      return true;
-    } catch {
-      // Some embedded browsers expose Clipboard API but deny writes.
-    }
-  }
+  header.classList.toggle("is-scrolled", window.scrollY > 24);
+  progress.style.width = `${Math.min(100, Math.max(0, ratio * 100))}%`;
 
-  const textarea = document.createElement("textarea");
-  textarea.value = text;
-  textarea.setAttribute("readonly", "");
-  textarea.style.position = "fixed";
-  textarea.style.opacity = "0";
-  document.body.appendChild(textarea);
-  textarea.select();
-  const copied = document.execCommand("copy");
-  textarea.remove();
-  return copied;
-};
-
-document.querySelectorAll("[data-copy]").forEach((button) => {
-  button.addEventListener("click", async () => {
-    const text = button.getAttribute("data-copy");
-
-    try {
-      await copyText(text);
-      showToast("已复制邮箱");
-    } catch {
-      showToast(text);
-    }
-  });
-});
-
-const updateHeader = () => {
-  header.classList.toggle("is-scrolled", window.scrollY > 16);
-};
-
-const updateActiveLink = () => {
-  const current = sections
+  const current = linkedSections
     .slice()
     .reverse()
-    .find((section) => section.getBoundingClientRect().top <= 130);
+    .find((section) => section.getBoundingClientRect().top <= window.innerHeight * 0.34);
 
-  sectionLinks.forEach((link) => {
+  navLinks.forEach((link) => {
     link.classList.toggle("is-active", current && link.getAttribute("href") === `#${current.id}`);
   });
 };
 
-window.addEventListener("scroll", () => {
-  updateHeader();
-  updateActiveLink();
-}, { passive: true });
+const scrollToHash = () => {
+  if (!window.location.hash) return;
 
-updateHeader();
-updateActiveLink();
+  const target = document.querySelector(window.location.hash);
+  if (target) {
+    target.scrollIntoView({ block: "start" });
+  }
+};
+
+navLinks.forEach((link) => {
+  link.addEventListener("click", (event) => {
+    const target = document.querySelector(link.getAttribute("href"));
+
+    if (!target) return;
+    event.preventDefault();
+    history.pushState(null, "", link.getAttribute("href"));
+    target.scrollIntoView({ block: "start" });
+  });
+});
+
+const panelObserver = new IntersectionObserver(
+  (entries) => {
+    entries.forEach((entry) => {
+      entry.target.classList.toggle("is-current", entry.isIntersecting);
+    });
+  },
+  { rootMargin: "-42% 0px -42% 0px", threshold: 0 }
+);
+
+panels.forEach((panel) => panelObserver.observe(panel));
+window.addEventListener("scroll", updateChrome, { passive: true });
+window.addEventListener("resize", updateChrome);
+window.addEventListener("load", () => {
+  window.requestAnimationFrame(scrollToHash);
+});
+updateChrome();

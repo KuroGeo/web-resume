@@ -3,243 +3,266 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>前端工程师 | 网页简历</title>
+    <title>前端工程师 | 滚动叙事简历</title>
     <meta
       name="description"
-      content="前端工程师的网页版简历，曾负责字节跳动电商跨端渲染、Lynx 稳定性、店铺装修和 AI 电商探索。"
+      content="一名前端工程师的滚动叙事简历，经历覆盖字节跳动电商、跨端渲染、Lynx 稳定性、店铺装修、短视频电商与 AI 电商产品落地。"
     >
-    <meta name="theme-color" content="#f7f8fb">
-    <meta property="og:title" content="前端工程师 | 网页简历">
-    <meta property="og:description" content="5 年字节跳动电商前端经历，覆盖 React、Lynx、跨端渲染、性能优化和 AI 电商产品落地。">
+    <meta name="theme-color" content="#f5f5f7">
+    <meta property="og:title" content="前端工程师 | 滚动叙事简历">
+    <meta property="og:description" content="5 年字节跳动电商前端经历，覆盖 React、Lynx、跨端渲染、性能优化和 AI 电商落地。">
     <meta property="og:type" content="website">
     <link rel="icon" href="assets/profile.jpg">
     <link rel="stylesheet" href="styles.css">
   </head>
   <body>
+    <div class="scroll-progress" aria-hidden="true">
+      <span data-progress></span>
+    </div>
+
     <header class="site-header" data-header>
       <a class="brand" href="#top" aria-label="回到顶部">
-        <span class="brand-mark" aria-hidden="true">F</span>
-        <span>简历</span>
+        <span class="brand-mark" aria-hidden="true">FE</span>
+        <span>Story Resume</span>
       </a>
       <nav class="nav-links" aria-label="主要导航">
-        <a href="#experience">经历</a>
-        <a href="#projects">项目</a>
-        <a href="#skills">技能</a>
-        <a href="#contact">联系</a>
+        <a href="#overview">概览</a>
+        <a href="#shelf">货架</a>
+        <a href="#content">内容</a>
+        <a href="#ai">AI</a>
+        <a href="#system">工程</a>
       </nav>
     </header>
 
     <main id="top">
-      <section class="hero section-shell">
-        <div class="hero-copy reveal">
-          <h1>前端工程师</h1>
-          <p class="hero-title">前端工程师，专注电商 C 端体验、跨端渲染、Lynx 稳定性与 AI 产品工程化。</p>
-          <p class="hero-summary">
-            2021 年加入字节跳动电商消费者业务，覆盖货架电商、店铺橱窗、短视频电商与 AI 电商探索。擅长把业务策略、性能体验和工程体系放在同一张图里推进，从 0 到 1 搭建产品链路，也能长期守住高流量核心场景的稳定性。
-          </p>
-          <div class="hero-actions" aria-label="联系入口">
-            <a class="button button-primary" href="#contact">
-              <svg viewBox="0 0 24 24" aria-hidden="true">
-                <path d="M4 6h16v12H4z"></path>
-                <path d="m4 7 8 6 8-6"></path>
-              </svg>
-              联系渠道
-            </a>
-          </div>
+      <section class="hero-panel panel" id="overview" data-panel>
+        <div class="hero-backdrop" aria-hidden="true">
+          <span>Commerce</span>
+          <span>Frontend</span>
+          <span>AI</span>
         </div>
-
-        <aside class="profile-panel reveal" aria-label="个人信息">
-          <img class="profile-photo" src="assets/profile.jpg" alt="候选人证件照">
-          <div class="profile-content">
-            <p class="profile-name">候选人</p>
-            <p>27 岁 · 男 · 广东珠海</p>
-            <p>求职意向：前端工程师</p>
-            <dl class="contact-list">
+        <div class="hero-inner">
+          <p class="hero-kicker">5 年字节跳动电商前端经历</p>
+          <h1>前端工程师</h1>
+          <p class="hero-lede">
+            从店铺装修、跨端渲染，到短视频电商与 AI 内容产品，把复杂业务拆成稳定、可增长、能持续演进的前端系统。
+          </p>
+          <div class="hero-stage" aria-label="候选人概览">
+            <div class="portrait-wrap">
+              <img src="assets/profile.jpg" alt="候选人证件照">
+            </div>
+            <dl class="identity-list">
               <div>
-                <dt>手机</dt>
-                <dd>已隐藏</dd>
+                <dt>身份</dt>
+                <dd>候选人 · 前端工程师</dd>
               </div>
               <div>
-                <dt>邮箱</dt>
-                <dd>已隐藏</dd>
+                <dt>位置</dt>
+                <dd>广东珠海</dd>
+              </div>
+              <div>
+                <dt>联系</dt>
+                <dd>通过当前投递渠道</dd>
               </div>
             </dl>
           </div>
-        </aside>
+        </div>
+        <a class="scroll-cue" href="#shelf" aria-label="继续向下阅读">
+          <span>继续滚动</span>
+          <svg viewBox="0 0 24 24" aria-hidden="true">
+            <path d="M12 5v14m0 0 5-5m-5 5-5-5"></path>
+          </svg>
+        </a>
       </section>
 
-      <section class="metric-band" aria-label="核心亮点">
-        <div class="metric-grid">
-          <article class="metric-card reveal">
-            <span class="metric-value">5 年</span>
-            <span class="metric-label">字节跳动电商前端经验</span>
-          </article>
-          <article class="metric-card reveal">
-            <span class="metric-value">千万级 → 亿级</span>
-            <span class="metric-label">异形卡日均 GMV 推动</span>
-          </article>
-          <article class="metric-card reveal">
-            <span class="metric-value">+18.6%</span>
-            <span class="metric-label">店铺访购率提升</span>
-          </article>
-          <article class="metric-card reveal">
-            <span class="metric-value">2s → 1.2s</span>
-            <span class="metric-label">iOS 页面加载耗时优化</span>
-          </article>
+      <section class="metrics-panel panel" data-panel>
+        <div class="section-shell">
+          <p class="eyebrow">Snapshot</p>
+          <h2>先看四个数字。</h2>
+          <div class="metric-strip" aria-label="核心亮点">
+            <article>
+              <strong>5 年</strong>
+              <span>电商消费者业务前端经验</span>
+            </article>
+            <article>
+              <strong>千万级 → 亿级</strong>
+              <span>异形卡日均 GMV 推动</span>
+            </article>
+            <article>
+              <strong>+18.6%</strong>
+              <span>店铺访购率提升</span>
+            </article>
+            <article>
+              <strong>2s → 1.2s</strong>
+              <span>iOS 页面加载耗时优化</span>
+            </article>
+          </div>
         </div>
       </section>
 
-      <section class="content-grid section-shell">
-        <aside class="sticky-rail reveal" aria-label="简历目录">
-          <p class="rail-title">Resume</p>
-          <a href="#experience">工作经历</a>
-          <a href="#projects">项目经历</a>
-          <a href="#skills">个人技能</a>
-          <a href="#education">教育背景</a>
-        </aside>
-
-        <div class="content-stack">
-          <section class="resume-section reveal" id="experience">
-            <div class="section-heading">
-              <span class="section-number">01</span>
-              <h2>工作经历</h2>
-            </div>
-            <article class="timeline-card">
-              <div class="timeline-head">
-                <img src="assets/bytedance.jpg" alt="" aria-hidden="true">
-                <div>
-                  <h3>字节跳动</h3>
-                  <p>电商-消费者业务 · 前端工程师</p>
-                </div>
-                <div class="time-place">
-                  <span>杭州</span>
-                  <span>2021-07 至 2026-04</span>
-                </div>
+      <section class="story-panel panel light" id="shelf" data-panel>
+        <div class="section-shell story-grid">
+          <div class="story-copy">
+            <p class="chapter">01 · 2021-2024</p>
+            <h2>先把店铺做成商家愿意用的增长工具。</h2>
+            <p>
+              在货架电商阶段，负责店铺&橱窗 SaaS 多端统一渲染、店铺混排能力、商家低代码搭建和 C 端加载体验。
+            </p>
+            <ul class="story-points">
+              <li>搭建店铺内容混排框架，优化 ISV 组件性能与加载体验。</li>
+              <li>重构店铺分类页容器，落地商家自定义预览渲染能力。</li>
+              <li>覆盖今日头条、西瓜、番茄、懂车帝、穿山甲等多宿主场景。</li>
+            </ul>
+          </div>
+          <div class="visual-stage shelf-stage" aria-label="货架电商项目视觉摘要">
+            <img class="company-logo" src="assets/bytedance.jpg" alt="" aria-hidden="true">
+            <div class="store-window">
+              <span class="window-bar"></span>
+              <div class="store-grid">
+                <span></span>
+                <span></span>
+                <span></span>
+                <span></span>
               </div>
-
-              <div class="role-block">
-                <h4>货架电商 · 店铺&橱窗 <span>2021-2024</span></h4>
-                <ul class="clean-list">
-                  <li>负责店铺混排能力、性能优化与商家端低代码搭建，搭建店铺内容混排框架，优化 ISV 组件性能与加载体验。</li>
-                  <li>完善全场景店铺入口透出，重构店铺分类页容器，落地商家自定义预览渲染能力，提升访购率与运营效率。</li>
-                  <li>建设店铺&橱窗 SaaS 多端统一渲染能力，覆盖今日头条、西瓜、番茄、悟空浏览器、懂车帝、穿山甲等宿主场景。</li>
-                  <li>建设监控报警、异常归因、Schema/API 校验、组件库、代码规范与灰度发布机制，提升核心链路稳定性。</li>
-                </ul>
-              </div>
-
-              <div class="role-block">
-                <h4>内容电商 · 短视频&AI 电商 <span>2024-2026</span></h4>
-                <ul class="clean-list">
-                  <li>主导异形卡核心交互、承接链路、营销样式、视频小窗、沉浸式接券与价格动效等能力落地。</li>
-                  <li>搭建异形卡体验与数据治理体系，完善监控告警、埋点口径与订单归因链路，快速收敛线上体验问题。</li>
-                  <li>负责 AI 电商探索产品前端研发，搭建 C 端视频、图文、播客消费链路与 B 端内容管理平台。</li>
-                </ul>
-              </div>
-            </article>
-          </section>
-
-          <section class="resume-section reveal" id="projects">
-            <div class="section-heading">
-              <span class="section-number">02</span>
-              <h2>项目经历</h2>
+              <p>Store Builder</p>
             </div>
-            <div class="project-list">
-              <article class="project-card">
-                <div class="project-meta">
-                  <span>AI 电商</span>
-                  <span>前端工程 POC · 2025-04 至 2025-12</span>
-                </div>
-                <h3>AI × 电商创新团队从 0 到 1 搭建</h3>
-                <p>
-                  加入电商部门新成立的 AI × 电商创新团队，探索 AI 技术在电商全场景的落地与商业化应用。负责新型 AI 内容 App 工程化建设，搭建类抖音多 Feed 智能素材流，维护送礼助手 AI Agent 对话产品及素材管理模块。
-                </p>
-                <ul class="tag-list">
-                  <li>Coze 工作流</li>
-                  <li>火山引擎大模型</li>
-                  <li>AI Agent</li>
-                  <li>内容管理平台</li>
-                </ul>
-                <p class="project-result">
-                  项目整体移交 TikTok 国际化团队；全程参与 AI 创新项目从 0 到 1 搭建，积累 AI 初创团队产品研发与落地实战经验。
-                </p>
-              </article>
-
-              <article class="project-card">
-                <div class="project-meta">
-                  <span>抖音店铺首页装修混排项目</span>
-                  <span>大前端技术 owner · 2023-01 至 2023-04</span>
-                </div>
-                <h3>跨平台店铺组件生态与低成本迁移</h3>
-                <p>
-                  面向头部店铺自定义装修与 ISV 生态诉求，担任大前端技术负责人，主导跨平台组件生态建设，打通 DSL 转换、第三方组件兼容、B 端调试预览和 C 端渲染性能优化。
-                </p>
-                <div class="impact-grid" aria-label="项目成果">
-                  <span><strong>2023Q1</strong> 电商项目奖</span>
-                  <span><strong>+43%</strong> ISV 页访购率</span>
-                  <span><strong>3s → 1.7s</strong> Android 加载优化</span>
-                </div>
-                <p class="project-result">
-                  商家装修意愿显著提升；iOS 页面加载耗时从 2s 降至 1.2s，Android 从 3s 降至 1.7s，店铺访购率提升 18.6%。
-                </p>
-              </article>
+            <div class="impact-row">
+              <span><strong>+43%</strong> ISV 页访购率</span>
+              <span><strong>3s → 1.7s</strong> Android 加载优化</span>
             </div>
-          </section>
-
-          <section class="resume-section reveal" id="skills">
-            <div class="section-heading">
-              <span class="section-number">03</span>
-              <h2>个人技能</h2>
-            </div>
-            <div class="skill-matrix">
-              <article>
-                <h3>前端开发</h3>
-                <p>TypeScript、JavaScript、React.js、小程序语言、Node.js</p>
-              </article>
-              <article>
-                <h3>移动开发</h3>
-                <p>Android、React Native、Lynx</p>
-              </article>
-              <article>
-                <h3>后端技术</h3>
-                <p>电商 BFF 经验，能用 Go 完成数据组装和服务调用</p>
-              </article>
-              <article>
-                <h3>工程能力</h3>
-                <p>前端架构、性能优化、Monorepo、CI/CD、微前端</p>
-              </article>
-              <article>
-                <h3>AI coding</h3>
-                <p>Codex、Claude Code、OpenClaw，有项目级别 vibe coding 经验</p>
-              </article>
-            </div>
-          </section>
-
-          <section class="resume-section reveal" id="education">
-            <div class="section-heading">
-              <span class="section-number">04</span>
-              <h2>教育背景</h2>
-            </div>
-            <article class="education-card">
-              <img src="assets/scut.jpg" alt="" aria-hidden="true">
-              <div>
-                <h3>华南理工大学</h3>
-                <p>信息工程 · 本科</p>
-              </div>
-              <span>2017-09 至 2021-06</span>
-            </article>
-          </section>
+          </div>
         </div>
       </section>
 
-      <section class="contact-section section-shell reveal" id="contact">
-        <div>
-          <h2>期待聊聊前端工程、业务增长和 AI 产品落地。</h2>
-          <p>如果你正在寻找能把复杂业务拆成可维护工程体系、同时关注体验和结果的前端工程师，可以通过当前简历投递渠道联系我。</p>
+      <section class="story-panel panel dark" id="content" data-panel>
+        <div class="section-shell story-grid reverse">
+          <div class="story-copy">
+            <p class="chapter">02 · 2024-2026</p>
+            <h2>再走进短视频链路，把卡片交互推向高流量场景。</h2>
+            <p>
+              主导异形卡核心交互、承接链路、营销样式、视频小窗、沉浸式接券和价格动效等能力落地。
+            </p>
+            <ul class="story-points">
+              <li>优化 CTR 与转化链路，推动卡片日均 GMV 从千万级提升至亿级。</li>
+              <li>搭建体验与数据治理体系，完善监控告警、埋点口径和订单归因。</li>
+              <li>快速定位并收敛线上异常，提升业务稳定性与分析效率。</li>
+            </ul>
+          </div>
+          <div class="visual-stage video-stage" aria-label="内容电商项目视觉摘要">
+            <div class="phone-frame">
+              <span class="phone-camera"></span>
+              <div class="video-card active">
+                <span>Live offer</span>
+                <strong>GMV 亿级</strong>
+              </div>
+              <div class="video-card">
+                <span>Coupon</span>
+                <strong>沉浸接券</strong>
+              </div>
+              <div class="video-card">
+                <span>Mini video</span>
+                <strong>视频小窗</strong>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="story-panel panel light" id="ai" data-panel>
+        <div class="section-shell story-grid">
+          <div class="story-copy">
+            <p class="chapter">03 · 2025</p>
+            <h2>最后进入 AI 电商，从 0 到 1 搭建探索产品。</h2>
+            <p>
+              加入 AI × 电商创新团队，负责新型 AI 内容 App 工程化建设，搭建类抖音多 Feed 智能素材流，并维护送礼助手 AI Agent 对话产品。
+            </p>
+            <ul class="story-points">
+              <li>基于 Coze 工作流对接火山引擎大模型，实现内容素材自动生成。</li>
+              <li>建设 B 端内容管理平台，实现流量分配、上下架与评分展示。</li>
+              <li>推动手机品类智能对比、商品标题与推荐语 AI 改写等场景落地。</li>
+            </ul>
+          </div>
+          <div class="visual-stage ai-stage" aria-label="AI 电商项目视觉摘要">
+            <div class="ai-feed">
+              <span>Feed</span>
+              <span>Agent</span>
+              <span>Coze</span>
+              <span>Volcano Engine</span>
+            </div>
+            <div class="ai-result">
+              <strong>0 → 1</strong>
+              <p>AI 创新项目产品研发与落地经验</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="system-panel panel" id="system" data-panel>
+        <div class="section-shell">
+          <p class="eyebrow">Engineering System</p>
+          <h2>经历背后，是一套前端工程能力。</h2>
+          <div class="capability-grid">
+            <article>
+              <span>01</span>
+              <h3>跨端渲染</h3>
+              <p>React、Lynx、React Native、小程序、多宿主场景统一渲染。</p>
+            </article>
+            <article>
+              <span>02</span>
+              <h3>稳定性治理</h3>
+              <p>监控报警、异常归因、Schema/API 校验、OnCall 与故障应急。</p>
+            </article>
+            <article>
+              <span>03</span>
+              <h3>性能优化</h3>
+              <p>容器缓存、组件加载提速、低代码预览链路和核心体验优化。</p>
+            </article>
+            <article>
+              <span>04</span>
+              <h3>工程化</h3>
+              <p>Monorepo、CI/CD、微前端、组件库、代码规范和灰度发布机制。</p>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section class="skills-panel panel light" id="skills" data-panel>
+        <div class="section-shell split-copy">
+          <div>
+            <p class="chapter">04 · Toolkit</p>
+            <h2>工具箱不炫技，只为把产品做成。</h2>
+          </div>
+          <div class="skill-lines" aria-label="个人技能">
+            <p><strong>前端开发</strong><span>TypeScript · JavaScript · React.js · Node.js · 小程序</span></p>
+            <p><strong>移动开发</strong><span>Android · React Native · Lynx</span></p>
+            <p><strong>后端协作</strong><span>电商 BFF 经验 · Go 数据组装与服务调用</span></p>
+            <p><strong>AI coding</strong><span>Codex · Claude Code · OpenClaw · 项目级 vibe coding 经验</span></p>
+          </div>
+        </div>
+      </section>
+
+      <section class="education-panel panel" data-panel>
+        <div class="section-shell education-wrap">
+          <img src="assets/scut.jpg" alt="" aria-hidden="true">
+          <div>
+            <p class="eyebrow">Education</p>
+            <h2>华南理工大学</h2>
+            <p>信息工程 · 本科 · 2017-09 至 2021-06</p>
+          </div>
+        </div>
+      </section>
+
+      <section class="final-panel panel dark" id="contact" data-panel>
+        <div class="section-shell final-copy">
+          <p class="chapter">Next</p>
+          <h2>如果你想找一个能把业务、体验和工程一起推进的人。</h2>
+          <p>
+            可以通过当前简历投递渠道联系。公开网页已隐藏姓名、手机号与邮箱。
+          </p>
         </div>
       </section>
     </main>
 
-    <div class="toast" data-toast role="status" aria-live="polite">已复制</div>
     <script src="script.js"></script>
   </body>
 </html>
