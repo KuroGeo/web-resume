@@ -279,11 +279,7 @@ button {
 
 .content-section {
   scroll-margin-top: 96px;
-  margin-bottom: 128px;
-}
-
-#about {
-  min-height: 640px;
+  margin-bottom: 112px;
 }
 
 .content-section:last-child {
@@ -580,10 +576,6 @@ button {
   .content-section {
     margin-bottom: 92px;
     scroll-margin-top: 28px;
-  }
-
-  #about {
-    min-height: 0;
   }
 
   .section-label {
