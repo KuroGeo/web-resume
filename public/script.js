@@ -42,7 +42,7 @@ document.querySelectorAll("[data-copy]").forEach((button) => {
 
     try {
       await copyText(text);
-      showToast("已复制手机号");
+      showToast("已复制邮箱");
     } catch {
       showToast(text);
     }
