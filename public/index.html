@@ -3,16 +3,16 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>前端工程师 | 时间线简历</title>
+    <title>前端工程师 | 技能树简历</title>
     <meta
       name="description"
-      content="一名前端工程师的时间线式网页简历，经历覆盖字节跳动电商、跨端渲染、Lynx 稳定性、店铺装修、短视频电商与 AI 电商产品落地。"
+      content="一名前端工程师的技能树式网页简历，经历覆盖字节跳动电商、跨端渲染、Lynx 稳定性、店铺装修、短视频电商与 AI 电商产品落地。"
     >
-    <meta name="theme-color" content="#f5f5f7">
-    <meta property="og:title" content="前端工程师 | 时间线简历">
-    <meta property="og:description" content="顺着时间线介绍 5 年电商前端经历，覆盖 React、Lynx、跨端渲染、性能优化和 AI 电商落地。">
+    <meta name="theme-color" content="#05070b">
+    <meta property="og:title" content="前端工程师 | 技能树简历">
+    <meta property="og:description" content="顺着一条技能树主线阅读 5 年电商前端经历，覆盖 React、Lynx、跨端渲染、性能优化和 AI 电商落地。">
     <meta property="og:type" content="website">
-    <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%23111111'/%3E%3Ctext x='32' y='39' text-anchor='middle' font-family='Arial,sans-serif' font-size='20' font-weight='800' fill='white'%3EFE%3C/text%3E%3C/svg%3E">
+    <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%2305070b'/%3E%3Cpath d='M32 9 52 20.5v23L32 55 12 43.5v-23L32 9Z' fill='none' stroke='%236ea8ff' stroke-width='4'/%3E%3Cpath d='m25 25-7 7 7 7M39 25l7 7-7 7M35 21l-6 22' fill='none' stroke='%23fff' stroke-width='4' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E">
     <link rel="stylesheet" href="styles.css">
   </head>
   <body>
@@ -21,9 +21,14 @@
     </div>
 
     <header class="site-header" data-header>
-      <a class="brand" href="#top" aria-label="回到顶部">
-        <span class="brand-mark" aria-hidden="true">FE</span>
-        <span>Timeline Resume</span>
+      <a class="brand" href="#start" aria-label="回到顶部">
+        <span class="brand-mark" aria-hidden="true">
+          <svg viewBox="0 0 32 32" focusable="false">
+            <path d="M16 3.5 27.5 10v12L16 28.5 4.5 22V10L16 3.5Z"></path>
+            <path d="m12.7 12.3-3.4 3.6 3.4 3.8M19.3 12.3l3.4 3.6-3.4 3.8M17.7 10.5l-3.4 11"></path>
+          </svg>
+        </span>
+        <span>FE Skill Tree</span>
       </a>
       <nav class="nav-links" aria-label="主要导航">
         <a href="#start">起点</a>
@@ -32,230 +37,336 @@
         <a href="#ai">AI</a>
         <a href="#toolkit">能力</a>
       </nav>
+      <div class="header-status" aria-live="polite">
+        <span data-unlock-count>0/8</span>
+        <small>已解锁</small>
+      </div>
     </header>
 
-    <main id="top">
-      <section class="opening" id="start" data-section>
-        <div class="section-shell opening-grid">
-          <div>
-            <p class="eyebrow">5 年字节跳动电商前端经历</p>
-            <h1>不是一份简历。<br>是一条前端成长时间线。</h1>
-          </div>
-          <div class="opening-copy">
-            <p>
-              从信息工程出发，进入电商消费者业务，在店铺装修、跨端渲染、短视频电商与 AI 内容产品之间持续推进：把业务策略翻译成体验，把复杂链路沉淀成工程系统。
+    <main>
+      <section class="hero" id="start" data-section>
+        <div class="section-shell hero-grid">
+          <div class="hero-copy">
+            <h1>前端工程师<br>技能树</h1>
+            <p class="hero-lede">
+              在电商的真实战场中，顺着主线往下解锁：从工程基础、货架电商、短视频链路，到 AI 电商探索与可迁移的前端工程体系。
             </p>
-            <dl>
-              <div>
-                <dt>身份</dt>
-                <dd>候选人 · 前端工程师</dd>
-              </div>
-              <div>
-                <dt>位置</dt>
-                <dd>广东珠海</dd>
-              </div>
-              <div>
-                <dt>联系</dt>
-                <dd>通过当前投递渠道</dd>
-              </div>
-            </dl>
+            <div class="hero-actions">
+              <a class="primary-link" href="#education">
+                <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+                  <path d="M12 5v14M18 13l-6 6-6-6"></path>
+                </svg>
+                <span>进入主线</span>
+              </a>
+              <span class="privacy-note">联系：当前投递渠道</span>
+            </div>
+            <div class="signal-row" aria-label="能力摘要">
+              <span>电商实战</span>
+              <span>跨端渲染</span>
+              <span>稳定性建设</span>
+              <span>AI 探索</span>
+            </div>
+          </div>
+
+          <div class="hero-system" aria-hidden="true">
+            <div class="orbit orbit-one"></div>
+            <div class="orbit orbit-two"></div>
+            <div class="orbit orbit-three"></div>
+            <div class="core-node">
+              <svg viewBox="0 0 72 72" focusable="false">
+                <path d="M36 4 63.7 20v32L36 68 8.3 52V20L36 4Z"></path>
+                <path d="m28 28-8 8 8 8M44 28l8 8-8 8M39 24l-6 24"></path>
+              </svg>
+            </div>
+            <div class="hero-progress">
+              <strong data-unlock-percent>0%</strong>
+              <span>解锁进度</span>
+            </div>
           </div>
         </div>
       </section>
 
-      <section class="timeline-shell" aria-label="经历时间线">
-        <div class="timeline-intro section-shell">
-          <p class="eyebrow">Chronology</p>
-          <h2>顺着时间往下看。</h2>
-          <p>每一段经历都不是孤立项目，而是从业务理解、产品交互、性能稳定到工程体系的一次叠加。</p>
-        </div>
+      <section class="tree-section" aria-label="经历技能树">
+        <div class="section-shell tree-layout">
+          <aside class="stage-rail" aria-label="技能树阶段">
+            <ol>
+              <li class="is-current" data-stage="education"><span>01</span><strong>起点</strong><small>基础教育</small></li>
+              <li data-stage="join"><span>02</span><strong>启航</strong><small>职业起步</small></li>
+              <li data-stage="shelf"><span>03</span><strong>深耕</strong><small>货架电商</small></li>
+              <li data-stage="mix"><span>04</span><strong>突破</strong><small>混排项目</small></li>
+              <li data-stage="content"><span>05</span><strong>成长</strong><small>内容电商</small></li>
+              <li data-stage="ai"><span>06</span><strong>探索</strong><small>AI 电商</small></li>
+              <li data-stage="toolkit"><span>07</span><strong>沉淀</strong><small>工程体系</small></li>
+            </ol>
+          </aside>
 
-        <div class="timeline section-shell">
-          <article class="timeline-item" id="education" data-section>
-            <div class="time-stamp">
-              <span>2017</span>
-              <small>09 → 2021 · 06</small>
-            </div>
-            <div class="timeline-dot" aria-hidden="true"></div>
-            <div class="timeline-content">
-              <div class="timeline-heading">
-                <img src="assets/scut.jpg" alt="" aria-hidden="true">
-                <div>
-                  <p class="chapter">起点</p>
-                  <h3>华南理工大学 · 信息工程</h3>
+          <div class="tree-map" data-tree>
+            <div class="spine" aria-hidden="true"><span data-tree-progress></span></div>
+
+            <article class="tree-node is-left" id="education" data-node data-section>
+              <div class="node-core node-blue" aria-hidden="true">
+                <svg viewBox="0 0 32 32" focusable="false">
+                  <path d="M3.5 11.5 16 5.5l12.5 6L16 17.5 3.5 11.5Z"></path>
+                  <path d="M9 14.2v6.4c1.8 2.2 4.1 3.4 7 3.4s5.2-1.2 7-3.4v-6.4"></path>
+                  <path d="M27 12.2v7"></path>
+                </svg>
+              </div>
+              <div class="node-card">
+                <div class="node-topline">
+                  <span class="node-status">已解锁</span>
+                  <span class="node-time">2017.09 - 2021.06</span>
+                </div>
+                <div class="node-heading with-logo">
+                  <img src="assets/scut.jpg" alt="" aria-hidden="true">
+                  <div>
+                    <p>Root Node</p>
+                    <h2>华南理工大学 · 信息工程本科</h2>
+                  </div>
+                </div>
+                <p>打下坚实的计算机与通信工程基础，后续在业务前端里持续把系统、性能、平台能力和产品结果放到同一条链路里思考。</p>
+                <div class="node-tags">
+                  <span>计算机网络</span>
+                  <span>操作系统</span>
+                  <span>工程基础</span>
                 </div>
               </div>
-              <p>
-                工程背景从这里开始。之后的工作并不是简单写页面，而是把系统、性能、平台能力和产品结果放在同一条链路里考虑。
-              </p>
-            </div>
-          </article>
+            </article>
 
-          <article class="timeline-item" id="join" data-section>
-            <div class="time-stamp">
-              <span>2021</span>
-              <small>07</small>
-            </div>
-            <div class="timeline-dot" aria-hidden="true"></div>
-            <div class="timeline-content intro-work">
-              <div class="timeline-heading">
-                <img src="assets/bytedance.jpg" alt="" aria-hidden="true">
-                <div>
-                  <p class="chapter">进入电商</p>
-                  <h3>加入字节跳动电商消费者业务</h3>
+            <article class="tree-node is-right" id="join" data-node>
+              <div class="node-core node-cyan" aria-hidden="true">
+                <svg viewBox="0 0 32 32" focusable="false">
+                  <path d="M10 11V8.5A2.5 2.5 0 0 1 12.5 6h7A2.5 2.5 0 0 1 22 8.5V11"></path>
+                  <path d="M5 12.5h22v12H5z"></path>
+                  <path d="M5 17.5h22M14 17.5v2h4v-2"></path>
+                </svg>
+              </div>
+              <div class="node-card">
+                <div class="node-topline">
+                  <span class="node-status">主线开启</span>
+                  <span class="node-time">2021.07</span>
+                </div>
+                <div class="node-heading with-logo">
+                  <img src="assets/bytedance.jpg" alt="" aria-hidden="true">
+                  <div>
+                    <p>Main Quest</p>
+                    <h2>加入字节跳动电商消费者业务</h2>
+                  </div>
+                </div>
+                <p>从高复杂度、多宿主、多端业务开始，参与店铺、橱窗、短视频、电商转化链路建设，让体验在真实流量里跑得稳。</p>
+                <div class="node-tags">
+                  <span>团队协作</span>
+                  <span>快速迭代</span>
+                  <span>业务驱动</span>
+                  <span>用户体验</span>
                 </div>
               </div>
-              <p>
-                工作从高复杂度、多宿主、多端业务开始：店铺、橱窗、短视频、电商转化链路，所有体验都要在真实流量里跑得稳。
-              </p>
-              <div class="stat-row">
-                <span><strong>5 年</strong>电商前端经验</span>
-                <span><strong>多宿主</strong>头条 / 西瓜 / 番茄 / 懂车帝</span>
-              </div>
-            </div>
-          </article>
+            </article>
 
-          <article class="timeline-item feature" id="shelf" data-section>
-            <div class="time-stamp">
-              <span>2021</span>
-              <small>→ 2024</small>
-            </div>
-            <div class="timeline-dot" aria-hidden="true"></div>
-            <div class="timeline-content">
-              <p class="chapter">货架电商 · 店铺&橱窗</p>
-              <h3>先做商家愿意用的店铺能力。</h3>
-              <p>
-                负责店铺混排能力、性能优化与商家端低代码搭建，搭建店铺内容混排框架，优化 ISV 组件性能与加载体验，同时完善全场景店铺入口透出。
-              </p>
-              <div class="flow-visual store-flow" aria-label="店铺能力建设摘要">
-                <span>混排框架</span>
-                <span>低代码搭建</span>
-                <span>自定义预览</span>
-                <span>多端渲染</span>
+            <article class="tree-node is-left node-wide" id="shelf" data-node data-section>
+              <div class="node-core node-blue" aria-hidden="true">
+                <svg viewBox="0 0 32 32" focusable="false">
+                  <path d="M8 8h16l-1.4 9.5H10L8 8Z"></path>
+                  <path d="M10 17.5h12l-1.2 5H11.2L10 17.5Z"></path>
+                  <path d="M12 26a1.5 1.5 0 1 0 0-3 1.5 1.5 0 0 0 0 3ZM21 26a1.5 1.5 0 1 0 0-3 1.5 1.5 0 0 0 0 3Z"></path>
+                </svg>
               </div>
-              <ul class="detail-list">
-                <li>重构店铺分类页容器，落地商家自定义预览渲染能力。</li>
-                <li>建设店铺&橱窗 SaaS 多端统一渲染能力，支撑多宿主场景。</li>
-                <li>沉淀监控报警、异常归因、Schema/API 校验与灰度发布机制。</li>
-              </ul>
-            </div>
-          </article>
+              <div class="node-card">
+                <div class="node-topline">
+                  <span class="node-status">能力分支 +4</span>
+                  <span class="node-time">2021 - 2024</span>
+                </div>
+                <div class="node-heading">
+                  <p>Shelf Commerce</p>
+                  <h2>货架电商 · 店铺与展示</h2>
+                </div>
+                <p>负责店铺混排能力、性能优化与商家端低代码搭建，建设店铺内容混排框架，优化 ISV 组件加载体验，并完善全场景店铺入口透出。</p>
+                <div class="branch-path" aria-label="货架电商能力分支">
+                  <span>混排框架</span>
+                  <span>低代码搭建</span>
+                  <span>自定义预览</span>
+                  <span>多端渲染</span>
+                </div>
+                <ul class="node-list">
+                  <li>重构店铺分类页容器，落地商家自定义预览渲染能力。</li>
+                  <li>建设店铺&橱窗 SaaS 多端统一渲染能力，支撑头条、西瓜、番茄、懂车帝等宿主。</li>
+                  <li>沉淀监控报警、异常归因、Schema/API 校验与灰度发布机制。</li>
+                </ul>
+              </div>
+            </article>
 
-          <article class="timeline-item compact" data-section>
-            <div class="time-stamp">
-              <span>2023</span>
-              <small>Q1</small>
-            </div>
-            <div class="timeline-dot" aria-hidden="true"></div>
-            <div class="timeline-content">
-              <p class="chapter">抖音店铺首页装修混排项目</p>
-              <h3>把淘宝生态组件低成本迁到抖音店铺。</h3>
-              <p>
-                担任大前端技术 owner，主导跨平台店铺组件生态建设：C 端容器优化、第三方组件缓存、DSL 转 Lynx 渲染、B 端 ISV 调试 App。
-              </p>
-              <div class="metric-line">
-                <span><strong>2023Q1</strong> 电商项目奖</span>
-                <span><strong>+18.6%</strong> 店铺访购率</span>
-                <span><strong>+43%</strong> ISV 页访购率</span>
-                <span><strong>2s → 1.2s</strong> iOS 加载耗时</span>
+            <article class="tree-node is-right node-boss" id="mix" data-node>
+              <div class="node-core node-violet" aria-hidden="true">
+                <svg viewBox="0 0 32 32" focusable="false">
+                  <path d="M7 23h18"></path>
+                  <path d="m8 20 5.5-5.5 4 3.8L25 10"></path>
+                  <path d="M20.5 10H25v4.5"></path>
+                </svg>
               </div>
-            </div>
-          </article>
+              <div class="node-card boss-card">
+                <div>
+                  <div class="node-topline">
+                    <span class="node-status">突破节点</span>
+                    <span class="node-time">2023 Q1</span>
+                  </div>
+                  <div class="node-heading">
+                    <p>Boss Stage</p>
+                    <h2>抖音店铺首页装修混排项目</h2>
+                  </div>
+                  <p>担任大前端技术 owner，主导跨平台店铺组件生态建设：C 端容器优化、第三方组件缓存、DSL 转 Lynx 渲染、B 端 ISV 调试 App。</p>
+                </div>
+                <div class="metric-grid" aria-label="项目结果">
+                  <p><strong>+18.6%</strong><span>店铺访购率</span></p>
+                  <p><strong>+43%</strong><span>ISV 页访购率</span></p>
+                  <p><strong>2s → 1.2s</strong><span>iOS 加载耗时</span></p>
+                  <p><strong>3s → 1.7s</strong><span>可交互耗时</span></p>
+                </div>
+              </div>
+            </article>
 
-          <article class="timeline-item feature dark-card" id="content" data-section>
-            <div class="time-stamp">
-              <span>2024</span>
-              <small>→ 2026</small>
-            </div>
-            <div class="timeline-dot" aria-hidden="true"></div>
-            <div class="timeline-content">
-              <p class="chapter">内容电商 · 短视频</p>
-              <h3>进入短视频链路，把卡片交互推向高流量场景。</h3>
-              <p>
-                主导异形卡核心交互、承接链路、营销样式、视频小窗、沉浸式接券和价格动效等能力落地，优化 CTR 与转化链路。
-              </p>
-              <div class="flow-visual video-flow" aria-label="短视频电商交互能力摘要">
-                <span>降级气泡</span>
-                <span>营销样式</span>
-                <span>视频小窗</span>
-                <span>沉浸接券</span>
-                <span>价格动效</span>
+            <article class="tree-node is-left node-wide" id="content" data-node data-section>
+              <div class="node-core node-cyan" aria-hidden="true">
+                <svg viewBox="0 0 32 32" focusable="false">
+                  <path d="M8 6h16a2 2 0 0 1 2 2v16a2 2 0 0 1-2 2H8a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2Z"></path>
+                  <path d="m14 12 7 4-7 4v-8Z"></path>
+                </svg>
               </div>
-              <div class="hero-number">
-                <strong>千万级 → 亿级</strong>
-                <span>异形卡日均 GMV 推动</span>
+              <div class="node-card">
+                <div class="node-topline">
+                  <span class="node-status">主线升级</span>
+                  <span class="node-time">2024 - 2026</span>
+                </div>
+                <div class="node-heading">
+                  <p>Content Commerce</p>
+                  <h2>内容电商 · 短视频与内容场景</h2>
+                </div>
+                <p>从千万级日均 GMV 的增长品接手，负责异形卡核心交互、承接链路、营销样式、视频小窗、沉浸式接券和价格动效等能力落地。</p>
+                <div class="power-strip">
+                  <div>
+                    <strong>千万级 → 亿级</strong>
+                    <span>异形卡日均 GMV 推动</span>
+                  </div>
+                  <div>
+                    <strong>CTR / 转化</strong>
+                    <span>高流量交互持续优化</span>
+                  </div>
+                </div>
+                <div class="branch-path is-compact" aria-label="内容电商能力分支">
+                  <span>降级气泡</span>
+                  <span>营销样式</span>
+                  <span>视频小窗</span>
+                  <span>沉浸接券</span>
+                  <span>价格动效</span>
+                </div>
               </div>
-            </div>
-          </article>
+            </article>
 
-          <article class="timeline-item" data-section>
-            <div class="time-stamp">
-              <span>2024</span>
-              <small>治理体系</small>
-            </div>
-            <div class="timeline-dot" aria-hidden="true"></div>
-            <div class="timeline-content">
-              <p class="chapter">体验与数据治理</p>
-              <h3>高流量场景，不能只靠功能上线。</h3>
-              <p>
-                完善监控告警、埋点口径与订单归因链路，快速定位并收敛线上异常与体验问题，提升业务稳定性与数据分析效率。
-              </p>
-            </div>
-          </article>
-
-          <article class="timeline-item feature" id="ai" data-section>
-            <div class="time-stamp">
-              <span>2025</span>
-              <small>04 → 12</small>
-            </div>
-            <div class="timeline-dot" aria-hidden="true"></div>
-            <div class="timeline-content">
-              <p class="chapter">AI 电商 · 前端工程 POC</p>
-              <h3>从 0 到 1 搭建 AI 电商探索产品。</h3>
-              <p>
-                加入 AI × 电商创新团队，负责新型 AI 内容 App 工程化建设，搭建类抖音多 Feed 智能素材流，维护送礼助手 AI Agent 对话产品及素材管理模块。
-              </p>
-              <div class="ai-thread" aria-label="AI 电商链路">
-                <span>Coze 工作流</span>
-                <i></i>
-                <span>火山引擎大模型</span>
-                <i></i>
-                <span>内容自动生成</span>
-                <i></i>
-                <span>B 端管理平台</span>
+            <article class="tree-node is-right" id="governance" data-node data-stage-key="content">
+              <div class="node-core node-mint" aria-hidden="true">
+                <svg viewBox="0 0 32 32" focusable="false">
+                  <path d="M16 5 25 8v6.5c0 5.5-3.6 9.8-9 12.5-5.4-2.7-9-7-9-12.5V8l9-3Z"></path>
+                  <path d="m11.5 16 3 3 6-7"></path>
+                </svg>
               </div>
-              <ul class="detail-list">
-                <li>推动手机品类智能对比页、商品标题 / 推荐语 AI 自动改写等场景落地。</li>
-                <li>项目整体移交 TikTok 国际化团队，积累 AI 初创产品研发与落地经验。</li>
-              </ul>
-            </div>
-          </article>
-
-          <article class="timeline-item compact" id="toolkit" data-section>
-            <div class="time-stamp">
-              <span>沉淀</span>
-              <small>Toolkit</small>
-            </div>
-            <div class="timeline-dot" aria-hidden="true"></div>
-            <div class="timeline-content">
-              <p class="chapter">工程能力</p>
-              <h3>最后沉淀成一套可迁移的前端能力。</h3>
-              <div class="skill-grid">
-                <p><strong>前端开发</strong><span>TypeScript · JavaScript · React.js · Node.js · 小程序</span></p>
-                <p><strong>移动开发</strong><span>Android · React Native · Lynx</span></p>
-                <p><strong>工程能力</strong><span>前端架构 · 性能优化 · Monorepo · CI/CD · 微前端</span></p>
-                <p><strong>AI coding</strong><span>Codex · Claude Code · OpenClaw · 项目级 vibe coding 经验</span></p>
+              <div class="node-card">
+                <div class="node-topline">
+                  <span class="node-status">守护节点</span>
+                  <span class="node-time">2024</span>
+                </div>
+                <div class="node-heading">
+                  <p>Reliability</p>
+                  <h2>体验与数据治理</h2>
+                </div>
+                <p>完善监控告警、埋点口径与订单归因链路，快速定位并收敛线上异常与体验问题，提升业务稳定性与数据分析效率。</p>
+                <div class="node-tags">
+                  <span>监控告警</span>
+                  <span>异常归因</span>
+                  <span>质量保障</span>
+                </div>
               </div>
-            </div>
-          </article>
+            </article>
+
+            <article class="tree-node is-left node-wide node-ai" id="ai" data-node data-section>
+              <div class="node-core node-gold" aria-hidden="true">
+                <svg viewBox="0 0 32 32" focusable="false">
+                  <path d="M8 7h16v18H8z"></path>
+                  <path d="M12 13v7M20 13v7M12 16.5h8"></path>
+                  <path d="M5 12h3M5 20h3M24 12h3M24 20h3"></path>
+                </svg>
+              </div>
+              <div class="node-card ai-card">
+                <div class="node-topline">
+                  <span class="node-status">探索节点</span>
+                  <span class="node-time">2025.04 - 2025.12</span>
+                </div>
+                <div class="node-heading">
+                  <p>AI Commerce</p>
+                  <h2>AI 电商 · 智能化探索</h2>
+                </div>
+                <p>加入 AI × 电商创新团队，负责新型 AI 内容 App 工程化建设，搭建类抖音多 Feed 智能素材流，维护送礼助手 AI Agent 对话产品及素材管理模块。</p>
+                <div class="ai-chain" aria-label="AI 电商链路">
+                  <span>Coze 工作流</span>
+                  <i></i>
+                  <span>火山引擎大模型</span>
+                  <i></i>
+                  <span>AI Agent</span>
+                  <i></i>
+                  <span>内容管理平台</span>
+                </div>
+                <ul class="node-list">
+                  <li>推动手机品类智能对比页、商品标题 / 推荐语 AI 自动改写等场景落地。</li>
+                  <li>项目整体移交 TikTok 国际化团队，积累 AI 初创产品研发与落地经验。</li>
+                </ul>
+              </div>
+            </article>
+
+            <section class="mastery" id="toolkit" data-section data-node>
+              <div class="mastery-core" aria-hidden="true">
+                <svg viewBox="0 0 32 32" focusable="false">
+                  <path d="M16 3.5 27 10v12L16 28.5 5 22V10L16 3.5Z"></path>
+                  <path d="M10 13.5 16 17l6-3.5M16 17v7"></path>
+                </svg>
+              </div>
+              <div class="mastery-head">
+                <span>Mastery Board</span>
+                <h2>沉淀成可迁移的前端能力体系</h2>
+              </div>
+              <div class="mastery-grid">
+                <article>
+                  <span class="mastery-icon">01</span>
+                  <h3>跨端渲染体系</h3>
+                  <p>React.js、TypeScript、Lynx、React Native、小程序与 Node.js 工程经验。</p>
+                </article>
+                <article>
+                  <span class="mastery-icon">02</span>
+                  <h3>稳定性治理</h3>
+                  <p>监控告警、异常归因、灰度发布、质量保障与高流量场景问题收敛。</p>
+                </article>
+                <article>
+                  <span class="mastery-icon">03</span>
+                  <h3>性能优化体系</h3>
+                  <p>首屏、交互、资源、缓存与容器性能优化，能用指标推动体验改进。</p>
+                </article>
+                <article>
+                  <span class="mastery-icon">04</span>
+                  <h3>前端工程架构</h3>
+                  <p>Monorepo、CI/CD、微前端、组件研发体系与工程化抽象。</p>
+                </article>
+                <article>
+                  <span class="mastery-icon">AI</span>
+                  <h3>AI 编程与效率</h3>
+                  <p>Codex、Claude Code、OpenClaw 与项目级 vibe coding 实践经验。</p>
+                </article>
+              </div>
+            </section>
+          </div>
         </div>
       </section>
 
       <section class="closing" id="contact" data-section>
         <div class="section-shell">
-          <p class="eyebrow">Next</p>
-          <h2>如果你想找一个能把业务、体验和工程一起推进的人。</h2>
-          <p>可以通过当前简历投递渠道联系。公开网页已隐藏姓名、手机号与邮箱，也不展示头像。</p>
+          <span>Ready For Next Quest</span>
+          <h2>把业务复杂度，翻译成稳定、清晰、可增长的前端体验。</h2>
+          <p>可以通过当前简历投递渠道联系，继续聊一聊复杂业务里的前端工程问题。</p>
         </div>
       </section>
     </main>
