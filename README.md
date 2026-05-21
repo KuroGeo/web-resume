@@ -1,6 +1,6 @@
-# George Y.的网页版简历
+# 网页版简历
 
-一个纯静态的个人简历网站，内容来自 `George Y.的简历.pdf`，适合部署到 GitHub Pages。
+一个纯静态的匿名个人简历网站，适合部署到 GitHub Pages。
 
 ## 本地预览
 
