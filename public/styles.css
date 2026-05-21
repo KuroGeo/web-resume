@@ -187,7 +187,8 @@ a {
   max-width: 360px;
 }
 
-.intro-meta span {
+.intro-meta span,
+.intro-meta a {
   display: inline-flex;
   align-items: center;
   min-height: 30px;
@@ -197,6 +198,11 @@ a {
   border-radius: 7px;
   font-size: 12px;
   font-weight: 700;
+}
+
+.intro-meta a:hover,
+.inline-link:hover {
+  color: var(--accent);
 }
 
 .content-pane {
@@ -459,6 +465,12 @@ a {
 
 .contact-section {
   padding-bottom: 16px;
+}
+
+.inline-link {
+  color: var(--ink);
+  font-weight: 700;
+  transition: color 180ms var(--ease);
 }
 
 :focus-visible {
