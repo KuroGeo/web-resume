@@ -245,17 +245,17 @@ svg {
 }
 
 .portrait-wrap {
+  display: grid;
   width: 112px;
   height: 112px;
-  overflow: hidden;
+  place-items: center;
   border-radius: 8px;
-  background: #fff;
-}
-
-.portrait-wrap img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
+  color: #fff;
+  background:
+    linear-gradient(135deg, rgba(0, 113, 227, 0.9), rgba(0, 169, 157, 0.9)),
+    #111;
+  font-size: 32px;
+  font-weight: 850;
 }
 
 .identity-list {
