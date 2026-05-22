@@ -376,6 +376,12 @@ button {
   border-radius: 7px;
 }
 
+.entry-heading img.school-logo {
+  object-fit: contain;
+  background: rgba(15, 23, 42, 0.42);
+  border-radius: 50%;
+}
+
 .entry-heading h3,
 .project-card h3,
 .skill-columns h3 {
