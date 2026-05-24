@@ -92,7 +92,7 @@ const translations = {
       "experience.bytedance.body": "Built frontend features for Douyin E-commerce, the shopping business inside TikTok China. I worked on core shopping and content flows, with a focus on smoother user experiences, reliable feature delivery, and faster pages.",
       "experience.edu.time": "2017 — 2021",
       "experience.edu.title": "South China University of Technology",
-      "experience.edu.subtitle": "B.Eng. in Information Engineering",
+      "experience.edu.subtitle": "B.Eng. in Electronic and Communication Engineering",
       "project.shop.kicker": "2023 · Store tools",
       "project.shop.title": "Douyin Store Page Builder",
       "project.shop.body": "Brought merchant-built store modules into Douyin stores, including the mobile rendering layer, a partner debugging tool, caching, and page speed improvements.",
