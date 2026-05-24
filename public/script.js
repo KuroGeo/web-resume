@@ -52,7 +52,8 @@ const translations = {
       "tag.highTrafficInteraction": "高流量交互",
       "tag.gmvGrowth": "GMV 增长",
       "tag.aiContent": "AI 内容",
-      "tag.assetManagement": "素材管理"
+      "tag.assetManagement": "素材管理",
+      "tag.microwaveTheory": "微波理论"
     }
   },
   en: {
@@ -106,7 +107,8 @@ const translations = {
       "tag.highTrafficInteraction": "High-traffic UI",
       "tag.gmvGrowth": "Sales Growth",
       "tag.aiContent": "AI Content",
-      "tag.assetManagement": "Content Tools"
+      "tag.assetManagement": "Content Tools",
+      "tag.microwaveTheory": "Microwave Theory"
     }
   }
 };
