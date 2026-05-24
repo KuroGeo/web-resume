@@ -81,7 +81,7 @@ const translations = {
       "about.p2.company": "ByteDance",
       "about.p2.after": ", I worked on Douyin E-commerce, the shopping business inside TikTok China, across store pages, product discovery, short-video shopping features, internal tools, and mobile app experiences. Most of this work ran at large scale, so performance, stability, and clear collaboration mattered as much as UI polish.",
       "about.p3": "I want to keep taking on harder problems: work with real users, meaningful product decisions, and enough technical depth to make the outcome better over time.",
-      "about.p4": "Outside of work, I like working out and staying active. I am also a true Dirty coffee devotee.",
+      "about.p4": "Outside of work, I enjoy fitness, sports, and a good Dirty coffee.",
       "experience.bytedance.time": "Jun 2021 — Apr 2026",
       "experience.bytedance.title": "ByteDance",
       "experience.bytedance.subtitle": "Frontend Engineer · Mobile & Web",
