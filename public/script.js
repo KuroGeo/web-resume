@@ -8,6 +8,16 @@ const translations = {
       description: "一名前端工程师的作品集式网页简历，经历聚焦字节跳动抖音电商的核心购物与内容场景、用户体验和 Web 性能。",
       ogDescription: "以作品集方式呈现前端工程经历，聚焦抖音电商、用户体验、电商功能交付和 Web 性能。"
     },
+    pages: {
+      "work-bytedance": {
+        meta: {
+          htmlLang: "zh-CN",
+          title: "George Y. | ByteDance 经历详情",
+          description: "George Y. 在 ByteDance 抖音电商阶段的项目经历详情，按时间线和能力维度展开。",
+          ogDescription: "按时间线和能力维度展开 ByteDance 抖音电商阶段的项目经历。"
+        }
+      }
+    },
     text: {
       "skipLink": "跳到内容",
       "intro.role": "前端工程师",
@@ -16,6 +26,10 @@ const translations = {
       "nav.about": "关于",
       "nav.experience": "经历",
       "nav.projects": "项目",
+      "nav.overview": "概览",
+      "nav.timeline": "时间线",
+      "nav.themes": "维度",
+      "nav.deepDives": "细节",
       "language.label": "语言选择",
       "social.label": "公开链接",
       "about.p1": "我是一名前端工程师，主要经历集中在电商消费者业务。相比单纯完成页面，我更关注如何把业务目标、产品体验、跨端渲染、性能稳定和工程效率放在同一个问题里解决。",
@@ -28,6 +42,8 @@ const translations = {
       "experience.bytedance.title": "ByteDance",
       "experience.bytedance.subtitle": "前端工程师 · 移动端与跨端",
       "experience.bytedance.body": "任职于字节跳动抖音电商，负责核心购物与内容场景的前端开发，专注于用户体验优化、电商功能交付和 Web 性能提升。",
+      "experience.bytedance.cta": "查看详细经历",
+      "experience.bytedance.linkLabel": "查看 ByteDance 详细经历",
       "experience.edu.time": "2017 — 2021",
       "experience.edu.title": "华南理工大学",
       "experience.edu.subtitle": "信息工程(本科)",
@@ -40,6 +56,60 @@ const translations = {
       "project.ai.kicker": "2025 · AI 电商",
       "project.ai.title": "智能素材流与 AI Agent",
       "project.ai.body": "探索 AI 内容产品的前端工程形态，连接模型工作流、对话产品、素材生成与 B 端内容管理。",
+      "detail.backHome": "返回首页",
+      "detail.role": "抖音电商 · 2021.06 — 2026.04",
+      "detail.copy": "这里把字节跳动阶段的工作按时间线和能力维度展开，方便面试官快速理解我真正做过什么。",
+      "detail.hero.title": "在高流量电商场景里做可靠的前端系统。",
+      "detail.hero.body": "这段经历围绕抖音电商的消费者购物链路展开，覆盖店铺、商品发现、短视频购物、内部工具、跨端渲染、性能稳定和 AI 电商 POC。页面里的内容会刻意保持抽象，只呈现适合公开讨论的项目边界和能力沉淀。",
+      "detail.fact.company.label": "公司",
+      "detail.fact.company.value": "ByteDance",
+      "detail.fact.business.label": "业务",
+      "detail.fact.business.value": "抖音电商",
+      "detail.fact.role.label": "方向",
+      "detail.fact.role.value": "前端、移动端与跨端",
+      "detail.fact.time.label": "周期",
+      "detail.fact.time.value": "2021.06 — 2026.04",
+      "detail.label.context": "背景",
+      "detail.label.work": "我做的事",
+      "detail.label.result": "关注结果",
+      "detail.timeline.2021.time": "2021 — 2022",
+      "detail.timeline.2021.title": "购物与店铺基础体验",
+      "detail.timeline.2021.context": "熟悉抖音电商消费者链路，参与店铺页面、商品发现和基础购物体验建设。",
+      "detail.timeline.2021.work": "围绕移动端页面、核心交互和业务组件做稳定交付，把产品需求拆成可维护的前端模块。",
+      "detail.timeline.2021.result": "建立对高流量电商页面、跨角色协作和体验细节的系统理解。",
+      "detail.timeline.2023.time": "2023",
+      "detail.timeline.2023.title": "店铺装修与商家组件渲染",
+      "detail.timeline.2023.context": "商家需要更灵活地表达店铺内容，C 端需要稳定承接自定义模块和预览链路。",
+      "detail.timeline.2023.work": "参与渲染容器、商家自定义预览、调试工具、缓存策略和页面加载优化。",
+      "detail.timeline.2023.result": "让复杂配置能力进入消费者场景，同时尽量降低加载、调试和稳定性成本。",
+      "detail.timeline.2024.time": "2024",
+      "detail.timeline.2024.title": "短视频购物能力",
+      "detail.timeline.2024.context": "短视频场景里的购物入口需要在内容消费节奏中表达清楚，同时保持交互稳定。",
+      "detail.timeline.2024.work": "持续迭代购物卡片、营销样式、接券体验、价格动效和转化链路里的前端细节。",
+      "detail.timeline.2024.result": "在高曝光场景里平衡业务表达、用户体验、性能开销和灰度发布节奏。",
+      "detail.timeline.2025.time": "2025 — 2026",
+      "detail.timeline.2025.title": "跨端体系、观测与 AI POC",
+      "detail.timeline.2025.context": "业务逐渐跨更多宿主与技术栈运行，同时开始探索 AI 内容和 AI 电商产品形态。",
+      "detail.timeline.2025.work": "参与跨端渲染、多宿主适配、稳定性观测、内部工具和 AI 商业化方向的前端 POC。",
+      "detail.timeline.2025.result": "把体验、工程效率和可观测性放到同一个系统里思考，支撑更长期的产品演进。",
+      "detail.theme.product.title": "产品体验",
+      "detail.theme.product.body": "不只做页面，还会追问购物链路里的用户意图、业务目标和信息表达是否一致。",
+      "detail.theme.rendering.title": "跨端渲染",
+      "detail.theme.rendering.body": "关注 Web、React Native、Android 和多宿主之间的能力边界与一致性。",
+      "detail.theme.performance.title": "性能与稳定性",
+      "detail.theme.performance.body": "在高流量场景里处理加载、交互、异常、灰度和观测问题，避免体验被复杂度拖垮。",
+      "detail.theme.efficiency.title": "工程效率",
+      "detail.theme.efficiency.body": "通过调试工具、低代码能力、复用组件和清晰协作，让复杂业务更容易长期维护。",
+      "detail.deep.title": "可以继续展开的细节",
+      "detail.deep.body": "下面这些方向适合在面试中继续深入。我会保留公司和产品机密，只讨论公开、抽象后的工程问题。",
+      "detail.deep.store.title": "店铺与橱窗系统",
+      "detail.deep.store.body": "包括商家自定义模块、C 端渲染容器、预览调试、缓存策略、页面加载和异常兜底。",
+      "detail.deep.video.title": "短视频购物表层",
+      "detail.deep.video.body": "包括购物卡片、营销表达、接券链路、价格动效、曝光场景和转化链路中的体验取舍。",
+      "detail.deep.ai.title": "AI 电商与内部工具",
+      "detail.deep.ai.body": "包括 AI 内容 POC、模型工作流接入、素材管理、内部配置工具和可观测性建设。",
+      "detail.return.title": "回到简历首页",
+      "detail.return.body": "如果只需要快速浏览，可以回到首页查看完整简历结构。",
       "tag.contentPlatform": "内容平台",
       "tag.zeroToOne": "产品从 0 到 1",
       "tag.videoCommerce": "短视频电商",
@@ -66,6 +136,16 @@ const translations = {
       description: "A portfolio-style resume for a frontend engineer who built shopping experiences at ByteDance's Douyin E-commerce, with a focus on mobile apps, user experience, and web performance.",
       ogDescription: "A portfolio-style frontend resume focused on Douyin E-commerce, mobile apps, user experience, and web performance."
     },
+    pages: {
+      "work-bytedance": {
+        meta: {
+          htmlLang: "en",
+          title: "George Y. | ByteDance Work Details",
+          description: "A deeper view of George Y.'s ByteDance work, organized by timeline and frontend engineering themes.",
+          ogDescription: "ByteDance work details organized by timeline and frontend engineering themes."
+        }
+      }
+    },
     text: {
       "skipLink": "Skip to content",
       "intro.role": "Frontend Engineer",
@@ -74,6 +154,10 @@ const translations = {
       "nav.about": "About",
       "nav.experience": "Experience",
       "nav.projects": "Projects",
+      "nav.overview": "Overview",
+      "nav.timeline": "Timeline",
+      "nav.themes": "Themes",
+      "nav.deepDives": "Details",
       "language.label": "Language selection",
       "social.label": "Public links",
       "about.p1": "I am a frontend engineer with experience building shopping products for large-scale consumer apps. My work sits between product, design, and engineering: turning complex buying flows into fast, reliable interfaces people can use every day.",
@@ -86,6 +170,8 @@ const translations = {
       "experience.bytedance.title": "ByteDance",
       "experience.bytedance.subtitle": "Frontend Engineer · Mobile & Web",
       "experience.bytedance.body": "Built frontend features for Douyin E-commerce, the shopping business inside TikTok China. I worked on core shopping and content flows, with a focus on smoother user experiences, reliable feature delivery, and faster pages.",
+      "experience.bytedance.cta": "View work details",
+      "experience.bytedance.linkLabel": "View detailed ByteDance work",
       "experience.edu.time": "2017 — 2021",
       "experience.edu.title": "South China University of Technology",
       "experience.edu.subtitle": "B.Eng. in Electronic and Communication Engineering",
@@ -98,6 +184,60 @@ const translations = {
       "project.ai.kicker": "2025 · AI shopping tools",
       "project.ai.title": "AI Shopping Content Tools",
       "project.ai.body": "Prototyped AI-assisted shopping tools that connected model workflows, chat experiences, generated product content, and an internal content management system.",
+      "detail.backHome": "Back home",
+      "detail.role": "Douyin E-commerce · Jun 2021 — Apr 2026",
+      "detail.copy": "A deeper view of the work behind my ByteDance experience, organized by timeline and engineering themes.",
+      "detail.hero.title": "Building reliable frontend systems for high-traffic commerce.",
+      "detail.hero.body": "This work centered on consumer shopping flows inside Douyin E-commerce, covering stores, product discovery, short-video shopping, internal tools, cross-platform rendering, performance, stability, and AI commerce POCs. The details here are intentionally abstracted so they stay suitable for public discussion.",
+      "detail.fact.company.label": "Company",
+      "detail.fact.company.value": "ByteDance",
+      "detail.fact.business.label": "Business",
+      "detail.fact.business.value": "Douyin E-commerce",
+      "detail.fact.role.label": "Focus",
+      "detail.fact.role.value": "Frontend, mobile, cross-platform",
+      "detail.fact.time.label": "Period",
+      "detail.fact.time.value": "Jun 2021 — Apr 2026",
+      "detail.label.context": "Context",
+      "detail.label.work": "What I did",
+      "detail.label.result": "Outcome focus",
+      "detail.timeline.2021.time": "2021 — 2022",
+      "detail.timeline.2021.title": "Commerce and store foundations",
+      "detail.timeline.2021.context": "Worked across early consumer shopping flows, store pages, product discovery, and basic mobile commerce experiences.",
+      "detail.timeline.2021.work": "Shipped mobile-facing pages, core interactions, and business components while turning product requirements into maintainable frontend modules.",
+      "detail.timeline.2021.result": "Built a grounded understanding of high-traffic commerce pages, cross-functional delivery, and product experience details.",
+      "detail.timeline.2023.time": "2023",
+      "detail.timeline.2023.title": "Store customization and rendering",
+      "detail.timeline.2023.context": "Merchants needed more flexible store expression, while consumer pages needed to render custom modules reliably.",
+      "detail.timeline.2023.work": "Worked on rendering containers, merchant preview flows, debugging tools, caching strategy, and page loading improvements.",
+      "detail.timeline.2023.result": "Helped bring complex configuration into consumer-facing pages while reducing loading, debugging, and stability costs.",
+      "detail.timeline.2024.time": "2024",
+      "detail.timeline.2024.title": "Short-video shopping surfaces",
+      "detail.timeline.2024.context": "Shopping entry points inside short videos had to be clear, useful, and stable within fast content consumption.",
+      "detail.timeline.2024.work": "Iterated on shopping cards, promotion styles, coupon flows, price animations, and frontend details in conversion paths.",
+      "detail.timeline.2024.result": "Balanced business messaging, user experience, performance cost, and gradual rollout in high-exposure scenarios.",
+      "detail.timeline.2025.time": "2025 — 2026",
+      "detail.timeline.2025.title": "Cross-platform systems, observability, and AI POCs",
+      "detail.timeline.2025.context": "Commerce experiences started running across more hosts and rendering stacks, while AI commerce ideas moved into prototypes.",
+      "detail.timeline.2025.work": "Contributed to cross-platform rendering, multi-host adaptation, observability, internal tools, and frontend POCs for AI commerce.",
+      "detail.timeline.2025.result": "Connected product experience, engineering efficiency, and observability so frontend systems could evolve over time.",
+      "detail.theme.product.title": "Product experience",
+      "detail.theme.product.body": "I look beyond page delivery and ask whether user intent, business goals, and information design are aligned in the shopping flow.",
+      "detail.theme.rendering.title": "Cross-platform rendering",
+      "detail.theme.rendering.body": "I care about the boundaries and consistency between Web, React Native, Android, and multiple app hosts.",
+      "detail.theme.performance.title": "Performance and stability",
+      "detail.theme.performance.body": "In high-traffic scenarios, I work through loading, interaction, errors, rollout, and observability instead of treating UI as isolated screens.",
+      "detail.theme.efficiency.title": "Engineering efficiency",
+      "detail.theme.efficiency.body": "I use debugging tools, low-code capabilities, reusable components, and clear collaboration to make complex business systems maintainable.",
+      "detail.deep.title": "Details I can expand on",
+      "detail.deep.body": "These are good areas for deeper interview discussion. I keep company and product-sensitive details abstracted, and focus on the engineering problems.",
+      "detail.deep.store.title": "Store and showcase systems",
+      "detail.deep.store.body": "Merchant custom modules, consumer rendering containers, preview and debugging flows, caching strategy, loading performance, and failure fallback.",
+      "detail.deep.video.title": "Short-video shopping surfaces",
+      "detail.deep.video.body": "Shopping cards, promotion expression, coupon flows, price animations, exposure-heavy contexts, and tradeoffs inside conversion paths.",
+      "detail.deep.ai.title": "AI commerce and internal tooling",
+      "detail.deep.ai.body": "AI content POCs, model workflow integration, asset management, internal configuration tools, and observability foundations.",
+      "detail.return.title": "Back to the resume",
+      "detail.return.body": "For a quicker scan, return to the homepage and view the full resume structure.",
       "tag.contentPlatform": "Content Platform",
       "tag.zeroToOne": "0-to-1 Product",
       "tag.videoCommerce": "Short-video Shopping",
@@ -153,16 +293,22 @@ const setMetaContent = (selector, content) => {
   }
 };
 
+const getPageMeta = (copy) => {
+  const pageKey = document.documentElement.dataset.page || "home";
+  return copy.pages?.[pageKey]?.meta || copy.meta;
+};
+
 const applyLanguage = (language, { persist = false } = {}) => {
   const activeLanguage = supportedLanguages.includes(language) ? language : "en";
   const copy = translations[activeLanguage];
+  const pageMeta = getPageMeta(copy);
 
-  document.documentElement.lang = copy.meta.htmlLang;
+  document.documentElement.lang = pageMeta.htmlLang;
   document.documentElement.dataset.language = activeLanguage;
-  document.title = copy.meta.title;
-  setMetaContent("meta[name='description']", copy.meta.description);
-  setMetaContent("meta[property='og:title']", copy.meta.title);
-  setMetaContent("meta[property='og:description']", copy.meta.ogDescription);
+  document.title = pageMeta.title;
+  setMetaContent("meta[name='description']", pageMeta.description);
+  setMetaContent("meta[property='og:title']", pageMeta.title);
+  setMetaContent("meta[property='og:description']", pageMeta.ogDescription);
 
   document.querySelectorAll("[data-i18n]").forEach((element) => {
     const value = copy.text[element.dataset.i18n];
@@ -190,7 +336,7 @@ const applyLanguage = (language, { persist = false } = {}) => {
 
 const progress = document.querySelector("[data-progress]");
 const languageButtons = Array.from(document.querySelectorAll("[data-language-option]"));
-const navLinks = Array.from(document.querySelectorAll(".side-nav a"));
+const navLinks = Array.from(document.querySelectorAll(".side-nav a[href^='#'], .detail-topnav a[href^='#']"));
 const sections = navLinks
   .map((link) => document.querySelector(link.getAttribute("href")))
   .filter(Boolean);
@@ -205,10 +351,11 @@ const updateChrome = () => {
     progress.style.width = `${clamp(ratio * 100, 0, 100)}%`;
   }
 
+  const activationRatio = document.body.classList.contains("detail-page") ? 0.72 : 0.38;
   const current = sections
     .slice()
     .reverse()
-    .find((section) => section.getBoundingClientRect().top <= window.innerHeight * 0.38);
+    .find((section) => section.getBoundingClientRect().top <= window.innerHeight * activationRatio);
 
   navLinks.forEach((link) => {
     link.classList.toggle("is-active", current && link.getAttribute("href") === `#${current.id}`);

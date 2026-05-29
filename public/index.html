@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="zh-CN">
+<html lang="zh-CN" data-page="home">
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -13,7 +13,7 @@
     <meta property="og:description" content="以作品集方式呈现前端工程经历，聚焦抖音电商、用户体验、电商功能交付和 Web 性能。">
     <meta property="og:type" content="website">
     <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='13' fill='%23020617'/%3E%3Cpath d='M21 18l11 15 11-15M32 33v13' fill='none' stroke='%235eead4' stroke-width='6' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E">
-    <link rel="stylesheet" href="styles.css?v=personal-note-short-20260524">
+    <link rel="stylesheet" href="styles.css?v=resume-immersive-20260529">
   </head>
   <body>
     <a class="skip-link" href="#content" data-i18n="skipLink">跳到内容</a>
@@ -87,7 +87,7 @@
           <h2 class="section-label" data-i18n="nav.experience">经历</h2>
           <ol class="entry-list">
             <li>
-              <article class="entry-card">
+              <a class="entry-card entry-card-link" href="work/bytedance/" aria-label="查看 ByteDance 详细经历" data-i18n-aria="experience.bytedance.linkLabel">
                 <time data-i18n="experience.bytedance.time">2021.06 — 2026.04</time>
                 <div class="entry-body">
                   <div class="entry-heading with-logo">
@@ -104,8 +104,14 @@
                     <span>React Native</span>
                     <span>Android</span>
                   </div>
+                  <span class="entry-detail-link">
+                    <span data-i18n="experience.bytedance.cta">查看详细经历</span>
+                    <svg viewBox="0 0 16 16" aria-hidden="true">
+                      <path d="M5.4 3.2h7.4v7.4M12.5 3.5 3.2 12.8"></path>
+                    </svg>
+                  </span>
                 </div>
-              </article>
+              </a>
             </li>
 
             <li>
@@ -171,10 +177,9 @@
             </article>
           </div>
         </section>
-
       </main>
     </div>
 
-    <script src="script.js?v=personal-note-short-20260524"></script>
+    <script src="script.js?v=resume-immersive-20260529"></script>
   </body>
 </html>
