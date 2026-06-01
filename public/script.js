@@ -1,4 +1,4 @@
-import { getResumeCopy, getResumePageMeta, isSupportedLanguage } from "./resume-content.js";
+import { getResumeCopy, getResumePageMeta, isSupportedLanguage } from "./resume-content.js?v=resume-saas-hosts-v5-20260601";
 import { createPageChrome, getInitialLanguage } from "./site-chrome.js";
 
 const setMetaContent = (selector, content) => {
