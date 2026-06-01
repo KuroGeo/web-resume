@@ -43,5 +43,38 @@ const applyLanguage = (language) => {
   return activeLanguage;
 };
 
+const setupMixedLayerInspector = () => {
+  const inspector = document.querySelector("[data-mixed-inspector]");
+  if (!inspector) {
+    return;
+  }
+
+  const controls = [...inspector.querySelectorAll("[data-mixed-control]")];
+  const triggers = [...inspector.querySelectorAll("[data-mixed-trigger]")];
+  const interactiveItems = [...controls, ...triggers];
+  const setActiveLayer = (layer) => {
+    inspector.dataset.activeLayer = layer;
+    interactiveItems.forEach((item) => {
+      const itemLayer = item.dataset.mixedControl || item.dataset.mixedTrigger;
+      const isActive = itemLayer === layer;
+      item.classList.toggle("is-active", isActive);
+      item.setAttribute("aria-pressed", String(isActive));
+    });
+  };
+
+  interactiveItems.forEach((item) => {
+    const layer = item.dataset.mixedControl || item.dataset.mixedTrigger;
+    item.addEventListener("click", () => setActiveLayer(layer));
+    item.addEventListener("focus", () => setActiveLayer(layer));
+    item.addEventListener("keydown", (event) => {
+      if (event.key === "Enter" || event.key === " ") {
+        event.preventDefault();
+        setActiveLayer(layer);
+      }
+    });
+  });
+};
+
 applyLanguage(getInitialLanguage(isSupportedLanguage));
+setupMixedLayerInspector();
 createPageChrome({ applyLanguage }).start();

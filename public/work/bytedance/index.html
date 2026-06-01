@@ -13,7 +13,7 @@
     <meta property="og:description" content="按时间线和能力维度展开 ByteDance 抖音电商阶段的项目经历。">
     <meta property="og:type" content="website">
     <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='13' fill='%23020617'/%3E%3Cpath d='M21 18l11 15 11-15M32 33v13' fill='none' stroke='%235eead4' stroke-width='6' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E">
-    <link rel="stylesheet" href="../../styles.css?v=resume-immersive-20260529">
+    <link rel="stylesheet" href="../../styles.css?v=resume-mixed-linked-20260601">
   </head>
   <body class="detail-page">
     <a class="skip-link" href="#content" data-i18n="skipLink">跳到内容</a>
@@ -178,21 +178,90 @@
             <li class="case-node">
               <time data-i18n="detail.timeline.2023.time">2023</time>
               <article class="case-body">
-                <h3 data-i18n="detail.timeline.2023.title">店铺装修与商家组件渲染</h3>
+                <h3 data-i18n="detail.timeline.2023.title">混排框架与店铺组件渲染</h3>
                 <dl class="case-points">
                   <div>
                     <dt data-i18n="detail.label.context">背景</dt>
-                    <dd data-i18n="detail.timeline.2023.context">商家需要更灵活地表达店铺内容，C 端需要稳定承接自定义模块和预览链路。</dd>
+                    <dd data-i18n="detail.timeline.2023.context">店铺页本质上是一个列表，但列表里的楼层来源不同：头部信息更适合 Native 承载，商品楼层需要跨端快速迭代。</dd>
                   </div>
                   <div>
                     <dt data-i18n="detail.label.work">我做的事</dt>
-                    <dd data-i18n="detail.timeline.2023.work">参与渲染容器、商家自定义预览、调试工具、缓存策略和页面加载优化。</dd>
+                    <dd data-i18n="detail.timeline.2023.work">参与混排框架和组件渲染链路，定义 Native 区域与跨端楼层的边界、数据协议、曝光点击埋点和降级兜底。</dd>
                   </div>
                   <div>
                     <dt data-i18n="detail.label.result">关注结果</dt>
-                    <dd data-i18n="detail.timeline.2023.result">让复杂配置能力进入消费者场景，同时尽量降低加载、调试和稳定性成本。</dd>
+                    <dd data-i18n="detail.timeline.2023.result">让猜你喜欢、直播爆款、排行榜等楼层能以跨端组件方式进入 Native 列表，兼顾复用效率和 App 体验一致性。</dd>
                   </div>
                 </dl>
+
+                <section id="mixed-rendering" class="mixed-showcase" data-mixed-inspector data-active-layer="native" aria-labelledby="mixed-showcase-title">
+                  <div class="mixed-copy">
+                    <p class="project-kicker" data-i18n="detail.mixed.kicker">2023 · 店铺页混排框架</p>
+                    <h4 id="mixed-showcase-title" data-i18n="detail.mixed.title">把一个列表拆成可解释的 Native 与跨端图层</h4>
+                    <p data-i18n="detail.mixed.body">
+                      这个页面看起来是一条连续的店铺商品列表，但真实实现里有两类组件在同一个滚动容器里协作：上方店铺信息表达区由 Native 保证稳定体验，下面的猜你喜欢、直播爆款和排行榜楼层由跨端组件承接快速配置和复用。
+                    </p>
+                  </div>
+
+                  <div class="mixed-inspector">
+                    <figure class="mixed-phone" aria-label="店铺页混排截图" data-i18n-aria="detail.mixed.phoneLabel">
+                      <img src="../../assets/mixed-render/store-mixed-list.jpeg" width="602" height="1308" loading="lazy" alt="">
+                      <span class="mixed-region mixed-region-native" data-mixed-layer="native">
+                        <span data-i18n="detail.mixed.overlay.native">Native · 店铺信息表达区</span>
+                      </span>
+                      <span class="mixed-region mixed-region-guess" data-mixed-layer="guess">
+                        <span data-i18n="detail.mixed.overlay.guess">Cross-end · 猜你喜欢</span>
+                      </span>
+                      <span class="mixed-region mixed-region-hot" data-mixed-layer="hot">
+                        <span data-i18n="detail.mixed.overlay.hot">Cross-end · 直播爆款</span>
+                      </span>
+                    </figure>
+
+                    <div class="mixed-layer-panel">
+                      <div class="mixed-component-stack" aria-label="拆出的混排组件切片" data-i18n-aria="detail.mixed.slicesLabel">
+                        <figure class="mixed-component-slice mixed-component-native is-active" data-mixed-layer="native" data-mixed-trigger="native" role="button" tabindex="0" aria-pressed="true">
+                          <img src="../../assets/mixed-render/components/native-info.jpeg" width="602" height="350" loading="lazy" alt="">
+                          <figcaption>
+                            <span class="mixed-layer-type is-native" data-i18n="detail.mixed.layer.native.type">Native</span>
+                            <strong data-i18n="detail.mixed.layer.native.title">店铺信息表达区</strong>
+                          </figcaption>
+                        </figure>
+                        <figure class="mixed-component-slice mixed-component-guess" data-mixed-layer="guess" data-mixed-trigger="guess" role="button" tabindex="0" aria-pressed="false">
+                          <img src="../../assets/mixed-render/components/guess-like.jpeg" width="576" height="360" loading="lazy" alt="">
+                          <figcaption>
+                            <span class="mixed-layer-type is-cross" data-i18n="detail.mixed.layer.guess.type">Cross-end</span>
+                            <strong data-i18n="detail.mixed.layer.guess.title">猜你喜欢楼层</strong>
+                          </figcaption>
+                        </figure>
+                        <figure class="mixed-component-slice mixed-component-hot" data-mixed-layer="hot" data-mixed-trigger="hot" role="button" tabindex="0" aria-pressed="false">
+                          <img src="../../assets/mixed-render/components/live-hot.jpeg" width="576" height="420" loading="lazy" alt="">
+                          <figcaption>
+                            <span class="mixed-layer-type is-cross" data-i18n="detail.mixed.layer.hot.type">Cross-end</span>
+                            <strong data-i18n="detail.mixed.layer.hot.title">直播爆款楼层</strong>
+                          </figcaption>
+                        </figure>
+                      </div>
+
+                      <div class="mixed-layer-controls" role="list" aria-label="混排图层" data-i18n-aria="detail.mixed.controlsLabel">
+                        <button class="mixed-layer-control is-active" type="button" data-mixed-control="native" aria-pressed="true">
+                          <span class="mixed-layer-type is-native" data-i18n="detail.mixed.layer.native.type">Native</span>
+                          <strong data-i18n="detail.mixed.layer.native.title">店铺信息表达区</strong>
+                          <em data-i18n="detail.mixed.layer.native.body">搜索、店铺头像、关注、口碑等高稳定信息区由客户端承载。</em>
+                        </button>
+                        <button class="mixed-layer-control" type="button" data-mixed-control="guess" aria-pressed="false">
+                          <span class="mixed-layer-type is-cross" data-i18n="detail.mixed.layer.guess.type">Cross-end</span>
+                          <strong data-i18n="detail.mixed.layer.guess.title">猜你喜欢楼层</strong>
+                          <em data-i18n="detail.mixed.layer.guess.body">推荐商品卡片跟随业务策略快速更新，复用跨端渲染能力。</em>
+                        </button>
+                        <button class="mixed-layer-control" type="button" data-mixed-control="hot" aria-pressed="false">
+                          <span class="mixed-layer-type is-cross" data-i18n="detail.mixed.layer.hot.type">Cross-end</span>
+                          <strong data-i18n="detail.mixed.layer.hot.title">直播爆款楼层</strong>
+                          <em data-i18n="detail.mixed.layer.hot.body">直播上下文和商品卡片混在列表中，前端处理数据、曝光和兜底。</em>
+                        </button>
+                      </div>
+                    </div>
+                  </div>
+                </section>
               </article>
             </li>
 
@@ -311,6 +380,6 @@
       </section>
     </main>
 
-    <script type="module" src="../../script.js?v=resume-immersive-20260529"></script>
+    <script type="module" src="../../script.js?v=resume-mixed-linked-20260601"></script>
   </body>
 </html>
