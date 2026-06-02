@@ -1224,8 +1224,10 @@ button {
 
 .third-party-highlights {
   display: grid;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
-  gap: 10px;
+  grid-template-columns: minmax(0, 1fr);
+  gap: 12px;
+  justify-self: start;
+  width: min(100%, 340px);
   margin: 0;
 }
 
@@ -2439,6 +2441,8 @@ button {
 
   .third-party-highlights {
     grid-template-columns: 1fr;
+    justify-self: stretch;
+    width: 100%;
   }
 
   .third-party-phone {

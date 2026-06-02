@@ -1,4 +1,4 @@
-import { getResumeCopy, getResumePageMeta, isSupportedLanguage } from "./resume-content.js?v=resume-third-party-metrics-20260602";
+import { getResumeCopy, getResumePageMeta, isSupportedLanguage } from "./resume-content.js?v=resume-third-party-vertical-20260602";
 import { createPageChrome, getInitialLanguage } from "./site-chrome.js";
 
 const setMetaContent = (selector, content) => {
