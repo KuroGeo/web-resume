@@ -1,4 +1,4 @@
-import { getResumeCopy, getResumePageMeta, isSupportedLanguage } from "./resume-content.js?v=resume-saas-hosts-v5-20260601";
+import { getResumeCopy, getResumePageMeta, isSupportedLanguage } from "./resume-content.js?v=resume-third-party-metrics-20260602";
 import { createPageChrome, getInitialLanguage } from "./site-chrome.js";
 
 const setMetaContent = (selector, content) => {
@@ -75,6 +75,29 @@ const setupMixedLayerInspector = () => {
   });
 };
 
+const setupAwardPreviews = () => {
+  document.querySelectorAll(".award-reveal").forEach((button) => {
+    const open = () => button.classList.add("is-open");
+    const close = () => button.classList.remove("is-open");
+
+    button.addEventListener("mouseenter", open);
+    button.addEventListener("focus", open);
+    button.addEventListener("mouseleave", close);
+    button.addEventListener("blur", close);
+    button.addEventListener("click", (event) => {
+      event.preventDefault();
+      open();
+    });
+    button.addEventListener("keydown", (event) => {
+      if (event.key === "Escape") {
+        close();
+        button.blur();
+      }
+    });
+  });
+};
+
 applyLanguage(getInitialLanguage(isSupportedLanguage));
 setupMixedLayerInspector();
+setupAwardPreviews();
 createPageChrome({ applyLanguage }).start();
