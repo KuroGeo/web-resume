@@ -4,9 +4,9 @@ const translations = {
   zh: {
     meta: {
       htmlLang: "zh-CN",
-      title: "George Y. | 前端工程师",
-      description: "一名前端工程师的作品集式网页简历，经历聚焦字节跳动抖音电商的核心购物与内容场景、用户体验和 Web 性能。",
-      ogDescription: "以作品集方式呈现前端工程经历，聚焦抖音电商、用户体验、电商功能交付和 Web 性能。"
+      title: "George Y. | AI 应用工程师",
+      description: "一名 AI 应用工程师的作品集式网页简历，经历聚焦扎实前端工程、高流量电商体验和 AI 产品落地。",
+      ogDescription: "以作品集方式呈现扎实前端工程能力、高流量电商经历和 AI 产品落地能力。"
     },
     pages: {
       "work-bytedance": {
@@ -19,9 +19,20 @@ const translations = {
       }
     },
     text: {
+      "portfolio.background": "工作与教育背景",
+      "portfolio.commerce": "抖音电商",
+      "portfolio.school": "华南理工大学",
+      "portfolio.more": "更多关于我",
+      "portfolio.scroll": "向下探索",
+      "portfolio.workTitle": "从想法，到真实体验。",
+      "portfolio.explore": "项目展开",
+      "portfolio.aboutTitle": "让复杂的问题，变成好用的产品。",
+      "portfolio.print": "打印简历",
+      "portfolio.contact": "聊聊产品、工程，或一杯 Dirty Coffee。",
+      "portfolio.top": "回到顶部 ↑",
       "skipLink": "跳到内容",
-      "intro.role": "前端工程师",
-      "intro.copy": "我把复杂业务、跨端体验和工程系统，整理成稳定、清晰、可增长的前端产品。",
+      "intro.role": "AI 应用工程师",
+      "intro.copy": "前端功底扎实，长期负责高流量移动端与跨端体验；也能把 AI 内容生成、实时语音、Agent 问答和模型工作流落成可用产品。",
       "nav.label": "主要导航",
       "nav.about": "关于",
       "nav.experience": "经历",
@@ -239,9 +250,9 @@ const translations = {
   en: {
     meta: {
       htmlLang: "en",
-      title: "George Y. | Frontend Engineer",
-      description: "A portfolio-style resume for a frontend engineer who built shopping experiences at ByteDance's Douyin E-commerce, with a focus on mobile apps, user experience, and web performance.",
-      ogDescription: "A portfolio-style frontend resume focused on Douyin E-commerce, mobile apps, user experience, and web performance."
+      title: "George Y. | AI Application Engineer",
+      description: "A portfolio-style resume for an AI application engineer with strong frontend fundamentals, high-traffic commerce experience, and practical AI product delivery.",
+      ogDescription: "A portfolio-style resume focused on strong frontend engineering, high-traffic commerce experience, and practical AI product delivery."
     },
     pages: {
       "work-bytedance": {
@@ -254,9 +265,20 @@ const translations = {
       }
     },
     text: {
+      "portfolio.background": "EXPERIENCE & EDUCATION",
+      "portfolio.commerce": "E-commerce",
+      "portfolio.school": "SCUT",
+      "portfolio.more": "Learn more about me",
+      "portfolio.scroll": "Scroll to explore",
+      "portfolio.workTitle": "From ideas to real experiences.",
+      "portfolio.explore": "Explore the project",
+      "portfolio.aboutTitle": "Complex problems. Thoughtful products.",
+      "portfolio.print": "Print my résumé",
+      "portfolio.contact": "Let’s talk products, engineering, or Dirty coffee.",
+      "portfolio.top": "Back to top ↑",
       "skipLink": "Skip to content",
-      "intro.role": "Frontend Engineer",
-      "intro.copy": "I build fast, reliable shopping experiences across web and mobile apps.",
+      "intro.role": "AI Application Engineer",
+      "intro.copy": "I bring strong frontend fundamentals from high-traffic mobile and cross-platform work, and turn AI content generation, realtime voice, agent Q&A, and model workflows into usable product experiences.",
       "nav.label": "Primary navigation",
       "nav.about": "About",
       "nav.experience": "Experience",

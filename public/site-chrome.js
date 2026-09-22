@@ -2,7 +2,7 @@ const LANGUAGE_STORAGE_KEY = "resume-language";
 
 const pageChromeConfig = {
   home: {
-    navSelector: ".side-nav a[href^='#']",
+    navSelector: ".mast-actions > a[href^='#']",
     sectionActivationRatio: 0.38
   },
   "work-bytedance": {
@@ -72,7 +72,10 @@ export const createPageChrome = ({ applyLanguage }) => {
       .find((section) => section.getBoundingClientRect().top <= window.innerHeight * config.sectionActivationRatio);
 
     navLinks.forEach((link) => {
-      link.classList.toggle("is-active", current && link.getAttribute("href") === `#${current.id}`);
+      const isActive = Boolean(current && link.getAttribute("href") === `#${current.id}`);
+      link.classList.toggle("is-active", isActive);
+      if (isActive) link.setAttribute("aria-current", "location");
+      else link.removeAttribute("aria-current");
     });
   };
 

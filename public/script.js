@@ -1,5 +1,5 @@
 import { getResumeCopy, getResumePageMeta, isSupportedLanguage } from "./resume-content.js?v=resume-custom-cache-20260602";
-import { createPageChrome, getInitialLanguage } from "./site-chrome.js";
+import { createPageChrome, getInitialLanguage } from "./site-chrome.js?v=reference-20260922";
 
 const setMetaContent = (selector, content) => {
   const element = document.querySelector(selector);

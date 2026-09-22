@@ -1,270 +1,141 @@
 # Site Design Style
 
-This document captures the design language of the current `mailPilot` website in this project. It is meant to guide future edits without changing the page into a different product style.
+## Current homepage direction — September 2026
+
+The homepage recreates the full visual structure of https://xyhan.com/index.html: warm off-white paper (`#fafaf8`), Inter/Newsreader typography, a centered identity badge, three spatial work chapters, fullscreen archive, résumé printer, AI panel and quiet three-column footer. The badge is upright at rest and uses the reference pointer tilt, glare, spring and 1.022 hover scale. `public/style/badge-*.css` and `public/js/badge-*.js` own these surfaces; `profile.css` and `js/profile-*.js` adapt real George content and bilingual UI. Fonts are local. The old portfolio.css and identity-card.css are no longer loaded.
+
+Use George's existing portrait, bilingual resume copy, and actual project screenshots. Eight work examples are grouped into AI commerce, cross-platform engineering and commerce experiences; related facets are not represented as separate employers. Project pages use the reference's flip transition and return-position restoration. Mobile and reduced-motion views use semantic stacked chapters. The printer displays George's real résumé and opens a print view for browser PDF saving, never the reference person's document. Do not restore the removed ByteDance page implicitly.
+
+The older dark-layout guidance below describes the previous design and does not override this homepage direction.
+
+This document captures the design language of the current `web-resume` site. It should guide future edits so the resume keeps a focused portfolio identity instead of drifting into a generic landing page.
 
 ## Style Positioning
 
-The site is an Apple-inspired SaaS product landing page: calm, polished, product-led, and highly controlled. It should feel like a premium productivity tool rather than a playful startup page or a dense enterprise dashboard.
+The site is a bilingual portfolio resume for George Y., a frontend engineer with ByteDance and Douyin E-commerce experience. It should feel:
 
-The core impression should be:
+- precise and engineering-led
+- calm, dark, and editorial
+- credible for interviewers and recruiters
+- compact enough for scanning
+- immersive only where it helps explain work
 
-- cinematic but quiet
-- product-first, with interface previews as the main visual asset
-- minimal, confident copy
-- strong contrast between dark hero/security areas and clean white workflow areas
-- focused blue actions, not a colorful marketing palette
+The page is not a SaaS product page. Do not add product mockups, pricing sections, marketing CTAs, broad feature grids, or startup-style decorative sections.
 
-## Visual Keywords
+## Core Surfaces
 
-- Apple-like
-- premium SaaS
-- calm productivity
-- inbox cockpit
-- dark glass navigation
-- poster-like hero
-- realistic UI mockups
-- focused blue accent
-- spacious product storytelling
+### Home Resume
 
-## Page Rhythm
+The home page is a two-pane resume:
 
-The page should read as a sequence of large product posters:
+- fixed intro pane on desktop
+- content pane with About, Experience, and Projects
+- sticky section labels on smaller screens
+- concise cards for experience and projects
+- language switch and public links in the intro chrome
 
-1. A dark full-viewport hero with centered copy and a large product preview.
-2. A short white intro section that states the product promise.
-3. Alternating workflow bands with text on one side and UI mockups on the other.
-4. A dark trust/security section.
-5. A soft-gray pricing section.
-6. A final dark CTA/footer.
+The home page should stay fast to scan. Prefer editing existing sections over adding new narrative blocks.
 
-Avoid making the page feel like a list of cards. Each major section should feel like its own scene.
+### ByteDance Work Detail
 
-## Layout Principles
+The work detail page is an immersive work story:
 
-- Use full-width sections with constrained inner content.
-- Keep hero and section copy centered when the section is poster-like.
-- Use two-column layouts for workflow and trust sections on desktop.
-- Collapse to single-column layouts on tablet/mobile.
-- Use generous section padding and clear vertical separation.
-- Let gutters and background changes separate content, not heavy borders.
-- UI mockups can be framed, but page sections should not become nested cards.
+- fixed top bar with brand, detail navigation, language switch, and public links
+- large first viewport centered on ByteDance and the high-traffic commerce story
+- summary facts for company, business, focus, and period
+- timeline, themes, and deep dives as the primary story taxonomy
 
-Recommended structure:
-
-- Global nav: fixed, 44px tall, dark translucent glass.
-- Hero: dark background, centered copy, large product mockup below.
-- Workflow bands: white background, 12px soft-gray section dividers.
-- Security: black/dark background, privacy UI preview.
-- Pricing: soft gray background, simple white pricing panel.
+The detail page can be more cinematic than the home page, but it should remain resume-like: no confidential specifics, no fictional product screenshots, and no decorative filler.
 
 ## Color System
 
-The palette is intentionally narrow.
+The palette is intentionally narrow and dark.
 
 | Role | Color | Usage |
 | --- | --- | --- |
-| Page white | `#ffffff` | Main page background and workflow sections |
-| Soft gray | `#f5f5f7` | Section dividers, pricing background, subtle UI fills |
-| Primary text | `#1d1d1f` | Main text on light surfaces |
-| Muted text | `rgba(0, 0, 0, 0.58)` | Supporting copy |
-| Black canvas | `#000000` | Hero, security, final CTA |
-| Dark surface | `#161617` | Dark UI panels and nav family |
-| Light text | `#f5f5f7` | Headlines on dark sections |
-| Light muted text | `rgba(255, 255, 255, 0.68)` | Supporting copy on dark sections |
-| Primary blue | `#0071e3` | Primary CTAs and active UI state |
-| Bright blue | `#2997ff` | Links or active states on dark backgrounds |
-| Success green | `#32d74b` | Small status indicators only |
+| Page | `#0f172a` | Main dark canvas |
+| Page soft | `#111c33` | Subtle depth |
+| Ink | `#e2e8f0` | Primary headings |
+| Text | `#cbd5e1` | Strong supporting text |
+| Muted | `#94a3b8` | Body copy |
+| Dim | `#64748b` | Secondary UI |
+| Accent | `#5eead4` | Active state, tags, progress |
+| Line | `rgba(148, 163, 184, 0.16)` | Quiet borders |
+| Card | `rgba(30, 41, 59, 0.48)` | Hover and framed resume items |
 
-Do not introduce a broad rainbow palette. Product UI details may use blue/green status accents, but the page chrome should stay neutral.
+Do not introduce a broad palette. Blue and teal can coexist, but teal remains the explicit accent. Avoid turning the page into a purple/blue gradient theme.
 
 ## Typography
 
-The site uses Apple-like system typography:
+Use system UI typography:
 
 ```css
-"SF Pro Text", -apple-system, BlinkMacSystemFont, "Helvetica Neue", Helvetica, Arial, sans-serif
-"SF Pro Display", "SF Pro Icons", -apple-system, BlinkMacSystemFont, "Helvetica Neue", Helvetica, Arial, sans-serif
+Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC", "Microsoft YaHei", sans-serif
 ```
 
-Type should feel clean and controlled:
+Typography should stay practical:
 
-- Display headlines: large, 600 weight, tight line height.
-- Body copy: medium size, muted color, readable line height.
-- Nav text: very small and quiet.
-- Buttons: regular weight, never heavy or shouty.
-- Letter spacing should stay `0`; avoid decorative tracking.
+- large type only for page identity and the ByteDance hero
+- compact headings inside resume cards
+- readable body text with generous line height
+- uppercase labels only for navigation, section labels, kickers, and facts
+- `letter-spacing: 0` for normal copy
 
-Approximate scale:
+## Layout Principles
 
-- Hero headline: `64px` desktop, `48px` tablet, `40px` mobile.
-- Section headline: `56px` desktop, `48px` tablet, `40px` mobile.
-- Workflow heading: `40px` desktop, smaller on mobile.
-- Body/subhead: `21px` to `26px` for marketing copy.
-- UI mockup text: `11px` to `15px`, compact and functional.
-
-## Components
-
-### Global Navigation
-
-- Fixed at the top.
-- Height: `44px`.
-- Dark translucent background with blur.
-- Brand on the left, nav links centered, CTA on the right.
-- Mobile collapses into a full-screen dark menu.
-- Hover states should be subtle color changes.
-
-### Hero
-
-- Dark canvas.
-- Centered headline, subhead, and two CTA buttons.
-- Large product mockup below the copy.
-- The mockup should feel like a polished app window, not a generic screenshot.
-- Use subtle glass and border effects only inside the mockup.
-
-### Product Mockups
-
-Mockups are central to the identity of the page.
-
-They should:
-
-- look like real productivity software
-- use dense but organized UI
-- include sidebars, lists, message panes, panels, tabs, and status indicators
-- use small text and restrained controls
-- avoid cartoon or decorative illustration
-
-The mockups should not:
-
-- look like random cards
-- use excessive gradients
-- use fake marketing icons as the primary visual
-- overuse shadows or bright colors
-
-### Buttons
-
-Primary CTA:
-
-- blue fill
-- white text
-- fully rounded pill
-- regular font weight
-
-Secondary CTA:
-
-- transparent background
-- blue text and border
-- fully rounded pill
-
-Small in-app buttons inside mockups can use 8px-10px radii, because they represent software UI rather than page CTAs.
-
-### Workflow Bands
-
-- Alternating text and interface preview.
-- White background.
-- Soft-gray divider between bands.
-- Copy should be short and outcome-oriented.
-- UI previews should prove the feature instead of merely decorating it.
-
-### Security Section
-
-- Dark background.
-- Trust message with a privacy/permission UI preview.
-- Use lock/person/shield-style glyphs.
-- Keep the section serious and calm.
-
-### Pricing Section
-
-- Soft gray background.
-- One simple pricing panel.
-- Use a minimal checklist.
-- Avoid complicated pricing grids unless the product actually needs them.
+- Use the existing two-pane home layout as the default resume shell.
+- Use the existing immersive detail layout only for substantial work stories.
+- Keep cards at `8px` radius through `--radius`.
+- Avoid cards inside cards.
+- Let spacing and section rhythm carry the layout before adding new borders or shadows.
+- On mobile, content must stack cleanly and avoid horizontal overflow.
 
 ## Interaction Style
 
-Interactions should be subtle:
+Interactions should be quiet and functional:
 
-- smooth scroll
-- slight button translate on hover
-- small color changes on nav hover
-- tab changes inside the AI panel
-- mobile menu open/close
+- smooth in-page navigation
+- section-aware nav state
+- 2px scroll progress
+- subtle hover lift on cards and public links
+- language switch with `aria-pressed`
+- reduced-motion support
 
-Avoid flashy animation, parallax gimmicks, large bouncy effects, or decorative motion.
+Avoid flashy animation, parallax gimmicks, large pointer effects, or interactions that make the resume harder to read.
 
-## Copywriting Voice
+## Content Voice
 
-Copy should be short, confident, and concrete.
+Copy should be concrete, restrained, and public-safe.
 
 Good:
 
-- "Email, cleared for landing."
-- "Sort the runway"
-- "Draft in your voice"
-- "Your inbox copilot."
+- "Built frontend features for Douyin E-commerce."
+- "Balanced business messaging, user experience, performance cost, and gradual rollout."
+- "The details here are intentionally abstracted so they stay suitable for public discussion."
 
 Avoid:
 
-- long feature explanations
-- buzzword-heavy AI claims
-- vague productivity promises
-- excessive exclamation marks
+- inflated impact claims without context
+- confidential product details
+- long paragraphs where a timeline item would scan better
+- generic AI or productivity buzzwords
 
-The voice should feel premium and composed: practical enough for SaaS, but with a small amount of aviation metaphor to support the `mailPilot` name.
+## What To Preserve
 
-## Responsive Behavior
-
-Desktop:
-
-- full nav links visible
-- hero mockup can show multiple app columns
-- workflow bands use two columns
-
-Tablet:
-
-- hide some mockup panels if needed
-- workflow bands collapse earlier than text becomes cramped
-- keep section padding generous
-
-Mobile:
-
-- nav becomes menu button
-- hero headline around `40px`
-- mockups may crop horizontally but must not create page overflow
-- workflow mockups become single-column
-- pricing and footer stack cleanly
-
-Every breakpoint should preserve the same premium feel. Do not simply shrink everything until it becomes unreadable.
-
-## What To Preserve In Future Edits
-
-- Fixed dark glass nav.
-- Dark cinematic hero.
-- Blue as the only primary action color.
-- Large centered product promise.
-- Interface mockups as the main visual material.
-- Alternating story sections.
-- Minimal, confident copy.
-- High spacing and restrained decoration.
+- bilingual Chinese/English content
+- dark resume canvas and teal accent
+- fixed intro pane on desktop home
+- fixed top bar on desktop detail page
+- timeline, themes, and deep dives as the ByteDance story taxonomy
+- public links and language switch in page chrome
+- pure static hosting on GitHub Pages
 
 ## What To Avoid
 
-- Marketing-card overload.
-- Purple/blue gradient SaaS cliches.
-- Decorative blobs or bokeh backgrounds.
-- Emoji-driven UI.
-- Heavy shadows around every section.
-- Overly rounded cards nested inside other cards.
-- Long paragraphs of explanatory copy.
-- Landing-page hero split into text column plus image card.
-- A one-note blue theme that removes the black/white contrast.
-
-## Practical Checklist Before Shipping Changes
-
-- Does the page still feel Apple-like and product-led?
-- Is the main visual a real product/interface state?
-- Are CTAs simple blue pills or restrained outlines?
-- Is copy shorter than it feels comfortable to write?
-- Are section backgrounds doing the separation instead of decorative cards?
-- Does the mobile layout avoid horizontal overflow?
-- Are colors still mostly black, white, soft gray, and blue?
-- Did any new animation make the page feel less calm?
+- reverting to a SaaS landing page shape
+- adding build tooling for small content changes
+- decorative product mockups or fake screenshots
+- broad color palettes
+- nested cards
+- stale selectors or style rules without live markup
+- copy that reveals company or product-sensitive details
