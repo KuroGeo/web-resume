@@ -3,7 +3,7 @@
 
 #set page(paper: "a4", margin: (left: 13mm, right: 13mm, top: 24mm, bottom: 18mm))
 #set text(font: ("New Computer Modern", "Songti SC"), size: 10pt, fill: rgb("191919"))
-#set par(justify: true, leading: 0.45em)
+#set par(justify: true, leading: 0.38em)
 
 #let section(title) = [
   #v(9pt)
@@ -23,9 +23,10 @@
 ]
 
 #let bullet(label, body) = [
+  #show grid: set block(spacing: 4pt)
   #grid(columns: (9pt, 1fr), gutter: 3pt,
     [•], [#strong(label) #body])
-  #v(4pt)
+  #v(3pt)
 ]
 
 #let project(title, date, role, body, first: false) = [
