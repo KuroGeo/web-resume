@@ -1,5 +1,5 @@
 import assert from 'node:assert/strict';
-import { readFileSync, existsSync, readdirSync } from 'node:fs';
+import { readFileSync, existsSync, readdirSync, statSync } from 'node:fs';
 import { resolve, dirname } from 'node:path';
 import { Script, createContext } from 'node:vm';
 
@@ -28,7 +28,14 @@ for(const file of ['index.html','index-resume-embed.html','resume.html','project
     assert.ok(existsSync(resolve(dirname(path),url.split(/[?#]/)[0])),file+': '+url);
   }
 }
+for(const edition of ['EN','ZH']){
+  for(const [suffix,signature] of [['.pdf','%PDF'],['-1.png','\x89PNG'],['-2.png','\x89PNG']]){
+    const path=resolve(root,'assets/docs/George-Ye-Resume-'+edition+suffix);
+    assert.ok(existsSync(path)&&statSync(path).size>10000,'Missing résumé asset: '+path);
+    assert.equal(readFileSync(path).subarray(0,4).toString('latin1'),signature,'Invalid résumé asset: '+path);
+  }
+}
 for(const file of readdirSync(resolve(root,'js')).filter(f=>f.endsWith('.js'))){
   new Script(readFileSync(resolve(root,'js',file),'utf8'),{filename:file});
 }
-console.log('PASS: bilingual project data, scene slot bounds, assets, local links, personal content, JavaScript syntax');
+console.log('PASS: bilingual project data, scene slot bounds, résumé PDFs and previews, local links, personal content, JavaScript syntax');
