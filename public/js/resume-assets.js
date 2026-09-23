@@ -5,7 +5,7 @@
   try { if (localStorage.getItem('resume-language') === 'zh') language = 'zh'; } catch {}
   var requested = new URLSearchParams(location.search).get('lang');
   if (requested === 'en' || requested === 'zh') language = requested;
-  var version = {"en": "f5da3374e322", "zh": "a37a893e7962"}[language];
+  var version = {"en": "25d65310320f", "zh": "b4ae93bc8356"}[language];
   var pdf = 'downloads/resume-' + language + '.pdf?v=' + version;
   window.resumePdfUrl = pdf;
   window.resumePdfFilename = 'resume-' + language + '.pdf';
