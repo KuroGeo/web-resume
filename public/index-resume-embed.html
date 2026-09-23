@@ -19,13 +19,13 @@
         <p class="eyebrow"><span></span> DESIGN, CODE & A LITTLE PAPER</p>
         <h1 id="page-title">A digital mind.<br>A paper trail.</h1>
         <p class="intro-copy">I'm George Y.. I work at the intersection of design and technology. Here’s the experience behind the interface — in a format that never goes out of style.</p>
-        <div class="resume-spec"><span>DOCUMENT</span><strong>Curriculum vitæ</strong><span>FORMAT</span><strong>A4 · Printable résumé</strong></div>
+        <div class="resume-spec"><span>DOCUMENT</span><strong>Curriculum vitæ</strong><span>FORMAT</span><strong>A4 · 2 pages · typeset PDF</strong></div>
         <div class="resume-actions">
           <button id="print-copy" class="primary-action" type="button">Print another copy <span>↘</span></button>
           <button id="read-resume" class="text-action" type="button">Read full résumé ↗</button>
         </div>
         <p class="save-help">One click to save. A little tear, just for fun.</p>
-        <a class="download-link" href="resume.html" target="_blank" rel="noopener">Print / Save PDF <span>↓</span></a>
+        <a class="download-link" href="assets/docs/George-Ye-Resume-EN.pdf" data-resume-download download="George-Ye-Resume-EN.pdf">Download PDF <span>↓</span></a>
         <div class="interaction-guide"><p><span>01</span> Your résumé prints as you arrive.</p><p><span>02</span> Click Save my résumé to download.</p><p><span>03</span> Feeling curious? Pull the paper corner.</p></div>
         <p class="source-note">Real résumé. Original typography.<br>No generated experience, no rewritten credentials.</p>
       </section>
@@ -35,7 +35,7 @@
           <button class="printer-body" id="printer-button" type="button" aria-label="Print résumé" aria-describedby="printer-status"><span class="printer-top-glint"></span><span class="printer-slot"></span><span class="status-light" aria-hidden="true"></span><span class="printer-brand">GEORGE / PAPER PRESS</span><span class="printer-mark" aria-hidden="true">↘</span></button>
           <div class="paper-viewport" id="paper-viewport">
             <div class="paper" id="paper" hidden>
-              <button class="ticket-front" id="ticket-front" type="button" aria-label="Enlarge résumé" disabled><div class="resume-sheet document-preview" data-resume-copy></div><span class="paper-read-hint">View full résumé ↗</span></button>
+              <button class="ticket-front" id="ticket-front" type="button" aria-label="Enlarge résumé and read both pages" disabled><img class="resume-sheet" data-resume-page="1" src="assets/docs/George-Ye-Resume-EN-1.png" width="1488" height="2105" alt="George Ye résumé, page one: education, skills and professional experience"><span class="paper-read-hint">View full résumé ↗</span></button>
               <svg class="curl-layer" id="curl-layer" aria-hidden="true" preserveAspectRatio="none">
                 <defs>
                   <linearGradient id="paper-back" x1="0" y1="0" x2="1" y2="1" gradientUnits="userSpaceOnUse"><stop offset="0" stop-color="#c6c2b7"/><stop offset=".13" stop-color="#e4dfd2"/><stop offset=".32" stop-color="#fffdf4"/><stop offset=".69" stop-color="#f7f3e8"/><stop offset="1" stop-color="#ded8c9"/></linearGradient>
@@ -64,8 +64,8 @@
     <footer class="page-footer"><span>George Y. © 2026</span><span>Made of curiosity, code and a little friction.</span><span>UTC+8</span></footer>
   </main>
   <dialog class="resume-reader" id="resume-reader" aria-labelledby="reader-title">
-    <header class="reader-header"><div><p>THE FULL DOCUMENT</p><h2 id="reader-title">George Y. / Résumé</h2></div><div><a href="resume.html" target="_blank" rel="noopener">Print / Save PDF ↓</a><button id="reader-close" type="button" aria-label="Close résumé">×</button></div></header>
-    <div class="reader-pages" data-resume-copy></div></dialog>
-  <script src="js/resume-document.js"></script><script src="js/boarding-pass.js"></script>
+    <header class="reader-header"><div><p>THE FULL DOCUMENT</p><h2 id="reader-title">George Y. / Résumé</h2></div><div><a href="assets/docs/George-Ye-Resume-EN.pdf" data-resume-download download="George-Ye-Resume-EN.pdf">Download PDF ↓</a><button id="reader-close" type="button" aria-label="Close résumé">×</button></div></header>
+    <div class="reader-pages"><img data-resume-page="1" src="assets/docs/George-Ye-Resume-EN-1.png" width="1488" height="2105" alt="Résumé page one: education, skills and professional experience"><img data-resume-page="2" src="assets/docs/George-Ye-Resume-EN-2.png" width="1488" height="2105" alt="Résumé page two: selected projects" loading="lazy"><a href="assets/docs/George-Ye-Resume-EN.pdf" data-resume-pdf target="_blank" rel="noopener noreferrer">Open selectable PDF in a new tab ↗</a></div></dialog>
+  <script src="js/resume-assets.js"></script><script src="js/boarding-pass.js"></script>
 </body>
 </html>

@@ -202,7 +202,13 @@
     copyDownloaded = true;
     // The embedded version calls this after tear + fall. The browser controls
     // whether this opens a save dialog or downloads to its configured folder.
-    window.parent.location.href = 'resume.html';
+    var link = document.createElement('a');
+    link.href = window.resumePdfUrl || 'assets/docs/George-Ye-Resume-EN.pdf';
+    link.download = window.resumePdfFilename || 'George-Ye-Resume-EN.pdf';
+    link.hidden = true;
+    document.body.appendChild(link);
+    link.click();
+    link.remove();
   }
   function detach() {
     if (state !== 'ready' && state !== 'dragging') return;
@@ -322,7 +328,10 @@
     savedOverflow = document.body.style.overflow;
     reader.showModal();
     document.body.style.overflow = 'hidden';
-    reader.querySelector('.reader-pages').scrollTop = 0;
+    document.getElementById('reader-close').focus({preventScroll: true});
+    var pages = reader.querySelector('.reader-pages');
+    pages.scrollTop = 0;
+    requestAnimationFrame(function () { pages.scrollTop = 0; });
   }
   document.getElementById('read-resume').addEventListener('click', openReader);
   front.addEventListener('click', function (event) { if (state === 'ready') openReader(event); });
