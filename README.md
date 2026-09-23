@@ -66,3 +66,20 @@ npm run resume:preview -- public-en
 macOS 默认用文本编辑器编辑 YAML、默认 PDF 阅读器预览；Linux 使用 `xdg-open`。可用 `RESUME_EDITOR` 指定编辑器可执行文件（例如 `RESUME_EDITOR=code npm run resume:edit`；不接受包含参数的 shell 命令）。其他平台可按命令打印的路径打开文件。
 
 输出留在私有 checkout：私人版本位于 `.private-build/<版本名>/`，公开版位于 `.public-build/bundle/`。内容、版本名和 PDF 不复制到本仓库；不要将私有仓库放入 `web-resume/` 内。公开版的发布仍需在私有仓库按现有流程提交白名单内容。
+
+## 浏览器简历工作台
+
+```bash
+npm run resume:studio
+```
+
+打开 `http://127.0.0.1:8767`。需先完成 `resume:setup`，并安装 Poppler（macOS: `brew install poppler`，用于实际 PDF 页面预览）。
+
+- 左侧选择版本，中间按章节编辑表单，右侧查看生成的 PDF。
+- 私人版本的表单修改写入该版本 `overrides`；公开版修改写入公开内容引用的共享字段，保存不会自动提交或发布。
+- “源码”编辑版本配置 YAML；切换编辑方式前需先保存。保存时检测文件版本，拒绝覆盖其他窗口的新修改。
+- “保存并生成 PDF”成功后刷新真实页面；未保存和待生成状态会明确显示。可翻页和下载。
+- 每次保存前的备份、渲染产物都留在私有仓库的 `.private-build/studio/`。
+- 服务只绑定回环地址，校验 Host、Origin 和会话令牌；工作台代码位于 `tools/`，不会随 `public/` 部署。
+
+这是本地工作台，不是公开网站的后台；关闭终端进程即停止服务。

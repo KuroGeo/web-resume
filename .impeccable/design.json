@@ -1,0 +1,285 @@
+{
+  "schemaVersion": 2,
+  "generatedAt": "2026-09-23T09:41:12.515684+00:00",
+  "title": "Design System: Resume Studio",
+  "extensions": {
+    "colorMeta": {
+      "ink": {
+        "role": "neutral",
+        "displayName": "Ink",
+        "tonalRamp": [
+          "oklch(15% 0.0326 238.75)",
+          "oklch(26% 0.0326 238.75)",
+          "oklch(38% 0.0326 238.75)",
+          "oklch(49% 0.0326 238.75)",
+          "oklch(61% 0.0326 238.75)",
+          "oklch(72% 0.0326 238.75)",
+          "oklch(84% 0.0326 238.75)",
+          "oklch(95% 0.0326 238.75)"
+        ]
+      },
+      "muted": {
+        "role": "neutral",
+        "displayName": "Muted",
+        "tonalRamp": [
+          "oklch(15% 0.0300 239.58)",
+          "oklch(26% 0.0300 239.58)",
+          "oklch(38% 0.0300 239.58)",
+          "oklch(49% 0.0300 239.58)",
+          "oklch(61% 0.0300 239.58)",
+          "oklch(72% 0.0300 239.58)",
+          "oklch(84% 0.0300 239.58)",
+          "oklch(95% 0.0300 239.58)"
+        ]
+      },
+      "accent": {
+        "role": "primary",
+        "displayName": "Accent",
+        "tonalRamp": [
+          "oklch(15% 0.0920 244.26)",
+          "oklch(26% 0.0920 244.26)",
+          "oklch(38% 0.0920 244.26)",
+          "oklch(49% 0.0920 244.26)",
+          "oklch(61% 0.0920 244.26)",
+          "oklch(72% 0.0920 244.26)",
+          "oklch(84% 0.0920 244.26)",
+          "oklch(95% 0.0920 244.26)"
+        ]
+      },
+      "accent-soft": {
+        "role": "primary",
+        "displayName": "Accent Soft",
+        "tonalRamp": [
+          "oklch(15% 0.0127 244.26)",
+          "oklch(26% 0.0127 244.26)",
+          "oklch(38% 0.0127 244.26)",
+          "oklch(49% 0.0127 244.26)",
+          "oklch(61% 0.0127 244.26)",
+          "oklch(72% 0.0127 244.26)",
+          "oklch(84% 0.0127 244.26)",
+          "oklch(95% 0.0127 244.26)"
+        ]
+      },
+      "rail": {
+        "role": "neutral",
+        "displayName": "Rail",
+        "tonalRamp": [
+          "oklch(15% 0.0433 241.18)",
+          "oklch(26% 0.0433 241.18)",
+          "oklch(38% 0.0433 241.18)",
+          "oklch(49% 0.0433 241.18)",
+          "oklch(61% 0.0433 241.18)",
+          "oklch(72% 0.0433 241.18)",
+          "oklch(84% 0.0433 241.18)",
+          "oklch(95% 0.0433 241.18)"
+        ]
+      },
+      "line": {
+        "role": "neutral",
+        "displayName": "Line",
+        "tonalRamp": [
+          "oklch(15% 0.0102 238.52)",
+          "oklch(26% 0.0102 238.52)",
+          "oklch(38% 0.0102 238.52)",
+          "oklch(49% 0.0102 238.52)",
+          "oklch(61% 0.0102 238.52)",
+          "oklch(72% 0.0102 238.52)",
+          "oklch(84% 0.0102 238.52)",
+          "oklch(95% 0.0102 238.52)"
+        ]
+      },
+      "paper": {
+        "role": "neutral",
+        "displayName": "Paper",
+        "tonalRamp": [
+          "oklch(15% 0.0000 89.88)",
+          "oklch(26% 0.0000 89.88)",
+          "oklch(38% 0.0000 89.88)",
+          "oklch(49% 0.0000 89.88)",
+          "oklch(61% 0.0000 89.88)",
+          "oklch(72% 0.0000 89.88)",
+          "oklch(84% 0.0000 89.88)",
+          "oklch(95% 0.0000 89.88)"
+        ]
+      },
+      "canvas": {
+        "role": "neutral",
+        "displayName": "Canvas",
+        "tonalRamp": [
+          "oklch(15% 0.0076 241.67)",
+          "oklch(26% 0.0076 241.67)",
+          "oklch(38% 0.0076 241.67)",
+          "oklch(49% 0.0076 241.67)",
+          "oklch(61% 0.0076 241.67)",
+          "oklch(72% 0.0076 241.67)",
+          "oklch(84% 0.0076 241.67)",
+          "oklch(95% 0.0076 241.67)"
+        ]
+      },
+      "focus": {
+        "role": "primary",
+        "displayName": "Focus",
+        "tonalRamp": [
+          "oklch(15% 0.1168 245.17)",
+          "oklch(26% 0.1168 245.17)",
+          "oklch(38% 0.1168 245.17)",
+          "oklch(49% 0.1168 245.17)",
+          "oklch(61% 0.1168 245.17)",
+          "oklch(72% 0.1168 245.17)",
+          "oklch(84% 0.1168 245.17)",
+          "oklch(95% 0.1168 245.17)"
+        ]
+      }
+    },
+    "typographyMeta": {
+      "headline": {
+        "displayName": "Document headline",
+        "purpose": "Compact top-bar identity; not a display treatment."
+      },
+      "source": {
+        "displayName": "Source",
+        "purpose": "YAML source editor."
+      }
+    },
+    "shadows": [
+      {
+        "name": "proof-sheet",
+        "value": "0 5px 20px #172e4217",
+        "purpose": "Generated document sheet."
+      },
+      {
+        "name": "selected-mode",
+        "value": "0 1px 3px #142e451a",
+        "purpose": "Active segmented inset."
+      },
+      {
+        "name": "rendering-notice",
+        "value": "0 4px 18px #172e4220",
+        "purpose": "Transient generation notice."
+      }
+    ],
+    "motion": [
+      {
+        "name": "control-state",
+        "value": "background .16s ease-out,color .16s ease-out",
+        "purpose": "Button state transitions; disabled by reduced motion."
+      },
+      {
+        "name": "rendering-progress",
+        "value": "progress 1.4s ease-in-out infinite",
+        "purpose": "Progress strip translates from -100% to 350%; reduced motion gives a static full strip."
+      }
+    ],
+    "breakpoints": [
+      {
+        "name": "mobile-max",
+        "value": "800px"
+      },
+      {
+        "name": "compact-max",
+        "value": "1180px"
+      },
+      {
+        "name": "wide-min",
+        "value": "1600px"
+      }
+    ]
+  },
+  "components": [
+    {
+      "name": "Primary button",
+      "kind": "button",
+      "refersTo": "button-primary",
+      "description": "Compact workbench action.",
+      "html": "<button class=\"ds-button-primary\">Action</button>",
+      "css": ".ds-button-primary{font-family:-apple-system, BlinkMacSystemFont, \"Segoe UI\", \"PingFang SC\", \"Microsoft YaHei\", sans-serif;font-size:14px;font-weight:550;display:inline-flex;align-items:center;justify-content:center;min-height:36px;padding:8px 12px;border:1px solid var(--line,#dbe2e7);border-radius:var(--radius,6px);cursor:pointer;transition:background .16s ease-out,color .16s ease-out;background:var(--accent,#245e89);border-color:var(--accent,#245e89);color:var(--paper,#fff);}.ds-button-primary:hover:not(:disabled){background:#174d76;}.ds-button-primary:active:not(:disabled){background:#d9e6f0;}.ds-button-primary:focus-visible{outline:3px solid var(--focus,#2c79b3);outline-offset:3px;}.ds-button-primary:disabled{opacity:.48;cursor:default;}"
+    },
+    {
+      "name": "Secondary button",
+      "kind": "button",
+      "refersTo": "button-secondary",
+      "description": "Compact workbench action.",
+      "html": "<button class=\"ds-button-secondary\">Action</button>",
+      "css": ".ds-button-secondary{font-family:-apple-system, BlinkMacSystemFont, \"Segoe UI\", \"PingFang SC\", \"Microsoft YaHei\", sans-serif;font-size:14px;font-weight:550;display:inline-flex;align-items:center;justify-content:center;min-height:36px;padding:8px 12px;border:1px solid var(--line,#dbe2e7);border-radius:var(--radius,6px);cursor:pointer;transition:background .16s ease-out,color .16s ease-out;background:var(--paper,#fff);color:var(--ink,#182a36);}.ds-button-secondary:hover:not(:disabled){background:var(--accent-soft,#e8f0f7);border-color:#a4b7c7;}.ds-button-secondary:active:not(:disabled){background:#d9e6f0;}.ds-button-secondary:focus-visible{outline:3px solid var(--focus,#2c79b3);outline-offset:3px;}.ds-button-secondary:disabled{opacity:.48;cursor:default;}"
+    },
+    {
+      "name": "Quiet button",
+      "kind": "button",
+      "refersTo": "button-quiet",
+      "description": "Compact workbench action.",
+      "html": "<button class=\"ds-button-quiet\">Action</button>",
+      "css": ".ds-button-quiet{font-family:-apple-system, BlinkMacSystemFont, \"Segoe UI\", \"PingFang SC\", \"Microsoft YaHei\", sans-serif;font-size:14px;font-weight:550;display:inline-flex;align-items:center;justify-content:center;min-height:36px;padding:8px 12px;border:1px solid var(--line,#dbe2e7);border-radius:var(--radius,6px);cursor:pointer;transition:background .16s ease-out,color .16s ease-out;background:transparent;border-color:transparent;color:var(--muted,#566875);}.ds-button-quiet:hover:not(:disabled){background:var(--accent-soft,#e8f0f7);border-color:#a4b7c7;}.ds-button-quiet:active:not(:disabled){background:#d9e6f0;}.ds-button-quiet:focus-visible{outline:3px solid var(--focus,#2c79b3);outline-offset:3px;}.ds-button-quiet:disabled{opacity:.48;cursor:default;}"
+    },
+    {
+      "name": "Text field",
+      "kind": "input",
+      "refersTo": "field",
+      "description": "Bilingual content entry.",
+      "html": "<label class=\"ds-field\"><span>Field label</span><input placeholder=\"Enter text\"></label>",
+      "css": ".ds-field{display:block;font-family:-apple-system, BlinkMacSystemFont, \"Segoe UI\", \"PingFang SC\", \"Microsoft YaHei\", sans-serif;color:var(--ink,#182a36);}.ds-field span{display:block;font-size:12px;font-weight:550;margin-bottom:8px;}.ds-field input{width:100%;padding:10px 11px;border:1px solid #b9c7d0;border-radius:var(--radius,6px);background:var(--paper,#fff);color:var(--ink,#182a36);font:13px/1.7 -apple-system, BlinkMacSystemFont, \"Segoe UI\", \"PingFang SC\", \"Microsoft YaHei\", sans-serif;}.ds-field input:hover{border-color:#7c99ad;}.ds-field input:focus{border-color:var(--accent,#245e89);background:#fcfdff;}.ds-field input:focus-visible{outline:3px solid var(--focus,#2c79b3);outline-offset:3px;}"
+    },
+    {
+      "name": "Section choice",
+      "kind": "nav",
+      "refersTo": "section-choice",
+      "description": "Selected editing section.",
+      "html": "<button class=\"ds-section\" aria-current=\"true\">Section</button>",
+      "css": ".ds-section{font-family:-apple-system, BlinkMacSystemFont, \"Segoe UI\", \"PingFang SC\", \"Microsoft YaHei\", sans-serif;font-size:14px;font-weight:550;display:inline-flex;align-items:center;justify-content:center;min-height:36px;padding:8px 12px;border:1px solid var(--line,#dbe2e7);border-radius:var(--radius,6px);cursor:pointer;transition:background .16s ease-out,color .16s ease-out;font-size:12px;min-height:32px;padding:6px 10px;border:0;background:var(--accent-soft,#e8f0f7);color:#164f79;}.ds-section:hover{background:var(--accent-soft,#e8f0f7);}.ds-section:focus-visible{outline:3px solid var(--focus,#2c79b3);outline-offset:3px;}"
+    },
+    {
+      "name": "Version choice",
+      "kind": "nav",
+      "refersTo": "version-choice",
+      "description": "Current version on marine navigation.",
+      "html": "<nav class=\"ds-rail\"><button class=\"ds-version\" aria-current=\"true\"><strong>Example document</strong><small>Supporting detail</small></button></nav>",
+      "css": ".ds-rail{background:var(--rail,#172f40);padding:16px;}.ds-version{font-family:-apple-system, BlinkMacSystemFont, \"Segoe UI\", \"PingFang SC\", \"Microsoft YaHei\", sans-serif;font-size:14px;font-weight:550;display:inline-flex;align-items:center;justify-content:center;min-height:36px;padding:8px 12px;border:1px solid var(--line,#dbe2e7);border-radius:var(--radius,6px);cursor:pointer;transition:background .16s ease-out,color .16s ease-out;display:block;text-align:left;min-height:65px;padding:12px 10px;border:0;background:#305168;color:#fff;width:100%;line-height:1.5;}.ds-version strong{display:block;font-size:13px;font-weight:500;}.ds-version small{display:block;font-size:11px;color:#cfdeea;line-height:1.6;margin-top:3px;}.ds-version:hover{background:#274458;}.ds-version:focus-visible{outline:3px solid var(--focus,#2c79b3);outline-offset:3px;}"
+    },
+    {
+      "name": "Mode selector",
+      "kind": "nav",
+      "refersTo": "mode-choice",
+      "description": "Selected editing mode on inset track.",
+      "html": "<div class=\"ds-track\"><button aria-pressed=\"true\">Form</button><button aria-pressed=\"false\">Source</button></div>",
+      "css": ".ds-track{display:inline-flex;border:1px solid var(--line,#dbe2e7);border-radius:6px;padding:2px;background:#f3f5f7;}.ds-track button{font-family:-apple-system, BlinkMacSystemFont, \"Segoe UI\", \"PingFang SC\", \"Microsoft YaHei\", sans-serif;font-size:14px;font-weight:550;display:inline-flex;align-items:center;justify-content:center;min-height:36px;padding:8px 12px;border:1px solid var(--line,#dbe2e7);border-radius:var(--radius,6px);cursor:pointer;transition:background .16s ease-out,color .16s ease-out;font-size:12px;min-height:28px;padding:5px 12px;border:0;background:transparent;color:var(--muted,#566875);border-radius:4px;}.ds-track button[aria-pressed=true]{background:white;color:var(--accent,#245e89);box-shadow:0 1px 3px #142e451a;}.ds-track button:hover{background:var(--accent-soft,#e8f0f7);}.ds-track button:focus-visible{outline:3px solid var(--focus,#2c79b3);outline-offset:3px;}"
+    },
+    {
+      "name": "Proof sheet",
+      "kind": "custom",
+      "description": "Square document sheet on a cool proof canvas; sample contains no resume data.",
+      "html": "<div class=\"ds-canvas\"><div class=\"ds-sheet\" aria-label=\"Empty document sheet\"></div></div>",
+      "css": ".ds-canvas{background:var(--canvas,#e8edf1);padding:30px 38px;}.ds-sheet{width:100%;max-width:790px;aspect-ratio:210/297;margin:auto;background:var(--paper,#fff);box-shadow:0 5px 20px #172e4217;}"
+    }
+  ],
+  "narrative": {
+    "northStar": "Proof workbench",
+    "overview": "A proof workbench puts quiet editing surfaces beside a real generated document. Marine navigation, white sheets and a cool canvas separate regions without ornamental framing. Compact bilingual interface typography keeps the emphasis on writing and checking.\n\nThis system applies only to `tools/resume-studio`, the local Resume Studio. It does not prescribe the incumbent public portfolio, its typography, or generated PDF page design.",
+    "keyCharacteristics": [
+      "Cool tonal separation with restrained blue selection.",
+      "Compact bilingual controls and readable field leading.",
+      "A document sheet receives depth; editing regions remain flat."
+    ],
+    "rules": [
+      {
+        "name": "The State Has Words Rule",
+        "body": "Selection and freshness use explicit labels or semantic state attributes alongside color.",
+        "section": "colors"
+      },
+      {
+        "name": "The Sheet Has Depth Rule",
+        "body": "Reserve ambient shadows for the proof sheet, active segmented choice and transient rendering notice; keep structural regions flat.",
+        "section": "elevation"
+      }
+    ],
+    "dos": [
+      "Do use blue for actions, selection and focus, with text or semantic state attributes to explain state.",
+      "Do preserve distinct editing and document surfaces across responsive layouts.",
+      "Do show unsaved and preview freshness states independently.",
+      "Do use the system sans for compact bilingual interface text and monospace for source."
+    ],
+    "donts": [
+      "Don't apply this local workbench system to the public portfolio or PDF page typography.",
+      "Don't use color alone to communicate save or generation state.",
+      "Don't turn the proof canvas into a collection of decorative cards."
+    ]
+  }
+}

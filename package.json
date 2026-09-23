@@ -7,7 +7,10 @@
     "resume:list": "node scripts/resume-local.mjs list",
     "resume:edit": "node scripts/resume-local.mjs edit",
     "resume:pdf": "node scripts/resume-local.mjs pdf",
-    "resume:preview": "node scripts/resume-local.mjs preview"
+    "resume:preview": "node scripts/resume-local.mjs preview",
+    "resume:studio": "node scripts/resume-local.mjs studio"
   },
-  "engines": { "node": ">=22" }
+  "engines": {
+    "node": ">=22"
+  }
 }

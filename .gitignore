@@ -4,3 +4,8 @@
 
 # Machine-local private checkout configuration; never deploy this directory
 .resume-local/
+
+# Local design captures may contain private resume content
+.impeccable/review/
+__pycache__/
+*.pyc

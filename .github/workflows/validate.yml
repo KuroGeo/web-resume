@@ -15,4 +15,5 @@ jobs:
       - run: node scripts/build-resume-site.mjs
       - run: python3 scripts/build-resume-previews.py
       - run: node --test tests/*.test.mjs
+      - run: python3 -m unittest discover -s tests -p test_resume_studio.py
       - run: node tests/validate-site.mjs

@@ -59,8 +59,8 @@ function openFiles(files, edit = false) {
 
 export function main(args = process.argv.slice(2)) {
   const [command, name, ...extra] = args;
-  if (!['setup', 'list', 'edit', 'pdf', 'preview'].includes(command) || extra.length) {
-    throw new Error('Usage: resume-local.mjs setup <private-repo> | list | edit [version] | pdf <version> | preview <version>');
+  if (!['setup', 'list', 'edit', 'pdf', 'preview', 'studio'].includes(command) || extra.length) {
+    throw new Error('Usage: resume-local.mjs setup <private-repo> | list | edit [version] | pdf <version> | preview <version> | studio');
   }
   if (command === 'setup') {
     if (!name) throw new Error('Provide the private checkout path. This command does not clone or change it.');
@@ -75,6 +75,11 @@ export function main(args = process.argv.slice(2)) {
   const configured = process.env.RESUME_REPO || (existsSync(CONFIG) && JSON.parse(readFileSync(CONFIG, 'utf8')).repo);
   if (!configured) throw new Error('First run npm run resume:setup -- /absolute/path/to/private/resume (or set RESUME_REPO).');
   const repo = validateRepo(configured);
+  if (command === 'studio') {
+    if (name) throw new Error('resume:studio takes no version.');
+    run('uv', ['run', '--frozen', '--all-extras', '--group', 'publishing', 'python', join(ROOT, 'tools/resume-studio/server.py'), '--repo', repo], repo);
+    return;
+  }
   if (command === 'list') {
     if (name) throw new Error('resume:list takes no version.');
     console.log(['public-en', 'public-zh', ...readdirSync(join(repo, 'content/variants/private')).filter(n => n.endsWith('.yaml')).map(n => n.slice(0, -5)).sort()].join('\n'));
