@@ -11,7 +11,7 @@
    const group=document.createElement('section');group.className='work-group';group.id='chapter-'+g.id;
    const head=document.createElement('header');head.className='group-heading';
    const heading=document.createElement('h3');heading.textContent=g.title;head.append(heading);
-   const intro=document.createElement('p');intro.textContent=g.line||'ByteDance · Commerce engineering';head.append(intro);group.append(head);
+   const intro=document.createElement('p');intro.textContent=g.line||window.PUBLIC_RESUME_FACTS.company;head.append(intro);group.append(head);
    projects.sort((a,b)=>b.year-a.year).forEach(p=>{
     const a=document.createElement('a');a.className='work-item';a.href=p.url;
     a.innerHTML='<span class="work-number micro">'+String(p.index+1).padStart(2,'0')+'</span><div class="work-thumb"><img width="160" height="90" alt="" loading="lazy"></div><div class="work-copy"><h4></h4><p></p></div><span class="work-meta micro"></span><span class="work-arrow" aria-hidden="true">↗</span>';
