@@ -324,7 +324,8 @@
   var savedOverflow = '';
   function openReader(event) {
     stage.classList.add('has-interacted');
-    readerTrigger = event.currentTarget;
+    var trigger = event.currentTarget;
+    readerTrigger = trigger;
     savedOverflow = document.body.style.overflow;
     reader.showModal();
     document.body.style.overflow = 'hidden';
@@ -332,6 +333,10 @@
     var pages = reader.querySelector('.reader-pages');
     pages.scrollTop = 0;
     requestAnimationFrame(function () { pages.scrollTop = 0; });
+    var firstPage = pages.querySelector('img');
+    if (firstPage && firstPage.decode) {
+      firstPage.decode().then(function () { if (reader.open && readerTrigger === trigger) pages.scrollTop = 0; }).catch(function () {});
+    }
   }
   document.getElementById('read-resume').addEventListener('click', openReader);
   front.addEventListener('click', function (event) { if (state === 'ready') openReader(event); });
