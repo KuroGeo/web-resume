@@ -36,7 +36,8 @@ jobs:
           sudo apt-get install -y poppler-utils
           node scripts/build-resume-site.mjs
           python3 scripts/build-resume-previews.py
-          node --test tests/resume-publishing.test.mjs
+          node --test tests/*.test.mjs
+          python3 -m unittest discover -s tests -p test_resume_studio.py
           node tests/validate-site.mjs
 
       - name: Configure Pages

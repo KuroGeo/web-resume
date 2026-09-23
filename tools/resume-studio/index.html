@@ -1,0 +1,32 @@
+<!doctype html>
+<html lang="zh-CN">
+<head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="studio-token" content="__TOKEN__"><title>Resume Studio · 简历工作台</title><link rel="stylesheet" href="/style.css"></head>
+<body>
+<aside class="rail">
+  <a class="brand" href="/" aria-label="简历工作台首页"><svg viewBox="0 0 28 28" aria-hidden="true"><path d="M7 3h10l5 5v17H7zM17 3v6h5M11 13h7M11 17h7M11 21h4"/></svg><span>Resume<span class="brand-sub">Studio</span></span></a>
+  <div class="rail-heading"><h2>我的简历</h2><span id="version-count"></span></div>
+  <label class="search"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="10" cy="10" r="6"/><path d="m15 15 5 5"/></svg><input id="search" type="search" placeholder="查找版本" aria-label="查找简历版本"></label>
+  <nav id="versions" aria-label="简历版本"><p class="rail-loading">正在读取版本…</p></nav>
+  <footer class="rail-footer"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="5" y="10" width="14" height="11" rx="2"/><path d="M8 10V7a4 4 0 0 1 8 0v3"/></svg><div>本机工作区<small>内容与 PDF 仅保存在私有仓库</small></div></footer>
+</aside>
+<main>
+  <header class="topbar"><div class="title-block"><h1 id="document-title">简历工作台</h1><span id="save-state" role="status" aria-live="polite">正在连接私有内容源</span></div><div class="actions"><button id="reload" class="quiet" title="重新载入文件">重新载入</button><button id="save" disabled>保存</button><button id="generate" class="primary" disabled><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 3h10l4 4v14H5zM15 3v5h4M8 12h8M8 16h6"/></svg><span>保存并生成 PDF</span></button></div></header>
+  <div id="error" class="error" role="alert" hidden><span></span><button aria-label="关闭错误提示">关闭</button></div>
+  <div class="mobile-switch" aria-label="工作区视图"><button data-view="edit" aria-pressed="true">编辑内容</button><button data-view="preview" aria-pressed="false">PDF 预览</button></div>
+  <div class="workspace">
+    <section class="editor" aria-label="编辑简历">
+      <div class="editor-head"><h2>内容编辑</h2><div class="segmented" aria-label="编辑方式"><button id="form-mode" aria-pressed="true">表单</button><button id="source-mode" aria-pressed="false">源码</button></div></div>
+      <p id="scope-note" class="scope-note">正在读取内容…</p>
+      <nav id="sections" aria-label="简历章节"></nav>
+      <div class="editor-scroll"><form id="fields" autocomplete="off"><div class="form-loading">选择一个版本，开始编辑。</div></form><div id="source-pane" hidden><label for="source">版本配置 YAML</label><p>这里编辑选取、引用及覆盖配置；正文可在表单中修改。</p><textarea id="source" spellcheck="false" aria-label="版本配置 YAML"></textarea></div></div>
+      <div class="editor-footer"><span id="field-count"></span><span>⌘ / Ctrl + S 保存</span></div>
+    </section>
+    <section class="proof" aria-label="PDF 预览">
+      <div class="proof-toolbar"><div><h2>PDF 预览</h2><span id="preview-state">等待生成</span></div><div class="proof-tools"><button id="prev" aria-label="上一页" disabled><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m14 6-6 6 6 6"/></svg></button><span id="page-count">— / —</span><button id="next" aria-label="下一页" disabled><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m10 6 6 6-6 6"/></svg></button><a id="download" class="download" hidden>下载 PDF<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3v12m-5-5 5 5 5-5M5 16v5h14v-5"/></svg></a></div></div>
+      <div id="proof-canvas" class="proof-canvas"><div id="empty-preview" class="empty-preview"><svg viewBox="0 0 64 76" aria-hidden="true"><path d="M10 3h29l15 15v55H10zM39 3v16h15M20 33h24M20 42h24M20 51h17"/></svg><h3>先写好，再看见</h3><p>生成后，这里显示实际 PDF 的页面。<br>每一次保存，都由你决定何时生成。</p><button id="empty-generate">生成 PDF 预览</button></div><figure id="page" hidden><img id="page-image" alt="简历 PDF 页面"><figcaption id="page-caption"></figcaption></figure><div id="rendering" class="rendering" hidden><div class="progress-line"></div><strong>正在排版简历</strong><span>保留上次预览，完成后自动替换</span></div></div>
+      <footer class="proof-footer"><span>实际 PDF 渲染</span><span>保存与生成均不会发布到网站</span></footer>
+    </section>
+  </div>
+</main>
+<script src="/app.js"></script>
+</body></html>
