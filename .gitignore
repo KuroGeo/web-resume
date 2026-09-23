@@ -1,3 +1,6 @@
 # Personal resume PDFs under asset folders
 **/assets/*.[pP][dD][fF]
 **/assets/**/*.[pP][dD][fF]
+
+# Machine-local private checkout configuration; never deploy this directory
+.resume-local/

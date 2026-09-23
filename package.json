@@ -1,0 +1,13 @@
+{
+  "name": "web-resume",
+  "private": true,
+  "scripts": {
+    "test": "node --test tests/*.test.mjs && node tests/validate-site.mjs",
+    "resume:setup": "node scripts/resume-local.mjs setup",
+    "resume:list": "node scripts/resume-local.mjs list",
+    "resume:edit": "node scripts/resume-local.mjs edit",
+    "resume:pdf": "node scripts/resume-local.mjs pdf",
+    "resume:preview": "node scripts/resume-local.mjs preview"
+  },
+  "engines": { "node": ">=22" }
+}
