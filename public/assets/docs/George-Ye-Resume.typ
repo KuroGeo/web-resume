@@ -3,7 +3,7 @@
 
 #set page(paper: "a4", margin: (left: 13mm, right: 13mm, top: 24mm, bottom: 18mm))
 #set text(font: ("New Computer Modern", "Songti SC"), size: 10pt, fill: rgb("191919"))
-#set par(justify: true, leading: 0.28em)
+#set par(justify: true, leading: 0.45em)
 
 #let section(title) = [
   #v(9pt)
@@ -20,6 +20,12 @@
   #v(2pt)
   #body
   #v(7pt)
+]
+
+#let bullet(label, body) = [
+  #grid(columns: (9pt, 1fr), gutter: 3pt,
+    [•], [#strong(label) #body])
+  #v(4pt)
 ]
 
 #let project(title, date, role, body, first: false) = [
@@ -44,18 +50,18 @@
   #entry("华南理工大学", "中国 · 广州", "信息工程，本科", "2017 — 2021", [])
 
   #section("能力概览")
-  - *方向：* 高流量电商体验、移动端与跨端开发、AI 应用原型、交互与性能优化。
-  - *技术：* Web 前端、React Native、Lynx、多宿主适配、实时语音与 AI Agent 产品集成。
+  #bullet([方向：], [高流量电商体验、移动端与跨端开发、AI 应用原型、交互与性能优化。])
+  #bullet([技术：], [Web 前端、React Native、Lynx、多宿主适配、实时语音与 AI Agent 产品集成。])
 
   #section("工作经历")
   #entry("ByteDance · 抖音电商", "中国", "前端工程师 · 移动端与跨端", "2021.06 — 2026.04", [
     围绕购物、店铺与短视频内容场景开发前端产品。在复杂的跨端和多宿主环境中，兼顾用户体验、渲染性能、灰度发布与稳定性。
   ])
-  - *店铺与流量入口：* 建设可复用的进店组件与店铺基础体验，覆盖商品、搜索、直播、账号主页和分享等场景。
-  - *跨端混排：* 参与 Native 列表与 Lynx 楼层的混排框架，让商家模块在店铺橱窗里稳定呈现与快速迭代。
-  - *第三方组件：* 参与小程序 DSL 到 Lynx 的组件迁移、调试工具与缓存链路建设，提升店铺楼层的渲染效率。
-  - *多宿主电商：* 参与将商品、店铺和交易能力接入今日头条、番茄小说、西瓜视频、悟空浏览器、懂车帝等内容 App。
-  - *内容与 AI：* 迭代推荐流购物卡；参与 AI 送礼助手 POC，将生成内容、虚拟导购、实时语音与 Agent 问答组成可用体验。
+  #bullet([店铺与流量入口：], [建设可复用的进店组件与店铺基础体验，覆盖商品、搜索、直播、账号主页和分享等场景。])
+  #bullet([跨端混排：], [参与 Native 列表与 Lynx 楼层的混排框架，让商家模块在店铺橱窗里稳定呈现与快速迭代。])
+  #bullet([第三方组件：], [参与小程序 DSL 到 Lynx 的组件迁移、调试工具与缓存链路建设，提升店铺楼层的渲染效率。])
+  #bullet([多宿主电商：], [参与将商品、店铺和交易能力接入今日头条、番茄小说、西瓜视频、悟空浏览器、懂车帝等内容 App。])
+  #bullet([内容与 AI：], [迭代推荐流购物卡；参与 AI 送礼助手 POC，将生成内容、虚拟导购、实时语音与 Agent 问答组成可用体验。])
 
   #section("工作方式")
   在高流量场景中，我关注从用户目标到工程落地的完整链路：清楚表达信息、复用跨端能力、记录曝光与点击、控制性能预算，并为弱网和异常场景准备降级路径。
@@ -82,18 +88,18 @@
   #entry("South China University of Technology", "Guangzhou, China", "B.Eng. in Electronic and Communication Engineering", "2017 — 2021", [])
 
   #section("Skills Summary")
-  - *Focus:* High-traffic commerce, mobile and cross-platform interfaces, AI product prototypes, interaction and performance.
-  - *Tools:* Web frontend, React Native, Lynx, multi-host integration, realtime voice and AI agent experiences.
+  #bullet([Focus:], [High-traffic commerce, mobile and cross-platform interfaces, AI product prototypes, interaction and performance.])
+  #bullet([Tools:], [Web frontend, React Native, Lynx, multi-host integration, realtime voice and AI agent experiences.])
 
   #section("Professional Experience")
   #entry("ByteDance, Douyin E-commerce", "China", "Frontend Engineer · Mobile & Cross-platform", "Jun 2021 — Apr 2026", [
     Built shopping, storefront and short-video experiences. Worked across Native, web and cross-platform surfaces while balancing interface quality, rendering speed, release safety and reliability.
   ])
-  - *Storefront and discovery:* Built reusable store-entry components and core browsing experiences across products, search, livestreams, profiles and sharing.
-  - *Mixed rendering:* Helped combine Native lists with Lynx-driven merchant sections, making storefront modules both stable and fast to iterate.
-  - *Partner components:* Worked on the migration of third-party store modules to Lynx, plus debugging, preview and caching workflows.
-  - *Commerce across hosts:* Adapted product, store and transaction capabilities for Toutiao, Fanqie Novel, Xigua Video, Wukong Browser and Dongchedi.
-  - *Content and AI:* Improved in-feed shopping cards and prototyped an AI gift assistant with generated content, a virtual guide, realtime voice and agent Q&A.
+  #bullet([Storefront and discovery:], [Built reusable store-entry components and core browsing experiences across products, search, livestreams, profiles and sharing.])
+  #bullet([Mixed rendering:], [Helped combine Native lists with Lynx-driven merchant sections, making storefront modules both stable and fast to iterate.])
+  #bullet([Partner components:], [Worked on the migration of third-party store modules to Lynx, plus debugging, preview and caching workflows.])
+  #bullet([Commerce across hosts:], [Adapted product, store and transaction capabilities for Toutiao, Fanqie Novel, Xigua Video, Wukong Browser and Dongchedi.])
+  #bullet([Content and AI:], [Improved in-feed shopping cards and prototyped an AI gift assistant with generated content, a virtual guide, realtime voice and agent Q&A.])
 
   #section("Approach")
   I work across the full path from user intent to implementation: clear information design, reusable cross-platform components, measurable exposure and click flows, performance budgets, and graceful fallback under weak networks or partial failure.
