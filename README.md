@@ -12,17 +12,7 @@ python3 -m http.server 4173 --directory public
 
 ## 简历 PDF
 
-简历源文件是 `public/assets/docs/George-Ye-Resume.typ`。用 [Typst](https://typst.app/) 同时生成中英文 A4 PDF 与两页网页预览图：
-
-```bash
-for edition in en zh; do
-  label=$(printf '%s' "$edition" | tr '[:lower:]' '[:upper:]')
-  typst compile --input language="$edition" public/assets/docs/George-Ye-Resume.typ "public/assets/docs/George-Ye-Resume-$label.pdf"
-  typst compile --format png --ppi 180 --input language="$edition" public/assets/docs/George-Ye-Resume.typ "public/assets/docs/George-Ye-Resume-$label-{p}.png"
-done
-```
-
-网站根据语言设置选用同一版本的 PDF 和两张预览图。
+保留现有双语两页 PDF 与阅读预览。公开 PDF 由私有内容源生成；网站预览图由同一份 PDF 渲染，避免两份内容不同步。
 
 ## GitHub Pages 部署
 
@@ -44,11 +34,12 @@ done
 
 ```bash
 node scripts/build-resume-site.mjs
+python3 scripts/build-resume-previews.py  # 需要 Poppler 的 pdftoppm
 node --test tests/resume-publishing.test.mjs
 node tests/validate-site.mjs
 python3 -m http.server 4173 --directory public
 ```
 
-Pages 工作流也会执行构建和校验。现有项目交互保持同步加载，简历页提供当前语言 PDF 下载及浏览器打印。私人源文件、其他版本与渲染中间文件不进入本仓库。
+Pages 工作流也会执行构建和校验。现有项目交互保持同步加载，简历页提供当前语言 PDF 下载及可选择文本的 PDF 阅读。私人源文件、其他版本与渲染中间文件不进入本仓库。
 
 首次上线顺序：先合入本仓库的网站适配与完整公开产物，再启用私有内容源的发布工作流。后续内容修改从私有仓库发布，网站接收三个产物后自动部署。

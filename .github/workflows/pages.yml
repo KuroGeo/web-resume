@@ -32,7 +32,10 @@ jobs:
 
       - name: Build and validate public resume
         run: |
+          sudo apt-get update
+          sudo apt-get install -y poppler-utils
           node scripts/build-resume-site.mjs
+          python3 scripts/build-resume-previews.py
           node --test tests/resume-publishing.test.mjs
           node tests/validate-site.mjs
 

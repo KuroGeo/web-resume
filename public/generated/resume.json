@@ -393,70 +393,138 @@
       },
       "sections": [
         {
-          "id": "profile",
-          "title": "Profile",
+          "id": "education",
+          "title": "Education",
           "items": [
             {
+              "title": "South China University of Technology",
+              "place": "Guangzhou, China",
+              "role": "B.Eng. in Electronic and Communication Engineering",
+              "date": "2017 — 2021",
+              "paragraphs": []
+            }
+          ]
+        },
+        {
+          "id": "skills",
+          "title": "Skills Summary",
+          "items": [
+            {
+              "label": "Focus:",
               "paragraphs": [
-                "I bring strong frontend fundamentals from high-traffic mobile and cross-platform work, and turn AI content generation, realtime voice, agent Q&A, and model workflows into usable product experiences."
+                "High-traffic commerce, mobile and cross-platform interfaces, AI product prototypes, interaction and performance."
+              ]
+            },
+            {
+              "label": "Tools:",
+              "paragraphs": [
+                "Web frontend, React Native, Lynx, multi-host integration, realtime voice and AI agent experiences."
               ]
             }
           ]
         },
         {
           "id": "experience",
-          "title": "Experience",
+          "title": "Professional Experience",
           "items": [
             {
-              "title": "ByteDance · Jun 2021 — Apr 2026",
+              "title": "ByteDance, Douyin E-commerce",
+              "place": "China",
+              "role": "Frontend Engineer · Mobile & Cross-platform",
+              "date": "Jun 2021 — Apr 2026",
               "paragraphs": [
-                "Frontend Engineer · Mobile & Web",
-                "Built frontend features for Douyin E-commerce, the shopping business inside TikTok China. I worked on core shopping and content flows, with a focus on smoother user experiences, reliable feature delivery, and faster pages."
+                "Built shopping, storefront and short-video experiences. Worked across Native, web and cross-platform surfaces while balancing interface quality, rendering speed, release safety and reliability."
+              ]
+            },
+            {
+              "label": "Storefront and discovery:",
+              "paragraphs": [
+                "Built reusable store-entry components and core browsing experiences across products, search, livestreams, profiles and sharing."
+              ]
+            },
+            {
+              "label": "Mixed rendering:",
+              "paragraphs": [
+                "Helped combine Native lists with Lynx-driven merchant sections, making storefront modules both stable and fast to iterate."
+              ]
+            },
+            {
+              "label": "Partner components:",
+              "paragraphs": [
+                "Worked on the migration of third-party store modules to Lynx, plus debugging, preview and caching workflows."
+              ]
+            },
+            {
+              "label": "Commerce across hosts:",
+              "paragraphs": [
+                "Adapted product, store and transaction capabilities for Toutiao, Fanqie Novel, Xigua Video, Wukong Browser and Dongchedi."
+              ]
+            },
+            {
+              "label": "Content and AI:",
+              "paragraphs": [
+                "Improved in-feed shopping cards and prototyped an AI gift assistant with generated content, a virtual guide, realtime voice and agent Q&A."
+              ]
+            }
+          ]
+        },
+        {
+          "id": "approach",
+          "title": "Approach",
+          "items": [
+            {
+              "paragraphs": [
+                "I work across the full path from user intent to implementation: clear information design, reusable cross-platform components, measurable exposure and click flows, performance budgets, and graceful fallback under weak networks or partial failure."
               ]
             }
           ]
         },
         {
           "id": "projects",
-          "title": "Selected work",
+          "title": "Selected Projects",
           "items": [
             {
               "title": "AI Gift Assistant",
+              "date": "2025 · ByteDance",
+              "role": "AI application / Product prototype",
               "paragraphs": [
-                "Explored a new shopping-assistant interaction that combines AI-generated product content, a virtual guide, realtime voice, and AI Agent answers."
+                "Explored gift selection through AI-generated product highlights and recommendation copy. A virtual guide introduced products; users could continue through realtime voice or text, while an agent answered questions about products, recipients and reasons to buy. The prototype tested how generated content, character and conversation can form one continuous shopping experience."
               ]
             },
             {
-              "title": "Douyin Store Page Builder",
+              "title": "Native × Cross-platform Storefront",
+              "date": "2023 · ByteDance",
+              "role": "Rendering architecture / Store experience",
               "paragraphs": [
-                "Brought merchant-built store modules into Douyin stores, including the mobile rendering layer, a partner debugging tool, caching, and page speed improvements."
+                "Kept the store identity area Native for reliable app behavior, while recommendations, livestream products and rankings used configurable cross-platform sections. Worked on the boundaries between layers, list behavior, data contracts, performance and graceful fallback."
+              ]
+            },
+            {
+              "title": "Third-party Store Components",
+              "date": "2023 · ByteDance",
+              "role": "Lynx ecosystem / Developer tools",
+              "paragraphs": [
+                "Helped move merchant-built store sections from H5 containers into the Lynx rendering path. The work covered component debugging and preview, visual consistency, caching policy and differences between host apps."
+              ]
+            },
+            {
+              "title": "Multi-host Commerce SaaS",
+              "date": "2022 · ByteDance",
+              "role": "Product, store and transaction surfaces",
+              "paragraphs": [
+                "Packaged commerce capabilities for several content apps as configurable, observable surfaces. Adapted entry points, data contracts and interface behavior to each host while keeping the underlying user experience and engineering boundaries consistent."
               ]
             },
             {
               "title": "Shopping Cards in Short Videos",
+              "date": "2025 — 2026 · ByteDance",
+              "role": "In-feed commerce / Interaction",
               "paragraphs": [
-                "Improved shopping cards inside short videos, including interactions, promotion styles, coupon flows, and price animations for high-traffic pages."
-              ]
-            },
-            {
-              "title": "Bringing commerce SaaS capabilities into multiple content apps",
-              "paragraphs": [
-                "This work packaged product, store, and transaction capabilities as configurable, observable commerce SaaS surfaces for hosts such as Toutiao, Fanqie Novel, Xigua Video, Wukong Browser, and Dongchedi, while keeping UX and engineering boundaries consistent across content contexts."
+                "Brought product value, store context, coupons and pricing into short-video viewing. Improved card interactions, promotional styles and motion while accounting for first-screen performance, experiment rollout, measurement and weak-network fallback."
               ]
             }
-          ]
-        },
-        {
-          "id": "education",
-          "title": "Education",
-          "items": [
-            {
-              "title": "South China University of Technology · 2017–2021",
-              "paragraphs": [
-                "B.Eng. in Electronic and Communication Engineering"
-              ]
-            }
-          ]
+          ],
+          "pageBreakBefore": true
         }
       ]
     },
@@ -847,17 +915,37 @@
       ],
       "identity": {
         "name": "George Y.",
-        "role": "AI 应用工程师",
+        "role": "AI Application Engineer",
         "connections": "github.com/KuroGeo · linkedin.com/in/george-y-2303572b2"
       },
       "sections": [
         {
-          "id": "profile",
-          "title": "个人简介",
+          "id": "education",
+          "title": "教育背景",
           "items": [
             {
+              "title": "华南理工大学",
+              "place": "中国 · 广州",
+              "role": "信息工程，本科",
+              "date": "2017 — 2021",
+              "paragraphs": []
+            }
+          ]
+        },
+        {
+          "id": "skills",
+          "title": "能力概览",
+          "items": [
+            {
+              "label": "方向：",
               "paragraphs": [
-                "前端功底扎实，长期负责高流量移动端与跨端体验；也能把 AI 内容生成、实时语音、Agent 问答和模型工作流落成可用产品。"
+                "高流量电商体验、移动端与跨端开发、AI 应用原型、交互与性能优化。"
+              ]
+            },
+            {
+              "label": "技术：",
+              "paragraphs": [
+                "Web 前端、React Native、Lynx、多宿主适配、实时语音与 AI Agent 产品集成。"
               ]
             }
           ]
@@ -867,10 +955,53 @@
           "title": "工作经历",
           "items": [
             {
-              "title": "ByteDance · 2021.06 — 2026.04",
+              "title": "ByteDance · 抖音电商",
+              "place": "中国",
+              "role": "前端工程师 · 移动端与跨端",
+              "date": "2021.06 — 2026.04",
               "paragraphs": [
-                "前端工程师 · 移动端与跨端",
-                "任职于字节跳动抖音电商，负责核心购物与内容场景的前端开发，专注于用户体验优化、电商功能交付和 Web 性能提升。"
+                "围绕购物、店铺与短视频内容场景开发前端产品。在复杂的跨端和多宿主环境中，兼顾用户体验、渲染性能、灰度发布与稳定性。"
+              ]
+            },
+            {
+              "label": "店铺与流量入口：",
+              "paragraphs": [
+                "建设可复用的进店组件与店铺基础体验，覆盖商品、搜索、直播、账号主页和分享等场景。"
+              ]
+            },
+            {
+              "label": "跨端混排：",
+              "paragraphs": [
+                "参与 Native 列表与 Lynx 楼层的混排框架，让商家模块在店铺橱窗里稳定呈现与快速迭代。"
+              ]
+            },
+            {
+              "label": "第三方组件：",
+              "paragraphs": [
+                "参与小程序 DSL 到 Lynx 的组件迁移、调试工具与缓存链路建设，提升店铺楼层的渲染效率。"
+              ]
+            },
+            {
+              "label": "多宿主电商：",
+              "paragraphs": [
+                "参与将商品、店铺和交易能力接入今日头条、番茄小说、西瓜视频、悟空浏览器、懂车帝等内容 App。"
+              ]
+            },
+            {
+              "label": "内容与 AI：",
+              "paragraphs": [
+                "迭代推荐流购物卡；参与 AI 送礼助手 POC，将生成内容、虚拟导购、实时语音与 Agent 问答组成可用体验。"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "approach",
+          "title": "工作方式",
+          "items": [
+            {
+              "paragraphs": [
+                "在高流量场景中，我关注从用户目标到工程落地的完整链路：清楚表达信息、复用跨端能力、记录曝光与点击、控制性能预算，并为弱网和异常场景准备降级路径。"
               ]
             }
           ]
@@ -881,41 +1012,46 @@
           "items": [
             {
               "title": "AI 送礼助手",
+              "date": "2025 · ByteDance",
+              "role": "AI 应用 / 产品原型",
               "paragraphs": [
-                "用 AI 生成商品内容，结合虚拟小人、实时语音和 AI Agent 问答，探索电商导购的新交互形态。"
+                "面向礼物选择场景，使用 AI 生成商品卖点与推荐话术，以虚拟导购承接介绍；用户可通过实时语音或文字继续追问，Agent 围绕商品和适用人群作答。重点探索内容生成、角色化表达与对话入口如何组成连续体验。"
               ]
             },
             {
-              "title": "店铺首页装修混排",
+              "title": "店铺首页 Native × 跨端混排",
+              "date": "2023 · ByteDance",
+              "role": "跨端渲染 / 店铺体验",
               "paragraphs": [
-                "把商家组件生态迁移到抖音店铺，完成 C 端渲染容器、B 端调试工具、缓存和性能链路建设。"
+                "店铺信息区由 Native 保持稳定，猜你喜欢、直播爆款和排行榜等楼层由跨端组件承接配置与复用。参与图层边界、列表协作、数据协议、性能与异常兜底的设计和实现。"
+              ]
+            },
+            {
+              "title": "第三方店铺组件迁移",
+              "date": "2023 · ByteDance",
+              "role": "Lynx 组件生态 / 调试工具",
+              "paragraphs": [
+                "参与将依赖 H5 容器的第三方店铺模块迁移到 Lynx 渲染链路，建设组件调试与预览能力，并处理样式一致性、缓存策略和宿主差异。"
+              ]
+            },
+            {
+              "title": "多宿主电商 SaaS",
+              "date": "2022 · ByteDance",
+              "role": "商品、店铺与交易链路",
+              "paragraphs": [
+                "把电商能力以可配置、可观测的方式接入多个内容 App。针对不同宿主处理入口展示、数据协议、页面表现与工程边界，让同一套能力在不同消费场景中稳定复用。"
               ]
             },
             {
               "title": "短视频电商异形卡",
+              "date": "2025 — 2026 · ByteDance",
+              "role": "推荐流 / 商业表达",
               "paragraphs": [
-                "在高流量短视频场景中持续迭代卡片交互、营销样式、接券体验和价格动效，推动增长指标改善。"
-              ]
-            },
-            {
-              "title": "把电商能力以 SaaS 形态接入多个内容 App",
-              "paragraphs": [
-                "这部分工作面向今日头条、番茄小说、西瓜视频、悟空浏览器、懂车帝等宿主，把商品、店铺和交易链路能力抽成可配置、可观测、可适配的电商 SaaS 能力，在不同内容场景里保持一致的体验和工程边界。"
+                "在短视频画面上承接商品卖点、店铺背书、优惠券与价格信息，持续优化卡片交互、营销样式和动效，同时关注首屏性能、实验灰度、曝光点击口径及弱网降级。"
               ]
             }
-          ]
-        },
-        {
-          "id": "education",
-          "title": "教育背景",
-          "items": [
-            {
-              "title": "华南理工大学 · 2017–2021",
-              "paragraphs": [
-                "信息工程(本科)"
-              ]
-            }
-          ]
+          ],
+          "pageBreakBefore": true
         }
       ]
     }

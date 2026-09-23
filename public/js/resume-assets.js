@@ -1,23 +1,29 @@
-/* The PDF and both page images come from the same typeset source. */
+// Generated from the public PDFs. The source of truth is the private content catalog.
 (function () {
   'use strict';
   var language = 'en';
   try { if (localStorage.getItem('resume-language') === 'zh') language = 'zh'; } catch {}
-  var edition = language === 'zh' ? 'ZH' : 'EN';
-  var stem = 'assets/docs/George-Ye-Resume-' + edition;
-  // Pages caches static files for several minutes. Keep the preview and PDF in
-  // sync when a new edition replaces files at the same paths.
-  var assetVersion = '?v=20260923-spacing';
-  var pdf = stem + '.pdf' + assetVersion;
+  var requested = new URLSearchParams(location.search).get('lang');
+  if (requested === 'en' || requested === 'zh') language = requested;
+  var version = {"en": "f5da3374e322", "zh": "a37a893e7962"}[language];
+  var pdf = 'downloads/resume-' + language + '.pdf?v=' + version;
   window.resumePdfUrl = pdf;
-  window.resumePdfFilename = 'George-Ye-Resume-' + edition + '.pdf';
+  window.resumePdfFilename = 'resume-' + language + '.pdf';
   document.documentElement.lang = language === 'zh' ? 'zh-CN' : 'en';
   document.querySelectorAll('[data-resume-page]').forEach(function (image) {
-    image.src = stem + '-' + image.dataset.resumePage + '.png' + assetVersion;
+    image.src = 'assets/docs/resume-' + language + '-' + image.dataset.resumePage + '.png?v=' + version;
   });
   document.querySelectorAll('[data-resume-download]').forEach(function (link) {
-    link.href = pdf;
-    link.download = window.resumePdfFilename;
+    link.href = pdf; link.download = window.resumePdfFilename;
+    link.textContent = language === 'zh' ? '下载 PDF ↓' : 'Download PDF ↓';
   });
   document.querySelectorAll('[data-resume-pdf]').forEach(function (link) { link.href = pdf; });
+  document.querySelectorAll('[data-resume-language]').forEach(function (button) {
+    button.setAttribute('aria-pressed', String(button.dataset.resumeLanguage === language));
+    button.addEventListener('click', function () {
+      var next = button.dataset.resumeLanguage;
+      try { localStorage.setItem('resume-language', next); } catch {}
+      var url = new URL(location.href); url.searchParams.set('lang', next); location.href = url.href;
+    });
+  });
 })();

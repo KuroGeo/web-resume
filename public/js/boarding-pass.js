@@ -203,8 +203,8 @@
     // The embedded version calls this after tear + fall. The browser controls
     // whether this opens a save dialog or downloads to its configured folder.
     var link = document.createElement('a');
-    link.href = window.resumePdfUrl || 'assets/docs/George-Ye-Resume-EN.pdf';
-    link.download = window.resumePdfFilename || 'George-Ye-Resume-EN.pdf';
+    link.href = window.resumePdfUrl || 'downloads/resume-en.pdf';
+    link.download = window.resumePdfFilename || 'resume-en.pdf';
     link.hidden = true;
     document.body.appendChild(link);
     link.click();

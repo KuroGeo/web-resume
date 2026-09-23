@@ -19,9 +19,9 @@ export function validatePublicResume(data){
   for(const list of ['sections','projects','groups'])requireValid(Array.isArray(locale[list])&&locale[list].length>0,'Missing '+list);
   unique(locale.sections);unique(locale.projects);unique(locale.groups);
   for(const section of locale.sections){
-   keys(section,['id','title','items']);string(section.id);string(section.title);
+   keys(section,['id','title','items','pageBreakBefore']);requireValid(section.pageBreakBefore===undefined||typeof section.pageBreakBefore==='boolean','Invalid page break');string(section.id);string(section.title);
    requireValid(/^[a-z][a-z0-9-]*$/.test(section.id)&&Array.isArray(section.items),'Invalid section');
-   for(const item of section.items){keys(item,['title','paragraphs']);if(item.title!==undefined)string(item.title);requireValid(Array.isArray(item.paragraphs),'Missing paragraphs');item.paragraphs.forEach(string)}
+   for(const item of section.items){keys(item,['title','paragraphs','label','role','date','place']);for(const field of ['label','role','date','place'])if(item[field]!==undefined)string(item[field]);if(item.title!==undefined)string(item.title);requireValid(Array.isArray(item.paragraphs),'Missing paragraphs');item.paragraphs.forEach(string)}
   }
   for(const group of locale.groups){keys(group,['id','title','keywords','line']);for(const key of ['id','title','line'])string(group[key]);requireValid(Array.isArray(group.keywords)&&group.keywords.length>0,'Missing keywords');group.keywords.forEach(string)}
   for(const [index,project] of locale.projects.entries()){
@@ -38,16 +38,18 @@ export function validatePublicResume(data){
  return data;
 }
 export function presentationFacts(locale){
- const experience=locale.sections.find(s=>s.id==='experience')?.items[0]?.title||'';
- const education=locale.sections.find(s=>s.id==='education')?.items[0]?.title||'';
+ const work=locale.sections.find(s=>s.id==='experience')?.items[0];
+ const experience=work?.title||'';
+ const schoolEntry=locale.sections.find(s=>s.id==='education')?.items[0];
+ const education=schoolEntry?.title||'';
  const [school='',educationDates='']=education.split(/\s*·\s*/);
  const shortSchool=/[\u3400-\u9fff]/.test(school)?school:school.split(/\s+/).filter(word=>!['of','the','and'].includes(word.toLowerCase())).map(word=>word[0]||'').join('');
- return {company:experience.split(/\s*·\s*/)[0],school:shortSchool,educationDates};
+ return {company:experience.split(/\s*[·,]\s*/)[0],school:shortSchool,educationDates:schoolEntry?.date||educationDates};
 }
 export function downloadPath(language){return `downloads/resume-${language==='zh'?'zh':'en'}.pdf`}
 export function renderResumeDocument(locale){
  const {identity,sections}=locale;
- return '<article class="resume-document"><h1>'+escapeHtml(identity.name)+'</h1><p>'+escapeHtml(identity.role)+'</p><p>'+escapeHtml(identity.connections)+'</p>'+sections.map(s=>'<h2 id="'+escapeHtml(s.id)+'">'+escapeHtml(s.title)+'</h2>'+s.items.map(item=>'<section>'+(item.title?'<h3>'+escapeHtml(item.title)+'</h3>':'')+item.paragraphs.map(p=>'<p>'+escapeHtml(p)+'</p>').join('')+'</section>').join('')).join('')+'</article>';
+ return '<article class="resume-document"><h1>'+escapeHtml(identity.name)+'</h1><p>'+escapeHtml(identity.role)+'</p><p>'+escapeHtml(identity.connections)+'</p>'+sections.map(s=>'<h2 id="'+escapeHtml(s.id)+'">'+escapeHtml(s.title)+'</h2>'+s.items.map(item=>'<section>'+(item.title?'<h3>'+escapeHtml(item.title)+'</h3>':'')+(item.label?'<strong>'+escapeHtml(item.label)+'</strong>':'')+(['role','place','date'].filter(k=>item[k]).length?'<p>'+['role','place','date'].filter(k=>item[k]).map(k=>escapeHtml(item[k])).join(' · ')+'</p>':'')+item.paragraphs.map(p=>'<p>'+escapeHtml(p)+'</p>').join('')+'</section>').join('')).join('')+'</article>';
 }
 export function buildSite(root){
  const publicRoot=join(root,'public');const data=validatePublicResume(JSON.parse(readFileSync(join(publicRoot,'generated/resume.json'),'utf8')));
@@ -81,9 +83,9 @@ document.querySelectorAll('[data-resume-name]').forEach(el=>el.textContent=ident
 document.querySelectorAll('[data-resume-role]').forEach(el=>el.textContent=identity.role);
 document.querySelectorAll('[data-resume-fact]').forEach(el=>el.textContent=${js(facts)}[lang][el.dataset.resumeFact]||'');
 document.title=identity.name+' — Résumé';
-document.querySelectorAll('[data-resume-copy]').forEach(el=>el.innerHTML=resumeDocuments[lang]);
+document.querySelectorAll('[data-resume-copy]').forEach(el=>el.innerHTML=resumeDocuments[lang].replaceAll('id="','id="text-'));
 document.querySelectorAll('[data-resume-download]').forEach(link=>{link.href='downloads/resume-'+lang+'.pdf';link.download='resume-'+lang+'.pdf';link.textContent=lang==='zh'?'下载 PDF':'Download PDF'});
-document.querySelectorAll('[data-resume-language]').forEach(button=>{button.setAttribute('aria-pressed',String(button.dataset.resumeLanguage===lang));button.addEventListener('click',()=>{const next=button.dataset.resumeLanguage;try{localStorage.setItem('resume-language',next)}catch{}const url=new URL(location.href);url.searchParams.set('lang',next);location.href=url.href})});
+document.querySelectorAll('[data-resume-language]:not([data-reader-language])').forEach(button=>{button.setAttribute('aria-pressed',String(button.dataset.resumeLanguage===lang));button.addEventListener('click',()=>{const next=button.dataset.resumeLanguage;try{localStorage.setItem('resume-language',next)}catch{}const url=new URL(location.href);url.searchParams.set('lang',next);location.href=url.href})});
 const preview=document.querySelector('.paper .resume-document');if(preview)new ResizeObserver(()=>{preview.style.setProperty('--paper-scale',preview.parentElement.clientWidth/800)}).observe(preview.parentElement);
 document.querySelector('[data-print]')?.addEventListener('click',()=>window.print());
 `};
@@ -97,7 +99,7 @@ document.querySelector('[data-print]')?.addEventListener('click',()=>window.prin
   html=html.replace(/(<[^>]+data-resume-role[^>]*>)[^<]*(<\/[^>]+>)/g,(_,a,b)=>a+escapeHtml(locales.en.identity.role)+b);
   html=html.replace(/(<[^>]+data-resume-fact="([^"]+)"[^>]*>)[^<]*(<\/[^>]+>)/g,(_,a,key,b)=>a+escapeHtml(facts.en[key]||'')+b);
   html=html.replace(/<title>[^<]*<\/title>/,'<title>'+escapeHtml(locales.en.identity.name+(file==='index.html'?' | '+locales.en.identity.role:' — Résumé'))+'</title>');
-  if(file==='resume.html')html=html.replace(/(<main data-resume-copy>)[\s\S]*?(<\/main>)/,(_,a,b)=>a+documents.en+b);
+  if(file==='resume.html')html=html.replace(/(<div data-resume-copy>)[\s\S]*?(<\/div>)/,(_,a,b)=>a+documents.en.replaceAll('id="','id="text-')+b);
   writeFileSync(path,html);
  }
 }
