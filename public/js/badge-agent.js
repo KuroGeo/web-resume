@@ -2,7 +2,7 @@
 (()=>{
 const panel=document.getElementById('agent-panel'),fab=document.getElementById('agent-fab'),hero=document.getElementById('agent-link'),close=document.getElementById('close-agent'),copy=document.getElementById('copy-prompt'),text=document.getElementById('agent-prompt'),status=document.getElementById('copy-status');
 // Only the current public portfolio deployment. No local résumé contents or private contact details.
-const prompt=`Introduce George Y., an AI application engineer with a frontend background. His public profile is https://github.com/KuroGeo. Ask which role I am hiring for, and help me evaluate fit based only on verifiable public information. Do not invent experience or metrics. If you cannot access the profile, say so.`;
+const prompt=`Introduce ${window.PUBLIC_RESUME_IDENTITY.name}, ${window.PUBLIC_RESUME_IDENTITY.role}. Public links: ${window.PUBLIC_RESUME_IDENTITY.connections}. Ask which role I am hiring for, and help me evaluate fit based only on verifiable public information. Do not invent experience or metrics. If you cannot access the profile, say so.`;
 const encoded=encodeURIComponent(prompt);
 const links={chatgpt:`https://chatgpt.com/?q=${encoded}&hints=search`,claude:`https://claude.ai/new?q=${encoded}`,gemini:'https://gemini.google.com/app'};
 const providerNames={chatgpt:'ChatGPT',claude:'Claude',gemini:'Gemini — copy question, open, then paste'};

@@ -12,7 +12,11 @@
 
   var opening = document.createElement("div");
   opening.className = "portfolio-opening";
-  opening.innerHTML = '<p class="opening-name">George Y.</p><p class="opening-role opening-role-left">AI</p><p class="opening-role opening-role-right">Engineer</p><button class="opening-skip" type="button">Skip intro ↗</button>';
+  opening.innerHTML = '<p class="opening-name"></p><p class="opening-role opening-role-left"></p><p class="opening-role opening-role-right"></p><button class="opening-skip" type="button">Skip intro ↗</button>';
+  opening.querySelector(".opening-name").textContent = window.PUBLIC_RESUME_IDENTITY.name;
+  const roleWords = window.PUBLIC_RESUME_IDENTITY.role.split(" ");
+  opening.querySelector(".opening-role-right").textContent = roleWords.pop();
+  opening.querySelector(".opening-role-left").textContent = roleWords.join(" ");
   body.append(opening);
   opening.hidden = true;
   var blocked = [], activated = false;

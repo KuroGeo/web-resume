@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
   <meta name="theme-color" content="#f0f0ed">
-  <title>George Y. — The Résumé Press</title>
+  <title>George Y. — Résumé</title>
   <link rel="stylesheet" href="style/boarding-pass.css">
 <link rel="stylesheet" href="style/resume-embedded.css"><link rel="stylesheet" href="profile.css"></head>
 <body class="boarding-page resume-embedded">
@@ -18,7 +18,7 @@
       <section class="resume-intro" aria-labelledby="page-title">
         <p class="eyebrow"><span></span> DESIGN, CODE & A LITTLE PAPER</p>
         <h1 id="page-title">A digital mind.<br>A paper trail.</h1>
-        <p class="intro-copy">I'm George Y.. I work at the intersection of design and technology. Here’s the experience behind the interface — in a format that never goes out of style.</p>
+        <p class="intro-copy">I'm <span data-resume-name>George Y.</span>. I work at the intersection of design and technology. Here’s the experience behind the interface — in a format that never goes out of style.</p>
         <div class="resume-spec"><span>DOCUMENT</span><strong>Curriculum vitæ</strong><span>FORMAT</span><strong>A4 · Printable résumé</strong></div>
         <div class="resume-actions">
           <button id="print-copy" class="primary-action" type="button">Print another copy <span>↘</span></button>
@@ -61,10 +61,10 @@
         <div class="studio-footer"><p id="printer-status" role="status">Preparing your copy · prints automatically</p><button id="reset-button" type="button">Reset ↻</button></div>
       </section>
     </div>
-    <footer class="page-footer"><span>George Y. © 2026</span><span>Made of curiosity, code and a little friction.</span><span>UTC+8</span></footer>
+    <footer class="page-footer"><span><span data-resume-name>George Y.</span> © 2026</span><span>Made of curiosity, code and a little friction.</span><span>UTC+8</span></footer>
   </main>
   <dialog class="resume-reader" id="resume-reader" aria-labelledby="reader-title">
-    <header class="reader-header"><div><p>THE FULL DOCUMENT</p><h2 id="reader-title">George Y. / Résumé</h2></div><div><a href="resume.html" target="_blank" rel="noopener">Print / Save PDF ↓</a><button id="reader-close" type="button" aria-label="Close résumé">×</button></div></header>
+    <header class="reader-header"><div><p>THE FULL DOCUMENT</p><h2 id="reader-title"><span data-resume-name>George Y.</span> / Résumé</h2></div><div><a href="downloads/resume-en.pdf" data-resume-download download>Download PDF</a><button id="reader-close" type="button" aria-label="Close résumé">×</button></div></header>
     <div class="reader-pages" data-resume-copy></div></dialog>
   <script src="js/resume-document.js"></script><script src="js/boarding-pass.js"></script>
 </body>
