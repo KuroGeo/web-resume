@@ -120,6 +120,18 @@ class Store:
             if public
             else config["document"]["cv"]
         )
+        # Keep optional project fields editable after saving an empty value.
+        for collection in self.collections(version, doc):
+            items = root
+            for part in collection["path"]:
+                items = items[part]
+            for item in items:
+                if not isinstance(item, dict):
+                    continue
+                for key, value in collection["template"].items():
+                    item.setdefault(key, json.loads(json.dumps(value)))
+                if public and not item["paragraphs"]:
+                    item["paragraphs"] = [""]
         fields = []
 
         def walk(value, path, group, context=""):
@@ -177,6 +189,44 @@ class Store:
                 walk(items, ["sections", group], group)
         return fields
 
+    def collections(self, version, doc):
+        """Only project lists have a supported entry template."""
+        result = []
+        if version.startswith("public-"):
+            for i, section in enumerate(doc["sections"]):
+                if "project" in section["id"].lower() or "项目" in section["title"]:
+                    result.append(
+                        {
+                            "path": ["sections", i, "items"],
+                            "group": section["title"],
+                            "count": len(section["items"]),
+                            "minimum": 1,
+                            "template": {
+                                "title": "新项目",
+                                "date": "",
+                                "role": "",
+                                "paragraphs": [""],
+                            },
+                        }
+                    )
+        else:
+            for group, items in doc.get("sections", {}).items():
+                if isinstance(items, list) and (
+                    "project" in group.lower() or "项目" in group
+                ):
+                    result.append(
+                        {
+                            "path": ["sections", group],
+                            "group": group,
+                            "count": len(items),
+                            "minimum": 0,
+                            "template": {"name": "新项目", "summary": ""},
+                        }
+                    )
+        for collection in result:
+            collection["id"] = json.dumps(collection["path"], ensure_ascii=False)
+        return result
+
     def get(self, version):
         path, cat, cfg, rev, doc = self.load_state(version)
         public = version.startswith("public-")
@@ -186,6 +236,7 @@ class Store:
             "name": doc.get("identity", doc).get("name", version),
             "revision": rev,
             "fields": self.fields(version, cat, cfg, doc),
+            "collections": self.collections(version, doc),
             "source": path.read_text(),
             "preview": self.preview.get(version),
         }
@@ -252,16 +303,56 @@ class Store:
                 self.validate_private(cat, updated)
             self.atomic(path, updated)
         else:
-            allowed = {f["id"]: f for f in self.fields(version, cat, cfg, doc)}
-            changes = body.get("changes", {})
-            if not isinstance(changes, dict) or set(changes) - set(allowed):
-                raise ValueError("包含未知字段。")
             root = (
                 cfg["document"]["locales"][version[-2:]]
                 if public
                 else cfg["document"]["cv"]
             )
-            catalog_changed = config_changed = False
+            collections = {c["id"]: c for c in self.collections(version, doc)}
+            operations = body.get("collections", {})
+            if not isinstance(operations, dict) or set(operations) - set(collections):
+                raise ValueError("包含未知项目列表。")
+            removals = []
+            for key, operation in operations.items():
+                if not isinstance(operation, dict) or set(operation) != {
+                    "add",
+                    "remove",
+                }:
+                    raise ValueError("项目操作格式不正确。")
+                count, removed = operation["add"], operation["remove"]
+                collection = collections[key]
+                if (
+                    type(count) is not int
+                    or not 0 <= count <= 100
+                    or not isinstance(removed, list)
+                ):
+                    raise ValueError("项目操作格式不正确。")
+                total = collection["count"] + count
+                if any(
+                    type(i) is not int or not 0 <= i < total for i in removed
+                ) or len(set(removed)) != len(removed):
+                    raise ValueError("删除项目索引不正确。")
+                if total - len(removed) < collection["minimum"]:
+                    raise ValueError("公开版精选项目至少保留一个项目。")
+                items = root
+                for part in collection["path"]:
+                    items = items[part]
+                for _ in range(count):
+                    item = json.loads(json.dumps(collection["template"]))
+                    items.append(item)
+                removals.append((items, removed))
+            # Resolve the appended entries so field IDs remain tied to original indices.
+            expanded = (
+                self.project(cat, cfg)["locales"][version[-2:]]
+                if public
+                else self.resolve(cat, cfg)["cv"]
+            )
+            allowed = {f["id"]: f for f in self.fields(version, cat, cfg, expanded)}
+            changes = body.get("changes", {})
+            if not isinstance(changes, dict) or set(changes) - set(allowed):
+                raise ValueError("包含未知字段。")
+            catalog_changed = False
+            config_changed = bool(operations)
             assigned = {}
             for key, text in changes.items():
                 if not isinstance(text, str) or len(text) > 30000:
@@ -269,6 +360,13 @@ class Store:
                 if text == allowed[key]["value"]:
                     continue
                 parts = json.loads(key)
+                if any(
+                    parts[: len(collections[k]["path"])] == collections[k]["path"]
+                    and len(parts) > len(collections[k]["path"])
+                    and parts[len(collections[k]["path"])] in op["remove"]
+                    for k, op in operations.items()
+                ):
+                    continue
                 parent = root
                 for part in parts[:-1]:
                     parent = parent[part]
@@ -289,17 +387,43 @@ class Store:
                 else:
                     parent[parts[-1]] = text
                     config_changed = True
+            for items, removed in removals:
+                for i in sorted(removed, reverse=True):
+                    items.pop(i)
+            editable_items = [item for items, _ in removals for item in items]
+            if public:
+                editable_items = [
+                    item
+                    for c in collections.values()
+                    for item in root["sections"][c["path"][1]]["items"]
+                ]
+            for item in editable_items:
+                for key in list(item):
+                    if item[key] == "":
+                        del item[key]
+                if "paragraphs" in item:
+                    item["paragraphs"] = [text for text in item["paragraphs"] if text]
             if public:
                 self.validate(self.project(cat, cfg))
             else:
                 self.validate_private(cat, cfg)
-            # Refuse mixed-file changes rather than risking a partial transaction.
-            if catalog_changed and config_changed:
-                raise ValueError("共享内容和内联配置请分两次保存。")
+            writes = []
             if catalog_changed:
-                self.atomic(self.repo / "content/catalog.yaml", cat)
+                writes.append((self.repo / "content/catalog.yaml", cat))
             if config_changed:
-                self.atomic(path, cfg)
+                writes.append((path, cfg))
+            originals = [(target, target.read_bytes()) for target, _ in writes]
+            try:
+                for target, data in writes:
+                    self.atomic(target, data)
+            except Exception:
+                for target, original in originals:
+                    fd, temporary = tempfile.mkstemp(dir=target.parent, suffix=".yaml")
+                    with os.fdopen(fd, "wb") as stream:
+                        stream.write(original)
+                    os.chmod(temporary, target.stat().st_mode & 0o777)
+                    os.replace(temporary, target)
+                raise
         return self.get(version)
 
     def render(self, version, revision):
