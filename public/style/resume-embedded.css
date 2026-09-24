@@ -19,4 +19,7 @@
 .resume-embedded .resume-reader{border-color:var(--resume-line);background:var(--resume-cream);color:var(--resume-ink);box-shadow:0 30px 120px #20211f40}
 .resume-embedded .resume-reader::backdrop{background:#20211f77}.resume-embedded .reader-header p{color:#747570}.resume-embedded .reader-header a,.resume-embedded .reader-header button,.resume-embedded .reader-pages a{color:#20211f}.resume-embedded .reader-header button{border-color:var(--resume-line)}
 
-
+/* Match the reference site's readable A4 view without scaling the document image. */
+.resume-embedded .resume-app{max-width:900px}
+.resume-embedded .resume-studio{max-width:690px;margin-inline:auto}
+.resume-embedded .resume-reader{width:min(700px,calc(100% - 24px))}
