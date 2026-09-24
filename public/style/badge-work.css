@@ -4,3 +4,7 @@
 
 @media(prefers-reduced-motion:reduce){.badge-page .work-item{transition:none}.badge-page .work-thumb img{transform:none!important;opacity:1!important;will-change:auto}}
 
+
+/* Give the résumé its own full-size proofing area on the homepage. */
+.badge-page .resume-section{max-width:1120px}
+.badge-page #resume-frame{max-width:900px}

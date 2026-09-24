@@ -350,6 +350,13 @@
     measure();
     draw(peel);
   });
+  if ('ResizeObserver' in window) {
+    new ResizeObserver(function () {
+      if (document.getElementById('paper-viewport').clientWidth === w) return;
+      measure();
+      draw(peel);
+    }).observe(document.getElementById('paper-viewport'));
+  }
   motion.addEventListener('change', function () {
     if (!motion.matches) return;
     if (state === 'printing') { cancelAnimation(); printed(); }
