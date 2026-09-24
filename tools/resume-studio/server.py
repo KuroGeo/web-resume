@@ -75,6 +75,56 @@ class Store:
         self.build = self.repo / ".private-build/studio"
         self.safe(self.build)
         self.build.mkdir(parents=True, exist_ok=True)
+        self.load_previews()
+
+    def preview_for(self, version, revision):
+        info = self.preview.get(version)
+        if not isinstance(info, dict) or info.get("revision") != revision:
+            return None
+        ident, pages = info.get("id"), info.get("pages")
+        if not isinstance(ident, str) or not re.fullmatch(r"[0-9a-f]{24}", ident):
+            return None
+        if type(pages) is not int or pages < 1:
+            return None
+        directory = self.safe(self.build / ident)
+        if not self.safe(directory / "document.pdf").is_file() or any(
+            not self.safe(directory / f"page-{number}.png").is_file()
+            for number in range(1, pages + 1)
+        ):
+            return None
+        return info
+
+    def load_previews(self):
+        path = self.safe(self.build / "preview-index.json")
+        if path.exists():
+            try:
+                data = json.loads(path.read_text())
+                if isinstance(data, dict):
+                    self.preview = data
+            except (OSError, ValueError):
+                self.preview = {}
+
+    def save_previews(self):
+        fd, temporary = tempfile.mkstemp(dir=self.build, suffix=".json")
+        try:
+            with os.fdopen(fd, "w") as stream:
+                json.dump(self.preview, stream)
+            os.replace(temporary, self.safe(self.build / "preview-index.json"))
+        finally:
+            if Path(temporary).exists():
+                Path(temporary).unlink()
+
+    def prepare_previews(self):
+        """Build missing or changed PDFs before accepting browser requests."""
+        for version in self.version_ids():
+            try:
+                _, catalog, config, source_rev, doc = self.load_state(version)
+                preview_rev = self.preview_revision(version, catalog, config, doc)
+                if self.preview_for(version, preview_rev) is None:
+                    self.render(version, source_rev)
+                    print(f"Prepared PDF: {version}", flush=True)
+            except Exception as error:
+                print(f"Could not prepare {version}: {error}", file=sys.stderr, flush=True)
 
     def safe(self, path):
         path = Path(path).absolute()
@@ -112,6 +162,23 @@ class Store:
         else:
             doc = self.resolve(catalog, config)["cv"]
         return path, catalog, config, revision, doc
+
+    def preview_revision(self, version, catalog, config, doc):
+        content = doc if version.startswith("public-") else self.resolve(catalog, config)
+        encoded = json.dumps(
+            content, sort_keys=True, ensure_ascii=False, default=str
+        ).encode()
+        digest = hashlib.sha256(encoded)
+        render_files = (
+            ("scripts/build_public_resume.py", "templates/public-resume.typ")
+            if version.startswith("public-")
+            else ("scripts/resume_variant.py",)
+        )
+        for name in render_files:
+            path = self.safe(self.repo / name)
+            if path.is_file():
+                digest.update(path.read_bytes())
+        return digest.hexdigest()
 
     def fields(self, version, catalog, config, doc):
         public = version.startswith("public-")
@@ -214,13 +281,18 @@ class Store:
                 if isinstance(items, list) and (
                     "project" in group.lower() or "项目" in group
                 ):
+                    proof = group == "精选项目"
                     result.append(
                         {
                             "path": ["sections", group],
                             "group": group,
                             "count": len(items),
-                            "minimum": 0,
-                            "template": {"name": "新项目", "summary": ""},
+                            "minimum": 1 if proof else 0,
+                            "template": (
+                                {"title": "新项目", "date": "", "role": "", "paragraphs": [""]}
+                                if proof
+                                else {"name": "新项目", "summary": ""}
+                            ),
                         }
                     )
         for collection in result:
@@ -230,24 +302,34 @@ class Store:
     def get(self, version):
         path, cat, cfg, rev, doc = self.load_state(version)
         public = version.startswith("public-")
+        preview_rev = self.preview_revision(version, cat, cfg, doc)
         return {
             "version": version,
             "public": public,
             "name": doc.get("identity", doc).get("name", version),
+            "exportFilename": (
+                ("George_V1.pdf" if version == "public-en" else "叶禹锋_V1.pdf")
+                if public
+                else cfg.get("document", {}).get("export_filename")
+                or ("叶禹锋_V1.pdf" if "叶禹锋" in doc.get("name", "") else "George_V1.pdf")
+            ),
             "revision": rev,
+            "previewRevision": preview_rev,
             "fields": self.fields(version, cat, cfg, doc),
             "collections": self.collections(version, doc),
             "source": path.read_text(),
-            "preview": self.preview.get(version),
+            "preview": self.preview_for(version, preview_rev),
         }
 
-    def versions(self):
-        names = ["public-zh", "public-en"] + [
+    def version_ids(self):
+        return ["public-zh", "public-en"] + [
             p.stem
             for p in sorted((self.repo / "content/variants/private").glob("*.yaml"))
         ]
+
+    def versions(self):
         result = []
-        for name in names:
+        for name in self.version_ids():
             _, _, _, _, doc = self.load_state(name)
             identity = doc.get("identity", doc)
             result.append(
@@ -427,9 +509,13 @@ class Store:
         return self.get(version)
 
     def render(self, version, revision):
-        _, _, _, rev, _ = self.load_state(version)
+        _, catalog, config, rev, doc = self.load_state(version)
         if revision != rev:
             raise Conflict("文件已更新，请重新载入后再生成 PDF。")
+        preview_rev = self.preview_revision(version, catalog, config, doc)
+        cached = self.preview_for(version, preview_rev)
+        if cached is not None:
+            return cached
         directory = self.safe(self.build / secrets.token_hex(12))
         directory.mkdir()
         if version.startswith("public-"):
@@ -471,11 +557,12 @@ class Store:
         info = {
             "id": directory.name,
             "pages": pages,
-            "revision": rev,
+            "revision": preview_rev,
             "stale": current != rev,
         }
         (directory / "document.pdf").write_bytes(pdf.read_bytes())
         self.preview[version] = info
+        self.save_previews()
         return info
 
 
@@ -496,6 +583,7 @@ def authorize(headers, path, port, token):
 
 def serve(repo, port):
     store = Store(repo)
+    store.prepare_previews()
     token = secrets.token_urlsafe(32)
 
     class Handler(BaseHTTPRequestHandler):
@@ -580,7 +668,9 @@ def serve(repo, port):
                     )
                 try:
                     if path == "/api/save":
-                        result = store.save(version, body)
+                        store.save(version, body)
+                        store.prepare_previews()
+                        result = store.get(version)
                     elif path == "/api/render":
                         result = store.render(version, body.get("revision"))
                     else:

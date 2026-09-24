@@ -8,7 +8,7 @@
   var version = {"en": "25d65310320f", "zh": "b4ae93bc8356"}[language];
   var pdf = 'downloads/resume-' + language + '.pdf?v=' + version;
   window.resumePdfUrl = pdf;
-  window.resumePdfFilename = 'resume-' + language + '.pdf';
+  window.resumePdfFilename = language === 'zh' ? '叶禹锋_V1.pdf' : 'George_V1.pdf';
   document.documentElement.lang = language === 'zh' ? 'zh-CN' : 'en';
   document.querySelectorAll('[data-resume-page]').forEach(function (image) {
     image.src = 'assets/docs/resume-' + language + '-' + image.dataset.resumePage + '.png?v=' + version;
