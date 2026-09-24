@@ -116,6 +116,180 @@ class StudioTests(unittest.TestCase):
             with self.assertRaises(ValueError):
                 self.store.validate_private({}, {"document": document})
 
+    def public_projects(self):
+        def resolve(cat, value):
+            if isinstance(value, dict):
+                if "ref" in value:
+                    return cat["entries"][value["ref"]][value["lang"]]
+                return {key: resolve(cat, child) for key, child in value.items()}
+            if isinstance(value, list):
+                return [resolve(cat, child) for child in value]
+            return value
+
+        self.store.project = lambda cat, cfg: resolve(cat, cfg["document"])
+        self.store.validate = lambda doc: None
+        self.public = self.repo / "content/variants/public.yaml"
+        locale = {
+            "identity": {"name": "Example"},
+            "sections": [
+                {
+                    "id": "projects",
+                    "title": "精选项目",
+                    "items": [
+                        {
+                            "title": {"ref": "identity", "lang": "en"},
+                            "paragraphs": ["One"],
+                        },
+                        {"title": "Second", "paragraphs": ["Two"]},
+                    ],
+                }
+            ],
+        }
+        self.public.write_text(
+            json.dumps({"document": {"locales": {"zh": locale, "en": locale}}})
+        )
+        doc = self.store.get("public-zh")
+        return doc, doc["collections"][0]["id"]
+
+    def test_add_edit_and_remove_use_original_indices_and_preserve_other_locale(self):
+        doc, key = self.public_projects()
+        english = json.loads(self.public.read_text())["document"]["locales"]["en"]
+        before = self.catalog.read_bytes()
+        self.store.save(
+            "public-zh",
+            {
+                "revision": doc["revision"],
+                "collections": {key: {"add": 1, "remove": [0]}},
+                "changes": {
+                    json.dumps(["sections", 0, "items", 1, "title"]): "Edited second",
+                    json.dumps(["sections", 0, "items", 2, "title"]): "New third",
+                    json.dumps(["sections", 0, "items", 0, "title"]): "Discarded edit",
+                },
+            },
+        )
+        locales = json.loads(self.public.read_text())["document"]["locales"]
+        self.assertEqual(
+            [i["title"] for i in locales["zh"]["sections"][0]["items"]],
+            ["Edited second", "New third"],
+        )
+        self.assertEqual(locales["en"], english)
+        self.assertEqual(self.catalog.read_bytes(), before)
+
+    def test_optional_fields_remain_editable_after_save(self):
+        doc, key = self.public_projects()
+        result = self.store.save(
+            "public-zh",
+            {
+                "revision": doc["revision"],
+                "collections": {key: {"add": 1, "remove": []}},
+            },
+        )
+        field_id = json.dumps(["sections", 0, "items", 2, "date"])
+        self.assertIn(field_id, [f["id"] for f in result["fields"]])
+        result = self.store.save(
+            "public-zh", {"revision": result["revision"], "changes": {field_id: "2026"}}
+        )
+        self.assertEqual(
+            next(f["value"] for f in result["fields"] if f["id"] == field_id), "2026"
+        )
+
+    def test_private_projects_allow_empty_then_add_without_catalog_write(self):
+        self.store.resolve = lambda cat, cfg: cfg["document"]
+        self.config.write_text(
+            json.dumps(
+                {
+                    "document": {
+                        "cv": {
+                            "name": "Example",
+                            "sections": {
+                                "项目经历": [{"name": "First", "summary": "Example"}]
+                            },
+                        }
+                    }
+                }
+            )
+        )
+        before = self.catalog.read_bytes()
+        doc = self.store.get("resume_example")
+        key = doc["collections"][0]["id"]
+        result = self.store.save(
+            "resume_example",
+            {
+                "revision": doc["revision"],
+                "collections": {key: {"add": 0, "remove": [0]}},
+            },
+        )
+        self.assertEqual(result["collections"][0]["count"], 0)
+        result = self.store.save(
+            "resume_example",
+            {
+                "revision": result["revision"],
+                "collections": {key: {"add": 1, "remove": []}},
+            },
+        )
+        self.assertEqual(result["collections"][0]["count"], 1)
+        self.assertEqual(self.catalog.read_bytes(), before)
+
+    def test_invalid_project_operations_do_not_write(self):
+        doc, key = self.public_projects()
+        before = self.public.read_bytes()
+        for operation in [
+            {"add": 0, "remove": [0, 1]},
+            {"add": -1, "remove": []},
+            {"add": 0, "remove": [8]},
+            {"add": 0, "remove": [0, 0]},
+        ]:
+            with self.assertRaises(ValueError):
+                self.store.save(
+                    "public-zh",
+                    {"revision": doc["revision"], "collections": {key: operation}},
+                )
+            self.assertEqual(self.public.read_bytes(), before)
+
+    def test_shared_text_and_project_addition_save_together(self):
+        doc, key = self.public_projects()
+        result = self.store.save(
+            "public-zh",
+            {
+                "revision": doc["revision"],
+                "collections": {key: {"add": 1, "remove": []}},
+                "changes": {
+                    json.dumps(["sections", 0, "items", 0, "title"]): "Updated shared"
+                },
+            },
+        )
+        self.assertEqual(result["collections"][0]["count"], 3)
+        self.assertEqual(
+            json.loads(self.catalog.read_text())["entries"]["identity"]["en"],
+            "Updated shared",
+        )
+
+    def test_write_failure_restores_both_files(self):
+        doc, key = self.public_projects()
+        originals = [self.catalog.read_bytes(), self.public.read_bytes()]
+        atomic = self.store.atomic
+
+        def fail_second(path, data):
+            if path == self.public:
+                raise OSError("Synthetic disk error")
+            atomic(path, data)
+
+        self.store.atomic = fail_second
+        with self.assertRaises(OSError):
+            self.store.save(
+                "public-zh",
+                {
+                    "revision": doc["revision"],
+                    "collections": {key: {"add": 1, "remove": []}},
+                    "changes": {
+                        json.dumps(["sections", 0, "items", 0, "title"]): "Changed"
+                    },
+                },
+            )
+        self.assertEqual(
+            [self.catalog.read_bytes(), self.public.read_bytes()], originals
+        )
+
     def test_host_origin_and_session_required(self):
         valid = {"Host": "127.0.0.1:8767", "X-Studio-Token": "secret"}
         self.assertEqual(
