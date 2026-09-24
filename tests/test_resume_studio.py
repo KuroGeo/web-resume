@@ -67,6 +67,18 @@ class StudioTests(unittest.TestCase):
         )
         self.assertEqual(len(list((self.store.build / "backups").glob("*.yaml"))), 1)
 
+    def test_private_export_filename_and_proof_project_shape(self):
+        config = json.loads(self.config.read_text())
+        config["document"]["export_filename"] = "叶禹锋_V1.pdf"
+        self.config.write_text(json.dumps(config))
+        self.assertEqual(self.store.get("resume_example")["exportFilename"], "叶禹锋_V1.pdf")
+        collections = self.store.collections(
+            "resume_example",
+            {"sections": {"精选项目": [{"title": "示例", "paragraphs": ["内容"]}]}},
+        )
+        self.assertEqual(collections[0]["minimum"], 1)
+        self.assertEqual(collections[0]["template"]["title"], "新项目")
+
     def test_stale_editor_cannot_overwrite_newer_file(self):
         doc = self.store.get("resume_example")
         self.config.write_text(self.config.read_text() + "\n")
@@ -99,6 +111,93 @@ class StudioTests(unittest.TestCase):
     def test_generate_rejects_outdated_editor_revision(self):
         with self.assertRaises(module.Conflict):
             self.store.render("resume_example", "old-revision")
+
+    def test_local_preview_survives_restart_and_checks_artifacts(self):
+        _, catalog, config, revision, doc = self.store.load_state("resume_example")
+        preview_revision = self.store.preview_revision(
+            "resume_example", catalog, config, doc
+        )
+        ident = "a" * 24
+        directory = self.store.build / ident
+        directory.mkdir()
+        (directory / "document.pdf").write_bytes(b"%PDF-1.7")
+        (directory / "page-1.png").write_bytes(b"PNG")
+        info = {"id": ident, "pages": 1, "revision": preview_revision}
+        self.store.preview["resume_example"] = info
+        self.store.save_previews()
+        self.store.preview = {}
+        self.store.load_previews()
+        self.assertEqual(self.store.get("resume_example")["preview"], info)
+        self.assertEqual(self.store.render("resume_example", revision), info)
+        updated = json.loads(self.config.read_text())
+        updated["overrides"] = {"identity": {"en": "Updated Name"}}
+        self.config.write_text(json.dumps(updated))
+        self.assertIsNone(self.store.get("resume_example")["preview"])
+        (directory / "page-1.png").unlink()
+        self.assertIsNone(self.store.preview_for("resume_example", preview_revision))
+
+    def test_preparation_builds_only_missing_or_changed_versions(self):
+        revision = self.store.load_state("resume_example")[3]
+        self.store.version_ids = lambda: ["resume_example"]
+        rendered = []
+
+        def render(version, requested_revision):
+            rendered.append((version, requested_revision))
+            _, catalog, config, _, doc = self.store.load_state(version)
+            preview_revision = self.store.preview_revision(
+                version, catalog, config, doc
+            )
+            ident = f"{len(rendered):024x}"
+            directory = self.store.build / ident
+            directory.mkdir()
+            (directory / "document.pdf").write_bytes(b"%PDF-1.7")
+            (directory / "page-1.png").write_bytes(b"PNG")
+            self.store.preview[version] = {
+                "id": ident, "pages": 1, "revision": preview_revision
+            }
+
+        self.store.render = render
+        self.store.prepare_previews()
+        self.store.prepare_previews()
+        self.assertEqual(rendered, [("resume_example", revision)])
+        updated = json.loads(self.config.read_text())
+        updated["overrides"] = {"identity": {"en": "Updated Name"}}
+        self.config.write_text(json.dumps(updated))
+        new_revision = self.store.load_state("resume_example")[3]
+        self.store.prepare_previews()
+        self.assertEqual(rendered[-1], ("resume_example", new_revision))
+        self.assertEqual(len(rendered), 2)
+
+    def test_unrelated_catalog_entry_does_not_invalidate_preview(self):
+        _, catalog, config, raw_revision, doc = self.store.load_state("resume_example")
+        preview_revision = self.store.preview_revision(
+            "resume_example", catalog, config, doc
+        )
+        updated = json.loads(self.catalog.read_text())
+        updated["entries"]["unused"] = {"en": "Updated public copy"}
+        self.catalog.write_text(json.dumps(updated))
+        _, catalog, config, new_raw_revision, doc = self.store.load_state(
+            "resume_example"
+        )
+        self.assertNotEqual(raw_revision, new_raw_revision)
+        self.assertEqual(
+            preview_revision,
+            self.store.preview_revision("resume_example", catalog, config, doc),
+        )
+
+    def test_public_template_change_invalidates_preview(self):
+        self.public_projects()
+        _, catalog, config, _, doc = self.store.load_state("public-zh")
+        before = self.store.preview_revision("public-zh", catalog, config, doc)
+        template = self.repo / "templates/public-resume.typ"
+        template.parent.mkdir()
+        template.write_text("first template")
+        after = self.store.preview_revision("public-zh", catalog, config, doc)
+        self.assertNotEqual(before, after)
+        template.write_text("updated template")
+        self.assertNotEqual(
+            after, self.store.preview_revision("public-zh", catalog, config, doc)
+        )
 
     def test_yaml_dates_remain_editable_text(self):
         fields = self.store.fields(

@@ -84,7 +84,7 @@ document.querySelectorAll('[data-resume-role]').forEach(el=>el.textContent=ident
 document.querySelectorAll('[data-resume-fact]').forEach(el=>el.textContent=${js(facts)}[lang][el.dataset.resumeFact]||'');
 document.title=identity.name+' — Résumé';
 document.querySelectorAll('[data-resume-copy]').forEach(el=>el.innerHTML=resumeDocuments[lang].replaceAll('id="','id="text-'));
-document.querySelectorAll('[data-resume-download]').forEach(link=>{link.href='downloads/resume-'+lang+'.pdf';link.download='resume-'+lang+'.pdf';link.textContent=lang==='zh'?'下载 PDF':'Download PDF'});
+document.querySelectorAll('[data-resume-download]').forEach(link=>{link.href='downloads/resume-'+lang+'.pdf';link.download=lang==='zh'?'叶禹锋_V1.pdf':'George_V1.pdf';link.textContent=lang==='zh'?'下载 PDF':'Download PDF'});
 document.querySelectorAll('[data-resume-language]:not([data-reader-language])').forEach(button=>{button.setAttribute('aria-pressed',String(button.dataset.resumeLanguage===lang));button.addEventListener('click',()=>{const next=button.dataset.resumeLanguage;try{localStorage.setItem('resume-language',next)}catch{}const url=new URL(location.href);url.searchParams.set('lang',next);location.href=url.href})});
 const preview=document.querySelector('.paper .resume-document');if(preview)new ResizeObserver(()=>{preview.style.setProperty('--paper-scale',preview.parentElement.clientWidth/800)}).observe(preview.parentElement);
 document.querySelector('[data-print]')?.addEventListener('click',()=>window.print());
