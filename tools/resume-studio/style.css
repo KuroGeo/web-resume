@@ -10,3 +10,4 @@
 .version-menu #menu-hint{max-width:230px;padding:9px 10px;color:var(--muted);font-size:12px;line-height:1.6}.version-menu:has(#menu-hint:not([hidden])) hr{display:none}
 .version{transition:none}.version:hover:not(:disabled),.version[aria-current=true]:hover{background:#305168}.version:hover small{color:#cfdeea}
 @media(max-width:800px){.version-row{min-width:148px}.version-row .version{width:148px}.version-more{opacity:1;right:2px;top:8px}}
+.proof-pages{display:flex;flex-direction:column;align-items:center;gap:22px}.proof-pages figure{width:100%;max-width:790px;margin:0}.proof-page-image{display:block;width:100%;height:auto;background:#fff;box-shadow:0 5px 20px #172e4217}.proof-pages figcaption{padding:12px 0 4px}
