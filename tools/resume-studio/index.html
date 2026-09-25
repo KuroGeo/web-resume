@@ -7,6 +7,7 @@
   <div class="rail-heading"><h2>我的简历</h2><span id="version-count"></span></div>
   <label class="search"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="10" cy="10" r="6"/><path d="m15 15 5 5"/></svg><input id="search" type="search" placeholder="查找版本" aria-label="查找简历版本"></label>
   <nav id="versions" aria-label="简历版本"><p class="rail-loading">正在读取版本…</p></nav>
+  <div id="version-menu" class="version-menu" popover="auto" role="menu" aria-label="版本操作"><p id="menu-hint" hidden>公开版本受保护。复制私人版本后，可在此粘贴。</p><button type="button" data-command="rename" role="menuitem">重命名</button><button type="button" data-command="copy" role="menuitem">复制版本 <span>⌘ / Ctrl + C</span></button><button type="button" data-command="paste" role="menuitem">粘贴为新版本 <span>⌘ / Ctrl + V</span></button><hr><button type="button" data-command="delete" role="menuitem" class="danger">删除版本</button></div>
   <footer class="rail-footer"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="5" y="10" width="14" height="11" rx="2"/><path d="M8 10V7a4 4 0 0 1 8 0v3"/></svg><div>本机工作区<small>内容与 PDF 仅保存在私有仓库</small></div></footer>
 </aside>
 <main>
@@ -28,5 +29,6 @@
     </section>
   </div>
 </main>
+<dialog id="rename-dialog" class="rename-dialog" aria-labelledby="rename-title"><form method="dialog"><h2 id="rename-title">重命名简历版本</h2><p>只修改工作台中的显示名称，不影响简历内容或 PDF 文件名。</p><label for="version-name">版本名称</label><input id="version-name" maxlength="80" required autocomplete="off"><div class="dialog-actions"><button value="cancel">取消</button><button id="confirm-rename" class="primary" value="rename">保存名称</button></div></form></dialog>
 <script src="/app.js"></script>
 </body></html>
