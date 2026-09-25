@@ -89,6 +89,40 @@ class StudioTests(unittest.TestCase):
             )
         self.assertEqual(self.config.read_bytes(), before)
 
+    def test_version_rename_copy_and_delete_are_private_and_recoverable(self):
+        self.store.version_ids = lambda: [p.stem for p in sorted(self.config.parent.glob("*.yaml"))]
+        revision = self.store.get("resume_example")["revision"]
+        source = self.config.read_bytes()
+        self.store.rename_version("resume_example", revision, "求职版本")
+        self.assertEqual(self.store.versions()[-1]["name"], "求职版本")
+        self.assertEqual(self.config.read_bytes(), source)
+        copied = self.store.copy_version("resume_example", revision)
+        self.assertEqual(copied, "resume_example_copy")
+        self.assertEqual(self.store.config_path(copied).read_bytes(), source)
+        self.assertEqual(self.store.versions()[-1]["name"], "求职版本 · 副本")
+        self.assertEqual(self.store.copy_version("resume_example", revision), "resume_example_copy_2")
+        self.store.delete_version(copied, self.store.get(copied)["revision"])
+        self.assertNotIn(copied, self.store.version_ids())
+        backups = list((self.store.build / "backups").glob(f"{copied}-*.yaml"))
+        self.assertEqual(len(backups), 1)
+        self.assertEqual(backups[0].read_bytes(), source)
+        self.assertNotIn(copied, self.store.labels())
+
+    def test_version_operations_reject_public_and_stale_state(self):
+        revision = self.store.get("resume_example")["revision"]
+        for operation in (
+            lambda: self.store.rename_version("public-zh", revision, "bad"),
+            lambda: self.store.copy_version("public-zh", revision),
+            lambda: self.store.delete_version("public-zh", revision),
+        ):
+            with self.assertRaises(ValueError):
+                operation()
+        with self.assertRaises(module.Conflict):
+            self.store.delete_version("resume_example", "old")
+        with self.assertRaises(ValueError):
+            self.store.rename_version("resume_example", revision, " ")
+        self.assertTrue(self.config.exists())
+
     def test_unknown_field_and_traversal_fail_without_write(self):
         doc = self.store.get("resume_example")
         before = self.config.read_bytes()

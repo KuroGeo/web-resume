@@ -327,8 +327,95 @@ class Store:
             for p in sorted((self.repo / "content/variants/private").glob("*.yaml"))
         ]
 
+    def labels_path(self):
+        return self.safe(self.repo / "content/variants/studio-labels.json")
+
+    def labels(self):
+        path = self.labels_path()
+        if not path.exists():
+            return {}
+        data = json.loads(path.read_text())
+        if not isinstance(data, dict):
+            raise ValueError("版本名称文件格式不正确。")
+        return data
+
+    def write_labels(self, labels):
+        path = self.labels_path()
+        fd, temporary = tempfile.mkstemp(dir=path.parent, suffix=".json")
+        try:
+            with os.fdopen(fd, "w") as stream:
+                json.dump(labels, stream, ensure_ascii=False, indent=2)
+                stream.write("\n")
+            os.chmod(temporary, 0o600)
+            os.replace(temporary, path)
+        finally:
+            if Path(temporary).exists():
+                Path(temporary).unlink()
+
+    def require_private_revision(self, version, revision):
+        if version.startswith("public-"):
+            raise ValueError("公开版本不可改名或删除。")
+        path, _, _, current, _ = self.load_state(version)
+        if revision != current:
+            raise Conflict("版本已被其他窗口修改。请重新载入后重试。")
+        return path
+
+    def rename_version(self, version, revision, name):
+        self.require_private_revision(version, revision)
+        if not isinstance(name, str) or not 1 <= len(name.strip()) <= 80 or any(ord(c) < 32 for c in name):
+            raise ValueError("名称需为 1–80 个字符，且不能包含控制字符。")
+        labels = self.labels()
+        labels[version] = name.strip()
+        self.write_labels(labels)
+        return self.versions()
+
+    def copy_version(self, version, revision):
+        path = self.require_private_revision(version, revision)
+        stem = version + "_copy"
+        candidate = stem
+        number = 2
+        while (path.parent / f"{candidate}.yaml").exists():
+            candidate = f"{stem}_{number}"
+            number += 1
+        target = self.safe(path.parent / f"{candidate}.yaml")
+        fd, temporary = tempfile.mkstemp(dir=path.parent, suffix=".yaml")
+        try:
+            with os.fdopen(fd, "wb") as stream:
+                stream.write(path.read_bytes())
+            os.chmod(temporary, path.stat().st_mode & 0o777)
+            os.replace(temporary, target)
+        finally:
+            if Path(temporary).exists():
+                Path(temporary).unlink()
+        try:
+            labels = self.labels()
+            original = next(v["name"] for v in self.versions() if v["id"] == version)
+            labels[candidate] = original + " · 副本"
+            self.write_labels(labels)
+        except Exception:
+            target.unlink()
+            raise
+        return candidate
+
+    def delete_version(self, version, revision):
+        path = self.require_private_revision(version, revision)
+        backup = self.safe(self.build / "backups" / f"{version}-{secrets.token_hex(12)}.yaml")
+        backup.parent.mkdir(exist_ok=True)
+        os.replace(path, backup)
+        try:
+            labels = self.labels()
+            labels.pop(version, None)
+            self.write_labels(labels)
+        except Exception:
+            os.replace(backup, path)
+            raise
+        self.preview.pop(version, None)
+        self.save_previews()
+        return self.versions()
+
     def versions(self):
         result = []
+        labels = self.labels()
         for name in self.version_ids():
             _, _, _, _, doc = self.load_state(name)
             identity = doc.get("identity", doc)
@@ -339,7 +426,7 @@ class Store:
                         "公开版 · 中文" if name == "public-zh" else "公开版 · English"
                     )
                     if name.startswith("public-")
-                    else identity.get("headline", name),
+                    else labels.get(name) or identity.get("headline", name),
                     "detail": identity.get("name", ""),
                     "public": name.startswith("public-"),
                 }
@@ -673,6 +760,14 @@ def serve(repo, port):
                         result = store.get(version)
                     elif path == "/api/render":
                         result = store.render(version, body.get("revision"))
+                    elif path == "/api/version-rename":
+                        result = {"versions": store.rename_version(version, body.get("revision"), body.get("name"))}
+                    elif path == "/api/version-copy":
+                        copied = store.copy_version(version, body.get("revision"))
+                        store.prepare_previews()
+                        result = {"versions": store.versions(), "document": store.get(copied)}
+                    elif path == "/api/version-delete":
+                        result = {"versions": store.delete_version(version, body.get("revision"))}
                     else:
                         raise ValueError("操作不存在。")
                 finally:
