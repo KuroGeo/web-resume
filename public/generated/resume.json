@@ -493,27 +493,11 @@
               ]
             },
             {
-              "title": "AI Gift Assistant",
+              "title": "Douyin E-commerce X AI Innovation",
               "date": "2025 · ByteDance",
-              "role": "AI application / Product prototype",
+              "role": "AI application exploration / Agent development",
               "paragraphs": [
-                "Prototyped gift discovery with AI-generated product copy, a virtual guide, realtime voice and agent Q&A, connecting product recommendations with a conversational shopping flow."
-              ]
-            },
-            {
-              "title": "Native × Cross-platform Storefront",
-              "date": "2023 · ByteDance",
-              "role": "Cross-platform rendering / Store experience",
-              "paragraphs": [
-                "Combined a Native store header with Lynx-driven recommendations and livestream sections. Moved third-party modules from H5 into the cross-platform rendering path, covering preview tools, data contracts, caching and fallback."
-              ]
-            },
-            {
-              "title": "Multi-host Commerce SaaS",
-              "date": "2022 · ByteDance",
-              "role": "Product, store and transaction surfaces",
-              "paragraphs": [
-                "Packaged commerce capabilities for several content apps as configurable, observable surfaces. Adapted entry points, data contracts and interface behavior to each host while keeping the underlying user experience and engineering boundaries consistent."
+                "Worked with Douyin E-commerce's AI innovation team on product prototypes. Built the frontend and multi-feed content experience for an AI content app and its content management platform; maintained the gift assistant's agent conversations and asset management, integrated Coze workflows with Volcano Engine models for content generation, and explored phone comparisons and AI-written product copy."
               ]
             },
             {
@@ -1021,27 +1005,11 @@
               ]
             },
             {
-              "title": "AI 送礼助手",
+              "title": "抖音电商 X AI创新",
               "date": "2025 · ByteDance",
-              "role": "AI 应用 / 产品原型",
+              "role": "AI 应用探索 / Agent 开发",
               "paragraphs": [
-                "面向礼物选择场景，用 AI 生成商品卖点与推荐话术，并结合虚拟导购、实时语音和 Agent 问答，探索连续的购物决策体验。"
-              ]
-            },
-            {
-              "title": "店铺首页 Native × 跨端混排",
-              "date": "2023 · ByteDance",
-              "role": "跨端渲染 / 店铺体验",
-              "paragraphs": [
-                "店铺信息区由 Native 承载，推荐与直播等楼层由 Lynx 组件承接；将第三方店铺模块从 H5 迁入跨端渲染链路，完善调试预览、数据协议、缓存和异常兜底。"
-              ]
-            },
-            {
-              "title": "多宿主电商 SaaS",
-              "date": "2022 · ByteDance",
-              "role": "商品、店铺与交易链路",
-              "paragraphs": [
-                "把电商能力以可配置、可观测的方式接入多个内容 App。针对不同宿主处理入口展示、数据协议、页面表现与工程边界，让同一套能力在不同消费场景中稳定复用。"
+                "参与抖音电商 AI 创新团队的产品探索，负责 AI 内容 App 前端与多 Feed 内容消费链路、B 端内容管理平台；维护送礼助手 Agent 对话与素材管理，接入 Coze 工作流和火山引擎模型生成内容素材，并探索手机智能对比、商品文案改写等电商场景。"
               ]
             },
             {
