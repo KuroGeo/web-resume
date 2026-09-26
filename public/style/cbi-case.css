@@ -21,9 +21,25 @@ body.cbi-page { margin: 0; background: var(--scc-bg); color: var(--scc-ink); fon
 .cbi-hero-links { display: flex; flex-wrap: wrap; gap: 26px; margin-top: 42px; font-size: 14px; }
 .cbi-hero-links a { display: inline-flex; gap: 12px; align-items: center; padding-bottom: 7px; border-bottom: 1px solid var(--scc-ink); text-decoration: none; }
 .cbi-hero-links a:hover { color: var(--scc-ink-soft); }
-.cbi-hero-media { width: min(100%, 550px); margin: 0 auto; }
-.cbi-hero-media video { display: block; width: 100%; max-height: min(66svh, 680px); aspect-ratio: 9 / 12; object-fit: contain; background: #171410; }
-.cbi-hero-media figcaption { display: flex; justify-content: space-between; margin-top: 12px; color: var(--scc-ink-soft); font-size: 12px; }
+.cbi-hero-media { width: 100%; min-width: 0; margin: 0 auto; }
+.cbi-hero-swiper { width: 100%; }
+.cbi-hero-slide { min-width: 0; margin: 0; }
+.cbi-hero-visual { position: relative; display: block; width: 100%; height: min(62svh, 610px); overflow: hidden; background: #efeeea; }
+.cbi-hero-overview { display: flex; align-items: center; background: var(--scc-bg); }
+.cbi-hero-visual:has(video) { background: #171410; }
+.cbi-hero-visual img, .cbi-hero-visual video { position: absolute; inset: 0; display: block; width: 100%; height: 100%; object-fit: contain; }
+.cbi-hero-overview img { position: static; height: auto; max-height: 100%; border: 1px solid var(--scc-hairline); }
+.cbi-hero-slide figcaption { display: flex; justify-content: space-between; gap: 16px; min-height: 34px; margin-top: 12px; color: var(--scc-ink-soft); font-size: 12px; }
+.cbi-hero-slide figcaption a { white-space: nowrap; text-decoration: none; }
+.cbi-hero-slide figcaption a:hover { text-decoration: underline; }
+.cbi-hero-controls { display: flex; align-items: center; gap: 20px; margin-top: 18px; }
+.cbi-hero-count { min-width: 52px; color: var(--scc-ink-soft); font-size: 12px; font-variant-numeric: tabular-nums; }
+.cbi-hero-pagination.swiper-pagination { position: static; display: flex; align-items: center; justify-content: center; flex: 1; width: auto; }
+.cbi-hero-pagination .swiper-pagination-bullet { width: 7px; height: 7px; margin: 0 5px !important; padding: 0; border: 0; background: var(--scc-ink); opacity: .28; cursor: pointer; }
+.cbi-hero-pagination .swiper-pagination-bullet-active { opacity: 1; }
+.cbi-hero-arrows { display: flex; gap: 8px; }
+.cbi-hero-arrows button { width: 38px; height: 38px; border: 1px solid var(--scc-hairline); border-radius: 50%; background: transparent; color: var(--scc-ink); font: 20px/1 var(--scc-sans); cursor: pointer; }
+.cbi-hero-arrows button:hover { background: var(--scc-ink); color: var(--scc-bg); }
 .cbi-section-nav { display: flex; flex-wrap: wrap; justify-content: center; gap: 12px 28px; padding: 24px 18px; border-block: 1px solid var(--scc-hairline); font-size: 13px; }
 .cbi-section-nav a { text-decoration: none; }
 .cbi-section-nav a:hover { text-decoration: underline; }
@@ -68,7 +84,7 @@ body.cbi-page { margin: 0; background: var(--scc-bg); color: var(--scc-ink); fon
 .cbi-footer { display: flex; justify-content: space-between; gap: 24px; padding: 35px clamp(18px, 4vw, 64px) 65px; border-top: 1px solid var(--scc-hairline); font-size: 13px; }
 @media (max-width: 900px) {
   .cbi-hero { grid-template-columns: 1fr; min-height: 0; padding-block: 76px; }
-  .cbi-hero-media { width: min(100%, 540px); }
+  .cbi-hero-media { width: min(100%, 700px); }
   .cbi-section-head, .cbi-role { grid-template-columns: 1fr; gap: 22px; }
   .cbi-section-head p { max-width: 65ch; }
 }
@@ -82,7 +98,9 @@ body.cbi-page { margin: 0; background: var(--scc-bg); color: var(--scc-ink); fon
   .cbi-hero h1 { font-size: clamp(47px, 12vw, 70px); }
   .cbi-lead { margin-top: 24px; font-size: 16px; }
   .cbi-hero-links { margin-top: 30px; }
-  .cbi-hero-media video { max-height: 65svh; }
+  .cbi-hero-visual { height: min(58svh, 440px); }
+  .cbi-hero-controls { gap: 8px; }
+  .cbi-hero-arrows button { width: 42px; height: 42px; }
   .cbi-section-nav { justify-content: flex-start; flex-wrap: nowrap; overflow-x: auto; padding: 18px 20px; white-space: nowrap; scrollbar-color: #aaa49a transparent; }
   .cbi-section { width: calc(100% - 40px); padding-block: 82px; }
   .cbi-section-head { margin-bottom: 34px; }
