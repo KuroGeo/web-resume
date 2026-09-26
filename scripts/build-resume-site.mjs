@@ -55,7 +55,7 @@ export function showcaseProjects(locale){
  const selected=locale.sections.find(section=>section.id==='projects')?.items;
  requireValid(selected?.length===3,'Expected three public selected projects');
  const presentation=[
-  {id:'cbi',section:'independent',thumb:'assets/cbi/cover.jpg',url:'./work/cbi/'},
+  {id:'cbi',section:'independent',thumb:'assets/cbi/cover.jpg',video:'assets/cbi/film-loop.mp4',url:'./work/cbi/'},
   {id:'ai',section:'ux',thumb:'assets/ai-commerce/gift-assistant-content.jpeg',url:'./project-scrollcarousel.html?project=1'},
   {id:'video',section:'experimental',thumb:'assets/video-commerce/feed-irregular-card.jpeg',url:'./project-scrollcarousel.html?project=2'}
  ];

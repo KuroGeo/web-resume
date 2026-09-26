@@ -25,7 +25,21 @@
       var mesh = new THREE.Mesh(this.geometry, material);
       mesh.userData = { index: index, project: project, hover: 1 };
       scene.add(mesh);
-      this.items.push({ index: index, project: project, group: group, featured: Boolean(group), local: group ? group.projects.indexOf(index) : -1, mesh: mesh, rect: { left: 0, top: 0, width: 0, height: 0 }, owner: 'mesh', opacity: 0 });
+      var item = { index: index, project: project, group: group, featured: Boolean(group), local: group ? group.projects.indexOf(index) : -1, mesh: mesh, posterTexture: texture, rect: { left: 0, top: 0, width: 0, height: 0 }, owner: 'mesh', opacity: 0 };
+      if (project.video && group) {
+        var video = document.createElement('video');
+        video.src = project.video; video.preload = 'none'; video.muted = true; video.defaultMuted = true;
+        video.loop = true; video.playsInline = true; video.setAttribute('playsinline', '');
+        video.addEventListener('playing', function () {
+          if (item.videoTexture) return;
+          item.videoTexture = new THREE.VideoTexture(video);
+          item.videoTexture.encoding = THREE.sRGBEncoding;
+          item.videoTexture.minFilter = THREE.LinearFilter;
+          material.map = item.videoTexture; material.needsUpdate = true;
+        });
+        item.video = video;
+      }
+      this.items.push(item);
     }, this);
     this.texturesReady = Promise.all(promises);
   };
@@ -87,11 +101,29 @@
       mesh.userData.hover += (hoverTarget - mesh.userData.hover) * (1 - Math.exp(-dt * 12));
       mesh.scale.multiplyScalar(mesh.userData.hover);
       mesh.material.opacity = item.opacity;
+      if (item.video) {
+        var shouldPlay = !o.active && !document.hidden && work > .15 && state.weights[item.group.id] > .2 && item.opacity > .1;
+        if (shouldPlay && item.video.paused && !item.videoPending && !item.videoFailed) {
+          item.videoPending = true;
+          item.video.play().then(function () { item.videoPending = false; }, function (error) {
+            item.videoPending = false;
+            if (error.name !== 'AbortError') item.videoFailed = true;
+          });
+        } else if (!shouldPlay && !item.video.paused) item.video.pause();
+      }
       mesh.renderOrder = o.active ? 10 + B.featured.indexOf(item.index) : item.group.id === state.group.id ? 3 : 1;
       item.rect = this.rig.rect(mesh);
     }, this);
   };
+  B.Field.prototype.pauseMedia = function () {
+    this.items.forEach(function (item) { if (item.video) item.video.pause(); });
+  };
   B.Field.prototype.dispose = function () {
-    this.items.forEach(function (i) { if (i.mesh.material.map) i.mesh.material.map.dispose(); i.mesh.material.dispose(); }); this.geometry.dispose();
+    this.items.forEach(function (i) {
+      if (i.video) { i.video.pause(); i.video.removeAttribute('src'); i.video.load(); }
+      if (i.videoTexture) i.videoTexture.dispose();
+      if (i.posterTexture) i.posterTexture.dispose();
+      i.mesh.material.dispose();
+    }); this.geometry.dispose();
   };
 })();

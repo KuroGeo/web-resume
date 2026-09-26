@@ -70,6 +70,7 @@
       // Native cards need no canvas frames, projection, raycasting or DOM animation.
       runtime.canvasRoot.style.visibility = 'hidden';
       runtime.overlay.style.visibility = 'hidden';
+      runtime.field.pauseMedia();
       if (!runtime.nativeHeld) B.interaction.update(runtime.field.items, false);
       runtime.nativeHeld = true; runtime.frame = 0; return;
     }
@@ -80,6 +81,7 @@
     runtime.canvasRoot.style.opacity = runtime.opacity;
     runtime.overlay.style.visibility = runtime.opacity < .001 ? 'hidden' : '';
     if (runtime.opacity < .001 && !opening.active) {
+      runtime.field.pauseMedia();
       B.interaction.update(runtime.field.items, false);
       runtime.frame = requestAnimationFrame(tick); return;
     }
@@ -111,7 +113,7 @@
     nativeSize.observe(section.querySelector('.scene-fallback'));
   }
   reduced.addEventListener('change', function () { if (reduced.matches) failOpen(); });
-  document.addEventListener('visibilitychange', function () { cancelAnimationFrame(runtime.frame); runtime.last = 0; if (!document.hidden && !runtime.failed) runtime.frame = requestAnimationFrame(tick); });
+  document.addEventListener('visibilitychange', function () { cancelAnimationFrame(runtime.frame); runtime.last = 0; if (document.hidden && !runtime.failed) runtime.field.pauseMedia(); else if (!document.hidden && !runtime.failed) runtime.frame = requestAnimationFrame(tick); });
   addEventListener('pageshow', function (e) {
     if (e.persisted && !runtime.failed) {
       B.interaction.entering = false; B.interaction.flight = false; B.scroll.lock(false);
@@ -125,4 +127,3 @@
     if (group && !window.BADGE_RETURN_STATE) document.fonts.ready.then(function () { B.scroll.go(group.center, true); });
   }
 })();
-

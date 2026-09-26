@@ -1,15 +1,15 @@
 .skip-link{position:fixed;left:12px;top:-100px;z-index:1000;background:#20211f;color:#fff;padding:12px}.skip-link:focus{top:12px}
 .language-switch{position:fixed;left:28px;bottom:25px;z-index:28;border:1px solid #dadbd6;border-radius:20px;background:#fafaf8;padding:9px 14px;font:11px Inter,sans-serif;cursor:pointer}
 .badge-page .portrait img{object-fit:cover;object-position:center 32%}
-.badge-page .scene-fallback img{object-fit:contain;background:#f0f0ed}
+.badge-page .scene-fallback :is(img,video){object-fit:contain;background:#f0f0ed}
 .badge-page .scene-overview-heading h2{max-width:100%}
 html[lang="zh-CN"] .scene-chapter-line{font-family:Newsreader,"Songti SC",serif;line-height:1.55}
 html[lang="zh-CN"] .scene-overview-heading h2,html[lang="zh-CN"] .scene-fallback h2{font-family:Newsreader,"Songti SC",serif}
 .work-thumb img{object-fit:contain;background:#f0f0ed}
-@media(max-width:700px){.language-switch{left:18px;bottom:18px}.scene-fallback h2{overflow-wrap:anywhere}.badge-page .scene-fallback img{aspect-ratio:16/9}}
+@media(max-width:700px){.language-switch{left:18px;bottom:18px}.scene-fallback h2{overflow-wrap:anywhere}.badge-page .scene-fallback :is(img,video){aspect-ratio:16/9}}
 .badge-page{font-synthesis:none}
 .scc-detail-hero-media img{object-fit:contain!important;max-height:650px;background:#f0f0ed}
 .work-thumb img{width:100%;height:100%;object-fit:contain!important}
 html[lang="zh-CN"] .badge .company{font-size:10px;white-space:nowrap}
-.badge-page .scene-fallback a img{object-fit:contain!important;background:#f0f0ed}
+.badge-page .scene-fallback a :is(img,video){object-fit:contain!important;background:#f0f0ed}
 .badge-page .resume-section{scroll-margin-top:90px}
