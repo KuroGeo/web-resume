@@ -413,7 +413,7 @@
             {
               "label": "AI applications:",
               "paragraphs": [
-                "Owned the architecture and delivery of a multimodal content creation product, spanning canvas interactions, model integration, asynchronous generation and video replication."
+                "Owned the architecture and delivery of an AI product for ad creative and campaign workflows, spanning multimodal creation, asynchronous generation, creative replication and integration with advertising use cases."
               ]
             },
             {
@@ -485,11 +485,12 @@
           "title": "Selected Projects",
           "items": [
             {
-              "title": "AIGC Infinite Canvas",
+              "title": "AI Ad Creation & Campaign Platform",
+              "url": "https://cbi.cc/",
               "date": "2026 · Startup project",
               "role": "Product & Engineering Lead / AI application",
               "paragraphs": [
-                "Designed and developed an AI creation canvas from the ground up for scripts, images, video generation and video replication. Owned the canvas architecture, core workflows and product iteration across frontend, backend and model integration."
+                "Built for ad creative production and campaign delivery, the project combines an AIGC canvas with an advertising agent. I led the canvas architecture and delivery from the ground up, covering scripts, image and video generation, and creative replication; worked to connect creative assets with campaign workflows across frontend, backend and model integration."
               ]
             },
             {
@@ -925,7 +926,7 @@
             {
               "label": "AI 应用：",
               "paragraphs": [
-                "负责多模态内容创作产品的架构与交付，覆盖画布交互、模型接入、异步生成与视频复刻。"
+                "负责面向广告创意与投放场景的 AI 产品架构和交付，覆盖多模态创作、异步生成、素材复刻及广告工作流衔接。"
               ]
             },
             {
@@ -997,11 +998,12 @@
           "title": "精选项目",
           "items": [
             {
-              "title": "AIGC 无限画布",
+              "title": "AI 广告创作与投放平台",
+              "url": "https://cbi.cc/",
               "date": "2026 · 创业项目",
               "role": "产品与技术负责人 / AI 应用",
               "paragraphs": [
-                "从 0 到 1 设计并推进 AI 创作画布，覆盖脚本、图片与视频生成及视频复刻。负责画布架构、核心模块和需求迭代，联动前端、服务端与模型能力完成交付。"
+                "面向广告创意生产与投放，项目包含 AIGC 无限画布与广告投放 Agent。我负责创作画布从 0 到 1 的架构与交付，覆盖脚本、图片、视频生成及素材复刻；推动创作素材与广告投放场景衔接，联动前端、服务端与模型能力持续迭代。"
               ]
             },
             {
