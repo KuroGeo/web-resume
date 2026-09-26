@@ -19,10 +19,10 @@ for(const language of ['zh','en']){
     assert.ok(existsSync(resolve(root,project.hero)),project.hero);
   }
 }
-for(const file of ['index.html','index-resume-embed.html','resume.html','project-scrollcarousel.html']){
+for(const file of ['index.html','index-resume-embed.html','resume.html','project-scrollcarousel.html','work/cbi/index.html']){
   const path=resolve(root,file),html=readFileSync(path,'utf8');
   assert.ok(!/Xinyi|CV_.*\.pdf|assets\/hero-portrait/.test(html),'No reference personal content');
-  for(const match of html.matchAll(/(?:src|href)="([^"]+)"/g)){
+  for(const match of html.matchAll(/(?:src|href|poster)="([^"]+)"/g)){
     const url=match[1];
     if(/^(https?:|mailto:|#)/.test(url))continue;
     assert.ok(existsSync(resolve(dirname(path),url.split(/[?#]/)[0])),file+': '+url);
