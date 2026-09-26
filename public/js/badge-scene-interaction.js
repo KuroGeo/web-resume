@@ -6,7 +6,7 @@
     this.runtime = runtime; this.pointer = new THREE.Vector2(4,4); this.raycaster = new THREE.Raycaster();
     this.selected = -1; this.entering = false; this.flight = false; this.links = []; this.keyboardHover = -1;
     B.projects.forEach(function (project,i) {
-      var link = document.createElement('a'); link.className = 'scene-project-hit'; link.href = './project-scrollcarousel.html?project='+i;
+      var link = document.createElement('a'); link.className = 'scene-project-hit'; link.href = project.url;
       link.setAttribute('aria-label','View '+project.title); link.hidden = true; link.dataset.group = project.section;
       var label = document.createElement('span'); label.className = 'scene-project-label'; label.textContent = project.title+(project.sceneNote ? ' · Concept' : ''); link.append(label);
       link.addEventListener('click',function(e){
@@ -30,8 +30,9 @@
   B.Interaction.prototype.open = function(index,source){
     if(this.entering || !B.projects[index]) return;
     this.selected=index;
-    var href='./project-scrollcarousel.html?project='+index;
-    if(window.BadgeNavigation) BadgeNavigation.open(href,source || this.links[index]); else location.href=href;
+    var href=B.projects[index].url;
+    if(B.projects[index].id==='cbi') location.href=href;
+    else if(window.BadgeNavigation) BadgeNavigation.open(href,source || this.links[index]); else location.href=href;
   };
   B.Interaction.prototype.update = function(items,interactive){
     var rt=this.runtime;
@@ -53,4 +54,3 @@
     document.documentElement.removeEventListener('pointerleave',this.reset);
   };
 })();
-

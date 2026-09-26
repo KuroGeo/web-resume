@@ -57,7 +57,7 @@
       if (g.keywords) group.append(chapterTags(g));
       var p = document.createElement('p'); p.textContent = g.line; group.append(p);
       g.projects.forEach(function (i) {
-        var project = B.projects[i], a = document.createElement('a'); a.href = './project-scrollcarousel.html?project=' + i;
+        var project = B.projects[i], a = document.createElement('a'); a.href = project.url;
         var image = document.createElement('img'); image.src = project.thumb; image.alt = ''; image.loading = 'lazy'; image.width = 800; image.height = 450;
         var title = document.createElement('h3'); title.textContent = project.title + (/^Concept proposal/.test(project.sceneNote || '') ? ' · Concept' : '');
         var description = document.createElement('p'); description.className = 'scene-card-description'; description.textContent = project.summary + (project.sceneNote ? ' ' + project.sceneNote : '');

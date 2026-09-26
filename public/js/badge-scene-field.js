@@ -30,14 +30,15 @@
     this.texturesReady = Promise.all(promises);
   };
   B.Field.prototype.pose = function (item, state) {
-    var slots = item.group.id === 'experimental' ? [[.50,.20,.30],[.26,.78,.23],[.74,.78,.22]] :
+    var solo = item.group.projects.length === 1;
+    var slots = solo ? [[.50,.16,.46]] : item.group.id === 'experimental' ? [[.50,.20,.30],[.26,.78,.23],[.74,.78,.22]] :
       [[.235,.20,.255],[.765,.20,.235],[.235,.78,.23],[.765,.78,.235]];
     var slot = slots[item.local], activeZ = B.motion.nearZ;
     // Scale the full authored composition around its center, not individual card centers.
     var transform = B.chapterTransform(item.group, state), scale = transform.scale;
     var z = activeZ;
     var height = 2 * (B.motion.cameraZ - activeZ) * Math.tan(Math.PI / 8), unit = height / this.rig.height;
-    var width = Math.min(this.rig.width * slot[2], this.rig.height * (item.group.id === 'experimental' && item.local === 0 ? .44 : .36));
+    var width = Math.min(this.rig.width * slot[2], this.rig.height * (solo ? .54 : item.group.id === 'experimental' && item.local === 0 ? .44 : .36));
     if (B.mobilePilot && item.group === B.groups[0] && B.mobileComposition) {
       var layout = B.mobileComposition;
       // Alternate restrained lateral offsets; every real image can be read in full.
