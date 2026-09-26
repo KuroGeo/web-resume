@@ -48,6 +48,32 @@ const copy = {
 let language = 'zh';
 try { language = localStorage.getItem('resume-language') === 'en' ? 'en' : 'zh'; } catch {}
 let heroSwiper;
+const reducedMotion = matchMedia('(prefers-reduced-motion: reduce)').matches;
+let userPausedAutoplay = false;
+let heroInView = true;
+
+function updateAutoplayButton() {
+  const button = document.querySelector('.cbi-hero-auto');
+  button.hidden = reducedMotion;
+  button.textContent = userPausedAutoplay ? '▶' : 'Ⅱ';
+  button.setAttribute('aria-pressed', String(userPausedAutoplay));
+  const label = language === 'en'
+    ? (userPausedAutoplay ? 'Resume automatic slideshow' : 'Pause automatic slideshow')
+    : (userPausedAutoplay ? '继续自动轮播' : '暂停自动轮播');
+  button.setAttribute('aria-label', label);
+  button.title = label;
+}
+
+function syncHeroAutoplay() {
+  if (!heroSwiper?.autoplay || reducedMotion) return;
+  const activeVideo = heroSwiper.slides[heroSwiper.activeIndex]?.querySelector('video');
+  const hovering = matchMedia('(hover: hover)').matches && heroSwiper.el.matches(':hover');
+  const focused = heroSwiper.el.contains(document.activeElement);
+  if (userPausedAutoplay) heroSwiper.autoplay.stop();
+  else if (!heroInView || document.hidden || hovering || focused || (activeVideo && !activeVideo.paused && !activeVideo.ended)) heroSwiper.autoplay.pause();
+  else if (!heroSwiper.autoplay.running) heroSwiper.autoplay.start();
+  else if (heroSwiper.autoplay.paused) heroSwiper.autoplay.resume();
+}
 
 function updateHeroControls() {
   if (!heroSwiper) return;
@@ -60,6 +86,7 @@ function updateHeroControls() {
   document.querySelectorAll('.cbi-hero-pagination .swiper-pagination-bullet').forEach((bullet, index) => {
     bullet.setAttribute('aria-label', language === 'en' ? `Go to demo ${index + 1}` : `查看第 ${index + 1} 个演示`);
   });
+  syncHeroAutoplay();
 }
 
 function renderLanguage() {
@@ -81,6 +108,7 @@ function renderLanguage() {
     if (element.hasAttribute('title')) element.title = label;
   });
   document.getElementById('cbi-language').textContent = english ? '中文' : 'EN';
+  updateAutoplayButton();
   updateHeroControls();
 }
 
@@ -96,15 +124,35 @@ document.addEventListener('play', event => {
   document.querySelectorAll('video').forEach(video => {
     if (video !== event.target && !video.paused) video.pause();
   });
+  if (event.target.closest('.cbi-hero-swiper')) syncHeroAutoplay();
 }, true);
+document.addEventListener('pause', event => {
+  if (event.target instanceof HTMLVideoElement && event.target.closest('.cbi-hero-swiper')) syncHeroAutoplay();
+}, true);
+document.addEventListener('ended', event => {
+  if (event.target instanceof HTMLVideoElement && event.target.closest('.cbi-hero-swiper')) syncHeroAutoplay();
+}, true);
+document.addEventListener('visibilitychange', syncHeroAutoplay);
+document.querySelector('.cbi-hero-auto').addEventListener('click', () => {
+  userPausedAutoplay = !userPausedAutoplay;
+  updateAutoplayButton();
+  syncHeroAutoplay();
+});
 heroSwiper = new Swiper('.cbi-hero-swiper', {
   slidesPerView: 1,
-  speed: matchMedia('(prefers-reduced-motion: reduce)').matches ? 0 : 420,
+  speed: reducedMotion ? 0 : 420,
   rewind: true,
+  autoplay: reducedMotion ? false : { delay: 6000, disableOnInteraction: false, pauseOnMouseEnter: true },
   keyboard: { enabled: true, onlyInViewport: true },
   navigation: { prevEl: '.cbi-hero-prev', nextEl: '.cbi-hero-next' },
   pagination: { el: '.cbi-hero-pagination', clickable: true, bulletElement: 'button' },
   a11y: { enabled: false },
   on: { slideChange: updateHeroControls }
 });
+heroSwiper.el.addEventListener('focusin', syncHeroAutoplay);
+heroSwiper.el.addEventListener('focusout', () => queueMicrotask(syncHeroAutoplay));
+new IntersectionObserver(entries => {
+  heroInView = entries[0].isIntersecting;
+  syncHeroAutoplay();
+}, { threshold: 0.25 }).observe(document.querySelector('.cbi-hero-media'));
 renderLanguage();

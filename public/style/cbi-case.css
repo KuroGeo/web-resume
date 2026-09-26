@@ -40,6 +40,7 @@ body.cbi-page { margin: 0; background: var(--scc-bg); color: var(--scc-ink); fon
 .cbi-hero-arrows { display: flex; gap: 8px; }
 .cbi-hero-arrows button { width: 38px; height: 38px; border: 1px solid var(--scc-hairline); border-radius: 50%; background: transparent; color: var(--scc-ink); font: 20px/1 var(--scc-sans); cursor: pointer; }
 .cbi-hero-arrows button:hover { background: var(--scc-ink); color: var(--scc-bg); }
+.cbi-hero-arrows .cbi-hero-auto[aria-pressed="true"] { background: var(--scc-ink); color: var(--scc-bg); }
 .cbi-section-nav { display: flex; flex-wrap: wrap; justify-content: center; gap: 12px 28px; padding: 24px 18px; border-block: 1px solid var(--scc-hairline); font-size: 13px; }
 .cbi-section-nav a { text-decoration: none; }
 .cbi-section-nav a:hover { text-decoration: underline; }
