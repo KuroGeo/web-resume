@@ -14,14 +14,15 @@ export function validatePublicResume(data){
  keys(data,['schemaVersion','locales']);requireValid(data.schemaVersion===1,'Unsupported schema');
  requireValid(object(data.locales)&&Object.keys(data.locales).sort().join(',')==='en,zh','Both languages required');
  for(const locale of Object.values(data.locales)){
-  keys(locale,['identity','sections','projects','groups','copy']);keys(locale.identity,['name','role','connections']);
+  keys(locale,['identity','sections','projects','groups','copy']);keys(locale.identity,['name','email','role','connections']);
   for(const key of ['name','role','connections'])string(locale.identity[key]);
+  if(locale.identity.email!==undefined)string(locale.identity.email);
   for(const list of ['sections','projects','groups'])requireValid(Array.isArray(locale[list])&&locale[list].length>0,'Missing '+list);
   unique(locale.sections);unique(locale.projects);unique(locale.groups);
   for(const section of locale.sections){
    keys(section,['id','title','items','pageBreakBefore']);requireValid(section.pageBreakBefore===undefined||typeof section.pageBreakBefore==='boolean','Invalid page break');string(section.id);string(section.title);
    requireValid(/^[a-z][a-z0-9-]*$/.test(section.id)&&Array.isArray(section.items),'Invalid section');
-   for(const item of section.items){keys(item,['title','paragraphs','label','role','date','place']);for(const field of ['label','role','date','place'])if(item[field]!==undefined)string(item[field]);if(item.title!==undefined)string(item.title);requireValid(Array.isArray(item.paragraphs),'Missing paragraphs');item.paragraphs.forEach(string)}
+   for(const item of section.items){keys(item,['title','paragraphs','label','role','date','place','url']);for(const field of ['label','role','date','place'])if(item[field]!==undefined)string(item[field]);if(item.title!==undefined)string(item.title);if(item.url!==undefined){string(item.url);const url=new URL(item.url);requireValid(url.protocol==='https:'&&url.hostname&&!url.username&&!url.password,'Invalid item URL')}requireValid(Array.isArray(item.paragraphs),'Missing paragraphs');item.paragraphs.forEach(string)}
   }
   for(const group of locale.groups){keys(group,['id','title','keywords','line']);for(const key of ['id','title','line'])string(group[key]);requireValid(Array.isArray(group.keywords)&&group.keywords.length>0,'Missing keywords');group.keywords.forEach(string)}
   for(const [index,project] of locale.projects.entries()){

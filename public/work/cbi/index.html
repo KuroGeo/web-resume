@@ -1,0 +1,129 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#fcfbf9">
+  <meta name="description" content="CBI AIGC 无限画布：从参考素材、商品图片和文字输入，到图片与视频生成、创意复刻和合成的项目演示。">
+  <title>CBI · AIGC 无限画布 — George Y.</title>
+  <link rel="stylesheet" href="../../fonts.css">
+  <link rel="stylesheet" href="../../style/scrollcarousel-tokens.css">
+  <link rel="stylesheet" href="../../style/cbi-case.css">
+  <script src="../../js/cbi-case.js" defer></script>
+</head>
+<body class="scrollcarousel-page cbi-page">
+  <a class="cbi-skip" href="#main" data-copy="skip">跳到项目内容</a>
+  <header class="cbi-header">
+    <a class="cbi-brand" href="../../index.html">George Y.</a>
+    <nav aria-label="项目导航">
+      <a href="../../index.html#work-next" data-copy="back">返回项目索引</a>
+      <button type="button" id="cbi-language" aria-label="Switch language">EN</button>
+    </nav>
+  </header>
+
+  <main id="main">
+    <section class="cbi-hero" aria-labelledby="cbi-title">
+      <div class="cbi-hero-copy">
+        <p class="cbi-meta" data-copy="meta">2026 · AI 广告创作与投放平台</p>
+        <h1 id="cbi-title" data-copy="title">在画布里，把创意做成视频。</h1>
+        <p class="cbi-lead" data-copy="lead">用节点连接参考视频、商品图片和文字，让脚本、画面与成片在同一张画布里反复推敲。这里展示的是创作侧的项目演示。</p>
+        <div class="cbi-hero-links">
+          <a href="#reference" data-copy="explore">看演示 <span aria-hidden="true">↓</span></a>
+          <a href="https://cbi.cc/" target="_blank" rel="noopener noreferrer" data-copy="visit">访问网站 <span aria-hidden="true">↗</span></a>
+        </div>
+      </div>
+      <figure class="cbi-hero-media">
+        <video controls playsinline preload="none" poster="../../assets/cbi/reference-after.jpg" aria-label="参考视频复刻后的演示视频">
+          <source src="../../assets/cbi/reference-after.mp4" type="video/mp4">
+        </video>
+        <figcaption data-copy="heroCaption">参考视频复刻 · 输出片段</figcaption>
+      </figure>
+    </section>
+
+    <nav class="cbi-section-nav" aria-label="案例章节">
+      <a href="#reference" data-copy="navReference">参考视频复刻</a>
+      <a href="#product" data-copy="navProduct">商品素材替换</a>
+      <a href="#scenes" data-copy="navScenes">多场景创作</a>
+      <a href="#global" data-copy="navGlobal">跨境内容适配</a>
+      <a href="#role" data-copy="navRole">我的工作</a>
+    </nav>
+
+    <section id="reference" class="cbi-section" aria-labelledby="reference-title">
+      <div class="cbi-section-head">
+        <h2 id="reference-title" data-copy="referenceTitle">从参考视频到新素材</h2>
+        <p data-copy="referenceIntro">先提供参考视频与目标商品图，再将镜头和内容拆入画布，生成候选片段，最后组合成一条新视频。下面保留了输入与输出，方便直接对照。</p>
+      </div>
+      <div class="cbi-compare">
+        <figure class="cbi-video-frame">
+          <video controls playsinline preload="none" poster="../../assets/cbi/reference-before.jpg" aria-label="参考视频复刻前的原始视频"><source src="../../assets/cbi/reference-before.mp4" type="video/mp4"></video>
+          <figcaption><span data-copy="before">输入</span><small data-copy="referenceBefore">参考视频</small></figcaption>
+        </figure>
+        <div class="cbi-compare-arrow" aria-hidden="true">→</div>
+        <figure class="cbi-video-frame">
+          <video controls playsinline preload="none" poster="../../assets/cbi/reference-after.jpg" aria-label="参考视频复刻后的生成视频"><source src="../../assets/cbi/reference-after.mp4" type="video/mp4"></video>
+          <figcaption><span data-copy="after">输出</span><small data-copy="referenceAfter">替换商品后的成片</small></figcaption>
+        </figure>
+      </div>
+      <figure class="cbi-flow">
+        <a href="../../assets/cbi/reference-flow.png" target="_blank" rel="noopener noreferrer" aria-label="放大查看参考视频复刻流程图"><img src="../../assets/cbi/reference-flow.png" width="2414" height="966" loading="lazy" alt="参考视频、商品素材与复刻节点连接到候选视频，再进入视频合成节点"></a>
+        <figcaption><span data-copy="referenceFlow">画布流程：素材输入 → 复刻与候选生成 → 视频合成</span><span data-copy="zoom">点击放大 ↗</span></figcaption>
+      </figure>
+    </section>
+
+    <section id="product" class="cbi-section" aria-labelledby="product-title">
+      <div class="cbi-section-head">
+        <h2 id="product-title" data-copy="productTitle">让商品进入已有镜头</h2>
+        <p data-copy="productIntro">一组更聚焦的示例：以商品图片和人物参考视频作为输入，在保留镜头结构的同时生成服装替换后的片段。</p>
+      </div>
+      <div class="cbi-compare">
+        <figure class="cbi-video-frame"><video controls playsinline preload="none" poster="../../assets/cbi/product-before.jpg" aria-label="商品替换前的参考视频"><source src="../../assets/cbi/product-before.mp4" type="video/mp4"></video><figcaption><span data-copy="before">输入</span><small data-copy="productBefore">原始人物镜头</small></figcaption></figure>
+        <div class="cbi-compare-arrow" aria-hidden="true">→</div>
+        <figure class="cbi-video-frame"><video controls playsinline preload="none" poster="../../assets/cbi/product-after.jpg" aria-label="服装替换后的生成视频"><source src="../../assets/cbi/product-after.mp4" type="video/mp4"></video><figcaption><span data-copy="after">输出</span><small data-copy="productAfter">商品服装替换</small></figcaption></figure>
+      </div>
+      <figure class="cbi-flow"><a href="../../assets/cbi/product-flow.png" target="_blank" rel="noopener noreferrer" aria-label="放大查看商品替换流程图"><img src="../../assets/cbi/product-flow.png" width="1698" height="1270" loading="lazy" alt="商品图片与原始人物视频连接到复刻节点，输出服装替换视频"></a><figcaption><span data-copy="productFlow">画布流程：商品图 + 参考视频 → 复刻节点 → 新视频</span><span data-copy="zoom">点击放大 ↗</span></figcaption></figure>
+    </section>
+
+    <section id="scenes" class="cbi-section" aria-labelledby="scenes-title">
+      <div class="cbi-section-head">
+        <h2 id="scenes-title" data-copy="scenesTitle">一种画布，多种创作路径</h2>
+        <p data-copy="scenesIntro">同样的节点式组织方式，可以组合图片、角色素材、文字和视频节点。以下是三个不同方向的演示，展示画布的创作范围，而不是线上投放效果。</p>
+      </div>
+      <div class="cbi-scene-grid">
+        <article class="cbi-scene">
+          <video controls playsinline preload="none" poster="../../assets/cbi/commerce.jpg" aria-label="电商带货视频演示"><source src="../../assets/cbi/commerce.mp4" type="video/mp4"></video>
+          <div class="cbi-scene-copy"><h3 data-copy="commerceTitle">电商带货</h3><p data-copy="commerceBody">人物图与文案驱动镜头生成，再组合商品介绍片段。</p><a href="../../assets/cbi/commerce-flow.png" target="_blank" rel="noopener noreferrer" data-copy="flowLink">查看画布流程 ↗</a></div>
+        </article>
+        <article class="cbi-scene">
+          <video controls playsinline preload="none" poster="../../assets/cbi/vlog.jpg" aria-label="生活 Vlog 视频演示"><source src="../../assets/cbi/vlog.mp4" type="video/mp4"></video>
+          <div class="cbi-scene-copy"><h3 data-copy="vlogTitle">生活 Vlog</h3><p data-copy="vlogBody">从人物参考图出发，串联角色设定、场景图和视频片段。</p><a href="../../assets/cbi/vlog-flow.png" target="_blank" rel="noopener noreferrer" data-copy="flowLink">查看画布流程 ↗</a></div>
+        </article>
+        <article class="cbi-scene">
+          <video controls playsinline preload="none" poster="../../assets/cbi/film.jpg" aria-label="电影风格视频演示"><source src="../../assets/cbi/film.mp4" type="video/mp4"></video>
+          <div class="cbi-scene-copy"><h3 data-copy="filmTitle">电影风格</h3><p data-copy="filmBody">让微缩角色进入巨型家居空间，用尺度对比、真实光影和连贯长镜头组织画面。</p></div>
+        </article>
+      </div>
+    </section>
+
+    <section id="global" class="cbi-section" aria-labelledby="global-title">
+      <div class="cbi-section-head"><h2 id="global-title" data-copy="globalTitle">同一条视频的跨境适配</h2><p data-copy="globalIntro">将参考视频拆成可处理的镜头，分别生成候选内容，再回到合成节点。前后片段展示了人物与商品表达的变化。</p></div>
+      <div class="cbi-compare">
+        <figure class="cbi-video-frame"><video controls playsinline preload="none" poster="../../assets/cbi/global-before.jpg" aria-label="跨境内容适配前的视频"><source src="../../assets/cbi/global-before.mp4" type="video/mp4"></video><figcaption><span data-copy="before">输入</span><small data-copy="globalBefore">原始视频</small></figcaption></figure>
+        <div class="cbi-compare-arrow" aria-hidden="true">→</div>
+        <figure class="cbi-video-frame"><video controls playsinline preload="none" poster="../../assets/cbi/global-after.jpg" aria-label="跨境内容适配后的视频"><source src="../../assets/cbi/global-after.mp4" type="video/mp4"></video><figcaption><span data-copy="after">输出</span><small data-copy="globalAfter">适配后的片段</small></figcaption></figure>
+      </div>
+      <figure class="cbi-flow"><a href="../../assets/cbi/global-flow.png" target="_blank" rel="noopener noreferrer" aria-label="放大查看跨境内容适配流程图"><img src="../../assets/cbi/global-flow.png" width="2236" height="930" loading="lazy" alt="参考视频进入复刻节点，生成候选镜头后通过视频合成输出"></a><figcaption><span data-copy="globalFlow">画布流程：参考镜头 → 候选片段 → 视频合成</span><span data-copy="zoom">点击放大 ↗</span></figcaption></figure>
+    </section>
+
+    <section id="role" class="cbi-role" aria-labelledby="role-title">
+      <div><h2 id="role-title" data-copy="roleTitle">我的工作</h2><p data-copy="roleIntro">从 0 到 1 负责创作画布的架构与交付，连接前端交互、服务端和模型能力，并推进需求迭代。本页素材对应创作侧的演示；广告投放侧未包含在这组素材中。</p></div>
+      <dl>
+        <div><dt data-copy="roleCanvas">画布与交互</dt><dd data-copy="roleCanvasBody">组织节点、素材引用与创作流程，让不同输入和生成结果能在一张画布中继续编辑。</dd></div>
+        <div><dt data-copy="roleDelivery">生成链路</dt><dd data-copy="roleDeliveryBody">联动服务端与模型能力，支撑图片、视频和素材复刻等创作任务的交付。</dd></div>
+        <div><dt data-copy="roleTeam">产研推进</dt><dd data-copy="roleTeamBody">拆解需求、确定方案并协同团队持续迭代，以可操作的 demo 验证创作场景。</dd></div>
+      </dl>
+    </section>
+  </main>
+
+  <footer class="cbi-footer"><a href="../../index.html#work-next" data-copy="back">返回项目索引</a><a href="https://cbi.cc/" target="_blank" rel="noopener noreferrer" data-copy="visit">访问网站 ↗</a></footer>
+</body>
+</html>
