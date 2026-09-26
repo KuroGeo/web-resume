@@ -1,0 +1,261 @@
+/* ByteDance case study shares the portfolio's warm editorial palette. */
+html:has(.bytedance-page) {
+  color-scheme: light;
+  background: #fcfbf9;
+}
+
+.bytedance-page {
+  --page: #fcfbf9;
+  --page-soft: #f5f2ec;
+  --ink: #171410;
+  --text: #36322d;
+  --muted: #625d55;
+  --dim: #777167;
+  --line: rgba(23, 20, 16, .14);
+  --line-strong: rgba(23, 20, 16, .27);
+  --accent: #283d36;
+  --accent-soft: #edf1ed;
+  --accent-line: rgba(23, 20, 16, .3);
+  --card: #f5f2ec;
+  --card-hover: #ece8e0;
+  --radius: 2px;
+  color: var(--ink);
+  background: var(--page);
+  font-family: Inter, -apple-system, BlinkMacSystemFont, "PingFang SC", sans-serif;
+  font-weight: 400;
+  letter-spacing: normal;
+}
+
+.bytedance-page .scroll-progress span { background: var(--ink); }
+.bytedance-page .skip-link { color: #fff; background: var(--ink); }
+.bytedance-page :focus-visible { outline-color: var(--ink); }
+
+.bytedance-page .detail-topbar {
+  position: sticky;
+  min-height: 76px;
+  grid-template-columns: 1fr auto 1fr;
+  padding: 0 clamp(20px, 3vw, 48px);
+  background: rgba(252, 251, 249, .95);
+  border-color: var(--line);
+  backdrop-filter: blur(12px);
+}
+.bytedance-page .detail-brand {
+  color: var(--ink);
+  font: 500 26px/1 Newsreader, Georgia, serif;
+}
+.bytedance-page .detail-topnav a {
+  color: var(--muted);
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: .1em;
+}
+.bytedance-page .detail-topnav a:hover,
+.bytedance-page .detail-topnav a.is-active,
+.bytedance-page .detail-brand:hover { color: var(--ink); }
+.bytedance-page .detail-topnav a.is-active { text-decoration: underline; text-underline-offset: 7px; }
+.bytedance-page .detail-page .social-list a,
+.bytedance-page .social-list a { color: var(--ink); }
+.bytedance-page .language-switch {
+  border: 1px solid var(--line);
+  border-radius: 20px;
+  background: transparent;
+}
+.bytedance-page .language-switch button { color: var(--muted); }
+.bytedance-page .language-switch button[aria-pressed="true"] { color: var(--ink); background: #ece8e0; }
+
+.bytedance-page .immersive-inner { width: min(1160px, calc(100% - 64px)); }
+.bytedance-page .immersive-hero {
+  min-height: min(720px, calc(100svh - 76px));
+  padding: 76px 0 94px;
+}
+.bytedance-page .immersive-hero::before { display: none; }
+.bytedance-page .back-home {
+  margin: 0;
+  color: var(--muted);
+  font-size: 12px;
+  font-weight: 500;
+}
+.bytedance-page .back-home::before { content: "←"; margin-right: 9px; }
+.bytedance-page .immersive-hero-grid {
+  grid-template-columns: minmax(0, 1.1fr) minmax(280px, .7fr);
+  gap: clamp(44px, 7vw, 112px);
+  align-items: end;
+  margin-top: clamp(85px, 13vh, 145px);
+}
+.bytedance-page .detail-kicker,
+.bytedance-page .project-kicker {
+  color: var(--muted);
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: .12em;
+}
+.bytedance-page .immersive-title-block h1 {
+  margin: 20px 0 0;
+  color: var(--ink);
+  font: 400 clamp(70px, 11vw, 156px)/.86 Newsreader, Georgia, serif;
+  letter-spacing: -.045em;
+}
+.bytedance-page .immersive-title-block > p:last-child {
+  max-width: 42ch;
+  margin-top: 34px;
+  color: var(--muted);
+  font-size: 17px;
+  font-weight: 400;
+  line-height: 1.65;
+}
+.bytedance-page .detail-hero {
+  padding: 0 0 8px 26px;
+  border-left: 1px solid var(--line-strong);
+}
+.bytedance-page .immersive-detail .detail-hero h2 {
+  max-width: 14ch;
+  color: var(--ink);
+  font: 400 clamp(29px, 3vw, 42px)/1.13 Newsreader, "Songti SC", Georgia, serif;
+}
+.bytedance-page .immersive-detail .detail-hero p {
+  max-width: 38ch;
+  color: var(--muted);
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 1.7;
+}
+
+.bytedance-page .immersive-section {
+  padding: 88px 0 130px;
+  border-top: 1px solid var(--line);
+}
+.bytedance-page .immersive-section-title {
+  margin-bottom: 64px;
+  color: var(--ink);
+  font: 400 clamp(48px, 6vw, 80px)/1 Newsreader, "Songti SC", Georgia, serif;
+}
+.bytedance-page .immersive-detail .case-timeline { gap: 90px; }
+.bytedance-page .immersive-detail .case-timeline::before {
+  left: 145px;
+  background: var(--line);
+}
+.bytedance-page .immersive-detail .case-node {
+  grid-template-columns: 205px minmax(0, 1fr);
+  gap: 58px;
+}
+.bytedance-page .immersive-detail .case-node::before {
+  left: 140px;
+  background: var(--page);
+  border-color: var(--ink);
+  box-shadow: 0 0 0 6px var(--page);
+}
+.bytedance-page .immersive-detail .case-node time {
+  color: var(--ink);
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: .1em;
+}
+.bytedance-page .immersive-detail .case-body h3 {
+  max-width: 20ch;
+  color: var(--ink);
+  font: 400 clamp(30px, 3.2vw, 44px)/1.17 Newsreader, "Songti SC", Georgia, serif;
+}
+.bytedance-page .immersive-detail .case-points { margin: 30px 0 0; gap: 16px; }
+.bytedance-page .immersive-detail .case-points div {
+  grid-template-columns: 86px minmax(0, 1fr);
+  gap: 22px;
+  padding-top: 16px;
+  border-top: 1px solid var(--line);
+}
+.bytedance-page .case-points dt { color: var(--dim); font-size: 11px; font-weight: 500; }
+.bytedance-page .immersive-detail .case-points dd {
+  color: var(--text);
+  font-size: 15px;
+  font-weight: 400;
+  line-height: 1.75;
+}
+
+.bytedance-page .case-body :is(.mac-copy, .store-basics-copy, .saas-copy, .third-party-copy, .mixed-copy, .video-card-copy, .ai-commerce-copy) h4,
+.bytedance-page .ai-innovation-showcase h4 {
+  color: var(--ink);
+  font: 400 clamp(28px, 3vw, 39px)/1.2 Newsreader, "Songti SC", Georgia, serif;
+}
+.bytedance-page .case-body :is(.mac-copy, .store-basics-copy, .saas-copy, .third-party-copy, .mixed-copy, .video-card-copy, .ai-commerce-copy) > p:not(.project-kicker),
+.bytedance-page .ai-innovation-intro {
+  color: var(--text);
+  font-weight: 400;
+  line-height: 1.75;
+}
+.bytedance-page :is(.mac-showcase, .store-basics-showcase, .saas-showcase, .third-party-optimization, .mixed-showcase, .video-card-showcase, .ai-commerce-showcase, .ai-innovation-showcase) {
+  margin-top: 52px;
+  padding-top: 46px;
+  border-color: var(--line);
+}
+.bytedance-page :is(.mac-metrics div, .third-party-highlights div, .saas-host-card, .video-card-points article, .ai-commerce-features article, .mixed-layer-control) {
+  background: #f5f2ec;
+  border-color: var(--line);
+  border-radius: 2px;
+}
+.bytedance-page :is(.third-party-phone, .feed-card-shot, .ai-commerce-shot img, .store-basic-frame, .mac-shot-frame) {
+  background: #efeee9;
+  border-color: var(--line);
+  box-shadow: 0 12px 30px rgba(23, 20, 16, .07);
+}
+.bytedance-page .saas-host-icon { border-color: var(--line); box-shadow: none; }
+.bytedance-page .mixed-layer-control:hover,
+.bytedance-page .mixed-layer-control.is-active { background: #e9e5db; border-color: var(--line-strong); }
+.bytedance-page .mixed-component-slice { background: #f5f2ec; }
+.bytedance-page .mixed-component-slice.is-active { border-color: var(--ink); }
+.bytedance-page .award-popover { background: var(--page); color: var(--ink); border-color: var(--line); }
+
+.bytedance-page .ai-innovation-showcase { scroll-margin-top: 92px; }
+.bytedance-page .ai-innovation-showcase h4 { max-width: 22ch; margin: 0; }
+.bytedance-page .ai-innovation-intro { max-width: 68ch; margin: 18px 0 0; font-size: 15px; }
+.bytedance-page .ai-innovation-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 0;
+  margin-top: 35px;
+  border-top: 1px solid var(--line);
+  border-bottom: 1px solid var(--line);
+}
+.bytedance-page .ai-innovation-grid article {
+  min-width: 0;
+  padding: 25px 22px 30px;
+  border-left: 1px solid var(--line);
+}
+.bytedance-page .ai-innovation-grid article:first-child { border-left: 0; padding-left: 0; }
+.bytedance-page .ai-innovation-grid article > span {
+  color: var(--dim);
+  font: 500 10px/1.4 Inter, sans-serif;
+  letter-spacing: .1em;
+}
+.bytedance-page .ai-innovation-grid h5 {
+  margin: 28px 0 13px;
+  color: var(--ink);
+  font: 400 26px/1.2 Newsreader, "Songti SC", Georgia, serif;
+}
+.bytedance-page .ai-innovation-grid p { margin: 0; color: var(--muted); font-size: 13px; line-height: 1.7; }
+
+@media (max-width: 980px) {
+  .bytedance-page .immersive-hero-grid { grid-template-columns: 1fr; gap: 60px; }
+  .bytedance-page .detail-hero { max-width: 650px; }
+  .bytedance-page .immersive-detail .case-timeline::before { left: 5px; }
+  .bytedance-page .immersive-detail .case-node { grid-template-columns: 1fr; gap: 10px; padding-left: 32px; }
+  .bytedance-page .immersive-detail .case-node::before { left: 0; }
+}
+@media (max-width: 700px) {
+  .bytedance-page .detail-topbar { min-height: 62px; grid-template-columns: 1fr auto; gap: 14px; }
+  .bytedance-page .detail-brand { font-size: 24px; }
+  .bytedance-page .detail-page .social-list,
+  .bytedance-page .social-list { display: none; }
+  .bytedance-page .immersive-inner { width: calc(100% - 36px); }
+  .bytedance-page .immersive-hero { min-height: auto; padding: 56px 0 90px; }
+  .bytedance-page .immersive-hero-grid { margin-top: 95px; gap: 54px; }
+  .bytedance-page .immersive-title-block h1 { font-size: clamp(56px, 14vw, 86px); }
+  .bytedance-page .immersive-title-block > p:last-child { font-size: 15px; }
+  .bytedance-page .detail-hero { padding-left: 18px; }
+  .bytedance-page .immersive-section { padding: 70px 0 90px; }
+  .bytedance-page .immersive-section-title { margin-bottom: 42px; }
+  .bytedance-page .immersive-detail .case-timeline { gap: 70px; }
+  .bytedance-page .immersive-detail .case-points div { grid-template-columns: 1fr; gap: 7px; }
+  .bytedance-page .ai-innovation-grid { grid-template-columns: 1fr; }
+  .bytedance-page .ai-innovation-grid article { padding: 23px 0; border-left: 0; border-top: 1px solid var(--line); }
+  .bytedance-page .ai-innovation-grid article:first-child { border-top: 0; }
+  .bytedance-page .ai-innovation-grid h5 { margin-top: 16px; }
+}
