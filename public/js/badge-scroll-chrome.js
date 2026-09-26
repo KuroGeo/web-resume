@@ -70,7 +70,7 @@
       var state = B.sample(B.clamp(travel, 0, B.duration));
       showing = !opening && travel >= -.12 && travel < B.duration;
       active = showing ? state.group : null;
-      var progressEnd = B.nativeMobile ? (document.getElementById('fallback-experimental').getBoundingClientRect().bottom + y - h - B.scroll.start) / h : B.groups[B.groups.length - 1].center;
+      var progressEnd = B.nativeMobile ? (document.getElementById('fallback-' + B.groups[B.groups.length - 1].id).getBoundingClientRect().bottom + y - h - B.scroll.start) / h : B.groups[B.groups.length - 1].center;
       workProgress = B.clamp(travel / Math.max(.01, progressEnd), 0, 1);
     } else {
       B.groups.forEach(function (g) {
@@ -103,4 +103,3 @@
   }
   schedule();
 })();
-

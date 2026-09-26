@@ -4,11 +4,14 @@ import { resolve, dirname } from 'node:path';
 import { Script, createContext } from 'node:vm';
 
 const root=resolve('public');
+const selected=JSON.parse(readFileSync(resolve(root,'generated/resume.json'),'utf8')).locales;
 for(const language of ['zh','en']){
   const context=createContext({window:{},localStorage:{getItem:()=>language}});
   const source=readFileSync(resolve(root,'js/profile-data.js'),'utf8');
   new Script(source+';window.projects=SCROLLCAROUSEL_PROJECTS;').runInContext(context);
-  assert.equal(context.window.projects.length,8);
+  assert.equal(context.window.projects.length,3);
+  assert.deepEqual(Array.from(context.window.projects,project=>project.title),selected[language].sections.find(section=>section.id==='projects').items.map(item=>item.title));
+  assert.equal(context.window.projects[0].url,'./work/cbi/');
   for(const group of context.window.PORTFOLIO_GROUPS){
     const count=context.window.projects.filter(p=>p.section===group.id).length;
     assert.ok(count>0&&count<=(group.id==='experimental'?3:4),'Scene slot bounds');

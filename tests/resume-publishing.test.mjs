@@ -3,9 +3,13 @@ import assert from 'node:assert/strict';
 import {mkdtempSync, mkdirSync, writeFileSync, readFileSync} from 'node:fs';
 import {tmpdir} from 'node:os';
 import {join} from 'node:path';
-import {validatePublicResume, renderResumeDocument, buildSite, downloadPath} from '../scripts/build-resume-site.mjs';
+import {validatePublicResume, renderResumeDocument, buildSite, downloadPath, showcaseProjects} from '../scripts/build-resume-site.mjs';
 const locale={identity:{name:'Public Name',role:'Engineer',connections:'github.com/example'},
- sections:[{id:'education',title:'Education',items:[{title:'University',paragraphs:['Degree']}]}],
+ sections:[{id:'education',title:'Education',items:[{title:'University',paragraphs:['Degree']}]},{id:'projects',title:'Selected Projects',items:[
+  {title:'Startup',date:'2026 · Startup project',url:'https://example.com/work/cbi/',paragraphs:['Startup work']},
+  {title:'AI Commerce',date:'2025 · ByteDance',paragraphs:['AI work']},
+  {title:'Shopping Cards',date:'2025 — 2026 · ByteDance',paragraphs:['Video work']}
+ ]}],
  projects:[{id:'a',section:'one',year:2025,thumb:'assets/a.png',hero:'assets/a.png',title:'Project',summary:'Summary',company:'Company',category:'product',sceneOrder:0,url:'./project-scrollcarousel.html?project=0'}],
  groups:[{id:'one',title:'Group',keywords:['Work'],line:'Description'}],
  copy:{meta:{htmlLang:'en',title:'Public Name',description:'Description',ogDescription:'Description'},pages:{},text:{'intro.role':'Engineer'}}};
@@ -19,6 +23,13 @@ test('unsupported schema, missing language, invalid asset and duplicate IDs fail
 test('HTML data is escaped and education anchor remains reachable',()=>{
  const html=renderResumeDocument({...locale,identity:{...locale.identity,name:'<script>alert(1)</script>'}});
  assert.ok(!html.includes('<script>'));assert.ok(html.includes('&lt;script&gt;'));assert.ok(html.includes('id="education"'));
+});
+test('website showcase follows the public PDF project list',()=>{
+ const projects=showcaseProjects(locale);
+ assert.deepEqual(projects.map(project=>project.title),['Startup','AI Commerce','Shopping Cards']);
+ assert.equal(projects[0].url,'./work/cbi/');
+ assert.equal(projects[1].url,'./project-scrollcarousel.html?project=1');
+ assert.equal(projects[2].summary,'Video work');
 });
 test('downloads remain under Pages base path and unsupported locales fall back',()=>{
  assert.equal(new URL(downloadPath('zh'),'https://example.com/web-resume/resume.html').pathname,'/web-resume/downloads/resume-zh.pdf');

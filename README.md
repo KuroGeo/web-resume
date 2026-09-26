@@ -30,6 +30,8 @@ python3 -m http.server 4173 --directory public
 
 **不要手改生成数据或向 `public/` 放置私人版本。** 这里的所有源码和部署文件都可公开访问；隐藏链接不是权限控制。
 
+网站的精选项目直接使用公开简历 `sections.projects.items` 的标题和描述；`scripts/build-resume-site.mjs` 只负责补充网站图片、分组和站内详情链接。这样私有源下次重新发布 PDF 时，首页项目会继续跟随公开简历的三项内容。
+
 更新公开数据后，先生成网站适配文件，再预览：
 
 ```bash
