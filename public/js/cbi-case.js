@@ -6,7 +6,11 @@ const copy = {
     skip: 'Skip to project', back: 'Back to project index', meta: '2026 · AI ad creation and campaign platform',
     title: 'Make the idea. Shape the video. One canvas.',
     lead: 'Connect reference video, product imagery and text as nodes, then keep refining the script, shots and final cut in one canvas. These demos show the creative production side of the project.',
-    explore: 'Explore the demos ↓', visit: 'Visit website ↗', heroCaption: 'Reference-video replication · output clip',
+    explore: 'Explore the demos ↓', visit: 'Visit website ↗',
+    heroOverview: 'Creative canvas · project overview', heroReference: 'Reference replication · output clip',
+    heroProduct: 'Product replacement · output clip', heroCommerce: 'Creative scenarios · commerce',
+    heroVlog: 'Creative scenarios · lifestyle vlog', heroFilm: 'Creative scenarios · cinematic scene',
+    heroGlobal: 'Global adaptation · output clip', heroDetails: 'See details ↗',
     navReference: 'Reference replication', navProduct: 'Product replacement', navScenes: 'Creative scenarios', navGlobal: 'Global adaptation', navInterface: 'The interface', navRole: 'My role',
     referenceTitle: 'From reference video to new creative',
     referenceIntro: 'Start with a reference video and product image. Break the material into a canvas flow, generate candidate clips and combine them into a new video. The input and result sit together for direct comparison.',
@@ -43,6 +47,20 @@ const copy = {
 
 let language = 'zh';
 try { language = localStorage.getItem('resume-language') === 'en' ? 'en' : 'zh'; } catch {}
+let heroSwiper;
+
+function updateHeroControls() {
+  if (!heroSwiper) return;
+  const slides = [...document.querySelectorAll('.cbi-hero-slide')];
+  document.querySelector('.cbi-hero-count').textContent = `${String(heroSwiper.activeIndex + 1).padStart(2, '0')} / ${String(slides.length).padStart(2, '0')}`;
+  slides.forEach((slide, index) => {
+    slide.inert = index !== heroSwiper.activeIndex;
+    if (index !== heroSwiper.activeIndex) slide.querySelector('video')?.pause();
+  });
+  document.querySelectorAll('.cbi-hero-pagination .swiper-pagination-bullet').forEach((bullet, index) => {
+    bullet.setAttribute('aria-label', language === 'en' ? `Go to demo ${index + 1}` : `查看第 ${index + 1} 个演示`);
+  });
+}
 
 function renderLanguage() {
   const english = language === 'en';
@@ -56,7 +74,14 @@ function renderLanguage() {
     if (!image.dataset.zhAlt) image.dataset.zhAlt = image.alt;
     image.alt = english ? image.dataset.altEn : image.dataset.zhAlt;
   });
+  document.querySelectorAll('[data-aria-en]').forEach(element => {
+    if (!element.dataset.zhAria) element.dataset.zhAria = element.getAttribute('aria-label');
+    const label = english ? element.dataset.ariaEn : element.dataset.zhAria;
+    element.setAttribute('aria-label', label);
+    if (element.hasAttribute('title')) element.title = label;
+  });
   document.getElementById('cbi-language').textContent = english ? '中文' : 'EN';
+  updateHeroControls();
 }
 
 document.getElementById('cbi-language').addEventListener('click', () => {
@@ -72,4 +97,14 @@ document.addEventListener('play', event => {
     if (video !== event.target && !video.paused) video.pause();
   });
 }, true);
+heroSwiper = new Swiper('.cbi-hero-swiper', {
+  slidesPerView: 1,
+  speed: matchMedia('(prefers-reduced-motion: reduce)').matches ? 0 : 420,
+  rewind: true,
+  keyboard: { enabled: true, onlyInViewport: true },
+  navigation: { prevEl: '.cbi-hero-prev', nextEl: '.cbi-hero-next' },
+  pagination: { el: '.cbi-hero-pagination', clickable: true, bulletElement: 'button' },
+  a11y: { enabled: false },
+  on: { slideChange: updateHeroControls }
+});
 renderLanguage();

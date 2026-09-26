@@ -8,7 +8,9 @@
   <title>CBI · AIGC 无限画布 — George Y.</title>
   <link rel="stylesheet" href="../../fonts.css">
   <link rel="stylesheet" href="../../style/scrollcarousel-tokens.css">
+  <link rel="stylesheet" href="../../vendor/swiper-14.2.0/swiper-bundle.min.css">
   <link rel="stylesheet" href="../../style/cbi-case.css">
+  <script src="../../vendor/swiper-14.2.0/swiper-bundle.min.js" defer></script>
   <script src="../../js/cbi-case.js" defer></script>
 </head>
 <body class="scrollcarousel-page cbi-page">
@@ -32,12 +34,48 @@
           <a href="https://cbi.cc/" target="_blank" rel="noopener noreferrer" data-copy="visit">访问网站 <span aria-hidden="true">↗</span></a>
         </div>
       </div>
-      <figure class="cbi-hero-media">
-        <video controls playsinline preload="none" poster="../../assets/cbi/reference-after.jpg" aria-label="参考视频复刻后的演示视频">
-          <source src="../../assets/cbi/reference-after.mp4" type="video/mp4">
-        </video>
-        <figcaption data-copy="heroCaption">参考视频复刻 · 输出片段</figcaption>
-      </figure>
+      <div class="cbi-hero-media">
+        <div class="swiper cbi-hero-swiper" role="region" aria-roledescription="carousel" aria-label="项目功能展示" data-aria-en="Project feature showcase">
+          <div class="swiper-wrapper">
+            <figure class="swiper-slide cbi-hero-slide">
+              <a class="cbi-hero-visual cbi-hero-overview" href="../../assets/cbi/canvas-overview.png" target="_blank" rel="noopener noreferrer" aria-label="查看画布总览原图" data-aria-en="Open the full canvas overview image"><img src="../../assets/cbi/canvas-overview.png" width="2912" height="1538" alt="画布总览：素材、参考内容与多个视频工作流放在同一工作空间" data-alt-en="Canvas overview with assets, references and several video workflows in one workspace"></a>
+              <figcaption><span data-copy="heroOverview">创作画布 · 项目总览</span><a href="#interface" data-copy="heroDetails">查看详情 ↗</a></figcaption>
+            </figure>
+            <figure class="swiper-slide cbi-hero-slide">
+              <div class="cbi-hero-visual"><video controls playsinline preload="none" poster="../../assets/cbi/reference-after.jpg" aria-label="参考视频复刻后的演示视频"><source src="../../assets/cbi/reference-after.mp4" type="video/mp4"></video></div>
+              <figcaption><span data-copy="heroReference">参考视频复刻 · 输出片段</span><a href="#reference" data-copy="heroDetails">查看详情 ↗</a></figcaption>
+            </figure>
+            <figure class="swiper-slide cbi-hero-slide">
+              <div class="cbi-hero-visual"><video controls playsinline preload="none" poster="../../assets/cbi/product-after.jpg" aria-label="商品素材替换后的演示视频"><source src="../../assets/cbi/product-after.mp4" type="video/mp4"></video></div>
+              <figcaption><span data-copy="heroProduct">商品素材替换 · 输出片段</span><a href="#product" data-copy="heroDetails">查看详情 ↗</a></figcaption>
+            </figure>
+            <figure class="swiper-slide cbi-hero-slide">
+              <div class="cbi-hero-visual"><video controls playsinline preload="none" poster="../../assets/cbi/commerce.jpg" aria-label="电商带货视频演示"><source src="../../assets/cbi/commerce.mp4" type="video/mp4"></video></div>
+              <figcaption><span data-copy="heroCommerce">多场景创作 · 电商带货</span><a href="#scenes" data-copy="heroDetails">查看详情 ↗</a></figcaption>
+            </figure>
+            <figure class="swiper-slide cbi-hero-slide">
+              <div class="cbi-hero-visual"><video controls playsinline preload="none" poster="../../assets/cbi/vlog.jpg" aria-label="生活 Vlog 视频演示"><source src="../../assets/cbi/vlog.mp4" type="video/mp4"></video></div>
+              <figcaption><span data-copy="heroVlog">多场景创作 · 生活 Vlog</span><a href="#scenes" data-copy="heroDetails">查看详情 ↗</a></figcaption>
+            </figure>
+            <figure class="swiper-slide cbi-hero-slide">
+              <div class="cbi-hero-visual"><video controls playsinline preload="none" poster="../../assets/cbi/film.jpg" aria-label="电影风格视频演示"><source src="../../assets/cbi/film.mp4" type="video/mp4"></video></div>
+              <figcaption><span data-copy="heroFilm">多场景创作 · 电影风格</span><a href="#scenes" data-copy="heroDetails">查看详情 ↗</a></figcaption>
+            </figure>
+            <figure class="swiper-slide cbi-hero-slide">
+              <div class="cbi-hero-visual"><video controls playsinline preload="none" poster="../../assets/cbi/global-after.jpg" aria-label="跨境内容适配后的演示视频"><source src="../../assets/cbi/global-after.mp4" type="video/mp4"></video></div>
+              <figcaption><span data-copy="heroGlobal">跨境内容适配 · 输出片段</span><a href="#global" data-copy="heroDetails">查看详情 ↗</a></figcaption>
+            </figure>
+          </div>
+        </div>
+        <div class="cbi-hero-controls">
+          <span class="cbi-hero-count" aria-live="polite">01 / 07</span>
+          <div class="cbi-hero-pagination"></div>
+          <div class="cbi-hero-arrows">
+            <button type="button" class="cbi-hero-prev" aria-label="上一个演示" data-aria-en="Previous demo" title="上一个演示">←</button>
+            <button type="button" class="cbi-hero-next" aria-label="下一个演示" data-aria-en="Next demo" title="下一个演示">→</button>
+          </div>
+        </div>
+      </div>
     </section>
 
     <nav class="cbi-section-nav" aria-label="案例章节">
