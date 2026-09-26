@@ -7,7 +7,7 @@ const copy = {
     title: 'Make the idea. Shape the video. One canvas.',
     lead: 'Connect reference video, product imagery and text as nodes, then keep refining the script, shots and final cut in one canvas. These demos show the creative production side of the project.',
     explore: 'Explore the demos ↓', visit: 'Visit website ↗', heroCaption: 'Reference-video replication · output clip',
-    navReference: 'Reference replication', navProduct: 'Product replacement', navScenes: 'Creative scenarios', navGlobal: 'Global adaptation', navRole: 'My role',
+    navReference: 'Reference replication', navProduct: 'Product replacement', navScenes: 'Creative scenarios', navGlobal: 'Global adaptation', navInterface: 'The interface', navRole: 'My role',
     referenceTitle: 'From reference video to new creative',
     referenceIntro: 'Start with a reference video and product image. Break the material into a canvas flow, generate candidate clips and combine them into a new video. The input and result sit together for direct comparison.',
     before: 'Input', after: 'Output', referenceBefore: 'Reference video', referenceAfter: 'New product clip',
@@ -25,6 +25,14 @@ const copy = {
     globalTitle: 'Adapt one video for a new audience',
     globalIntro: 'Split a reference video into workable shots, generate candidate content and return to the assembly node. The two clips show changes to the people and product presentation.',
     globalBefore: 'Original clip', globalAfter: 'Adapted clip', globalFlow: 'Canvas flow: reference shot → candidate clips → video assembly',
+    interfaceTitle: 'Inside the creative canvas',
+    interfaceIntro: 'Beyond the finished clips, these interface captures show how assets enter the canvas, video nodes connect, and creators choose models, templates and character references. Open any image for a closer look.',
+    shotCanvasTitle: 'Canvas overview', shotCanvasBody: 'Keep assets, references, generation nodes and results in one workspace.',
+    shotVideoTitle: 'Video workflow', shotVideoBody: 'Connect a reference clip, shots and text instructions, then inspect the generated result.',
+    shotModelsTitle: 'Choose a model for the task', shotModelsBody: 'Switch image models and set the frame and output format within an image node.',
+    shotToolboxTitle: 'Reusable creative tools', shotToolboxBody: 'Pick a template from the toolbox and continue editing it on the canvas.',
+    shotCharacterTitle: 'Character library', shotCharacterBody: 'Browse full-body, expression and multi-view references together.',
+    openImage: 'Open full image ↗',
     roleTitle: 'My role',
     roleIntro: 'I led the creative canvas architecture and delivery from the ground up, connecting frontend interaction, backend services and model capabilities while moving requirements forward. The supplied material covers creative demos; it does not show the campaign agent.',
     roleCanvas: 'Canvas and interaction', roleCanvasBody: 'Organized nodes, asset references and creation flows so inputs and generated results could be edited on the same canvas.',
@@ -43,6 +51,10 @@ function renderLanguage() {
   document.querySelectorAll('[data-copy]').forEach(element => {
     if (!element.dataset.zh) element.dataset.zh = element.textContent;
     element.textContent = english ? copy.en[element.dataset.copy] : element.dataset.zh;
+  });
+  document.querySelectorAll('[data-alt-en]').forEach(image => {
+    if (!image.dataset.zhAlt) image.dataset.zhAlt = image.alt;
+    image.alt = english ? image.dataset.altEn : image.dataset.zhAlt;
   });
   document.getElementById('cbi-language').textContent = english ? '中文' : 'EN';
 }
