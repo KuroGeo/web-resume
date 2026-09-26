@@ -14,7 +14,7 @@ const copy = {
     navReference: 'Reference replication', navProduct: 'Product replacement', navScenes: 'Creative scenarios', navGlobal: 'Global adaptation', navInterface: 'The interface', navRole: 'My role',
     referenceTitle: 'From reference video to new creative',
     referenceIntro: 'Start with a reference video and product image. Break the material into a canvas flow, generate candidate clips and combine them into a new video. The input and result sit together for direct comparison.',
-    before: 'Input', after: 'Output', referenceBefore: 'Reference video', referenceAfter: 'New product clip',
+    before: 'Input', after: 'Output', swipeCompare: 'Swipe to compare input and output →', referenceBefore: 'Reference video', referenceAfter: 'New product clip',
     referenceFlow: 'Canvas flow: inputs → replication and candidate generation → video assembly', zoom: 'Open full size ↗',
     productTitle: 'Place a product into an existing shot',
     productIntro: 'A focused example: use product imagery and a person’s reference video to generate a clip with different clothing while retaining the original shot structure.',
