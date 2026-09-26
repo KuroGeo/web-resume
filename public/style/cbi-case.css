@@ -54,6 +54,7 @@ body.cbi-page { margin: 0; background: var(--scc-bg); color: var(--scc-ink); fon
 .cbi-video-frame figcaption { display: flex; align-items: baseline; justify-content: space-between; gap: 12px; padding: 14px 0; border-bottom: 1px solid var(--scc-hairline); font-size: 13px; }
 .cbi-video-frame figcaption small { color: var(--scc-ink-soft); font-size: 12px; text-align: right; }
 .cbi-compare-arrow { align-self: center; text-align: center; font: 42px var(--scc-serif); }
+.cbi-swipe-hint { display: none; }
 .cbi-flow { margin: clamp(60px, 8vw, 115px) 0 0; }
 .cbi-flow a { display: block; overflow: hidden; background: #f1f0ed; }
 .cbi-flow img { display: block; width: 100%; height: auto; transition: transform .45s cubic-bezier(.2,.8,.2,1); }
@@ -107,8 +108,10 @@ body.cbi-page { margin: 0; background: var(--scc-bg); color: var(--scc-ink); fon
   .cbi-section-head { margin-bottom: 34px; }
   .cbi-section h2, .cbi-role h2 { font-size: 43px; }
   .cbi-section-head p { font-size: 15px; }
-  .cbi-compare { grid-template-columns: 1fr; gap: 20px; }
-  .cbi-compare-arrow { font-size: 28px; transform: rotate(90deg); }
+  .cbi-swipe-hint { display: block; margin: 0 0 12px; color: var(--scc-ink-soft); font-size: 12px; }
+  .cbi-compare { display: flex; gap: 12px; max-width: none; overflow-x: auto; overscroll-behavior-inline: contain; scroll-snap-type: x mandatory; -webkit-overflow-scrolling: touch; padding-bottom: 10px; scrollbar-color: #aaa49a transparent; }
+  .cbi-video-frame { flex: 0 0 80%; scroll-snap-align: start; scroll-snap-stop: always; }
+  .cbi-compare-arrow { flex: 0 0 24px; font-size: 28px; }
   .cbi-video-frame video { height: auto; max-height: 70svh; aspect-ratio: 9 / 12; }
   .cbi-flow { margin-top: 55px; }
   .cbi-flow img { min-height: 170px; object-fit: cover; }
