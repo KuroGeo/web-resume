@@ -14,10 +14,17 @@
         ? (PROFILE_ZH
           ? '把 AI 生成能力接入内容消费与送礼决策，覆盖 App 内容体验、素材管理和导购对话。'
           : 'Bringing AI-generated content into the shopping journey, from an app and content workflows to a conversational gift assistant.')
-        : project.summary + (project.sceneNote ? ' ' + project.sceneNote : '');
+        : project.id === 'video'
+          ? (PROFILE_ZH
+            ? '让用户边看短视频，边看懂商品、优惠与购买入口。'
+            : 'Helping viewers understand the product, offer and next step without leaving the video.')
+          : project.summary + (project.sceneNote ? ' ' + project.sceneNote : '');
       text('scc-detail-summary', intro);
       var section = root.querySelector('.scc-detail-hero');
-      if (section) section.dataset.media = project.id === 'ai' || project.id === 'video' ? 'portrait' : 'landscape';
+      if (section) {
+        section.dataset.media = project.id === 'ai' || project.id === 'video' ? 'portrait' : 'landscape';
+        section.dataset.project = project.id;
+      }
       var more = root.querySelector('#scc-detail-more');
       var moreTargets = { cbi: './work/cbi/', ai: './work/bytedance/#ai-innovation', video: './work/bytedance/#video-commerce-card' };
       if (more && moreTargets[project.id]) {
