@@ -49,8 +49,10 @@ body.cbi-page { margin: 0; background: var(--scc-bg); color: var(--scc-ink); fon
 .cbi-section h2, .cbi-role h2 { max-width: 13ch; margin: 0; font: 480 clamp(43px, 5vw, 74px)/1.08 var(--scc-serif); letter-spacing: -.025em; text-wrap: balance; }
 .cbi-section-head p { max-width: 45ch; margin: 0; color: #4a453f; font-size: 16px; line-height: 1.8; }
 .cbi-compare { display: grid; grid-template-columns: minmax(0, 1fr) 40px minmax(0, 1fr); align-items: center; gap: clamp(10px, 2.2vw, 38px); max-width: 1050px; margin: 0 auto; }
-.cbi-video-frame { min-width: 0; margin: 0; }
+.cbi-video-frame { position: relative; min-width: 0; margin: 0; }
 .cbi-video-frame video { display: block; width: 100%; height: clamp(360px, 48vw, 700px); object-fit: contain; background: #171410; }
+.cbi-sound-hint { position: absolute; z-index: 1; top: 12px; right: 12px; max-width: calc(100% - 24px); padding: 9px 12px; border-radius: 4px; background: #171410e6; color: #fff; font-size: 12px; line-height: 1.4; pointer-events: none; }
+.cbi-sound-hint[hidden] { display: none; }
 .cbi-video-frame figcaption { display: flex; align-items: baseline; justify-content: space-between; gap: 12px; padding: 14px 0; border-bottom: 1px solid var(--scc-hairline); font-size: 13px; }
 .cbi-video-frame figcaption small { color: var(--scc-ink-soft); font-size: 12px; text-align: right; }
 .cbi-compare-arrow { align-self: center; text-align: center; font: 42px var(--scc-serif); }
@@ -72,7 +74,7 @@ body.cbi-page { margin: 0; background: var(--scc-bg); color: var(--scc-ink); fon
 .cbi-shot-open { white-space: nowrap; }
 .cbi-ad-agent-detail { margin-top: clamp(62px, 8vw, 110px); }
 .cbi-scene-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: clamp(16px, 3vw, 38px); }
-.cbi-scene { min-width: 0; }
+.cbi-scene { position: relative; min-width: 0; }
 .cbi-scene video { display: block; width: 100%; height: clamp(330px, 35vw, 590px); object-fit: contain; background: #171410; }
 .cbi-scene-copy { padding-top: 20px; }
 .cbi-scene h3 { margin: 0 0 12px; font: 480 30px/1.15 var(--scc-serif); }
