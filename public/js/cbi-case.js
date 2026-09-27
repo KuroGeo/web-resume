@@ -40,7 +40,6 @@ const copy = {
     adAgentIntro: 'Two ad assistant interface captures: start with templates for ROAS monitoring, creative fatigue or budget pacing, then review diagnostic evidence, a change preview and actions awaiting approval. The figures and suggestions shown are examples in the screenshots, not measured campaign outcomes.',
     adAgentHomeTitle: 'Start with a task or template', adAgentHomeBody: 'Describe an advertising problem or choose a template to open a task.',
     adAgentDetailTitle: 'Review evidence before approval', adAgentDetailBody: 'Diagnostics, proposed changes and execution confirmation share one task view.',
-    openImage: 'Enlarge image',
     roleTitle: 'My role',
     roleIntro: 'I led the creative canvas architecture and delivery from the ground up, connecting frontend interaction, backend services and model capabilities while moving requirements forward. The ad assistant screenshots also show the project’s campaign-task interface.',
     roleCanvas: 'Canvas and interaction', roleCanvasBody: 'Organized nodes, asset references and creation flows so inputs and generated results could be edited on the same canvas.',
