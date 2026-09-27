@@ -83,6 +83,12 @@ export function renderResumeDocument(locale){
  const {identity,sections}=locale;
  return '<article class="resume-document"><h1>'+escapeHtml(identity.name)+'</h1><p>'+escapeHtml(identity.role)+'</p><p>'+escapeHtml(identity.connections)+'</p>'+sections.map(s=>'<h2 id="'+escapeHtml(s.id)+'">'+escapeHtml(s.title)+'</h2>'+s.items.map(item=>'<section>'+(item.title?'<h3>'+escapeHtml(item.title)+'</h3>':'')+(item.label?'<strong>'+escapeHtml(item.label)+'</strong>':'')+(['role','place','date'].filter(k=>item[k]).length?'<p>'+['role','place','date'].filter(k=>item[k]).map(k=>escapeHtml(item[k])).join(' · ')+'</p>':'')+item.paragraphs.map(p=>'<p>'+escapeHtml(p)+'</p>').join('')+'</section>').join('')).join('')+'</article>';
 }
+export function renderSearchableProjects(locale){
+ const destinations={cbi:'work/cbi/',ai:'work/bytedance/#ai-innovation',video:'work/bytedance/#video-commerce-card'};
+ return '<div class="searchable-projects"><h3>Selected projects</h3>'+showcaseProjects(locale).map(project=>
+  '<article><h4><a href="'+destinations[project.id]+'">'+escapeHtml(project.title)+'</a></h4><p>'+escapeHtml(project.year+' · '+project.company)+'</p><p>'+escapeHtml(project.summary)+'</p></article>'
+ ).join('')+'</div>';
+}
 export function buildSite(root){
  const publicRoot=join(root,'public');const data=validatePublicResume(JSON.parse(readFileSync(join(publicRoot,'generated/resume.json'),'utf8')));
  const locales=data.locales;const projects=Object.fromEntries(Object.entries(locales).map(([lang,v])=>[lang,showcaseProjects(v)]));const groups=Object.fromEntries(Object.keys(locales).map(lang=>[lang,showcaseGroups(lang)]));
@@ -132,6 +138,7 @@ document.querySelector('[data-print]')?.addEventListener('click',()=>window.prin
   html=html.replace(/(<[^>]+data-resume-fact="([^"]+)"[^>]*>)[^<]*(<\/[^>]+>)/g,(_,a,key,b)=>a+escapeHtml(facts.en[key]||'')+b);
   html=html.replace(/<title>[^<]*<\/title>/,'<title>'+escapeHtml(locales.en.identity.name+(file==='index.html'?' | '+locales.en.identity.role:' — Résumé'))+'</title>');
   if(file==='resume.html')html=html.replace(/(<div data-resume-copy>)[\s\S]*?(<\/div>)/,(_,a,b)=>a+documents.en.replaceAll('id="','id="text-')+b);
+  if(file==='index.html')html=html.replace(/(<div id="work-collection" aria-label="Project collection">)[\s\S]*?(<\/div>)/,(_,a,b)=>a+renderSearchableProjects(locales.en)+b);
   writeFileSync(path,html);
  }
 }
