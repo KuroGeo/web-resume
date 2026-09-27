@@ -32,6 +32,44 @@ if (project.id === 'ai') {
   figure.append(image, caption);
   feature.append(copy, figure);
   body.append(feature);
+} else if (project.id === 'video') {
+  const section = document.createElement('section');
+  section.className = 'scc-detail-video-story';
+  const introduction = document.createElement('div');
+  const title = document.createElement('h2');
+  title.textContent = PROFILE_ZH ? '视频不停，购物信息要讲清' : 'Keep the video playing. Make the offer clear.';
+  const description = document.createElement('p');
+  description.textContent = PROFILE_ZH
+    ? '购物卡叠在抖音推荐流的视频上，需要在有限空间里同时说明商品卖点、店铺背书、券后价和行动入口。'
+    : 'The shopping card sits over a video in the Douyin feed. In a small space, it needs to show product value, store context, the price after coupons and a clear action.';
+  introduction.append(title, description);
+
+  const points = document.createElement('div');
+  points.className = 'scc-detail-video-points';
+  const details = PROFILE_ZH
+    ? [
+      ['01 / 信息', '让商品融入画面', '处理视频遮挡、半透明背景和双行动入口，让购物信息与内容同屏。'],
+      ['02 / 体验', '守住首屏与弱网体验', '控制样式、动效和图片加载，并为弱网与异常场景准备降级。'],
+      ['03 / 验证', '支持灰度与效果衡量', '梳理曝光、点击口径，让实验分层和迭代有可靠依据。']
+    ]
+    : [
+      ['01 / SURFACE', 'Fit commerce into the frame', 'Balance video visibility, translucent layers and two actions within the same screen.'],
+      ['02 / EXPERIENCE', 'Protect the feed experience', 'Keep styles, motion and image loading within the first-screen budget, with fallbacks for weak networks.'],
+      ['03 / MEASUREMENT', 'Make iteration measurable', 'Define exposure and click tracking so staged experiments have reliable signals.']
+    ];
+  details.forEach(([label, heading, copy]) => {
+    const item = document.createElement('section');
+    const eyebrow = document.createElement('span');
+    eyebrow.textContent = label;
+    const itemTitle = document.createElement('h3');
+    itemTitle.textContent = heading;
+    const itemCopy = document.createElement('p');
+    itemCopy.textContent = copy;
+    item.append(eyebrow, itemTitle, itemCopy);
+    points.append(item);
+  });
+  section.append(introduction, points);
+  body.append(section);
 } else {
   body.hidden = true;
 }
