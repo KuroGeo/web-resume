@@ -4,14 +4,14 @@
 const copy = {
   en: {
     skip: 'Skip to project', back: 'Back to project index', meta: '2026 · AI ad creation and campaign platform',
-    title: 'Make the idea. Shape the video. One canvas.',
-    lead: 'Connect reference video, product imagery and text as nodes, then keep refining the script, shots and final cut in one canvas. These demos show the creative production side of the project.',
+    title: 'From creative canvas to ad assistant.',
+    lead: 'Connect reference video, product imagery and text on a canvas to refine scripts, shots and finished clips. The ad assistant screens show another side of the project, from task templates to diagnostics and change approval.',
     explore: 'Explore the demos ↓', visit: 'Visit website ↗',
-    heroOverview: 'Creative canvas · project overview', heroReference: 'Reference replication · output clip',
+    heroOverview: 'Creative canvas · project overview', heroAdAgent: 'Ad assistant · template entry', heroReference: 'Reference replication · output clip',
     heroProduct: 'Product replacement · output clip', heroCommerce: 'Creative scenarios · commerce',
     heroVlog: 'Creative scenarios · lifestyle vlog', heroFilm: 'Creative scenarios · cinematic scene',
     heroGlobal: 'Global adaptation · output clip', heroDetails: 'See details ↗',
-    navReference: 'Reference replication', navProduct: 'Product replacement', navScenes: 'Creative scenarios', navGlobal: 'Global adaptation', navInterface: 'The interface', navRole: 'My role',
+    navReference: 'Reference replication', navProduct: 'Product replacement', navScenes: 'Creative scenarios', navGlobal: 'Global adaptation', navInterface: 'The interface', navAdAgent: 'Ad assistant', navRole: 'My role',
     referenceTitle: 'From reference video to new creative',
     referenceIntro: 'Start with a reference video and product image. Break the material into a canvas flow, generate candidate clips and combine them into a new video. The input and result sit together for direct comparison.',
     before: 'Input', after: 'Output', swipeCompare: 'Swipe to compare input and output →', referenceBefore: 'Reference video', referenceAfter: 'New product clip',
@@ -36,9 +36,13 @@ const copy = {
     shotModelsTitle: 'Choose a model for the task', shotModelsBody: 'Switch image models and set the frame and output format within an image node.',
     shotToolboxTitle: 'Reusable creative tools', shotToolboxBody: 'Pick a template from the toolbox and continue editing it on the canvas.',
     shotCharacterTitle: 'Character library', shotCharacterBody: 'Browse full-body, expression and multi-view references together.',
+    adAgentTitle: 'From creative work to ad tasks',
+    adAgentIntro: 'Two ad assistant interface captures: start with templates for ROAS monitoring, creative fatigue or budget pacing, then review diagnostic evidence, a change preview and actions awaiting approval. The figures and suggestions shown are examples in the screenshots, not measured campaign outcomes.',
+    adAgentHomeTitle: 'Start with a task or template', adAgentHomeBody: 'Describe an advertising problem or choose a template to open a task.',
+    adAgentDetailTitle: 'Review evidence before approval', adAgentDetailBody: 'Diagnostics, proposed changes and execution confirmation share one task view.',
     openImage: 'Open full image ↗',
     roleTitle: 'My role',
-    roleIntro: 'I led the creative canvas architecture and delivery from the ground up, connecting frontend interaction, backend services and model capabilities while moving requirements forward. The supplied material covers creative demos; it does not show the campaign agent.',
+    roleIntro: 'I led the creative canvas architecture and delivery from the ground up, connecting frontend interaction, backend services and model capabilities while moving requirements forward. The ad assistant screenshots also show the project’s campaign-task interface.',
     roleCanvas: 'Canvas and interaction', roleCanvasBody: 'Organized nodes, asset references and creation flows so inputs and generated results could be edited on the same canvas.',
     roleDelivery: 'Generation pipeline', roleDeliveryBody: 'Worked across backend services and model integrations to deliver image, video and creative-replication tasks.',
     roleTeam: 'Product delivery', roleTeamBody: 'Broke down requirements, shaped solutions and coordinated iteration around working demos.'
@@ -92,7 +96,7 @@ function updateHeroControls() {
 function renderLanguage() {
   const english = language === 'en';
   document.documentElement.lang = english ? 'en' : 'zh-CN';
-  document.title = english ? 'CBI · AIGC Canvas — George Y.' : 'CBI · AIGC 无限画布 — George Y.';
+  document.title = english ? 'CBI · AI Ad Creation & Campaigns — George Y.' : 'CBI · AI 广告创作与投放 — George Y.';
   document.querySelectorAll('[data-copy]').forEach(element => {
     if (!element.dataset.zh) element.dataset.zh = element.textContent;
     element.textContent = english ? copy.en[element.dataset.copy] : element.dataset.zh;
