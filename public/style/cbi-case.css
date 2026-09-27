@@ -70,6 +70,7 @@ body.cbi-page { margin: 0; background: var(--scc-bg); color: var(--scc-ink); fon
 .cbi-shot figcaption strong { display: block; font: 480 clamp(23px, 2.5vw, 34px)/1.15 var(--scc-serif); }
 .cbi-shot figcaption small { display: block; max-width: 45ch; margin-top: 10px; color: #4a453f; font-size: 13px; line-height: 1.65; }
 .cbi-shot-open { white-space: nowrap; }
+.cbi-ad-agent-detail { margin-top: clamp(62px, 8vw, 110px); }
 .cbi-scene-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: clamp(16px, 3vw, 38px); }
 .cbi-scene { min-width: 0; }
 .cbi-scene video { display: block; width: 100%; height: clamp(330px, 35vw, 590px); object-fit: contain; background: #171410; }
