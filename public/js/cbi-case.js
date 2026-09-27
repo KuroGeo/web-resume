@@ -15,7 +15,7 @@ const copy = {
     referenceTitle: 'From reference video to new creative',
     referenceIntro: 'Start with a reference video and product image. Break the material into a canvas flow, generate candidate clips and combine them into a new video. The input and result sit together for direct comparison.',
     before: 'Input', after: 'Output', swipeCompare: 'Swipe to compare input and output →', referenceBefore: 'Reference video', referenceAfter: 'New product clip',
-    referenceFlow: 'Canvas flow: inputs → replication and candidate generation → video assembly', zoom: 'Open full size ↗',
+    referenceFlow: 'Canvas flow: inputs → replication and candidate generation → video assembly', zoom: 'Enlarge image',
     productTitle: 'Place a product into an existing shot',
     productIntro: 'A focused example: use product imagery and a person’s reference video to generate a clip with different clothing while retaining the original shot structure.',
     productBefore: 'Original person and shot', productAfter: 'Product outfit replacement',
@@ -25,7 +25,7 @@ const copy = {
     commerceTitle: 'Commerce video', commerceBody: 'Character imagery and copy guide shot generation, then the product-introduction clips are combined.',
     vlogTitle: 'Lifestyle vlog', vlogBody: 'A person reference connects character setup, scene imagery and video segments.',
     filmTitle: 'Cinematic scene', filmBody: 'A miniature character enters an oversized home, using scale, light and a continuous shot to shape the scene.',
-    flowLink: 'View canvas flow ↗',
+    flowLink: 'View canvas flow',
     globalTitle: 'Adapt one video for a new audience',
     globalIntro: 'Split a reference video into workable shots, generate candidate content and return to the assembly node. The two clips show changes to the people and product presentation.',
     globalBefore: 'Original clip', globalAfter: 'Adapted clip', globalFlow: 'Canvas flow: reference shot → candidate clips → video assembly',
@@ -40,7 +40,7 @@ const copy = {
     adAgentIntro: 'Two ad assistant interface captures: start with templates for ROAS monitoring, creative fatigue or budget pacing, then review diagnostic evidence, a change preview and actions awaiting approval. The figures and suggestions shown are examples in the screenshots, not measured campaign outcomes.',
     adAgentHomeTitle: 'Start with a task or template', adAgentHomeBody: 'Describe an advertising problem or choose a template to open a task.',
     adAgentDetailTitle: 'Review evidence before approval', adAgentDetailBody: 'Diagnostics, proposed changes and execution confirmation share one task view.',
-    openImage: 'Open full image ↗',
+    openImage: 'Enlarge image',
     roleTitle: 'My role',
     roleIntro: 'I led the creative canvas architecture and delivery from the ground up, connecting frontend interaction, backend services and model capabilities while moving requirements forward. The ad assistant screenshots also show the project’s campaign-task interface.',
     roleCanvas: 'Canvas and interaction', roleCanvasBody: 'Organized nodes, asset references and creation flows so inputs and generated results could be edited on the same canvas.',
@@ -56,6 +56,25 @@ const reducedMotion = matchMedia('(prefers-reduced-motion: reduce)').matches;
 let userPausedAutoplay = false;
 let heroInView = true;
 const hoverPreviews = new Map();
+const imageDialog = document.querySelector('.cbi-lightbox');
+const enlargedImage = imageDialog.querySelector('img');
+
+document.querySelectorAll('a[href^="../../assets/cbi/"][href$=".png"]').forEach(link => {
+  link.addEventListener('click', event => {
+    if (event.button !== 0 || event.metaKey || event.ctrlKey || event.shiftKey || event.altKey) return;
+    event.preventDefault();
+    enlargedImage.src = link.href;
+    enlargedImage.alt = link.closest('figure')?.querySelector('img')?.alt || link.textContent.trim();
+    imageDialog.showModal();
+    imageDialog.querySelector('.cbi-lightbox-close').focus();
+    syncHeroAutoplay();
+  });
+});
+imageDialog.querySelector('.cbi-lightbox-close').addEventListener('click', () => imageDialog.close());
+imageDialog.addEventListener('click', event => {
+  if (event.target === imageDialog || event.target.classList.contains('cbi-lightbox-stage')) imageDialog.close();
+});
+imageDialog.addEventListener('close', syncHeroAutoplay);
 
 function soundHintText() {
   return language === 'en' ? 'Click play to enable sound' : '点击播放以开启声音';
@@ -100,7 +119,7 @@ function syncHeroAutoplay() {
   const hovering = matchMedia('(hover: hover)').matches && heroSwiper.el.matches(':hover');
   const focused = heroSwiper.el.contains(document.activeElement);
   if (userPausedAutoplay) heroSwiper.autoplay.stop();
-  else if (!heroInView || document.hidden || hovering || focused || (activeVideo && !activeVideo.paused && !activeVideo.ended)) heroSwiper.autoplay.pause();
+  else if (imageDialog.open || !heroInView || document.hidden || hovering || focused || (activeVideo && !activeVideo.paused && !activeVideo.ended)) heroSwiper.autoplay.pause();
   else if (!heroSwiper.autoplay.running) heroSwiper.autoplay.start();
   else if (heroSwiper.autoplay.paused) heroSwiper.autoplay.resume();
 }
