@@ -56,8 +56,8 @@ export function showcaseProjects(locale){
  requireValid(selected?.length===3,'Expected three public selected projects');
  const presentation=[
   {id:'cbi',section:'independent',thumb:'assets/cbi/cover.jpg',video:'assets/cbi/film-loop.mp4',url:'./work/cbi/'},
-  {id:'ai',section:'ux',thumb:'assets/ai-commerce/gift-assistant-content.jpeg',url:'./project-scrollcarousel.html?project=1'},
-  {id:'video',section:'experimental',thumb:'assets/video-commerce/feed-irregular-card.jpeg',url:'./project-scrollcarousel.html?project=2'}
+  {id:'ai',section:'ux',thumb:'assets/ai-commerce/ai-commerce-overview.svg',url:'./project-scrollcarousel.html?project=1'},
+  {id:'video',section:'experimental',thumb:'assets/video-commerce/video-commerce-overview.svg',url:'./project-scrollcarousel.html?project=2'}
  ];
  requireValid(Boolean(selected[0].url),'Startup project needs its public case-study link');
  return selected.map((item,index)=>{
