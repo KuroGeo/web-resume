@@ -8,14 +8,16 @@
       name="description"
       content="George Y. 在 ByteDance 抖音电商阶段的项目经历详情，按时间线展开。"
     >
-    <meta name="theme-color" content="#0f172a">
+    <meta name="theme-color" content="#fcfbf9">
     <meta property="og:title" content="George Y. | ByteDance 经历详情">
     <meta property="og:description" content="按时间线展开 ByteDance 抖音电商阶段的项目经历。">
     <meta property="og:type" content="website">
     <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='13' fill='%23020617'/%3E%3Cpath d='M21 18l11 15 11-15M32 33v13' fill='none' stroke='%235eead4' stroke-width='6' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E">
+    <link rel="stylesheet" href="../../fonts.css">
     <link rel="stylesheet" href="../../styles.css?v=resume-third-party-vertical-20260602">
+    <link rel="stylesheet" href="../../style/bytedance-detail.css">
   </head>
-  <body class="detail-page">
+  <body class="detail-page bytedance-page">
     <a class="skip-link" href="#content" data-i18n="skipLink">跳到内容</a>
     <div class="scroll-progress" aria-hidden="true">
       <span data-progress></span>
@@ -444,6 +446,17 @@
                   </div>
                 </section>
 
+                <section id="ai-innovation" class="ai-innovation-showcase" aria-labelledby="ai-innovation-title">
+                  <p class="project-kicker" data-bytedance-copy="kicker">2025 · 抖音电商 AI 创新</p>
+                  <h4 id="ai-innovation-title" data-bytedance-copy="title">从内容生产到导购对话的 AI 产品探索</h4>
+                  <p class="ai-innovation-intro" data-bytedance-copy="intro">参与 AI 创新团队的产品原型，把模型生成能力接入用户看内容、挑商品和运营素材的具体流程。</p>
+                  <div class="ai-innovation-grid">
+                    <article><span>01 / CONTENT</span><h5 data-bytedance-copy="appTitle">AI 内容 App</h5><p data-bytedance-copy="appBody">负责 App 前端与多 Feed 内容消费链路，并建设 B 端内容管理平台，让生成内容有展示、管理和迭代的入口。</p></article>
+                    <article><span>02 / WORKFLOW</span><h5 data-bytedance-copy="workflowTitle">模型与工作流接入</h5><p data-bytedance-copy="workflowBody">在送礼助手中维护 Agent 对话与素材管理，接入 Coze 工作流和火山引擎模型，生成可用于导购场景的内容素材。</p></article>
+                    <article><span>03 / EXPLORATION</span><h5 data-bytedance-copy="exploreTitle">更多电商场景</h5><p data-bytedance-copy="exploreBody">探索手机智能对比与商品文案改写，关注 AI 输出如何帮助用户比较商品、理解卖点并继续决策。</p></article>
+                  </div>
+                </section>
+
                 <section id="ai-commerce" class="ai-commerce-showcase" aria-labelledby="ai-commerce-title">
                   <div class="ai-commerce-copy">
                     <p class="project-kicker" data-i18n="detail.aiCommerce.kicker">AI 电商 · 送礼助手 POC</p>
@@ -495,5 +508,6 @@
     </main>
 
     <script type="module" src="../../script.js?v=resume-custom-cache-20260602"></script>
+    <script type="module" src="../../js/bytedance-copy.js"></script>
   </body>
 </html>
