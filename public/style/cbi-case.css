@@ -67,13 +67,10 @@ body.cbi-page { margin: 0; background: var(--scc-bg); color: var(--scc-ink); fon
 .cbi-shot > a { display: block; overflow: hidden; padding: 8px; border: 1px solid var(--scc-hairline); background: #f0efec; }
 .cbi-shot img { display: block; width: 100%; height: auto; transition: transform .45s cubic-bezier(.2,.8,.2,1); }
 .cbi-shot > a:hover img { transform: scale(1.015); }
-.cbi-shot figcaption { display: grid; grid-template-columns: 30px minmax(0, 1fr) auto; align-items: start; gap: 16px; padding-top: 18px; }
-.cbi-shot-number, .cbi-shot-open { color: var(--scc-ink-soft); font-size: 12px; }
+.cbi-shot figcaption { display: grid; grid-template-columns: 30px minmax(0, 1fr); align-items: start; gap: 16px; padding-top: 18px; }
+.cbi-shot-number { color: var(--scc-ink-soft); font-size: 12px; }
 .cbi-shot figcaption strong { display: block; font: 480 clamp(23px, 2.5vw, 34px)/1.15 var(--scc-serif); }
 .cbi-shot figcaption small { display: block; max-width: 45ch; margin-top: 10px; color: #4a453f; font-size: 13px; line-height: 1.65; }
-.cbi-shot-open { white-space: nowrap; }
-.cbi-shot a.cbi-shot-open { text-decoration: none; }
-.cbi-shot a.cbi-shot-open:hover { text-decoration: underline; }
 .cbi-ad-agent-detail { margin-top: clamp(62px, 8vw, 110px); }
 .cbi-lightbox { position: fixed; inset: 0; width: 100vw; height: 100dvh; max-width: none; max-height: none; margin: 0; padding: clamp(60px, 6vw, 84px) clamp(14px, 3vw, 42px) clamp(20px, 3vw, 42px); border: 0; background: #171410f5; color: #fff; }
 .cbi-lightbox::backdrop { background: #171410b8; }
@@ -130,7 +127,6 @@ body.cbi-page { margin: 0; background: var(--scc-bg); color: var(--scc-ink); fon
   .cbi-flow img { min-height: 170px; object-fit: cover; }
   .cbi-shot-grid { grid-template-columns: 1fr; gap: 56px; margin-top: 60px; }
   .cbi-shot figcaption { grid-template-columns: 24px minmax(0, 1fr); gap: 10px; }
-  .cbi-shot-open { grid-column: 2; }
   .cbi-scene-grid { grid-template-columns: 1fr; gap: 60px; }
   .cbi-scene video { height: auto; max-height: 70svh; aspect-ratio: 9 / 12; }
   .cbi-scene p { min-height: 0; }
