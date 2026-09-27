@@ -12,11 +12,12 @@
       var resolve;
       promises.push(new Promise(function (r) { resolve = r; }));
       var texture = group ? loader.load(project.thumb, function (loaded) {
-        // Keep portrait-format product screenshots proportional inside the source 16:9 composition.
+        // Fill the scene card with landscape artwork; keep legacy portrait screenshots proportional.
         var canvas=document.createElement('canvas'); canvas.width=1280; canvas.height=720;
         var context=canvas.getContext('2d'), im=loaded.image;
-        context.fillStyle='#f0f0ed'; context.fillRect(0,0,1280,720);
-        var scale=Math.min(1160/im.width,660/im.height), dw=im.width*scale,dh=im.height*scale;
+        context.fillStyle='#fafaf8'; context.fillRect(0,0,1280,720);
+        var scale=im.width/im.height>1.6?Math.max(1280/im.width,720/im.height):Math.min(1160/im.width,660/im.height);
+        var dw=im.width*scale,dh=im.height*scale;
         context.drawImage(im,(1280-dw)/2,(720-dh)/2,dw,dh);
         loaded.image=canvas; loaded.needsUpdate=true; resolve(true);
       }, undefined, function () { resolve(false); }) : null;
