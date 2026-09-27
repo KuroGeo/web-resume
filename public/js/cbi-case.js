@@ -55,6 +55,17 @@ let heroSwiper;
 const reducedMotion = matchMedia('(prefers-reduced-motion: reduce)').matches;
 let userPausedAutoplay = false;
 let heroInView = true;
+const hoverPreviews = new Map();
+
+function stopHoverPreview(video) {
+  const previous = hoverPreviews.get(video);
+  if (!previous) return false;
+  hoverPreviews.delete(video);
+  video.pause();
+  video.muted = previous.muted;
+  video.loop = previous.loop;
+  return true;
+}
 
 function updateAutoplayButton() {
   const button = document.querySelector('.cbi-hero-auto');
@@ -85,7 +96,10 @@ function updateHeroControls() {
   document.querySelector('.cbi-hero-count').textContent = `${String(heroSwiper.activeIndex + 1).padStart(2, '0')} / ${String(slides.length).padStart(2, '0')}`;
   slides.forEach((slide, index) => {
     slide.inert = index !== heroSwiper.activeIndex;
-    if (index !== heroSwiper.activeIndex) slide.querySelector('video')?.pause();
+    if (index !== heroSwiper.activeIndex) {
+      const video = slide.querySelector('video');
+      if (video && !stopHoverPreview(video)) video.pause();
+    }
   });
   document.querySelectorAll('.cbi-hero-pagination .swiper-pagination-bullet').forEach((bullet, index) => {
     bullet.setAttribute('aria-label', language === 'en' ? `Go to demo ${index + 1}` : `查看第 ${index + 1} 个演示`);
@@ -126,17 +140,32 @@ document.getElementById('cbi-language').addEventListener('click', () => {
 document.addEventListener('play', event => {
   if (!(event.target instanceof HTMLVideoElement)) return;
   document.querySelectorAll('video').forEach(video => {
-    if (video !== event.target && !video.paused) video.pause();
+    if (video !== event.target && !video.paused && !stopHoverPreview(video)) video.pause();
   });
   if (event.target.closest('.cbi-hero-swiper')) syncHeroAutoplay();
 }, true);
+document.querySelectorAll('video').forEach(video => {
+  video.addEventListener('pointerenter', event => {
+    if (event.pointerType !== 'mouse' || reducedMotion || !video.paused) return;
+    hoverPreviews.set(video, { muted: video.muted, loop: video.loop });
+    video.muted = true;
+    video.loop = true;
+    video.play().catch(() => stopHoverPreview(video));
+  });
+  video.addEventListener('pointerleave', event => {
+    if (event.pointerType === 'mouse') stopHoverPreview(video);
+  });
+});
 document.addEventListener('pause', event => {
   if (event.target instanceof HTMLVideoElement && event.target.closest('.cbi-hero-swiper')) syncHeroAutoplay();
 }, true);
 document.addEventListener('ended', event => {
   if (event.target instanceof HTMLVideoElement && event.target.closest('.cbi-hero-swiper')) syncHeroAutoplay();
 }, true);
-document.addEventListener('visibilitychange', syncHeroAutoplay);
+document.addEventListener('visibilitychange', () => {
+  if (document.hidden) [...hoverPreviews.keys()].forEach(stopHoverPreview);
+  syncHeroAutoplay();
+});
 document.querySelector('.cbi-hero-auto').addEventListener('click', () => {
   userPausedAutoplay = !userPausedAutoplay;
   updateAutoplayButton();
