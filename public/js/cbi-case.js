@@ -57,6 +57,21 @@ let userPausedAutoplay = false;
 let heroInView = true;
 const hoverPreviews = new Map();
 
+function soundHintText() {
+  return language === 'en' ? 'Click play to enable sound' : '点击播放以开启声音';
+}
+
+function showSoundHint(video) {
+  let hint = video.parentElement.querySelector(':scope > .cbi-sound-hint');
+  if (!hint) {
+    hint = document.createElement('span');
+    hint.className = 'cbi-sound-hint';
+    video.insertAdjacentElement('afterend', hint);
+  }
+  hint.textContent = soundHintText();
+  hint.hidden = false;
+}
+
 function stopHoverPreview(video) {
   const previous = hoverPreviews.get(video);
   if (!previous) return false;
@@ -125,6 +140,7 @@ function renderLanguage() {
     element.setAttribute('aria-label', label);
     if (element.hasAttribute('title')) element.title = label;
   });
+  document.querySelectorAll('.cbi-sound-hint').forEach(hint => { hint.textContent = soundHintText(); });
   document.getElementById('cbi-language').textContent = english ? '中文' : 'EN';
   updateAutoplayButton();
   updateHeroControls();
@@ -139,6 +155,8 @@ document.getElementById('cbi-language').addEventListener('click', () => {
 // Native controls can start any clip independently. Keep playback exclusive across the case study.
 document.addEventListener('play', event => {
   if (!(event.target instanceof HTMLVideoElement)) return;
+  const hint = event.target.parentElement.querySelector(':scope > .cbi-sound-hint');
+  if (hint) hint.hidden = true;
   document.querySelectorAll('video').forEach(video => {
     if (video !== event.target && !video.paused && !stopHoverPreview(video)) video.pause();
   });
@@ -148,9 +166,12 @@ document.querySelectorAll('video').forEach(video => {
   video.addEventListener('pointerenter', event => {
     if (event.pointerType !== 'mouse' || reducedMotion || !video.paused) return;
     hoverPreviews.set(video, { muted: video.muted, loop: video.loop });
-    video.muted = true;
+    video.muted = false;
     video.loop = true;
-    video.play().catch(() => stopHoverPreview(video));
+    video.play().catch(error => {
+      if (!stopHoverPreview(video)) return;
+      if (error.name === 'NotAllowedError') showSoundHint(video);
+    });
   });
   video.addEventListener('pointerleave', event => {
     if (event.pointerType === 'mouse') stopHoverPreview(video);
