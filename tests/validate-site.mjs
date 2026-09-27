@@ -5,6 +5,26 @@ import { Script, createContext } from 'node:vm';
 
 const root=resolve('public');
 const selected=JSON.parse(readFileSync(resolve(root,'generated/resume.json'),'utf8')).locales;
+const siteUrl='https://kurogeo.github.io/web-resume/';
+const home=readFileSync(resolve(root,'index.html'),'utf8');
+const collection=home.match(/<div id="work-collection" aria-label="Project collection">([\s\S]*?)<\/div>/)?.[1];
+assert.ok(collection,'Homepage needs server-readable projects');
+const escapeHtml=value=>value.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;').replace(/'/g,'&#39;');
+for(const item of selected.en.sections.find(section=>section.id==='projects').items){
+  assert.ok(collection.includes(escapeHtml(item.title)),'Missing public project title: '+item.title);
+  assert.ok(collection.includes(escapeHtml(item.paragraphs[0])),'Missing public project summary: '+item.title);
+}
+assert.equal((collection.match(/<article>/g)||[]).length,3,'Homepage project count');
+const person=JSON.parse(home.match(/<script type="application\/ld\+json">([\s\S]*?)<\/script>/)?.[1]||'null');
+assert.equal(person['@type'],'Person');
+assert.equal(person.name,selected.en.identity.name);
+assert.equal(person.url,siteUrl);
+const sitemap=readFileSync(resolve(root,'sitemap.xml'),'utf8');
+for(const [file,url] of [['index.html',siteUrl],['resume.html',siteUrl+'resume.html'],['work/cbi/index.html',siteUrl+'work/cbi/'],['work/bytedance/index.html',siteUrl+'work/bytedance/']]){
+  const html=readFileSync(resolve(root,file),'utf8');
+  assert.ok(html.includes(`<link rel="canonical" href="${url}">`),'Missing canonical: '+file);
+  assert.ok(sitemap.includes(`<loc>${url}</loc>`),'Missing sitemap URL: '+file);
+}
 for(const language of ['zh','en']){
   const context=createContext({window:{},localStorage:{getItem:()=>language}});
   const source=readFileSync(resolve(root,'js/profile-data.js'),'utf8');
