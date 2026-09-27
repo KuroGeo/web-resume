@@ -485,28 +485,28 @@
           "title": "Selected Projects",
           "items": [
             {
-              "title": "AI Ad Creation & Campaign Platform",
+              "title": "AI Ad Creative Canvas",
               "url": "https://kurogeo.github.io/web-resume/work/cbi/",
               "date": "2026 · Startup project",
-              "role": "Product & Engineering Lead / AI application",
+              "role": "Product & Engineering Lead / Creative canvas",
               "paragraphs": [
-                "Built for ad creative production and campaign delivery, the project combines an AIGC canvas with an advertising agent. I led the canvas architecture and delivery from the ground up, covering scripts, image and video generation, and creative replication; worked to connect creative assets with campaign workflows across frontend, backend and model integration."
+                "Led the 0-to-1 architecture and delivery of a node-based canvas for producing and adapting ad creatives. Connected reference videos, product images, scripts and generation tasks into editable workflows; worked with backend and model teams to deliver creative replication and video assembly in a working demo."
               ]
             },
             {
-              "title": "Douyin E-commerce X AI Innovation",
+              "title": "Douyin AI Content & Gift Assistant POC",
               "date": "2025 · ByteDance",
-              "role": "AI application exploration / Agent development",
+              "role": "Frontend engineering / AI workflow integration",
               "paragraphs": [
-                "Worked with Douyin E-commerce's AI innovation team on product prototypes. Built the frontend and multi-feed content experience for an AI content app and its content management platform; maintained the gift assistant's agent conversations and asset management, integrated Coze workflows with Volcano Engine models for content generation, and explored phone comparisons and AI-written product copy."
+                "Built the multi-feed experience for an AI content app and its content management interface so generated assets could be viewed and managed. In a gift assistant POC, maintained Agent conversations and assets and integrated Coze workflows with Volcano Engine models to demonstrate a gift-shopping conversation."
               ]
             },
             {
-              "title": "Shopping Cards in Short Videos",
+              "title": "Douyin In-feed Shopping Card",
               "date": "2025 — 2026 · ByteDance",
-              "role": "In-feed commerce / Interaction",
+              "role": "Interaction engineering / Reliability",
               "paragraphs": [
-                "Brought product value, store context, coupons and pricing into short-video viewing. Improved card interactions, promotional styles and motion while accounting for first-screen performance, experiment rollout, measurement and weak-network fallback."
+                "Presented product value, post-coupon prices and purchase actions over short videos without obscuring the content or slowing the initial render. Led iterations on coupon flows, price animations and the video mini-player; improved staged rollout, weak-network fallback, exposure and click tracking, and monitoring for experiments at 100M+ page-view scale."
               ]
             }
           ],
@@ -998,28 +998,28 @@
           "title": "精选项目",
           "items": [
             {
-              "title": "AI 广告创作与投放平台",
+              "title": "AI 广告素材创作画布",
               "url": "https://kurogeo.github.io/web-resume/work/cbi/",
               "date": "2026 · 创业项目",
-              "role": "产品与技术负责人 / AI 应用",
+              "role": "产品与技术负责人 / 创作画布",
               "paragraphs": [
-                "面向广告创意生产与投放，项目包含 AIGC 无限画布与广告投放 Agent。我负责创作画布从 0 到 1 的架构与交付，覆盖脚本、图片、视频生成及素材复刻；推动创作素材与广告投放场景衔接，联动前端、服务端与模型能力持续迭代。"
+                "面向广告素材制作与改写，从 0 到 1 负责节点式创作画布的架构与交付：将参考视频、商品图、脚本和生成任务组织为可编辑工作流，联动服务端与模型完成素材复刻及视频合成，交付可操作演示。"
               ]
             },
             {
-              "title": "抖音电商 X AI创新",
+              "title": "抖音电商 AI 内容与送礼助手 POC",
               "date": "2025 · ByteDance",
-              "role": "AI 应用探索 / Agent 开发",
+              "role": "AI 产品前端 / 工作流接入",
               "paragraphs": [
-                "参与抖音电商 AI 创新团队的产品探索，负责 AI 内容 App 前端与多 Feed 内容消费链路、B 端内容管理平台；维护送礼助手 Agent 对话与素材管理，接入 Coze 工作流和火山引擎模型生成内容素材，并探索手机智能对比、商品文案改写等电商场景。"
+                "负责 AI 内容 App 的多 Feed 消费体验和 B 端内容管理界面，让生成素材能够展示与管理；在送礼助手 POC 中维护 Agent 对话与素材模块，接入 Coze 工作流和火山引擎模型，形成可体验的导购对话流程。"
               ]
             },
             {
-              "title": "短视频电商异形卡",
+              "title": "抖音推荐流购物卡",
               "date": "2025 — 2026 · ByteDance",
-              "role": "推荐流 / 商业表达",
+              "role": "核心交互 / 体验治理",
               "paragraphs": [
-                "在短视频画面上承接商品卖点、店铺背书、优惠券与价格信息，持续优化卡片交互、营销样式和动效，同时关注首屏性能、实验灰度、曝光点击口径及弱网降级。"
+                "在视频画面中呈现商品卖点、券后价和购买入口，同时控制内容遮挡与首屏开销。主导接券、价格动效和视频小窗等核心交互迭代，完善灰度、弱网降级、曝光点击口径与监控，支撑亿级 PV 推荐流的持续实验和稳定上线。"
               ]
             }
           ],
