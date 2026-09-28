@@ -31,8 +31,7 @@
     if(this.entering || !B.projects[index]) return;
     this.selected=index;
     var href=B.projects[index].url;
-    if(B.projects[index].id==='cbi') location.href=href;
-    else if(window.BadgeNavigation) BadgeNavigation.open(href,source || this.links[index]); else location.href=href;
+    if(window.BadgeNavigation) BadgeNavigation.open(href,source || this.links[index]); else location.href=href;
   };
   B.Interaction.prototype.update = function(items,interactive){
     var rt=this.runtime;

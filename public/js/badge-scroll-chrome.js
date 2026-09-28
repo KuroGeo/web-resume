@@ -30,9 +30,11 @@
   var label = timeline.querySelector('.chapter-progress-label'), track = timeline.querySelector('.chapter-progress-track');
   var years = B.featured.map(function (i) { return B.projects[i].year; });
   var newest = Math.max.apply(null, years), oldest = Math.min.apply(null, years);
+  var yearRange = newest === oldest ? String(newest) : newest + '–' + oldest;
   label.firstElementChild.textContent = newest;
   label.lastElementChild.textContent = oldest;
-  timeline.setAttribute('aria-label', 'Selected Work, ' + newest + '–' + oldest);
+  label.lastElementChild.hidden = newest === oldest;
+  timeline.setAttribute('aria-label', 'Selected Work, ' + yearRange);
   document.body.append(rail, timeline);
   function value(el, v) { var percent = String(Math.round(v * 100)); if (el.getAttribute('aria-valuenow') !== percent) el.setAttribute('aria-valuenow', percent); }
   function update() {
@@ -88,7 +90,7 @@
     document.body.classList.toggle('mobile-work-axis-active', innerWidth <= 700 && showing);
     timeline.style.opacity = reduced.matches ? 1 : B.smooth(h * .91, h * .98, resumeTop);
     track.style.setProperty('--chapter-progress', workProgress); value(track, workProgress);
-    track.setAttribute('aria-valuetext', 'Selected Work ' + newest + '–' + oldest + ', ' + Math.round(workProgress * 100) + '%');
+    track.setAttribute('aria-valuetext', 'Selected Work ' + yearRange + ', ' + Math.round(workProgress * 100) + '%');
     Array.from(nav.children).forEach(function (a, i) { if (active === B.groups[i]) a.setAttribute('aria-current', 'step'); else a.removeAttribute('aria-current'); });
   }
   function schedule() { if (!frame) frame = requestAnimationFrame(update); }

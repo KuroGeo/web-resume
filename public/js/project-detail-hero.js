@@ -26,7 +26,7 @@
         section.dataset.project = project.id;
       }
       var more = root.querySelector('#scc-detail-more');
-      var moreTargets = { cbi: './work/cbi/', ai: './work/bytedance/#ai-innovation', video: './work/bytedance/#video-commerce-card' };
+      var moreTargets = { ai: './work/bytedance/#ai-innovation', video: './work/bytedance/#video-commerce-card' };
       if (more && moreTargets[project.id]) {
         more.href = moreTargets[project.id];
         more.textContent = PROFILE_ZH ? '查看完整项目 ↗' : 'Explore the full project ↗';
