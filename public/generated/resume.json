@@ -33,7 +33,7 @@
           "portfolio.top": "Back to top ↑",
           "skipLink": "Skip to content",
           "intro.role": "AI Engineer",
-          "intro.copy": "I build AI products end to end, from creation workflows and model integration to production interfaces, backed by frontend and cross-platform experience at scale.",
+          "intro.copy": "I build AI-powered commerce experiences and high-traffic mobile interfaces, from product interaction to frontend delivery.",
           "nav.label": "Primary navigation",
           "nav.about": "About",
           "nav.experience": "Experience",
@@ -44,7 +44,7 @@
           "nav.deepDives": "Details",
           "language.label": "Language selection",
           "social.label": "Public links",
-          "about.p1": "I am an AI engineer with experience building a content creation product from the ground up and shipping shopping experiences for large-scale consumer apps. I work across product decisions, frontend interaction, backend orchestration and delivery.",
+          "about.p1": "I am an AI engineer and frontend developer with experience across Douyin E-commerce, including AI content and gift-assistant prototypes and shopping experiences for large-scale consumer apps. I work across product decisions, frontend interaction, cross-platform delivery and reliability.",
           "about.p2.before": "At ",
           "about.p2.company": "ByteDance",
           "about.p2.after": ", I worked on Douyin E-commerce, the shopping business inside TikTok China, across store pages, product discovery, irregular commerce cards, internal tools, and mobile app experiences. Most of this work ran at large scale, so performance, stability, and clear collaboration mattered as much as UI polish.",
@@ -413,13 +413,13 @@
             {
               "label": "AI applications:",
               "paragraphs": [
-                "Owned the architecture and delivery of an AI product for ad creative and campaign workflows, spanning multimodal creation, asynchronous generation, creative replication and integration with advertising use cases."
+                "Built frontend experiences and workflow integrations for an AI content app and gift assistant POC, including content browsing, asset management and agent conversations."
               ]
             },
             {
-              "label": "Full-stack engineering:",
+              "label": "Cross-platform engineering:",
               "paragraphs": [
-                "Specialize in cross-platform and frontend development with React Native, React and Flutter; also build Go services for business orchestration, async jobs and reliability."
+                "Build mobile and cross-platform experiences with React Native, React, Flutter and Lynx, with attention to rendering performance, staged rollout and weak-network fallback."
               ]
             }
           ]
@@ -485,15 +485,6 @@
           "title": "Selected Projects",
           "items": [
             {
-              "title": "AI Ad Creative Canvas",
-              "url": "https://kurogeo.github.io/web-resume/work/cbi/",
-              "date": "2026 · Startup project",
-              "role": "Product & Engineering Lead / Creative canvas",
-              "paragraphs": [
-                "Led the 0-to-1 architecture and delivery of a node-based canvas for producing and adapting ad creatives. Connected reference videos, product images, scripts and generation tasks into editable workflows; worked with backend and model teams to deliver creative replication and video assembly in a working demo."
-              ]
-            },
-            {
               "title": "Douyin AI Content & Gift Assistant POC",
               "date": "2025 · ByteDance",
               "role": "Frontend engineering / AI workflow integration",
@@ -546,7 +537,7 @@
           "portfolio.top": "回到顶部 ↑",
           "skipLink": "跳到内容",
           "intro.role": "AI 工程师",
-          "intro.copy": "从 AI 创作流程、模型接入到产品交互，推动应用从 0 到 1 落地；也具备高流量前端、跨端与全栈交付经验。",
+          "intro.copy": "参与 AI 电商体验与高流量移动端产品开发，关注产品交互、跨端实现和稳定交付。",
           "nav.label": "主要导航",
           "nav.about": "关于",
           "nav.experience": "经历",
@@ -557,7 +548,7 @@
           "nav.deepDives": "细节",
           "language.label": "语言选择",
           "social.label": "公开链接",
-          "about.p1": "我是一名 AI 工程师，曾从 0 到 1 推进内容创作产品，也有大规模电商消费者业务经验。工作覆盖产品判断、前端交互、服务端编排与交付。",
+          "about.p1": "我是一名 AI 工程师和前端开发者，参与过抖音电商的 AI 内容与送礼助手原型，也开发过面向大规模用户的购物体验。工作关注产品判断、前端交互、跨端交付与稳定性。",
           "about.p2.before": "过去几年，我在 ",
           "about.p2.company": "ByteDance",
           "about.p2.after": " 参与抖音电商相关工作，覆盖店铺页面、商品发现、异形卡、内部工具和移动端体验。这些工作大多运行在高流量环境里，所以性能、稳定性和清晰协作与界面细节同样重要。",
@@ -926,13 +917,13 @@
             {
               "label": "AI 应用：",
               "paragraphs": [
-                "负责面向广告创意与投放场景的 AI 产品架构和交付，覆盖多模态创作、异步生成、素材复刻及广告工作流衔接。"
+                "参与 AI 内容 App 与送礼助手 POC，负责内容消费、素材管理和 Agent 对话等前端体验与工作流接入。"
               ]
             },
             {
-              "label": "全栈工程：",
+              "label": "跨端工程：",
               "paragraphs": [
-                "精通跨端与前端开发，熟练使用 React Native、React 和 Flutter；具备 Go 服务端业务编排、异步任务与稳定性建设经验。"
+                "使用 React Native、React、Flutter 与 Lynx 开发移动端和跨端体验，关注渲染性能、灰度发布和弱网降级。"
               ]
             }
           ]
@@ -997,15 +988,6 @@
           "id": "projects",
           "title": "精选项目",
           "items": [
-            {
-              "title": "AI 广告素材创作画布",
-              "url": "https://kurogeo.github.io/web-resume/work/cbi/",
-              "date": "2026 · 创业项目",
-              "role": "产品与技术负责人 / 创作画布",
-              "paragraphs": [
-                "面向广告素材制作与改写，从 0 到 1 负责节点式创作画布的架构与交付：将参考视频、商品图、脚本和生成任务组织为可编辑工作流，联动服务端与模型完成素材复刻及视频合成，交付可操作演示。"
-              ]
-            },
             {
               "title": "抖音电商 AI 内容与送礼助手 POC",
               "date": "2025 · ByteDance",

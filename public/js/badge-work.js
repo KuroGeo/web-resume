@@ -5,9 +5,9 @@
  function organize(mode='topic'){
   section.dataset.layout=mode;root.replaceChildren();nav.replaceChildren();nav.hidden=mode!=='journey';
   section.querySelectorAll('[data-layout]').forEach(b=>b.setAttribute('aria-pressed',String(b.dataset.layout===mode)));
-  const groups=mode==='journey'?[{id:'2026',title:PROFILE_ZH?'2026 / AI 创作与广告':'2026 / AI & Advertising',line:PORTFOLIO_GROUPS[0].line},{id:'2025',title:PROFILE_ZH?'2025–2026 / 电商与 AI':'2025–2026 / Commerce & AI',line:PORTFOLIO_GROUPS[1].line}]:PORTFOLIO_GROUPS;
+  const groups=mode==='journey'?[...new Set(projects.map(p=>p.year))].sort((a,b)=>b-a).map(year=>({id:String(year),title:year+(PROFILE_ZH?' / 电商与 AI':' / Commerce & AI'),line:PORTFOLIO_GROUPS[0].line})):PORTFOLIO_GROUPS;
   groups.forEach(g=>{
-   const entries=projects.filter(p=>mode==='topic'?p.section===g.id:g.id==='2026'?p.year===2026:p.year<2026);
+   const entries=projects.filter(p=>mode==='topic'?p.section===g.id:p.year===Number(g.id));
    if(!entries.length)return;
    const group=document.createElement('section');group.className='work-group';group.id='chapter-'+g.id;
    const head=document.createElement('header');head.className='group-heading';
