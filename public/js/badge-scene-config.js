@@ -25,8 +25,7 @@
       return authored || B.projects[b].year - B.projects[a].year || a - b;
     });
     var years = g.projects.map(function (i) { return B.projects[i].year; });
-    var newest = Math.max.apply(null, years), oldest = Math.min.apply(null, years);
-    g.years = newest === oldest ? String(newest) : newest + '–' + oldest;
+    g.years = Math.max.apply(null, years) + '–' + Math.min.apply(null, years);
     g.start = n * B.timing.group; g.end = g.start + B.timing.group; g.center = (g.start + g.end) / 2;
   });
   B.featured = B.groups.reduce(function (ids, g) { return ids.concat(g.projects); }, []);

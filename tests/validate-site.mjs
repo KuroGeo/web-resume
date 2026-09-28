@@ -4,6 +4,16 @@ import { resolve, dirname } from 'node:path';
 import { Script, createContext } from 'node:vm';
 
 const root=resolve('public');
+function checkPublishedNames(dir){
+  for(const entry of readdirSync(dir,{withFileTypes:true})){
+    const path=resolve(dir,entry.name);
+    if(entry.isDirectory())checkPublishedNames(path);
+    else if(/\.(?:html|js|css|json|xml)$/.test(entry.name)){
+      assert.ok(!/\bCBI\b|cbi\.cc|\/cbi\//i.test(readFileSync(path,'utf8')),'Former company name in '+path);
+    }
+  }
+}
+checkPublishedNames(root);
 const selected=JSON.parse(readFileSync(resolve(root,'generated/resume.json'),'utf8')).locales;
 const siteUrl='https://kurogeo.github.io/web-resume/';
 const home=readFileSync(resolve(root,'index.html'),'utf8');
@@ -14,13 +24,13 @@ for(const item of selected.en.sections.find(section=>section.id==='projects').it
   assert.ok(collection.includes(escapeHtml(item.title)),'Missing public project title: '+item.title);
   assert.ok(collection.includes(escapeHtml(item.paragraphs[0])),'Missing public project summary: '+item.title);
 }
-assert.equal((collection.match(/<article>/g)||[]).length,2,'Homepage project count');
+assert.equal((collection.match(/<article>/g)||[]).length,3,'Homepage project count');
 const person=JSON.parse(home.match(/<script type="application\/ld\+json">([\s\S]*?)<\/script>/)?.[1]||'null');
 assert.equal(person['@type'],'Person');
 assert.equal(person.name,selected.en.identity.name);
 assert.equal(person.url,siteUrl);
 const sitemap=readFileSync(resolve(root,'sitemap.xml'),'utf8');
-for(const [file,url] of [['index.html',siteUrl],['resume.html',siteUrl+'resume.html'],['work/bytedance/index.html',siteUrl+'work/bytedance/']]){
+for(const [file,url] of [['index.html',siteUrl],['resume.html',siteUrl+'resume.html'],['work/ai-ad-creative/index.html',siteUrl+'work/ai-ad-creative/'],['work/bytedance/index.html',siteUrl+'work/bytedance/']]){
   const html=readFileSync(resolve(root,file),'utf8');
   assert.ok(html.includes(`<link rel="canonical" href="${url}">`),'Missing canonical: '+file);
   assert.ok(sitemap.includes(`<loc>${url}</loc>`),'Missing sitemap URL: '+file);
@@ -29,9 +39,9 @@ for(const language of ['zh','en']){
   const context=createContext({window:{},localStorage:{getItem:()=>language}});
   const source=readFileSync(resolve(root,'js/profile-data.js'),'utf8');
   new Script(source+';window.projects=SCROLLCAROUSEL_PROJECTS;').runInContext(context);
-  assert.equal(context.window.projects.length,2);
+  assert.equal(context.window.projects.length,3);
   assert.deepEqual(Array.from(context.window.projects,project=>project.title),selected[language].sections.find(section=>section.id==='projects').items.map(item=>item.title));
-  assert.equal(context.window.projects[0].url,'./project-scrollcarousel.html?project=0');
+  assert.equal(context.window.projects[0].url,'./work/ai-ad-creative/');
   for(const group of context.window.PORTFOLIO_GROUPS){
     const count=context.window.projects.filter(p=>p.section===group.id).length;
     assert.ok(count>0&&count<=(group.id==='experimental'?3:4),'Scene slot bounds');
@@ -42,7 +52,7 @@ for(const language of ['zh','en']){
     assert.ok(existsSync(resolve(root,project.hero)),project.hero);
   }
 }
-for(const file of ['index.html','index-resume-embed.html','resume.html','project-scrollcarousel.html']){
+for(const file of ['index.html','index-resume-embed.html','resume.html','project-scrollcarousel.html','work/ai-ad-creative/index.html']){
   const path=resolve(root,file),html=readFileSync(path,'utf8');
   assert.ok(!/Xinyi|CV_.*\.pdf|assets\/hero-portrait/.test(html),'No reference personal content');
   for(const match of html.matchAll(/(?:src|href|poster)="([^"]+)"/g)){

@@ -6,6 +6,7 @@ import {join} from 'node:path';
 import {validatePublicResume, renderResumeDocument, buildSite, downloadPath, showcaseProjects} from '../scripts/build-resume-site.mjs';
 const locale={identity:{name:'Public Name',role:'Engineer',connections:'github.com/example'},
  sections:[{id:'education',title:'Education',items:[{title:'University',paragraphs:['Degree']}]},{id:'projects',title:'Selected Projects',items:[
+  {title:'Startup',date:'2026 · Startup project',url:'https://example.com/work/ai-ad-creative/',paragraphs:['Startup work']},
   {title:'AI Commerce',date:'2025 · ByteDance',paragraphs:['AI work']},
   {title:'Shopping Cards',date:'2025 — 2026 · ByteDance',paragraphs:['Video work']}
  ]}],
@@ -25,13 +26,10 @@ test('HTML data is escaped and education anchor remains reachable',()=>{
 });
 test('website showcase follows the public PDF project list',()=>{
  const projects=showcaseProjects(locale);
- assert.deepEqual(projects.map(project=>project.title),['AI Commerce','Shopping Cards']);
- assert.equal(projects[0].url,'./project-scrollcarousel.html?project=0');
- assert.equal(projects[1].summary,'Video work');
-});
-test('restricted project content fails before publishing',()=>{
- const data=valid();data.locales.en.sections.find(section=>section.id==='projects').items[0].title='Ad Creative Canvas';
- assert.throws(()=>validatePublicResume(data),/Restricted project content/);
+ assert.deepEqual(projects.map(project=>project.title),['Startup','AI Commerce','Shopping Cards']);
+ assert.equal(projects[0].url,'./work/ai-ad-creative/');
+ assert.equal(projects[1].url,'./project-scrollcarousel.html?project=1');
+ assert.equal(projects[2].summary,'Video work');
 });
 test('downloads remain under Pages base path and unsupported locales fall back',()=>{
  assert.equal(new URL(downloadPath('zh'),'https://example.com/web-resume/resume.html').pathname,'/web-resume/downloads/resume-zh.pdf');
