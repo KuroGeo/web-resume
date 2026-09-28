@@ -12,7 +12,6 @@ const string=value=>requireValid(typeof value==='string'&&value.length>0,'Expect
 const unique=(records)=>requireValid(new Set(records.map(r=>r.id)).size===records.length,'Duplicate IDs');
 export function validatePublicResume(data){
  keys(data,['schemaVersion','locales']);requireValid(data.schemaVersion===1,'Unsupported schema');
- requireValid(!/(?:startup project|创业项目|creative canvas|创作画布|creative replication|素材复刻|ad creative|广告创意|广告投放)/i.test(JSON.stringify(data)),'Restricted project content in public data');
  requireValid(object(data.locales)&&Object.keys(data.locales).sort().join(',')==='en,zh','Both languages required');
  for(const locale of Object.values(data.locales)){
   keys(locale,['identity','sections','projects','groups','copy']);keys(locale.identity,['name','email','role','connections']);
@@ -54,11 +53,13 @@ export function downloadPath(language){return `downloads/resume-${language==='zh
 // includes its older, more detailed project catalogue for other consumers.
 export function showcaseProjects(locale){
  const selected=locale.sections.find(section=>section.id==='projects')?.items;
- requireValid(selected?.length===2,'Expected two public selected projects');
+ requireValid(selected?.length===3,'Expected three public selected projects');
  const presentation=[
-  {id:'ai',section:'ux',thumb:'assets/ai-commerce/ai-commerce-overview.svg',url:'./project-scrollcarousel.html?project=0'},
-  {id:'video',section:'experimental',thumb:'assets/video-commerce/video-commerce-overview.svg',url:'./project-scrollcarousel.html?project=1'}
+  {id:'creative',section:'independent',thumb:'assets/ai-ad-creative/cover.jpg',video:'assets/ai-ad-creative/film-loop.mp4',url:'./work/ai-ad-creative/'},
+  {id:'ai',section:'ux',thumb:'assets/ai-commerce/ai-commerce-overview.svg',url:'./project-scrollcarousel.html?project=1'},
+  {id:'video',section:'experimental',thumb:'assets/video-commerce/video-commerce-overview.svg',url:'./project-scrollcarousel.html?project=2'}
  ];
+ requireValid(Boolean(selected[0].url),'Startup project needs its public case-study link');
  return selected.map((item,index)=>{
   const visual=presentation[index];
   requireValid(Boolean(item.title&&item.date&&item.paragraphs?.length),'Incomplete selected project');
@@ -69,9 +70,11 @@ export function showcaseProjects(locale){
 }
 export function showcaseGroups(language){
  return language==='zh' ? [
+  {id:'independent',title:'AI 创作与广告',keywords:['AIGC 画布','素材复刻','广告投放'],line:'把脚本、图片和视频创作连到广告投放场景。'},
   {id:'ux',title:'AI 电商创新',keywords:['AI 内容','多 Feed','Agent'],line:'把生成内容、导购对话和素材管理做成可用的电商体验。'},
   {id:'experimental',title:'短视频电商',keywords:['推荐流','购物卡','交互性能'],line:'在短视频观看中清楚呈现商品、优惠和价格信息。'}
  ] : [
+  {id:'independent',title:'AI Creation & Advertising',keywords:['AIGC Canvas','Creative Replication','Campaigns'],line:'Connect scripts, images and video creation to advertising workflows.'},
   {id:'ux',title:'AI Commerce Innovation',keywords:['AI Content','Multi-feed','Agents'],line:'Turn generated content, shopping conversations and asset management into usable experiences.'},
   {id:'experimental',title:'Short-video Commerce',keywords:['In-feed','Shopping Cards','Performance'],line:'Present products, offers and prices clearly while people watch short videos.'}
  ];
@@ -81,7 +84,7 @@ export function renderResumeDocument(locale){
  return '<article class="resume-document"><h1>'+escapeHtml(identity.name)+'</h1><p>'+escapeHtml(identity.role)+'</p><p>'+escapeHtml(identity.connections)+'</p>'+sections.map(s=>'<h2 id="'+escapeHtml(s.id)+'">'+escapeHtml(s.title)+'</h2>'+s.items.map(item=>'<section>'+(item.title?'<h3>'+escapeHtml(item.title)+'</h3>':'')+(item.label?'<strong>'+escapeHtml(item.label)+'</strong>':'')+(['role','place','date'].filter(k=>item[k]).length?'<p>'+['role','place','date'].filter(k=>item[k]).map(k=>escapeHtml(item[k])).join(' · ')+'</p>':'')+item.paragraphs.map(p=>'<p>'+escapeHtml(p)+'</p>').join('')+'</section>').join('')).join('')+'</article>';
 }
 export function renderSearchableProjects(locale){
- const destinations={ai:'work/bytedance/#ai-innovation',video:'work/bytedance/#video-commerce-card'};
+ const destinations={creative:'work/ai-ad-creative/',ai:'work/bytedance/#ai-innovation',video:'work/bytedance/#video-commerce-card'};
  return '<div class="searchable-projects"><h3>Selected projects</h3>'+showcaseProjects(locale).map(project=>
   '<article><h4><a href="'+destinations[project.id]+'">'+escapeHtml(project.title)+'</a></h4><p>'+escapeHtml(project.year+' · '+project.company)+'</p><p>'+escapeHtml(project.summary)+'</p></article>'
  ).join('')+'</div>';

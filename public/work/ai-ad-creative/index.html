@@ -1,0 +1,223 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#fcfbf9">
+  <meta name="description" content="AI 广告创作与投放平台：展示 AIGC 创作画布的视频工作流，以及广告助手的模板与任务界面。">
+  <title>AI 广告创作与投放 — George Y.</title>
+  <link rel="canonical" href="https://kurogeo.github.io/web-resume/work/ai-ad-creative/">
+  <meta property="og:type" content="article">
+  <meta property="og:title" content="AI 广告素材创作画布 — George Y.">
+  <meta property="og:description" content="从 0 到 1 负责节点式创作画布的架构与交付，连接参考视频、商品图、脚本和生成任务。">
+  <meta property="og:url" content="https://kurogeo.github.io/web-resume/work/ai-ad-creative/">
+  <meta property="og:image" content="https://kurogeo.github.io/web-resume/assets/ai-ad-creative/cover.jpg">
+  <link rel="stylesheet" href="../../fonts.css">
+  <link rel="stylesheet" href="../../style/scrollcarousel-tokens.css">
+  <link rel="stylesheet" href="../../vendor/swiper-14.2.0/swiper-bundle.min.css">
+  <link rel="stylesheet" href="../../style/creative-case.css?v=20260928-image-only">
+  <script src="../../vendor/swiper-14.2.0/swiper-bundle.min.js" defer></script>
+  <script src="../../js/creative-case.js?v=20260928-image-only" defer></script>
+</head>
+<body class="scrollcarousel-page creative-page">
+  <a class="creative-skip" href="#main" data-copy="skip">跳到项目内容</a>
+  <header class="creative-header">
+    <a class="creative-brand" href="../../index.html">George Y.</a>
+    <nav aria-label="项目导航">
+      <a href="../../index.html#work-next" data-copy="back">返回项目索引</a>
+      <button type="button" id="creative-language" aria-label="Switch language">EN</button>
+    </nav>
+  </header>
+
+  <main id="main">
+    <section class="creative-hero" aria-labelledby="creative-title">
+      <div class="creative-hero-copy">
+        <p class="creative-meta" data-copy="meta">2026 · AI 广告创作与投放平台</p>
+        <h1 id="creative-title" data-copy="title">从创意画布，到广告助手。</h1>
+        <p class="creative-lead" data-copy="lead">在画布里连接参考视频、商品图片和文字，反复推敲脚本、画面与成片；广告助手界面则展示从任务模板到诊断建议与变更审批的另一侧。</p>
+        <div class="creative-hero-links">
+          <a href="#reference" data-copy="explore">看演示 <span aria-hidden="true">↓</span></a>
+        </div>
+      </div>
+      <div class="creative-hero-media">
+        <div class="swiper creative-hero-swiper" role="region" aria-roledescription="carousel" aria-label="项目功能展示" data-aria-en="Project feature showcase">
+          <div class="swiper-wrapper">
+            <figure class="swiper-slide creative-hero-slide">
+              <a class="creative-hero-visual creative-hero-overview" href="../../assets/ai-ad-creative/canvas-overview.png" target="_blank" rel="noopener noreferrer" aria-label="查看画布总览原图" data-aria-en="Open the full canvas overview image"><img src="../../assets/ai-ad-creative/canvas-overview.png" width="2912" height="1538" alt="画布总览：素材、参考内容与多个视频工作流放在同一工作空间" data-alt-en="Canvas overview with assets, references and several video workflows in one workspace"></a>
+              <figcaption><span data-copy="heroOverview">创作画布 · 项目总览</span><a href="#interface" data-copy="heroDetails">查看详情 ↗</a></figcaption>
+            </figure>
+            <figure class="swiper-slide creative-hero-slide">
+              <div class="creative-hero-visual"><video controls playsinline preload="none" poster="../../assets/ai-ad-creative/reference-after.jpg" aria-label="参考视频复刻后的演示视频"><source src="../../assets/ai-ad-creative/reference-after.mp4" type="video/mp4"></video></div>
+              <figcaption><span data-copy="heroReference">参考视频复刻 · 输出片段</span><a href="#reference" data-copy="heroDetails">查看详情 ↗</a></figcaption>
+            </figure>
+            <figure class="swiper-slide creative-hero-slide">
+              <div class="creative-hero-visual"><video controls playsinline preload="none" poster="../../assets/ai-ad-creative/product-after.jpg" aria-label="商品素材替换后的演示视频"><source src="../../assets/ai-ad-creative/product-after.mp4" type="video/mp4"></video></div>
+              <figcaption><span data-copy="heroProduct">商品素材替换 · 输出片段</span><a href="#product" data-copy="heroDetails">查看详情 ↗</a></figcaption>
+            </figure>
+            <figure class="swiper-slide creative-hero-slide">
+              <div class="creative-hero-visual"><video controls playsinline preload="none" poster="../../assets/ai-ad-creative/commerce.jpg" aria-label="电商带货视频演示"><source src="../../assets/ai-ad-creative/commerce.mp4" type="video/mp4"></video></div>
+              <figcaption><span data-copy="heroCommerce">多场景创作 · 电商带货</span><a href="#scenes" data-copy="heroDetails">查看详情 ↗</a></figcaption>
+            </figure>
+            <figure class="swiper-slide creative-hero-slide">
+              <div class="creative-hero-visual"><video controls playsinline preload="none" poster="../../assets/ai-ad-creative/vlog.jpg" aria-label="生活 Vlog 视频演示"><source src="../../assets/ai-ad-creative/vlog.mp4" type="video/mp4"></video></div>
+              <figcaption><span data-copy="heroVlog">多场景创作 · 生活 Vlog</span><a href="#scenes" data-copy="heroDetails">查看详情 ↗</a></figcaption>
+            </figure>
+            <figure class="swiper-slide creative-hero-slide">
+              <div class="creative-hero-visual"><video controls playsinline preload="none" poster="../../assets/ai-ad-creative/film.jpg" aria-label="电影风格视频演示"><source src="../../assets/ai-ad-creative/film.mp4" type="video/mp4"></video></div>
+              <figcaption><span data-copy="heroFilm">多场景创作 · 电影风格</span><a href="#scenes" data-copy="heroDetails">查看详情 ↗</a></figcaption>
+            </figure>
+            <figure class="swiper-slide creative-hero-slide">
+              <div class="creative-hero-visual"><video controls playsinline preload="none" poster="../../assets/ai-ad-creative/global-after.jpg" aria-label="跨境内容适配后的演示视频"><source src="../../assets/ai-ad-creative/global-after.mp4" type="video/mp4"></video></div>
+              <figcaption><span data-copy="heroGlobal">跨境内容适配 · 输出片段</span><a href="#global" data-copy="heroDetails">查看详情 ↗</a></figcaption>
+            </figure>
+          </div>
+        </div>
+        <div class="creative-hero-controls">
+          <span class="creative-hero-count" aria-live="polite">01 / 07</span>
+          <div class="creative-hero-pagination"></div>
+          <div class="creative-hero-arrows">
+            <button type="button" class="creative-hero-auto" aria-label="暂停自动轮播" title="暂停自动轮播" aria-pressed="false">Ⅱ</button>
+            <button type="button" class="creative-hero-prev" aria-label="上一个演示" data-aria-en="Previous demo" title="上一个演示">←</button>
+            <button type="button" class="creative-hero-next" aria-label="下一个演示" data-aria-en="Next demo" title="下一个演示">→</button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <nav class="creative-section-nav" aria-label="案例章节">
+      <a href="#reference" data-copy="navReference">参考视频复刻</a>
+      <a href="#product" data-copy="navProduct">商品素材替换</a>
+      <a href="#scenes" data-copy="navScenes">多场景创作</a>
+      <a href="#global" data-copy="navGlobal">跨境内容适配</a>
+      <a href="#interface" data-copy="navInterface">创作界面</a>
+      <a href="#ad-agent" data-copy="navAdAgent">广告助手</a>
+      <a href="#role" data-copy="navRole">我的工作</a>
+    </nav>
+
+    <section id="reference" class="creative-section" aria-labelledby="reference-title">
+      <div class="creative-section-head">
+        <h2 id="reference-title" data-copy="referenceTitle">从参考视频到新素材</h2>
+        <p data-copy="referenceIntro">先提供参考视频与目标商品图，再将镜头和内容拆入画布，生成候选片段，最后组合成一条新视频。下面保留了输入与输出，方便直接对照。</p>
+      </div>
+      <p class="creative-swipe-hint" data-copy="swipeCompare">左右滑动，对比输入与输出 →</p>
+      <div class="creative-compare" role="group" aria-label="参考视频前后对比，左右滑动查看" data-aria-en="Reference video comparison, swipe horizontally" tabindex="0">
+        <figure class="creative-video-frame">
+          <video controls playsinline preload="none" poster="../../assets/ai-ad-creative/reference-before.jpg" aria-label="参考视频复刻前的原始视频"><source src="../../assets/ai-ad-creative/reference-before.mp4" type="video/mp4"></video>
+          <figcaption><span data-copy="before">输入</span><small data-copy="referenceBefore">参考视频</small></figcaption>
+        </figure>
+        <div class="creative-compare-arrow" aria-hidden="true">→</div>
+        <figure class="creative-video-frame">
+          <video controls playsinline preload="none" poster="../../assets/ai-ad-creative/reference-after.jpg" aria-label="参考视频复刻后的生成视频"><source src="../../assets/ai-ad-creative/reference-after.mp4" type="video/mp4"></video>
+          <figcaption><span data-copy="after">输出</span><small data-copy="referenceAfter">替换商品后的成片</small></figcaption>
+        </figure>
+      </div>
+      <figure class="creative-flow">
+        <a href="../../assets/ai-ad-creative/reference-flow.png" target="_blank" rel="noopener noreferrer" aria-label="放大查看参考视频复刻流程图"><img src="../../assets/ai-ad-creative/reference-flow-preview.webp" width="2414" height="966" loading="lazy" alt="参考视频、商品素材与复刻节点连接到候选视频，再进入视频合成节点"></a>
+        <figcaption><span data-copy="referenceFlow">画布流程：素材输入 → 复刻与候选生成 → 视频合成</span><span data-copy="zoom">点击放大</span></figcaption>
+      </figure>
+    </section>
+
+    <section id="product" class="creative-section" aria-labelledby="product-title">
+      <div class="creative-section-head">
+        <h2 id="product-title" data-copy="productTitle">让商品进入已有镜头</h2>
+        <p data-copy="productIntro">一组更聚焦的示例：以商品图片和人物参考视频作为输入，在保留镜头结构的同时生成服装替换后的片段。</p>
+      </div>
+      <p class="creative-swipe-hint" data-copy="swipeCompare">左右滑动，对比输入与输出 →</p>
+      <div class="creative-compare" role="group" aria-label="商品替换前后对比，左右滑动查看" data-aria-en="Product replacement comparison, swipe horizontally" tabindex="0">
+        <figure class="creative-video-frame"><video controls playsinline preload="none" poster="../../assets/ai-ad-creative/product-before.jpg" aria-label="商品替换前的参考视频"><source src="../../assets/ai-ad-creative/product-before.mp4" type="video/mp4"></video><figcaption><span data-copy="before">输入</span><small data-copy="productBefore">原始人物镜头</small></figcaption></figure>
+        <div class="creative-compare-arrow" aria-hidden="true">→</div>
+        <figure class="creative-video-frame"><video controls playsinline preload="none" poster="../../assets/ai-ad-creative/product-after.jpg" aria-label="服装替换后的生成视频"><source src="../../assets/ai-ad-creative/product-after.mp4" type="video/mp4"></video><figcaption><span data-copy="after">输出</span><small data-copy="productAfter">商品服装替换</small></figcaption></figure>
+      </div>
+      <figure class="creative-flow"><a href="../../assets/ai-ad-creative/product-flow.png" target="_blank" rel="noopener noreferrer" aria-label="放大查看商品替换流程图"><img src="../../assets/ai-ad-creative/product-flow-preview.webp" width="1698" height="1270" loading="lazy" alt="商品图片与原始人物视频连接到复刻节点，输出服装替换视频"></a><figcaption><span data-copy="productFlow">画布流程：商品图 + 参考视频 → 复刻节点 → 新视频</span><span data-copy="zoom">点击放大</span></figcaption></figure>
+    </section>
+
+    <section id="scenes" class="creative-section" aria-labelledby="scenes-title">
+      <div class="creative-section-head">
+        <h2 id="scenes-title" data-copy="scenesTitle">一种画布，多种创作路径</h2>
+        <p data-copy="scenesIntro">同样的节点式组织方式，可以组合图片、角色素材、文字和视频节点。以下是三个不同方向的演示，展示画布的创作范围，而不是线上投放效果。</p>
+      </div>
+      <div class="creative-scene-grid">
+        <article class="creative-scene">
+          <video controls playsinline preload="none" poster="../../assets/ai-ad-creative/commerce.jpg" aria-label="电商带货视频演示"><source src="../../assets/ai-ad-creative/commerce.mp4" type="video/mp4"></video>
+          <div class="creative-scene-copy"><h3 data-copy="commerceTitle">电商带货</h3><p data-copy="commerceBody">人物图与文案驱动镜头生成，再组合商品介绍片段。</p><a href="../../assets/ai-ad-creative/commerce-flow.png" target="_blank" rel="noopener noreferrer" data-copy="flowLink">查看画布流程</a></div>
+        </article>
+        <article class="creative-scene">
+          <video controls playsinline preload="none" poster="../../assets/ai-ad-creative/vlog.jpg" aria-label="生活 Vlog 视频演示"><source src="../../assets/ai-ad-creative/vlog.mp4" type="video/mp4"></video>
+          <div class="creative-scene-copy"><h3 data-copy="vlogTitle">生活 Vlog</h3><p data-copy="vlogBody">从人物参考图出发，串联角色设定、场景图和视频片段。</p><a href="../../assets/ai-ad-creative/vlog-flow.png" target="_blank" rel="noopener noreferrer" data-copy="flowLink">查看画布流程</a></div>
+        </article>
+        <article class="creative-scene">
+          <video controls playsinline preload="none" poster="../../assets/ai-ad-creative/film.jpg" aria-label="电影风格视频演示"><source src="../../assets/ai-ad-creative/film.mp4" type="video/mp4"></video>
+          <div class="creative-scene-copy"><h3 data-copy="filmTitle">电影风格</h3><p data-copy="filmBody">让微缩角色进入巨型家居空间，用尺度对比、真实光影和连贯长镜头组织画面。</p></div>
+        </article>
+      </div>
+    </section>
+
+    <section id="global" class="creative-section" aria-labelledby="global-title">
+      <div class="creative-section-head"><h2 id="global-title" data-copy="globalTitle">同一条视频的跨境适配</h2><p data-copy="globalIntro">将参考视频拆成可处理的镜头，分别生成候选内容，再回到合成节点。前后片段展示了人物与商品表达的变化。</p></div>
+      <p class="creative-swipe-hint" data-copy="swipeCompare">左右滑动，对比输入与输出 →</p>
+      <div class="creative-compare" role="group" aria-label="跨境适配前后对比，左右滑动查看" data-aria-en="Global adaptation comparison, swipe horizontally" tabindex="0">
+        <figure class="creative-video-frame"><video controls playsinline preload="none" poster="../../assets/ai-ad-creative/global-before.jpg" aria-label="跨境内容适配前的视频"><source src="../../assets/ai-ad-creative/global-before.mp4" type="video/mp4"></video><figcaption><span data-copy="before">输入</span><small data-copy="globalBefore">原始视频</small></figcaption></figure>
+        <div class="creative-compare-arrow" aria-hidden="true">→</div>
+        <figure class="creative-video-frame"><video controls playsinline preload="none" poster="../../assets/ai-ad-creative/global-after.jpg" aria-label="跨境内容适配后的视频"><source src="../../assets/ai-ad-creative/global-after.mp4" type="video/mp4"></video><figcaption><span data-copy="after">输出</span><small data-copy="globalAfter">适配后的片段</small></figcaption></figure>
+      </div>
+      <figure class="creative-flow"><a href="../../assets/ai-ad-creative/global-flow.png" target="_blank" rel="noopener noreferrer" aria-label="放大查看跨境内容适配流程图"><img src="../../assets/ai-ad-creative/global-flow-preview.webp" width="2236" height="930" loading="lazy" alt="参考视频进入复刻节点，生成候选镜头后通过视频合成输出"></a><figcaption><span data-copy="globalFlow">画布流程：参考镜头 → 候选片段 → 视频合成</span><span data-copy="zoom">点击放大</span></figcaption></figure>
+    </section>
+
+    <section id="interface" class="creative-section creative-interface" aria-labelledby="interface-title">
+      <div class="creative-section-head">
+        <h2 id="interface-title" data-copy="interfaceTitle">画布背后的创作界面</h2>
+        <p data-copy="interfaceIntro">成片之外，这些界面截图展示素材如何进入画布、视频节点怎样衔接，以及创作者如何选择模型、模板和角色素材。点击截图可放大查看。</p>
+      </div>
+      <figure class="creative-shot creative-shot-featured">
+        <a href="../../assets/ai-ad-creative/canvas-overview.png" target="_blank" rel="noopener noreferrer"><img src="../../assets/ai-ad-creative/canvas-overview-preview.webp" width="2912" height="1538" loading="lazy" decoding="async" alt="创作画布总览：多个视频工作流在画布上排列，左侧显示画布和元素列表" data-alt-en="Creative canvas overview with multiple video workflows and a canvas list in the sidebar"></a>
+        <figcaption><span class="creative-shot-number">01</span><span><strong data-copy="shotCanvasTitle">画布总览</strong><small data-copy="shotCanvasBody">将素材、参考内容、生成节点与结果放在同一工作空间。</small></span></figcaption>
+      </figure>
+      <div class="creative-shot-grid">
+        <figure class="creative-shot">
+          <a href="../../assets/ai-ad-creative/video-workflow.png" target="_blank" rel="noopener noreferrer"><img src="../../assets/ai-ad-creative/video-workflow-preview.webp" width="2330" height="1296" loading="lazy" decoding="async" alt="视频工作流：参考视频、片段节点、文字指令和输出视频在画布上相连" data-alt-en="Video workflow connecting a reference clip, segment nodes, text prompt and output video"></a>
+          <figcaption><span class="creative-shot-number">02</span><span><strong data-copy="shotVideoTitle">视频生成链路</strong><small data-copy="shotVideoBody">参考片段、分镜和文字指令在画布中连接，再查看生成结果。</small></span></figcaption>
+        </figure>
+        <figure class="creative-shot">
+          <a href="../../assets/ai-ad-creative/image-models.png" target="_blank" rel="noopener noreferrer"><img src="../../assets/ai-ad-creative/image-models-preview.webp" width="1600" height="966" loading="lazy" decoding="async" alt="图片节点模型选择菜单，列出 Gemini、GPT、Qwen 和 Wan 等图像模型" data-alt-en="Image-node model menu showing Gemini, GPT, Qwen and Wan image models"></a>
+          <figcaption><span class="creative-shot-number">03</span><span><strong data-copy="shotModelsTitle">按任务选择模型</strong><small data-copy="shotModelsBody">在图片节点里切换模型，并设置画幅与输出规格。</small></span></figcaption>
+        </figure>
+        <figure class="creative-shot">
+          <a href="../../assets/ai-ad-creative/toolbox.png" target="_blank" rel="noopener noreferrer"><img src="../../assets/ai-ad-creative/toolbox-preview.webp" width="1100" height="1046" loading="lazy" decoding="async" alt="我的工具箱弹窗，展示商品详情图、视频适配和游戏画面等创作模板" data-alt-en="Toolbox dialog with commerce imagery, video adaptation and game creative templates"></a>
+          <figcaption><span class="creative-shot-number">04</span><span><strong data-copy="shotToolboxTitle">可复用的创作工具</strong><small data-copy="shotToolboxBody">从工具箱选用模板，把常见任务带回画布继续编辑。</small></span></figcaption>
+        </figure>
+        <figure class="creative-shot">
+          <a href="../../assets/ai-ad-creative/character-library.png" target="_blank" rel="noopener noreferrer"><img src="../../assets/ai-ad-creative/character-library-preview.webp" width="2934" height="1578" loading="lazy" decoding="async" alt="角色库界面，展示角色的全身、面部、表情与多视角参考图" data-alt-en="Character library showing full-body, portrait, expression and multi-view references"></a>
+          <figcaption><span class="creative-shot-number">05</span><span><strong data-copy="shotCharacterTitle">角色素材库</strong><small data-copy="shotCharacterBody">集中查看人物的全身、表情和多视角参考素材。</small></span></figcaption>
+        </figure>
+      </div>
+    </section>
+
+    <section id="ad-agent" class="creative-section" aria-labelledby="ad-agent-title">
+      <div class="creative-section-head">
+        <h2 id="ad-agent-title" data-copy="adAgentTitle">创作之后，走进广告任务</h2>
+        <p data-copy="adAgentIntro">广告助手界面展示任务详情中的诊断依据、变更预览和待审批操作。界面中的指标与建议是截图示例，不代表真实投放成效。</p>
+      </div>
+      <figure class="creative-shot creative-shot-featured creative-ad-agent-detail">
+        <a href="../../assets/ai-ad-creative/ad-agent-detail.png" target="_blank" rel="noopener noreferrer"><img src="../../assets/ai-ad-creative/ad-agent-detail-preview.jpg" width="2816" height="1658" loading="lazy" decoding="async" alt="广告助手详情：中间是诊断依据和出价变更预览，右侧是触发器、技能与待审批操作" data-alt-en="Ad assistant detail with diagnostic evidence and bid-change preview in the center, plus triggers, skills and pending approval on the right"></a>
+        <figcaption><span class="creative-shot-number">01</span><span><strong data-copy="adAgentDetailTitle">查看依据，再审批变更</strong><small data-copy="adAgentDetailBody">把诊断结论、拟议调整和执行确认放在同一任务界面。</small></span></figcaption>
+      </figure>
+    </section>
+
+    <section id="role" class="creative-role" aria-labelledby="role-title">
+      <div><h2 id="role-title" data-copy="roleTitle">我的工作</h2><p data-copy="roleIntro">从 0 到 1 负责创作画布的架构与交付，连接前端交互、服务端和模型能力，并推进需求迭代。广告助手截图补充展示项目的投放任务界面。</p></div>
+      <dl>
+        <div><dt data-copy="roleCanvas">画布与交互</dt><dd data-copy="roleCanvasBody">组织节点、素材引用与创作流程，让不同输入和生成结果能在一张画布中继续编辑。</dd></div>
+        <div><dt data-copy="roleDelivery">生成链路</dt><dd data-copy="roleDeliveryBody">联动服务端与模型能力，支撑图片、视频和素材复刻等创作任务的交付。</dd></div>
+        <div><dt data-copy="roleTeam">产研推进</dt><dd data-copy="roleTeamBody">拆解需求、确定方案并协同团队持续迭代，以可操作的 demo 验证创作场景。</dd></div>
+      </dl>
+    </section>
+  </main>
+
+  <dialog class="creative-lightbox" aria-label="放大图片" data-aria-en="Enlarged image">
+    <button type="button" class="creative-lightbox-close" aria-label="关闭图片" data-aria-en="Close image">×</button>
+    <div class="creative-lightbox-stage"><img alt=""></div>
+  </dialog>
+
+  <footer class="creative-footer"><a href="../../index.html#work-next" data-copy="back">返回项目索引</a></footer>
+</body>
+</html>
