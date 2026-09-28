@@ -8,7 +8,8 @@
     "resume:edit": "node scripts/resume-local.mjs edit",
     "resume:pdf": "node scripts/resume-local.mjs pdf",
     "resume:preview": "node scripts/resume-local.mjs preview",
-    "resume:studio": "node scripts/resume-local.mjs studio"
+    "resume:studio": "node scripts/resume-local.mjs studio",
+    "resume:github": "node scripts/github-profile-readme.mjs"
   },
   "engines": {
     "node": ">=22"
