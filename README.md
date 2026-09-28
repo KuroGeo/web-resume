@@ -32,6 +32,18 @@ python3 -m http.server 4173 --directory public
 
 网站的精选项目直接使用公开简历 `sections.projects.items` 的标题和描述；`scripts/build-resume-site.mjs` 只负责补充网站图片、分组和站内详情链接。这样私有源下次重新发布 PDF 时，首页项目会继续跟随公开简历的三项内容。
 
+## 同步 GitHub 主页 README
+
+GitHub 主页 README 也是公开简历的一个输出。`resume:github` 只读取本仓库的 `public/generated/resume.json` 英文公开字段，生成简介、精选项目、经历、能力和联系方式；不会读取私人简历版本。
+
+```bash
+npm run resume:github                 # 在终端预览将要发布的 Markdown
+npm run resume:github -- --check      # 与 github.com/KuroGeo 当前 README 比较
+npm run resume:github -- --publish    # 更新 KuroGeo/KuroGeo 的 README.md
+```
+
+修改简历时，先按现有流程把公开简历发布到 `web-resume/main`，再在更新到该提交的本地 checkout 中执行 `--publish`。发布命令会核对本地公开 JSON 与 `web-resume/main` 一致，并使用 GitHub 文件版本号写入；远端在读取后被别人修改时会拒绝覆盖。需要本机已登录有写权限的 `gh`，无需在本仓库存放令牌。无参数的预览和网站构建都不调用 GitHub。
+
 更新公开数据后，先生成网站适配文件，再预览：
 
 ```bash
